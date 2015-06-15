@@ -1,0 +1,89 @@
+/**
+* PrivateTalk.js
+*
+* @description :: TODO: You might write a short summary of how this model works and what it represents here.
+* @docs        :: http://sailsjs.org/#!documentation/models
+*/
+
+module.exports = {
+
+  attributes: {
+  	"proposal" : {
+  		model:'proposal'
+  	},
+  	"content": {
+  		type:'string'
+  	}
+  },
+
+
+  afterCreate: [
+    /**
+    * Set PrivateTalk Owner automatically
+    */
+    function setOwner (privatetalk, next) {
+      sails.log('PrivateTalk.afterCreate.setOwner', privatetalk);
+      PrivateTalk
+        .update({ id: privatetalk.id }, { owner: privatetalk.createdBy})
+        .then(function (privatetalk) {
+          next();
+        })
+        .catch(next);
+    },
+    /**
+    * Set PrivateTalk Authorized Owner automatically
+    */
+    function setAuthOwner (privatetalk, next) {
+      sails.log('PrivateTalk.afterCreate.setAuthOwner');
+      Proposal.findOne({ id: privatetalk.proposal }).exec(function (err,proposal) {
+        if(err) {
+          next();
+        } else {
+          PrivateTalk
+          .update({ id: privatetalk.id }, { authowner: proposal.createdBy})
+          .then(function (privatetalk) {
+            next();
+          })
+          .catch(next);
+        };
+      }); 
+    },
+    /**
+    * Connect to related Proposal automatically
+    */    
+    function connectProposal (privatetalk, next) {
+      sails.log('PrivateTalk.afterCreate.connectProposal');
+      Proposal.findOne({ id: privatetalk.proposal }).exec(function (err,proposal) {
+        proposal.privatetalks = proposal.privatetalks || [];
+        proposal.privatetalks.push(privatetalk.id);
+        proposal.save(function (err) {
+          next();
+        });
+      });
+    },
+  ],
+
+  beforeDestroy: [
+    /**
+    * disconnect to related Proposal automatically
+    */    
+    function disconnectProposal (criteria, next) {
+      sails.log('PrivateTalk.afterDestroy.disconnectPoster', criteria);
+      PrivateTalk.findOne({ id : criteria.where.id}).exec(function(err, privatetalk) {
+        Proposal.findOne({ id: privatetalk.proposal}).exec(function (err,proposal) {
+          proposal.privatetalks = proposal.privatetalks || [];
+          var index = proposal.privatetalks.indexOf(privatetalk.id);
+          if (index > -1) {
+            proposal.privatetalks.splice(index, 1);
+          }
+          proposal.save(function (err) {
+            next();
+          });
+        });
+      } );
+    },
+  ]
+
+
+};
+
