@@ -7,13 +7,18 @@
 module.exports = {
 
   attributes: {
-	"poster" : {
-		type:'string',
-		unique: true
-	},
-	"parentNode" : {
-		model : "node"
-	}
+    "poster" : {
+      model: 'poster',
+      unique: true,
+      required: true
+    },
+    "parentNode" : {
+      model : "node"
+    },
+    "childNodes" : {
+      collection : 'node',
+      via: 'parentNode'
+    }    
   },
 
 	/**
@@ -27,7 +32,7 @@ module.exports = {
         .then(function (node) {
           next();
         })
-        .catch(next);
+        .catch(sails.error);
     },
   ]
 

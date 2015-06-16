@@ -14,6 +14,9 @@ module.exports = {
   	"content": {
   		type:'string'
   	},
+    "node": {
+      model: 'node'
+    }
   	"privatetalks" :{
   		type: 'array',
   	}

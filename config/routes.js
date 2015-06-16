@@ -48,7 +48,7 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-  'get /' : 'UserController.getIndex',
-  'get /login': 'UserController.login',
-  'get /node/:id/chain' : "NodeController.getChain"
+  'get /node/:id' : 'NodeController.getOneNode',
+  //'get /login': 'UserController.login',
+  //'get /node/:id/chain' : "NodeController.getChain"
 };
