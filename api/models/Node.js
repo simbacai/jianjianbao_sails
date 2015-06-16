@@ -15,6 +15,9 @@ module.exports = {
     "parentNode" : {
       model : "node"
     },
+    "path" : {
+      type: 'array'
+    },
     "childNodes" : {
       collection : 'node',
       via: 'parentNode'

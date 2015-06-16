@@ -18,7 +18,7 @@ module.exports = {
   	},
     "tipAmount" : {
       type: 'number',
-    }
+    },
   	"comments": {
   		type: 'array',
   	},
@@ -55,7 +55,7 @@ module.exports = {
     function createRootNode (poster, next) {
       sails.log('Poster.afterCreate.createRootNode');
       Node
-        .create({ poster: poster.id, createdBy: poster.createdBy })
+        .create({ poster: poster.id, createdBy: poster.createdBy, path: [] })
         .then(function (node) {
           poster.nodes = poster.nodes || [];
           poster.nodes.push(node.id);

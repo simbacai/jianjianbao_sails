@@ -16,7 +16,7 @@ module.exports = {
   	},
     "node": {
       model: 'node'
-    }
+    },
   	"privatetalks" :{
   		type: 'array',
   	}

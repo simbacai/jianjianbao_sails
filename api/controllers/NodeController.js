@@ -31,7 +31,7 @@ getOneNode : function  (req, res) {
 
     		//Create a new childe node
     		Node
-		        .create({ poster: visitNode.poster, parentNode: visitNode.id, createdBy: req.user.id })
+		        .create({ poster: visitNode.poster, parentNode: visitNode.id, createdBy: req.user.id , path: visitNode.path.concat(visitNode.id)})
 		        .then(function (node) {
 	                Poster.findOne({ id: visitNode.poster }).exec(function (err,poster) {
 			        poster.nodes = poster.nodes || [];
