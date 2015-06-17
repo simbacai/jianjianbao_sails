@@ -1,0 +1,84 @@
+<div class="scrollable">
+ <div class="scrollable-content section">
+    <form role="form" ng-submit="createPoster()">
+            <fieldset>
+                <legend>创建新榜</legend>
+                  <div class="form-group">
+                    <input type="text"
+                           ng-model="poster.subject"
+                           class="form-control"
+                           placeholder="标题，1-30字">
+                  </div>
+          
+                  <div class="form-group">
+                    <textarea class="form-control" ng-model="poster.body"
+                              placeholder="选填，可以具体说说碰到了什么问题，需要什么样的人向你提供什么，0-300字"></textarea>
+                  </div>
+                  
+            </fieldset>
+            
+            <p></p>
+            
+            <ui-state id='activeTabForHowToPay' default='1'></ui-state>
+            <ui-state id='activeSeagmentForAmount'></ui-state>
+            
+            <ul class="nav nav-tabs">
+              <li ui-class="{'active': activeTabForHowToPay == 1}">
+                <a ui-set="{'activeTabForHowToPay': 1}">现金红包</a>
+              </li>
+              <li ui-class="{'active': activeTabForHowToPay == 2}">
+                <a ui-set="{'activeTabForHowToPay': 2}">其它酬谢形式</a>
+              </li>
+            </ul>
+
+            <div ui-if="activeTabForHowToPay == 1">
+                <div class="form-group">
+                    <div class="btn-group justified nav-tabs">
+                      <a ui-set="{'activeSeagmentForAmount': 20}" 
+                          ui-class="{'active': activeSeagmentForAmount == 20}" class="btn btn-default">20元</a>
+              
+                      <a ui-set="{'activeSeagmentForAmount': 50}" 
+                          ui-class="{'active': activeSeagmentForAmount == 50}" class="btn btn-default">50元</a>
+              
+                      <a ui-set="{'activeSeagmentForAmount': 100}" 
+                          ui-class="{'active': activeSeagmentForAmount == 100}" class="btn btn-default">100元</a>
+                      
+                      <a ui-set="{'activeSeagmentForAmount': 500}" 
+                          ui-class="{'active': activeSeagmentForAmount == 500}" class="btn btn-default">500元</a>
+            
+                    </div>
+                    <p></p>
+                    <input type="text"
+                           ng-model="poster.tip.tip_amount"
+                           class="form-control"
+                           placeholder="（其它金额请输入，单位：元）">
+                </div>
+            </div>
+      
+            <div ui-if="activeTabForHowToPay == 2">
+                <div class="form-group">
+                    <p align="center">这里会有更有意思的玩法，请期待</p>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <div class="form-group">
+                <p align="center">点击下面的“提交”按钮，即表示你同意<a href="#">《用户协议》</a></p>
+                <p>
+                    <button class="btn btn-primary btn-block">提交</button>
+                </p>
+            </div>
+        
+            
+        </form>
+    </div>
+</div>
+    
+<div ui-content-for="navbarAction">
+    <div class="btn-group pull-left">
+      <a href="{{posterMainPath}}" class="btn btn-navbar">
+        <i class="fa fa-chevron-left"></i> 返回
+      </a>
+    </div>
+</div>    

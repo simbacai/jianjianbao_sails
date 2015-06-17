@@ -1,0 +1,2290 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/lib/node_modules/cnpm/node_modules/.bin/npm',
+1 verbose cli   '--userconfig=/Users/spon/.cnpmrc',
+1 verbose cli   '--disturl=https://npm.taobao.org/mirrors/node',
+1 verbose cli   '--cache=/Users/spon/.cnpm',
+1 verbose cli   '--registry=https://registry.npm.taobao.org',
+1 verbose cli   '--node-gyp=/usr/local/lib/node_modules/cnpm/node_modules/pangyp/bin/node-gyp.js',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'ionic' ]
+2 info using npm@2.7.6
+3 info using node@v0.12.2
+4 verbose install initial load of /usr/local/lib/package.json
+5 verbose readDependencies loading dependencies from /usr/local/lib/package.json
+6 silly cache add args [ 'ionic', null ]
+7 verbose cache add spec ionic
+8 silly cache add parsed spec { raw: 'ionic',
+8 silly cache add   scope: null,
+8 silly cache add   name: 'ionic',
+8 silly cache add   rawSpec: '',
+8 silly cache add   spec: '*',
+8 silly cache add   type: 'range' }
+9 silly addNamed ionic@*
+10 verbose addNamed "*" is a valid semver range for ionic
+11 silly addNameRange { name: 'ionic', range: '*', hasData: false }
+12 silly mapToRegistry name ionic
+13 silly mapToRegistry using default registry
+14 silly mapToRegistry registry https://registry.npm.taobao.org/
+15 silly mapToRegistry uri https://registry.npm.taobao.org/ionic
+16 verbose addNameRange registry:https://registry.npm.taobao.org/ionic not in flight; fetching
+17 verbose request uri https://registry.npm.taobao.org/ionic
+18 verbose request no auth needed
+19 info attempt registry request try #1 at 16:38:04
+20 verbose request id c54270a41ba00f30
+21 verbose etag "1433312833000"
+22 http request GET https://registry.npm.taobao.org/ionic
+23 http 304 https://registry.npm.taobao.org/ionic
+24 silly get cb [ 304,
+24 silly get   { server: 'nginx/1.1.19',
+24 silly get     date: 'Fri, 05 Jun 2015 08:38:04 GMT',
+24 silly get     connection: 'keep-alive',
+24 silly get     etag: '"1433312833000"',
+24 silly get     'x-readtime': '9' } ]
+25 verbose etag https://registry.npm.taobao.org/ionic from cache
+26 verbose get saving ionic to /Users/spon/.cnpm/registry.npm.taobao.org/ionic/.cache.json
+27 silly addNameRange number 2 { name: 'ionic', range: '*', hasData: true }
+28 silly addNameRange versions [ 'ionic',
+28 silly addNameRange   [ '1.5.0',
+28 silly addNameRange     '1.5.0-beta.1',
+28 silly addNameRange     '1.5.0-beta.0',
+28 silly addNameRange     '1.4.8',
+28 silly addNameRange     '1.4.7',
+28 silly addNameRange     '1.4.6',
+28 silly addNameRange     '1.4.6-beta.0',
+28 silly addNameRange     '1.4.5',
+28 silly addNameRange     '1.4.5-beta.3',
+28 silly addNameRange     '1.4.5-beta.2',
+28 silly addNameRange     '1.4.5-beta.1',
+28 silly addNameRange     '1.4.5-beta.0',
+28 silly addNameRange     '1.4.4',
+28 silly addNameRange     '1.4.4-beta.2',
+28 silly addNameRange     '1.4.4-beta.0',
+28 silly addNameRange     '1.4.3',
+28 silly addNameRange     '1.4.2',
+28 silly addNameRange     '1.4.1',
+28 silly addNameRange     '1.4.0',
+28 silly addNameRange     '1.4.0-beta.18',
+28 silly addNameRange     '1.4.0-beta.17',
+28 silly addNameRange     '1.4.0-beta.16',
+28 silly addNameRange     '1.4.0-beta.15',
+28 silly addNameRange     '1.4.0-beta.14',
+28 silly addNameRange     '1.4.0-beta.13',
+28 silly addNameRange     '1.4.0-beta.12',
+28 silly addNameRange     '1.4.0-beta.11',
+28 silly addNameRange     '1.4.0-beta.10',
+28 silly addNameRange     '1.4.0-beta.9',
+28 silly addNameRange     '1.4.0-beta.8',
+28 silly addNameRange     '1.3.22',
+28 silly addNameRange     '1.3.21',
+28 silly addNameRange     '1.3.21-beta.1',
+28 silly addNameRange     '1.3.21-beta.0',
+28 silly addNameRange     '1.4.0-beta.7',
+28 silly addNameRange     '1.4.0-beta.6',
+28 silly addNameRange     '1.4.0-beta.5',
+28 silly addNameRange     '1.4.0-beta.3',
+28 silly addNameRange     '1.4.0-beta.2',
+28 silly addNameRange     '1.4.0-beta.1',
+28 silly addNameRange     '1.4.1-beta.0',
+28 silly addNameRange     '1.3.20',
+28 silly addNameRange     '1.3.19',
+28 silly addNameRange     '1.3.19-beta.4',
+28 silly addNameRange     '1.3.19-beta.3',
+28 silly addNameRange     '1.3.19-beta.2',
+28 silly addNameRange     '1.3.19-beta.1',
+28 silly addNameRange     '1.3.19-beta.0',
+28 silly addNameRange     '1.3.18',
+28 silly addNameRange     '1.3.18-beta.3',
+28 silly addNameRange     '1.3.18-beta.2',
+28 silly addNameRange     '1.3.18-beta.1',
+28 silly addNameRange     '1.3.18-beta.0',
+28 silly addNameRange     '1.3.17',
+28 silly addNameRange     '1.3.1-7.beta.4',
+28 silly addNameRange     '1.3.17-beta.3',
+28 silly addNameRange     '1.3.17-beta.2',
+28 silly addNameRange     '1.3.17-beta.0',
+28 silly addNameRange     '1.4.0-alpha.6',
+28 silly addNameRange     '1.3.17-beta.1',
+28 silly addNameRange     '1.3.16',
+28 silly addNameRange     '1.3.15',
+28 silly addNameRange     '1.3.15-beta.4',
+28 silly addNameRange     '1.3.15-beta.3',
+28 silly addNameRange     '1.3.15-beta.2',
+28 silly addNameRange     '1.3.15-beta.1',
+28 silly addNameRange     '1.3.15-beta.0',
+28 silly addNameRange     '1.4.0-alpha.5',
+28 silly addNameRange     '1.4.0-alpha.4',
+28 silly addNameRange     '1.3.14',
+28 silly addNameRange     '1.4.0-alpha.3',
+28 silly addNameRange     '1.3.14-beta.1',
+28 silly addNameRange     '1.3.14-beta',
+28 silly addNameRange     '1.3.1-3.beta.4',
+28 silly addNameRange     '1.3.13',
+28 silly addNameRange     '1.3.1-3.beta.2',
+28 silly addNameRange     '1.3.1-3.beta.1',
+28 silly addNameRange     '1.3.13-beta.0',
+28 silly addNameRange     '1.3.12-beta.2',
+28 silly addNameRange     '1.3.12-beta.1',
+28 silly addNameRange     '1.3.12',
+28 silly addNameRange     '1.4.0-alpha.2',
+28 silly addNameRange     '1.3.1-1.alpha.0',
+28 silly addNameRange     '1.3.11',
+28 silly addNameRange     '1.4.0-alpha.1',
+28 silly addNameRange     '1.3.10',
+28 silly addNameRange     '1.3.9',
+28 silly addNameRange     '1.3.8',
+28 silly addNameRange     '1.3.7',
+28 silly addNameRange     '1.3.6',
+28 silly addNameRange     '1.3.5',
+28 silly addNameRange     '1.3.4',
+28 silly addNameRange     '1.3.3',
+28 silly addNameRange     '1.3.2',
+28 silly addNameRange     '1.3.1',
+28 silly addNameRange     '1.3.0',
+28 silly addNameRange     '1.3.0-beta1',
+28 silly addNameRange     '1.2.14',
+28 silly addNameRange     '1.2.14-beta6',
+28 silly addNameRange     '1.2.14-beta5',
+28 silly addNameRange     '1.2.14-beta4',
+28 silly addNameRange     '1.2.14-beta3',
+28 silly addNameRange     '1.2.14-beta2',
+28 silly addNameRange     '1.2.14-beta1',
+28 silly addNameRange     '1.2.13',
+28 silly addNameRange     '1.2.12',
+28 silly addNameRange     '1.2.11',
+28 silly addNameRange     '1.2.10',
+28 silly addNameRange     '1.2.9',
+28 silly addNameRange     '1.2.8',
+28 silly addNameRange     '1.2.8-beta2',
+28 silly addNameRange     '1.2.8-beta1',
+28 silly addNameRange     '1.2.7',
+28 silly addNameRange     '1.2.6',
+28 silly addNameRange     '1.2.6-beta3',
+28 silly addNameRange     '1.2.6-beta2',
+28 silly addNameRange     '1.2.6-beta1',
+28 silly addNameRange     '1.2.5',
+28 silly addNameRange     '1.2.5-beta3',
+28 silly addNameRange     '1.2.5-beta2',
+28 silly addNameRange     '1.2.5-beta1',
+28 silly addNameRange     '1.2.4',
+28 silly addNameRange     '1.2.4-beta3',
+28 silly addNameRange     '1.2.4-beta2',
+28 silly addNameRange     '1.2.4-beta1',
+28 silly addNameRange     '1.2.3',
+28 silly addNameRange     '1.2.3-beta3',
+28 silly addNameRange     '1.2.3-beta2',
+28 silly addNameRange     '1.2.3-beta1',
+28 silly addNameRange     '1.2.2',
+28 silly addNameRange     '1.2.1',
+28 silly addNameRange     '1.2.1-beta4',
+28 silly addNameRange     '1.2.1-beta3',
+28 silly addNameRange     '1.2.1-beta2',
+28 silly addNameRange     '1.2.1-beta1',
+28 silly addNameRange     '1.2.0',
+28 silly addNameRange     '1.2.0-beta1',
+28 silly addNameRange     '1.1.14-beta3',
+28 silly addNameRange     '1.1.14-beta2',
+28 silly addNameRange     '1.1.14-beta1',
+28 silly addNameRange     '1.1.13',
+28 silly addNameRange     '1.1.12',
+28 silly addNameRange     '1.1.12-beta3',
+28 silly addNameRange     '1.1.12-beta2',
+28 silly addNameRange     '1.1.12-beta1',
+28 silly addNameRange     '1.1.11',
+28 silly addNameRange     '1.1.11-beta2',
+28 silly addNameRange     '1.1.11-beta1',
+28 silly addNameRange     '1.1.10',
+28 silly addNameRange     '1.1.9',
+28 silly addNameRange     '1.1.9-beta1',
+28 silly addNameRange     '1.1.8',
+28 silly addNameRange     '1.1.8-beta5',
+28 silly addNameRange     '1.1.8-beta4',
+28 silly addNameRange     '1.1.8-beta3',
+28 silly addNameRange     '1.1.8-beta2',
+28 silly addNameRange     '1.1.8-beta1',
+28 silly addNameRange     '1.1.7',
+28 silly addNameRange     '1.1.7-beta1',
+28 silly addNameRange     '1.1.6',
+28 silly addNameRange     '1.1.5',
+28 silly addNameRange     '1.1.5-beta5',
+28 silly addNameRange     '1.1.5-beta4',
+28 silly addNameRange     '1.1.5-beta3',
+28 silly addNameRange     '1.1.5-beta2',
+28 silly addNameRange     '1.1.5-beta1',
+28 silly addNameRange     '1.1.4',
+28 silly addNameRange     '1.1.3',
+28 silly addNameRange     '1.1.1',
+28 silly addNameRange     '1.1.1-beta3',
+28 silly addNameRange     '1.1.1-beta2',
+28 silly addNameRange     '1.1.1-beta1',
+28 silly addNameRange     '1.1.0',
+28 silly addNameRange     '1.1.0-beta6',
+28 silly addNameRange     '1.1.0-beta5',
+28 silly addNameRange     '1.1.0-beta4',
+28 silly addNameRange     '1.1.0-beta3',
+28 silly addNameRange     '1.1.0-beta2',
+28 silly addNameRange     '1.1.0-beta1',
+28 silly addNameRange     '1.0.17',
+28 silly addNameRange     '1.0.16',
+28 silly addNameRange     '1.0.15',
+28 silly addNameRange     '1.0.14',
+28 silly addNameRange     '1.0.13',
+28 silly addNameRange     '1.0.12',
+28 silly addNameRange     '1.0.11',
+28 silly addNameRange     '1.0.10',
+28 silly addNameRange     '1.0.9',
+28 silly addNameRange     '1.0.8',
+28 silly addNameRange     '1.0.7',
+28 silly addNameRange     '1.0.6',
+28 silly addNameRange     '1.0.5',
+28 silly addNameRange     '1.0.4',
+28 silly addNameRange     '1.0.3-beta',
+28 silly addNameRange     '1.0.1-beta',
+28 silly addNameRange     '1.0.0-beta',
+28 silly addNameRange     '1.0.0-beta.1',
+28 silly addNameRange     '0.9.16',
+28 silly addNameRange     '0.9.15',
+28 silly addNameRange     '0.9.14',
+28 silly addNameRange     '0.9.13',
+28 silly addNameRange     '0.9.12',
+28 silly addNameRange     '0.9.11',
+28 silly addNameRange     '0.9.10',
+28 silly addNameRange     '0.9.9',
+28 silly addNameRange     '0.9.8',
+28 silly addNameRange     '0.9.6' ] ]
+29 silly addNamed ionic@1.5.0
+30 verbose addNamed "1.5.0" is a plain semver version for ionic
+31 silly cache afterAdd ionic@1.5.0
+32 verbose afterAdd /Users/spon/.cnpm/ionic/1.5.0/package/package.json not in flight; writing
+33 verbose afterAdd /Users/spon/.cnpm/ionic/1.5.0/package/package.json written
+34 silly install resolved [ { name: 'ionic',
+34 silly install resolved     version: '1.5.0',
+34 silly install resolved     preferGlobal: true,
+34 silly install resolved     description: 'A tool for creating and developing Ionic Framework mobile apps.',
+34 silly install resolved     homepage: 'http://ionicframework.com/',
+34 silly install resolved     bin: { ionic: 'bin/ionic' },
+34 silly install resolved     scripts:
+34 silly install resolved      { bump: 'node lib/tasks/bumpversion',
+34 silly install resolved        'beta-bump': 'node lib/tasks/bumpversion --level pre --identifier beta',
+34 silly install resolved        'publish-release': 'node lib/tasks/bumpversion --npmPublish',
+34 silly install resolved        'publish-tag': 'node lib/tasks/bumpversion --level beta --npmPublishTag',
+34 silly install resolved        'full-release': 'node lib/tasks/bumpversion --npmInstall --git --npmPublish',
+34 silly install resolved        test: 'npm run jasmine',
+34 silly install resolved        e2e: 'jasmine-node --captureExceptions ./e2e',
+34 silly install resolved        jasmine: 'jasmine-node --captureExceptions  ./spec' },
+34 silly install resolved     keywords:
+34 silly install resolved      [ 'ionic',
+34 silly install resolved        'ionic framework',
+34 silly install resolved        'ionicframework',
+34 silly install resolved        'mobile',
+34 silly install resolved        'app',
+34 silly install resolved        'hybrid',
+34 silly install resolved        'cordova',
+34 silly install resolved        'phonegap' ],
+34 silly install resolved     repository:
+34 silly install resolved      { type: 'git',
+34 silly install resolved        url: 'https://github.com/driftyco/ionic-cli.git' },
+34 silly install resolved     contributors: [ [Object], [Object], [Object], [Object] ],
+34 silly install resolved     license: 'MIT',
+34 silly install resolved     dependencies:
+34 silly install resolved      { archiver: '0.5.1',
+34 silly install resolved        async: '^0.9.0',
+34 silly install resolved        cheerio: '^0.19.0',
+34 silly install resolved        'cli-table': '^0.3.1',
+34 silly install resolved        colors: '0.6.2',
+34 silly install resolved        connect: '3.1.1',
+34 silly install resolved        'connect-livereload': '0.5.2',
+34 silly install resolved        crc: '3.2.1',
+34 silly install resolved        'cross-spawn': '0.2.3',
+34 silly install resolved        'event-stream': '3.0.x',
+34 silly install resolved        finalhandler: '0.2.0',
+34 silly install resolved        'form-data': '0.1.4',
+34 silly install resolved        gulp: '3.8.8',
+34 silly install resolved        'ionic-app-lib': '0.1.0',
+34 silly install resolved        ncp: '0.4.2',
+34 silly install resolved        npm: '2.1.3',
+34 silly install resolved        'opbeat-ionic': '^1.1.3',
+34 silly install resolved        open: '0.0.5',
+34 silly install resolved        optimist: '0.6.0',
+34 silly install resolved        progress: '1.1.7',
+34 silly install resolved        prompt: '0.2.12',
+34 silly install resolved        'proxy-middleware': '^0.7.0',
+34 silly install resolved        q: '1.0.1',
+34 silly install resolved        request: '2.51.0',
+34 silly install resolved        semver: '^4.2.0',
+34 silly install resolved        'serve-static': '1.7.1',
+34 silly install resolved        shelljs: '0.2.6',
+34 silly install resolved        'tiny-lr-fork': '0.0.5',
+34 silly install resolved        underscore: '~1.7.0',
+34 silly install resolved        unzip: '0.1.9',
+34 silly install resolved        'vinyl-fs': '0.3.7',
+34 silly install resolved        xml2js: '0.4.4' },
+34 silly install resolved     devDependencies: { 'jasmine-node': '^1.14.5' },
+34 silly install resolved     gitHead: 'b9d55fca3cddceea8ba516ff25f20fd5f4bc792d',
+34 silly install resolved     bugs: { url: 'https://github.com/driftyco/ionic-cli/issues' },
+34 silly install resolved     _id: 'ionic@1.5.0',
+34 silly install resolved     _shasum: '9777e0724a447f277c2e51c89f550e2f5ea54c35',
+34 silly install resolved     _from: 'ionic@*',
+34 silly install resolved     _npmVersion: '2.5.1',
+34 silly install resolved     _nodeVersion: '0.10.33',
+34 silly install resolved     _npmUser: { name: 'jbavari', email: 'jbavari@gmail.com' },
+34 silly install resolved     dist:
+34 silly install resolved      { shasum: '9777e0724a447f277c2e51c89f550e2f5ea54c35',
+34 silly install resolved        size: 98165,
+34 silly install resolved        noattachment: false,
+34 silly install resolved        tarball: 'http://registry.npm.taobao.org/ionic/download/ionic-1.5.0.tgz' },
+34 silly install resolved     maintainers: [ [Object], [Object], [Object] ],
+34 silly install resolved     directories: {},
+34 silly install resolved     publish_time: 1433312504387,
+34 silly install resolved     _cnpm_publish_time: 1433312504387,
+34 silly install resolved     _resolved: 'https://registry.npm.taobao.org/ionic/download/ionic-1.5.0.tgz',
+34 silly install resolved     readme: 'ERROR: No README data found!' } ]
+35 info install ionic@1.5.0 into /usr/local/lib
+36 info installOne ionic@1.5.0
+37 verbose installOne of ionic to /usr/local/lib not in flight; installing
+38 verbose lock using /Users/spon/.cnpm/_locks/ionic-61c0cd50dc7a1457.lock for /usr/local/lib/node_modules/ionic
+39 silly install write writing ionic 1.5.0 to /usr/local/lib/node_modules/ionic
+40 verbose unbuild lib/node_modules/ionic
+41 info preuninstall ionic@1.5.0
+42 info uninstall ionic@1.5.0
+43 verbose unbuild rmStuff ionic@1.5.0 from /usr/local/lib/node_modules
+44 silly gentlyRm /usr/local/bin/ionic is being gently removed
+45 silly gentlyRm verifying /usr/local is an npm working directory
+46 silly gentlyRm containing path /usr/local is under npm's control, in /usr/local
+47 silly gentlyRm deletion target /usr/local/bin/ionic is under /usr/local
+48 verbose gentlyRm vacuuming from /usr/local/bin/ionic up to /usr/local
+49 info postuninstall ionic@1.5.0
+50 silly gentlyRm /usr/local/lib/node_modules/ionic is being purged from base /usr/local
+51 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/ionic
+52 silly vacuum-fs purging /usr/local/lib/node_modules/ionic
+53 silly vacuum-fs quitting because other entries in /usr/local/lib/node_modules
+54 verbose tar unpack /Users/spon/.cnpm/ionic/1.5.0/package.tgz
+55 verbose tar unpacking to /usr/local/lib/node_modules/ionic
+56 silly gentlyRm /usr/local/lib/node_modules/ionic is being purged
+57 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/ionic
+58 silly gunzTarPerm modes [ '755', '644' ]
+59 silly gunzTarPerm extractEntry package.json
+60 silly gunzTarPerm extractEntry .npmignore
+61 silly gunzTarPerm extractEntry README.md
+62 silly gunzTarPerm extractEntry LICENSE
+63 silly gunzTarPerm extractEntry .jscs.json
+64 silly gunzTarPerm extractEntry CHANGELOG.md
+65 silly gunzTarPerm extractEntry .gitattributes
+66 silly gunzTarPerm extractEntry bin/ionic
+67 silly gunzTarPerm extractEntry e2e/e2e.spec.js
+68 silly gunzTarPerm extractEntry e2e/helpers.js
+69 silly gunzTarPerm extractEntry e2e/shell.spec.js
+70 silly gunzTarPerm extractEntry lib/cli.js
+71 silly gunzTarPerm extractEntry lib/hooks/after_platform_add/010_install_plugins.js
+72 silly gunzTarPerm extractEntry lib/hooks/after_plugin_add/010_register_plugin.js
+73 silly gunzTarPerm extractEntry lib/hooks/after_plugin_rm/010_deregister_plugin.js
+74 silly gunzTarPerm extractEntry lib/hooks/after_prepare/010_add_platform_class.js
+75 silly gunzTarPerm extractEntry lib/hooks/after_prepare/020_remove_sass_from_platforms.js
+76 silly gunzTarPerm extractEntry lib/hooks/before_platform_add/init_directories.js
+77 silly gunzTarPerm extractEntry lib/ionic/utils.js
+78 silly gunzTarPerm extractEntry lib/ionic/ions.js
+79 silly gunzTarPerm extractEntry lib/ionic/lib.js
+80 silly gunzTarPerm extractEntry lib/ionic/link.js
+81 silly gunzTarPerm extractEntry lib/ionic/login.js
+82 silly gunzTarPerm extractEntry lib/ionic/ionitron.js
+83 silly gunzTarPerm extractEntry lib/ionic/add.js
+84 silly gunzTarPerm extractEntry lib/ionic/ports.js
+85 silly gunzTarPerm extractEntry lib/ionic/project.js
+86 silly gunzTarPerm extractEntry lib/ionic/prompt.js
+87 silly gunzTarPerm extractEntry lib/ionic/push.js
+88 silly gunzTarPerm extractEntry lib/ionic/info.js
+89 silly gunzTarPerm extractEntry lib/ionic/templates.js
+90 silly gunzTarPerm extractEntry lib/ionic/hooks.js
+91 silly gunzTarPerm extractEntry lib/ionic/serve.js
+92 silly gunzTarPerm extractEntry lib/ionic/help.js
+93 silly gunzTarPerm extractEntry lib/ionic/service.js
+94 silly gunzTarPerm extractEntry lib/ionic/docs.js
+95 silly gunzTarPerm extractEntry lib/ionic/setup.js
+96 silly gunzTarPerm extractEntry lib/ionic/cordova.js
+97 silly gunzTarPerm extractEntry lib/ionic/share.js
+98 silly gunzTarPerm extractEntry lib/ionic/config.js
+99 silly gunzTarPerm extractEntry lib/ionic/start.js
+100 silly gunzTarPerm extractEntry lib/ionic/browser.js
+101 silly gunzTarPerm extractEntry lib/ionic/task.js
+102 silly gunzTarPerm extractEntry lib/ionic/bower.js
+103 silly gunzTarPerm extractEntry lib/ionic/state.js
+104 silly gunzTarPerm extractEntry lib/ionic/upload.js
+105 silly gunzTarPerm extractEntry lib/ionic/stats.js
+106 silly gunzTarPerm extractEntry lib/ionic/app.js
+107 silly gunzTarPerm extractEntry lib/ionic/store.js
+108 silly gunzTarPerm extractEntry lib/ionic/multibar.js
+109 silly gunzTarPerm extractEntry lib/ionic/package.js
+110 silly gunzTarPerm extractEntry lib/ionic/starter-templates.json
+111 silly gunzTarPerm extractEntry lib/ionic/resources/generate.js
+112 silly gunzTarPerm extractEntry lib/ionic/resources/settings.js
+113 silly gunzTarPerm extractEntry lib/ionic/resources/docs.json
+114 silly gunzTarPerm extractEntry lib/ionic/assets/gradle.properties
+115 silly gunzTarPerm extractEntry lib/ionic/assets/ionitron.txt
+116 silly gunzTarPerm extractEntry lib/ionic/assets/preview.html
+117 silly gunzTarPerm extractEntry lib/ionic/CrosswalkNotes.md
+118 silly gunzTarPerm extractEntry lib/tasks/bumpversion.js
+119 silly gunzTarPerm extractEntry lib/tasks/cliTasks.js
+120 silly gunzTarPerm extractEntry lib/tasks/createDocsJson.js
+121 silly gunzTarPerm extractEntry npm-shrinkwrap.json
+122 silly gunzTarPerm extractEntry spec/cli.spec.js
+123 verbose write writing to /usr/local/lib/node_modules/ionic/package.json
+124 info preinstall ionic@1.5.0
+125 verbose readDependencies loading dependencies from /usr/local/lib/node_modules/ionic/package.json
+126 verbose readDependencies npm-shrinkwrap.json is overriding dependencies
+127 info shrinkwrap file "/usr/local/lib/node_modules/ionic/npm-shrinkwrap.json"
+128 verbose readDependencies returned deps { archiver: 'https://registry.npmjs.org/archiver/-/archiver-0.5.1.tgz',
+128 verbose readDependencies returned deps   async: 'https://registry.npmjs.org/async/-/async-0.9.2.tgz',
+128 verbose readDependencies returned deps   cheerio: 'https://registry.npmjs.org/cheerio/-/cheerio-0.19.0.tgz',
+128 verbose readDependencies returned deps   'cli-table': 'https://registry.npmjs.org/cli-table/-/cli-table-0.3.1.tgz',
+128 verbose readDependencies returned deps   colors: 'https://registry.npmjs.org/colors/-/colors-0.6.2.tgz',
+128 verbose readDependencies returned deps   connect: 'https://registry.npmjs.org/connect/-/connect-3.1.1.tgz',
+128 verbose readDependencies returned deps   'connect-livereload': 'https://registry.npmjs.org/connect-livereload/-/connect-livereload-0.5.2.tgz',
+128 verbose readDependencies returned deps   crc: 'https://registry.npmjs.org/crc/-/crc-3.2.1.tgz',
+128 verbose readDependencies returned deps   'cross-spawn': 'https://registry.npmjs.org/cross-spawn/-/cross-spawn-0.2.3.tgz',
+128 verbose readDependencies returned deps   'event-stream': 'https://registry.npmjs.org/event-stream/-/event-stream-3.0.20.tgz',
+128 verbose readDependencies returned deps   finalhandler: 'https://registry.npmjs.org/finalhandler/-/finalhandler-0.2.0.tgz',
+128 verbose readDependencies returned deps   'form-data': 'https://registry.npmjs.org/form-data/-/form-data-0.1.4.tgz',
+128 verbose readDependencies returned deps   gulp: 'https://registry.npmjs.org/gulp/-/gulp-3.8.8.tgz',
+128 verbose readDependencies returned deps   'ionic-app-lib': '0.1.0',
+128 verbose readDependencies returned deps   ncp: 'https://registry.npmjs.org/ncp/-/ncp-0.4.2.tgz',
+128 verbose readDependencies returned deps   npm: 'https://registry.npmjs.org/npm/-/npm-2.1.3.tgz',
+128 verbose readDependencies returned deps   'opbeat-ionic': 'https://registry.npmjs.org/opbeat-ionic/-/opbeat-ionic-1.1.3.tgz',
+128 verbose readDependencies returned deps   open: 'https://registry.npmjs.org/open/-/open-0.0.5.tgz',
+128 verbose readDependencies returned deps   optimist: 'https://registry.npmjs.org/optimist/-/optimist-0.6.0.tgz',
+128 verbose readDependencies returned deps   progress: 'https://registry.npmjs.org/progress/-/progress-1.1.7.tgz',
+128 verbose readDependencies returned deps   prompt: 'https://registry.npmjs.org/prompt/-/prompt-0.2.12.tgz',
+128 verbose readDependencies returned deps   'proxy-middleware': 'https://registry.npmjs.org/proxy-middleware/-/proxy-middleware-0.7.0.tgz',
+128 verbose readDependencies returned deps   q: 'https://registry.npmjs.org/q/-/q-1.0.1.tgz',
+128 verbose readDependencies returned deps   request: 'https://registry.npmjs.org/request/-/request-2.51.0.tgz',
+128 verbose readDependencies returned deps   semver: 'https://registry.npmjs.org/semver/-/semver-4.3.6.tgz',
+128 verbose readDependencies returned deps   'serve-static': 'https://registry.npmjs.org/serve-static/-/serve-static-1.7.1.tgz',
+128 verbose readDependencies returned deps   shelljs: 'https://registry.npmjs.org/shelljs/-/shelljs-0.2.6.tgz',
+128 verbose readDependencies returned deps   'tiny-lr-fork': 'https://registry.npmjs.org/tiny-lr-fork/-/tiny-lr-fork-0.0.5.tgz',
+128 verbose readDependencies returned deps   underscore: 'https://registry.npmjs.org/underscore/-/underscore-1.7.0.tgz',
+128 verbose readDependencies returned deps   unzip: 'https://registry.npmjs.org/unzip/-/unzip-0.1.9.tgz',
+128 verbose readDependencies returned deps   'vinyl-fs': 'https://registry.npmjs.org/vinyl-fs/-/vinyl-fs-0.3.7.tgz',
+128 verbose readDependencies returned deps   xml2js: 'https://registry.npmjs.org/xml2js/-/xml2js-0.4.4.tgz' }
+129 silly prepareForInstallMany adding archiver@https://registry.npmjs.org/archiver/-/archiver-0.5.1.tgz from ionic dependencies
+130 silly prepareForInstallMany adding async@https://registry.npmjs.org/async/-/async-0.9.2.tgz from ionic dependencies
+131 silly prepareForInstallMany adding cheerio@https://registry.npmjs.org/cheerio/-/cheerio-0.19.0.tgz from ionic dependencies
+132 silly prepareForInstallMany adding cli-table@https://registry.npmjs.org/cli-table/-/cli-table-0.3.1.tgz from ionic dependencies
+133 silly prepareForInstallMany adding colors@https://registry.npmjs.org/colors/-/colors-0.6.2.tgz from ionic dependencies
+134 silly prepareForInstallMany adding connect@https://registry.npmjs.org/connect/-/connect-3.1.1.tgz from ionic dependencies
+135 silly prepareForInstallMany adding connect-livereload@https://registry.npmjs.org/connect-livereload/-/connect-livereload-0.5.2.tgz from ionic dependencies
+136 silly prepareForInstallMany adding crc@https://registry.npmjs.org/crc/-/crc-3.2.1.tgz from ionic dependencies
+137 silly prepareForInstallMany adding cross-spawn@https://registry.npmjs.org/cross-spawn/-/cross-spawn-0.2.3.tgz from ionic dependencies
+138 silly prepareForInstallMany adding event-stream@https://registry.npmjs.org/event-stream/-/event-stream-3.0.20.tgz from ionic dependencies
+139 silly prepareForInstallMany adding finalhandler@https://registry.npmjs.org/finalhandler/-/finalhandler-0.2.0.tgz from ionic dependencies
+140 silly prepareForInstallMany adding form-data@https://registry.npmjs.org/form-data/-/form-data-0.1.4.tgz from ionic dependencies
+141 silly prepareForInstallMany adding gulp@https://registry.npmjs.org/gulp/-/gulp-3.8.8.tgz from ionic dependencies
+142 silly prepareForInstallMany adding ionic-app-lib@0.1.0 from ionic dependencies
+143 silly prepareForInstallMany adding ncp@https://registry.npmjs.org/ncp/-/ncp-0.4.2.tgz from ionic dependencies
+144 silly prepareForInstallMany adding npm@https://registry.npmjs.org/npm/-/npm-2.1.3.tgz from ionic dependencies
+145 silly prepareForInstallMany adding opbeat-ionic@https://registry.npmjs.org/opbeat-ionic/-/opbeat-ionic-1.1.3.tgz from ionic dependencies
+146 silly prepareForInstallMany adding open@https://registry.npmjs.org/open/-/open-0.0.5.tgz from ionic dependencies
+147 silly prepareForInstallMany adding optimist@https://registry.npmjs.org/optimist/-/optimist-0.6.0.tgz from ionic dependencies
+148 silly prepareForInstallMany adding progress@https://registry.npmjs.org/progress/-/progress-1.1.7.tgz from ionic dependencies
+149 silly prepareForInstallMany adding prompt@https://registry.npmjs.org/prompt/-/prompt-0.2.12.tgz from ionic dependencies
+150 silly prepareForInstallMany adding proxy-middleware@https://registry.npmjs.org/proxy-middleware/-/proxy-middleware-0.7.0.tgz from ionic dependencies
+151 silly prepareForInstallMany adding q@https://registry.npmjs.org/q/-/q-1.0.1.tgz from ionic dependencies
+152 silly prepareForInstallMany adding request@https://registry.npmjs.org/request/-/request-2.51.0.tgz from ionic dependencies
+153 silly prepareForInstallMany adding semver@https://registry.npmjs.org/semver/-/semver-4.3.6.tgz from ionic dependencies
+154 silly prepareForInstallMany adding serve-static@https://registry.npmjs.org/serve-static/-/serve-static-1.7.1.tgz from ionic dependencies
+155 silly prepareForInstallMany adding shelljs@https://registry.npmjs.org/shelljs/-/shelljs-0.2.6.tgz from ionic dependencies
+156 silly prepareForInstallMany adding tiny-lr-fork@https://registry.npmjs.org/tiny-lr-fork/-/tiny-lr-fork-0.0.5.tgz from ionic dependencies
+157 silly prepareForInstallMany adding underscore@https://registry.npmjs.org/underscore/-/underscore-1.7.0.tgz from ionic dependencies
+158 silly prepareForInstallMany adding unzip@https://registry.npmjs.org/unzip/-/unzip-0.1.9.tgz from ionic dependencies
+159 silly prepareForInstallMany adding vinyl-fs@https://registry.npmjs.org/vinyl-fs/-/vinyl-fs-0.3.7.tgz from ionic dependencies
+160 silly prepareForInstallMany adding xml2js@https://registry.npmjs.org/xml2js/-/xml2js-0.4.4.tgz from ionic dependencies
+161 verbose readDependencies loading dependencies from /usr/local/lib/node_modules/ionic/package.json
+162 verbose readDependencies: using existing wrap [ '/usr/local/lib/node_modules/ionic',
+162 verbose readDependencies: using existing wrap   { archiver:
+162 verbose readDependencies: using existing wrap      { version: '0.5.1',
+162 verbose readDependencies: using existing wrap        from: 'archiver@0.5.1',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/archiver/-/archiver-0.5.1.tgz',
+162 verbose readDependencies: using existing wrap        dependencies: [Object] },
+162 verbose readDependencies: using existing wrap     async:
+162 verbose readDependencies: using existing wrap      { version: '0.9.2',
+162 verbose readDependencies: using existing wrap        from: 'async@>=0.9.0 <0.10.0',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/async/-/async-0.9.2.tgz' },
+162 verbose readDependencies: using existing wrap     cheerio:
+162 verbose readDependencies: using existing wrap      { version: '0.19.0',
+162 verbose readDependencies: using existing wrap        from: 'cheerio@>=0.19.0 <0.20.0',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/cheerio/-/cheerio-0.19.0.tgz',
+162 verbose readDependencies: using existing wrap        dependencies: [Object] },
+162 verbose readDependencies: using existing wrap     'cli-table':
+162 verbose readDependencies: using existing wrap      { version: '0.3.1',
+162 verbose readDependencies: using existing wrap        from: 'cli-table@>=0.3.1 <0.4.0',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/cli-table/-/cli-table-0.3.1.tgz',
+162 verbose readDependencies: using existing wrap        dependencies: [Object] },
+162 verbose readDependencies: using existing wrap     colors:
+162 verbose readDependencies: using existing wrap      { version: '0.6.2',
+162 verbose readDependencies: using existing wrap        from: 'colors@0.6.2',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/colors/-/colors-0.6.2.tgz' },
+162 verbose readDependencies: using existing wrap     connect:
+162 verbose readDependencies: using existing wrap      { version: '3.1.1',
+162 verbose readDependencies: using existing wrap        from: 'connect@3.1.1',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/connect/-/connect-3.1.1.tgz',
+162 verbose readDependencies: using existing wrap        dependencies: [Object] },
+162 verbose readDependencies: using existing wrap     'connect-livereload':
+162 verbose readDependencies: using existing wrap      { version: '0.5.2',
+162 verbose readDependencies: using existing wrap        from: 'connect-livereload@0.5.2',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/connect-livereload/-/connect-livereload-0.5.2.tgz' },
+162 verbose readDependencies: using existing wrap     crc:
+162 verbose readDependencies: using existing wrap      { version: '3.2.1',
+162 verbose readDependencies: using existing wrap        from: 'crc@3.2.1',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/crc/-/crc-3.2.1.tgz' },
+162 verbose readDependencies: using existing wrap     'cross-spawn':
+162 verbose readDependencies: using existing wrap      { version: '0.2.3',
+162 verbose readDependencies: using existing wrap        from: 'cross-spawn@0.2.3',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/cross-spawn/-/cross-spawn-0.2.3.tgz',
+162 verbose readDependencies: using existing wrap        dependencies: [Object] },
+162 verbose readDependencies: using existing wrap     'event-stream':
+162 verbose readDependencies: using existing wrap      { version: '3.0.20',
+162 verbose readDependencies: using existing wrap        from: 'event-stream@>=3.0.0 <3.1.0',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/event-stream/-/event-stream-3.0.20.tgz',
+162 verbose readDependencies: using existing wrap        dependencies: [Object] },
+162 verbose readDependencies: using existing wrap     finalhandler:
+162 verbose readDependencies: using existing wrap      { version: '0.2.0',
+162 verbose readDependencies: using existing wrap        from: 'finalhandler@0.2.0',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/finalhandler/-/finalhandler-0.2.0.tgz',
+162 verbose readDependencies: using existing wrap        dependencies: [Object] },
+162 verbose readDependencies: using existing wrap     'form-data':
+162 verbose readDependencies: using existing wrap      { version: '0.1.4',
+162 verbose readDependencies: using existing wrap        from: 'form-data@0.1.4',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/form-data/-/form-data-0.1.4.tgz',
+162 verbose readDependencies: using existing wrap        dependencies: [Object] },
+162 verbose readDependencies: using existing wrap     gulp:
+162 verbose readDependencies: using existing wrap      { version: '3.8.8',
+162 verbose readDependencies: using existing wrap        from: 'gulp@3.8.8',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/gulp/-/gulp-3.8.8.tgz',
+162 verbose readDependencies: using existing wrap        dependencies: [Object] },
+162 verbose readDependencies: using existing wrap     'ionic-app-lib':
+162 verbose readDependencies: using existing wrap      { version: '0.1.0',
+162 verbose readDependencies: using existing wrap        from: 'ionic-app-lib@0.1.0',
+162 verbose readDependencies: using existing wrap        dependencies: [Object] },
+162 verbose readDependencies: using existing wrap     ncp:
+162 verbose readDependencies: using existing wrap      { version: '0.4.2',
+162 verbose readDependencies: using existing wrap        from: 'ncp@0.4.2',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/ncp/-/ncp-0.4.2.tgz' },
+162 verbose readDependencies: using existing wrap     npm:
+162 verbose readDependencies: using existing wrap      { version: '2.1.3',
+162 verbose readDependencies: using existing wrap        from: 'npm@2.1.3',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/npm/-/npm-2.1.3.tgz',
+162 verbose readDependencies: using existing wrap        dependencies: [Object] },
+162 verbose readDependencies: using existing wrap     'opbeat-ionic':
+162 verbose readDependencies: using existing wrap      { version: '1.1.3',
+162 verbose readDependencies: using existing wrap        from: 'opbeat-ionic@>=1.1.3 <2.0.0',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/opbeat-ionic/-/opbeat-ionic-1.1.3.tgz',
+162 verbose readDependencies: using existing wrap        dependencies: [Object] },
+162 verbose readDependencies: using existing wrap     open:
+162 verbose readDependencies: using existing wrap      { version: '0.0.5',
+162 verbose readDependencies: using existing wrap        from: 'open@0.0.5',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/open/-/open-0.0.5.tgz' },
+162 verbose readDependencies: using existing wrap     optimist:
+162 verbose readDependencies: using existing wrap      { version: '0.6.0',
+162 verbose readDependencies: using existing wrap        from: 'optimist@0.6.0',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/optimist/-/optimist-0.6.0.tgz',
+162 verbose readDependencies: using existing wrap        dependencies: [Object] },
+162 verbose readDependencies: using existing wrap     progress:
+162 verbose readDependencies: using existing wrap      { version: '1.1.7',
+162 verbose readDependencies: using existing wrap        from: 'progress@1.1.7',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/progress/-/progress-1.1.7.tgz' },
+162 verbose readDependencies: using existing wrap     prompt:
+162 verbose readDependencies: using existing wrap      { version: '0.2.12',
+162 verbose readDependencies: using existing wrap        from: 'prompt@0.2.12',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/prompt/-/prompt-0.2.12.tgz',
+162 verbose readDependencies: using existing wrap        dependencies: [Object] },
+162 verbose readDependencies: using existing wrap     'proxy-middleware':
+162 verbose readDependencies: using existing wrap      { version: '0.7.0',
+162 verbose readDependencies: using existing wrap        from: 'proxy-middleware@>=0.7.0 <0.8.0',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/proxy-middleware/-/proxy-middleware-0.7.0.tgz' },
+162 verbose readDependencies: using existing wrap     q:
+162 verbose readDependencies: using existing wrap      { version: '1.0.1',
+162 verbose readDependencies: using existing wrap        from: 'q@1.0.1',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/q/-/q-1.0.1.tgz' },
+162 verbose readDependencies: using existing wrap     request:
+162 verbose readDependencies: using existing wrap      { version: '2.51.0',
+162 verbose readDependencies: using existing wrap        from: 'request@2.51.0',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/request/-/request-2.51.0.tgz',
+162 verbose readDependencies: using existing wrap        dependencies: [Object] },
+162 verbose readDependencies: using existing wrap     semver:
+162 verbose readDependencies: using existing wrap      { version: '4.3.6',
+162 verbose readDependencies: using existing wrap        from: 'semver@>=4.2.0 <5.0.0',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/semver/-/semver-4.3.6.tgz' },
+162 verbose readDependencies: using existing wrap     'serve-static':
+162 verbose readDependencies: using existing wrap      { version: '1.7.1',
+162 verbose readDependencies: using existing wrap        from: 'serve-static@1.7.1',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/serve-static/-/serve-static-1.7.1.tgz',
+162 verbose readDependencies: using existing wrap        dependencies: [Object] },
+162 verbose readDependencies: using existing wrap     shelljs:
+162 verbose readDependencies: using existing wrap      { version: '0.2.6',
+162 verbose readDependencies: using existing wrap        from: 'shelljs@0.2.6',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/shelljs/-/shelljs-0.2.6.tgz' },
+162 verbose readDependencies: using existing wrap     'tiny-lr-fork':
+162 verbose readDependencies: using existing wrap      { version: '0.0.5',
+162 verbose readDependencies: using existing wrap        from: 'tiny-lr-fork@0.0.5',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/tiny-lr-fork/-/tiny-lr-fork-0.0.5.tgz',
+162 verbose readDependencies: using existing wrap        dependencies: [Object] },
+162 verbose readDependencies: using existing wrap     underscore:
+162 verbose readDependencies: using existing wrap      { version: '1.7.0',
+162 verbose readDependencies: using existing wrap        from: 'underscore@>=1.7.0 <1.8.0',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/underscore/-/underscore-1.7.0.tgz' },
+162 verbose readDependencies: using existing wrap     unzip:
+162 verbose readDependencies: using existing wrap      { version: '0.1.9',
+162 verbose readDependencies: using existing wrap        from: 'unzip@0.1.9',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/unzip/-/unzip-0.1.9.tgz',
+162 verbose readDependencies: using existing wrap        dependencies: [Object] },
+162 verbose readDependencies: using existing wrap     'vinyl-fs':
+162 verbose readDependencies: using existing wrap      { version: '0.3.7',
+162 verbose readDependencies: using existing wrap        from: 'vinyl-fs@0.3.7',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/vinyl-fs/-/vinyl-fs-0.3.7.tgz',
+162 verbose readDependencies: using existing wrap        dependencies: [Object] },
+162 verbose readDependencies: using existing wrap     xml2js:
+162 verbose readDependencies: using existing wrap      { version: '0.4.4',
+162 verbose readDependencies: using existing wrap        from: 'xml2js@0.4.4',
+162 verbose readDependencies: using existing wrap        resolved: 'https://registry.npmjs.org/xml2js/-/xml2js-0.4.4.tgz',
+162 verbose readDependencies: using existing wrap        dependencies: [Object] } } ]
+163 verbose from wrap [ 'archiver',
+163 verbose from wrap   { version: '0.5.1',
+163 verbose from wrap     from: 'archiver@0.5.1',
+163 verbose from wrap     resolved: 'https://registry.npmjs.org/archiver/-/archiver-0.5.1.tgz',
+163 verbose from wrap     dependencies:
+163 verbose from wrap      { 'readable-stream': [Object],
+163 verbose from wrap        'zip-stream': [Object],
+163 verbose from wrap        lazystream: [Object],
+163 verbose from wrap        'file-utils': [Object],
+163 verbose from wrap        lodash: [Object] } } ]
+164 verbose from wrap [ 'async',
+164 verbose from wrap   { version: '0.9.2',
+164 verbose from wrap     from: 'async@>=0.9.0 <0.10.0',
+164 verbose from wrap     resolved: 'https://registry.npmjs.org/async/-/async-0.9.2.tgz' } ]
+165 verbose from wrap [ 'cheerio',
+165 verbose from wrap   { version: '0.19.0',
+165 verbose from wrap     from: 'cheerio@>=0.19.0 <0.20.0',
+165 verbose from wrap     resolved: 'https://registry.npmjs.org/cheerio/-/cheerio-0.19.0.tgz',
+165 verbose from wrap     dependencies:
+165 verbose from wrap      { 'css-select': [Object],
+165 verbose from wrap        entities: [Object],
+165 verbose from wrap        htmlparser2: [Object],
+165 verbose from wrap        'dom-serializer': [Object],
+165 verbose from wrap        lodash: [Object] } } ]
+166 verbose from wrap [ 'cli-table',
+166 verbose from wrap   { version: '0.3.1',
+166 verbose from wrap     from: 'cli-table@>=0.3.1 <0.4.0',
+166 verbose from wrap     resolved: 'https://registry.npmjs.org/cli-table/-/cli-table-0.3.1.tgz',
+166 verbose from wrap     dependencies: { colors: [Object] } } ]
+167 verbose from wrap [ 'colors',
+167 verbose from wrap   { version: '0.6.2',
+167 verbose from wrap     from: 'colors@0.6.2',
+167 verbose from wrap     resolved: 'https://registry.npmjs.org/colors/-/colors-0.6.2.tgz' } ]
+168 verbose from wrap [ 'connect',
+168 verbose from wrap   { version: '3.1.1',
+168 verbose from wrap     from: 'connect@3.1.1',
+168 verbose from wrap     resolved: 'https://registry.npmjs.org/connect/-/connect-3.1.1.tgz',
+168 verbose from wrap     dependencies:
+168 verbose from wrap      { debug: [Object],
+168 verbose from wrap        finalhandler: [Object],
+168 verbose from wrap        parseurl: [Object],
+168 verbose from wrap        'utils-merge': [Object] } } ]
+169 verbose from wrap [ 'connect-livereload',
+169 verbose from wrap   { version: '0.5.2',
+169 verbose from wrap     from: 'connect-livereload@0.5.2',
+169 verbose from wrap     resolved: 'https://registry.npmjs.org/connect-livereload/-/connect-livereload-0.5.2.tgz' } ]
+170 verbose from wrap [ 'crc',
+170 verbose from wrap   { version: '3.2.1',
+170 verbose from wrap     from: 'crc@3.2.1',
+170 verbose from wrap     resolved: 'https://registry.npmjs.org/crc/-/crc-3.2.1.tgz' } ]
+171 verbose from wrap [ 'cross-spawn',
+171 verbose from wrap   { version: '0.2.3',
+171 verbose from wrap     from: 'cross-spawn@0.2.3',
+171 verbose from wrap     resolved: 'https://registry.npmjs.org/cross-spawn/-/cross-spawn-0.2.3.tgz',
+171 verbose from wrap     dependencies: { 'lru-cache': [Object] } } ]
+172 verbose from wrap [ 'event-stream',
+172 verbose from wrap   { version: '3.0.20',
+172 verbose from wrap     from: 'event-stream@>=3.0.0 <3.1.0',
+172 verbose from wrap     resolved: 'https://registry.npmjs.org/event-stream/-/event-stream-3.0.20.tgz',
+172 verbose from wrap     dependencies:
+172 verbose from wrap      { through: [Object],
+172 verbose from wrap        duplexer: [Object],
+172 verbose from wrap        from: [Object],
+172 verbose from wrap        'map-stream': [Object],
+172 verbose from wrap        'pause-stream': [Object],
+172 verbose from wrap        split: [Object],
+172 verbose from wrap        'stream-combiner': [Object] } } ]
+173 verbose from wrap [ 'finalhandler',
+173 verbose from wrap   { version: '0.2.0',
+173 verbose from wrap     from: 'finalhandler@0.2.0',
+173 verbose from wrap     resolved: 'https://registry.npmjs.org/finalhandler/-/finalhandler-0.2.0.tgz',
+173 verbose from wrap     dependencies: { debug: [Object], 'escape-html': [Object] } } ]
+174 verbose from wrap [ 'form-data',
+174 verbose from wrap   { version: '0.1.4',
+174 verbose from wrap     from: 'form-data@0.1.4',
+174 verbose from wrap     resolved: 'https://registry.npmjs.org/form-data/-/form-data-0.1.4.tgz',
+174 verbose from wrap     dependencies: { 'combined-stream': [Object], mime: [Object] } } ]
+175 verbose from wrap [ 'gulp',
+175 verbose from wrap   { version: '3.8.8',
+175 verbose from wrap     from: 'gulp@3.8.8',
+175 verbose from wrap     resolved: 'https://registry.npmjs.org/gulp/-/gulp-3.8.8.tgz',
+175 verbose from wrap     dependencies:
+175 verbose from wrap      { archy: [Object],
+175 verbose from wrap        chalk: [Object],
+175 verbose from wrap        deprecated: [Object],
+175 verbose from wrap        'gulp-util': [Object],
+175 verbose from wrap        interpret: [Object],
+175 verbose from wrap        liftoff: [Object],
+175 verbose from wrap        minimist: [Object],
+175 verbose from wrap        orchestrator: [Object],
+175 verbose from wrap        'pretty-hrtime': [Object],
+175 verbose from wrap        semver: [Object],
+175 verbose from wrap        tildify: [Object] } } ]
+176 verbose from wrap [ 'ionic-app-lib',
+176 verbose from wrap   { version: '0.1.0',
+176 verbose from wrap     from: 'ionic-app-lib@0.1.0',
+176 verbose from wrap     dependencies: { 'cordova-lib': [Object] } } ]
+177 verbose from wrap [ 'ncp',
+177 verbose from wrap   { version: '0.4.2',
+177 verbose from wrap     from: 'ncp@0.4.2',
+177 verbose from wrap     resolved: 'https://registry.npmjs.org/ncp/-/ncp-0.4.2.tgz' } ]
+178 verbose from wrap [ 'npm',
+178 verbose from wrap   { version: '2.1.3',
+178 verbose from wrap     from: 'npm@2.1.3',
+178 verbose from wrap     resolved: 'https://registry.npmjs.org/npm/-/npm-2.1.3.tgz',
+178 verbose from wrap     dependencies:
+178 verbose from wrap      { abbrev: [Object],
+178 verbose from wrap        ansi: [Object],
+178 verbose from wrap        ansicolors: [Object],
+178 verbose from wrap        ansistyles: [Object],
+178 verbose from wrap        archy: [Object],
+178 verbose from wrap        'async-some': [Object],
+178 verbose from wrap        'block-stream': [Object],
+178 verbose from wrap        'char-spinner': [Object],
+178 verbose from wrap        'child-process-close': [Object],
+178 verbose from wrap        chmodr: [Object],
+178 verbose from wrap        chownr: [Object],
+178 verbose from wrap        'cmd-shim': [Object],
+178 verbose from wrap        columnify: [Object],
+178 verbose from wrap        dezalgo: [Object],
+178 verbose from wrap        editor: [Object],
+178 verbose from wrap        'fs-vacuum': [Object],
+178 verbose from wrap        'fs-write-stream-atomic': [Object],
+178 verbose from wrap        fstream: [Object],
+178 verbose from wrap        'fstream-npm': [Object],
+178 verbose from wrap        'github-url-from-git': [Object],
+178 verbose from wrap        'github-url-from-username-repo': [Object],
+178 verbose from wrap        glob: [Object],
+178 verbose from wrap        'graceful-fs': [Object],
+178 verbose from wrap        inflight: [Object],
+178 verbose from wrap        inherits: [Object],
+178 verbose from wrap        ini: [Object],
+178 verbose from wrap        'init-package-json': [Object],
+178 verbose from wrap        lockfile: [Object],
+178 verbose from wrap        'lru-cache': [Object],
+178 verbose from wrap        minimatch: [Object],
+178 verbose from wrap        mkdirp: [Object],
+178 verbose from wrap        'node-gyp': [Object],
+178 verbose from wrap        nopt: [Object],
+178 verbose from wrap        'normalize-package-data': [Object],
+178 verbose from wrap        'npm-cache-filename': [Object],
+178 verbose from wrap        'npm-install-checks': [Object],
+178 verbose from wrap        'npm-package-arg': [Object],
+178 verbose from wrap        'npm-registry-client': [Object],
+178 verbose from wrap        'npm-user-validate': [Object],
+178 verbose from wrap        npmconf: [Object],
+178 verbose from wrap        npmlog: [Object],
+178 verbose from wrap        once: [Object],
+178 verbose from wrap        opener: [Object],
+178 verbose from wrap        osenv: [Object],
+178 verbose from wrap        'path-is-inside': [Object],
+178 verbose from wrap        read: [Object],
+178 verbose from wrap        'read-installed': [Object],
+178 verbose from wrap        'read-package-json': [Object],
+178 verbose from wrap        'readable-stream': [Object],
+178 verbose from wrap        'realize-package-specifier': [Object],
+178 verbose from wrap        request: [Object],
+178 verbose from wrap        retry: [Object],
+178 verbose from wrap        rimraf: [Object],
+178 verbose from wrap        semver: [Object],
+178 verbose from wrap        sha: [Object],
+178 verbose from wrap        slide: [Object],
+178 verbose from wrap        'sorted-object': [Object],
+178 verbose from wrap        tar: [Object],
+178 verbose from wrap        'text-table': [Object],
+178 verbose from wrap        'uid-number': [Object],
+178 verbose from wrap        which: [Object],
+178 verbose from wrap        wrappy: [Object],
+178 verbose from wrap        'write-file-atomic': [Object] } } ]
+179 verbose from wrap [ 'opbeat-ionic',
+179 verbose from wrap   { version: '1.1.3',
+179 verbose from wrap     from: 'opbeat-ionic@>=1.1.3 <2.0.0',
+179 verbose from wrap     resolved: 'https://registry.npmjs.org/opbeat-ionic/-/opbeat-ionic-1.1.3.tgz',
+179 verbose from wrap     dependencies:
+179 verbose from wrap      { 'after-all': [Object],
+179 verbose from wrap        'console-log-level': [Object],
+179 verbose from wrap        'json-stringify-safe': [Object],
+179 verbose from wrap        stackman: [Object] } } ]
+180 verbose from wrap [ 'open',
+180 verbose from wrap   { version: '0.0.5',
+180 verbose from wrap     from: 'open@0.0.5',
+180 verbose from wrap     resolved: 'https://registry.npmjs.org/open/-/open-0.0.5.tgz' } ]
+181 verbose from wrap [ 'optimist',
+181 verbose from wrap   { version: '0.6.0',
+181 verbose from wrap     from: 'optimist@0.6.0',
+181 verbose from wrap     resolved: 'https://registry.npmjs.org/optimist/-/optimist-0.6.0.tgz',
+181 verbose from wrap     dependencies: { wordwrap: [Object], minimist: [Object] } } ]
+182 verbose from wrap [ 'progress',
+182 verbose from wrap   { version: '1.1.7',
+182 verbose from wrap     from: 'progress@1.1.7',
+182 verbose from wrap     resolved: 'https://registry.npmjs.org/progress/-/progress-1.1.7.tgz' } ]
+183 verbose from wrap [ 'prompt',
+183 verbose from wrap   { version: '0.2.12',
+183 verbose from wrap     from: 'prompt@0.2.12',
+183 verbose from wrap     resolved: 'https://registry.npmjs.org/prompt/-/prompt-0.2.12.tgz',
+183 verbose from wrap     dependencies:
+183 verbose from wrap      { pkginfo: [Object],
+183 verbose from wrap        read: [Object],
+183 verbose from wrap        revalidator: [Object],
+183 verbose from wrap        utile: [Object],
+183 verbose from wrap        winston: [Object] } } ]
+184 verbose from wrap [ 'proxy-middleware',
+184 verbose from wrap   { version: '0.7.0',
+184 verbose from wrap     from: 'proxy-middleware@>=0.7.0 <0.8.0',
+184 verbose from wrap     resolved: 'https://registry.npmjs.org/proxy-middleware/-/proxy-middleware-0.7.0.tgz' } ]
+185 verbose from wrap [ 'q',
+185 verbose from wrap   { version: '1.0.1',
+185 verbose from wrap     from: 'q@1.0.1',
+185 verbose from wrap     resolved: 'https://registry.npmjs.org/q/-/q-1.0.1.tgz' } ]
+186 verbose from wrap [ 'request',
+186 verbose from wrap   { version: '2.51.0',
+186 verbose from wrap     from: 'request@2.51.0',
+186 verbose from wrap     resolved: 'https://registry.npmjs.org/request/-/request-2.51.0.tgz',
+186 verbose from wrap     dependencies:
+186 verbose from wrap      { bl: [Object],
+186 verbose from wrap        caseless: [Object],
+186 verbose from wrap        'forever-agent': [Object],
+186 verbose from wrap        'form-data': [Object],
+186 verbose from wrap        'json-stringify-safe': [Object],
+186 verbose from wrap        'mime-types': [Object],
+186 verbose from wrap        'node-uuid': [Object],
+186 verbose from wrap        qs: [Object],
+186 verbose from wrap        'tunnel-agent': [Object],
+186 verbose from wrap        'tough-cookie': [Object],
+186 verbose from wrap        'http-signature': [Object],
+186 verbose from wrap        'oauth-sign': [Object],
+186 verbose from wrap        hawk: [Object],
+186 verbose from wrap        'aws-sign2': [Object],
+186 verbose from wrap        stringstream: [Object],
+186 verbose from wrap        'combined-stream': [Object] } } ]
+187 verbose from wrap [ 'semver',
+187 verbose from wrap   { version: '4.3.6',
+187 verbose from wrap     from: 'semver@>=4.2.0 <5.0.0',
+187 verbose from wrap     resolved: 'https://registry.npmjs.org/semver/-/semver-4.3.6.tgz' } ]
+188 verbose from wrap [ 'serve-static',
+188 verbose from wrap   { version: '1.7.1',
+188 verbose from wrap     from: 'serve-static@1.7.1',
+188 verbose from wrap     resolved: 'https://registry.npmjs.org/serve-static/-/serve-static-1.7.1.tgz',
+188 verbose from wrap     dependencies:
+188 verbose from wrap      { 'escape-html': [Object],
+188 verbose from wrap        parseurl: [Object],
+188 verbose from wrap        send: [Object],
+188 verbose from wrap        'utils-merge': [Object] } } ]
+189 verbose from wrap [ 'shelljs',
+189 verbose from wrap   { version: '0.2.6',
+189 verbose from wrap     from: 'shelljs@0.2.6',
+189 verbose from wrap     resolved: 'https://registry.npmjs.org/shelljs/-/shelljs-0.2.6.tgz' } ]
+190 verbose from wrap [ 'tiny-lr-fork',
+190 verbose from wrap   { version: '0.0.5',
+190 verbose from wrap     from: 'tiny-lr-fork@0.0.5',
+190 verbose from wrap     resolved: 'https://registry.npmjs.org/tiny-lr-fork/-/tiny-lr-fork-0.0.5.tgz',
+190 verbose from wrap     dependencies:
+190 verbose from wrap      { qs: [Object],
+190 verbose from wrap        'faye-websocket': [Object],
+190 verbose from wrap        noptify: [Object],
+190 verbose from wrap        debug: [Object] } } ]
+191 verbose from wrap [ 'underscore',
+191 verbose from wrap   { version: '1.7.0',
+191 verbose from wrap     from: 'underscore@>=1.7.0 <1.8.0',
+191 verbose from wrap     resolved: 'https://registry.npmjs.org/underscore/-/underscore-1.7.0.tgz' } ]
+192 verbose from wrap [ 'unzip',
+192 verbose from wrap   { version: '0.1.9',
+192 verbose from wrap     from: 'unzip@0.1.9',
+192 verbose from wrap     resolved: 'https://registry.npmjs.org/unzip/-/unzip-0.1.9.tgz',
+192 verbose from wrap     dependencies:
+192 verbose from wrap      { fstream: [Object],
+192 verbose from wrap        pullstream: [Object],
+192 verbose from wrap        binary: [Object],
+192 verbose from wrap        'readable-stream': [Object],
+192 verbose from wrap        setimmediate: [Object],
+192 verbose from wrap        'match-stream': [Object] } } ]
+193 verbose from wrap [ 'vinyl-fs',
+193 verbose from wrap   { version: '0.3.7',
+193 verbose from wrap     from: 'vinyl-fs@0.3.7',
+193 verbose from wrap     resolved: 'https://registry.npmjs.org/vinyl-fs/-/vinyl-fs-0.3.7.tgz',
+193 verbose from wrap     dependencies:
+193 verbose from wrap      { 'glob-stream': [Object],
+193 verbose from wrap        'glob-watcher': [Object],
+193 verbose from wrap        'graceful-fs': [Object],
+193 verbose from wrap        lodash: [Object],
+193 verbose from wrap        mkdirp: [Object],
+193 verbose from wrap        'strip-bom': [Object],
+193 verbose from wrap        through2: [Object],
+193 verbose from wrap        vinyl: [Object] } } ]
+194 verbose from wrap [ 'xml2js',
+194 verbose from wrap   { version: '0.4.4',
+194 verbose from wrap     from: 'xml2js@0.4.4',
+194 verbose from wrap     resolved: 'https://registry.npmjs.org/xml2js/-/xml2js-0.4.4.tgz',
+194 verbose from wrap     dependencies: { sax: [Object], xmlbuilder: [Object] } } ]
+195 verbose readDependencies returned deps { archiver: 'https://registry.npmjs.org/archiver/-/archiver-0.5.1.tgz',
+195 verbose readDependencies returned deps   async: 'https://registry.npmjs.org/async/-/async-0.9.2.tgz',
+195 verbose readDependencies returned deps   cheerio: 'https://registry.npmjs.org/cheerio/-/cheerio-0.19.0.tgz',
+195 verbose readDependencies returned deps   'cli-table': 'https://registry.npmjs.org/cli-table/-/cli-table-0.3.1.tgz',
+195 verbose readDependencies returned deps   colors: 'https://registry.npmjs.org/colors/-/colors-0.6.2.tgz',
+195 verbose readDependencies returned deps   connect: 'https://registry.npmjs.org/connect/-/connect-3.1.1.tgz',
+195 verbose readDependencies returned deps   'connect-livereload': 'https://registry.npmjs.org/connect-livereload/-/connect-livereload-0.5.2.tgz',
+195 verbose readDependencies returned deps   crc: 'https://registry.npmjs.org/crc/-/crc-3.2.1.tgz',
+195 verbose readDependencies returned deps   'cross-spawn': 'https://registry.npmjs.org/cross-spawn/-/cross-spawn-0.2.3.tgz',
+195 verbose readDependencies returned deps   'event-stream': 'https://registry.npmjs.org/event-stream/-/event-stream-3.0.20.tgz',
+195 verbose readDependencies returned deps   finalhandler: 'https://registry.npmjs.org/finalhandler/-/finalhandler-0.2.0.tgz',
+195 verbose readDependencies returned deps   'form-data': 'https://registry.npmjs.org/form-data/-/form-data-0.1.4.tgz',
+195 verbose readDependencies returned deps   gulp: 'https://registry.npmjs.org/gulp/-/gulp-3.8.8.tgz',
+195 verbose readDependencies returned deps   'ionic-app-lib': '0.1.0',
+195 verbose readDependencies returned deps   ncp: 'https://registry.npmjs.org/ncp/-/ncp-0.4.2.tgz',
+195 verbose readDependencies returned deps   npm: 'https://registry.npmjs.org/npm/-/npm-2.1.3.tgz',
+195 verbose readDependencies returned deps   'opbeat-ionic': 'https://registry.npmjs.org/opbeat-ionic/-/opbeat-ionic-1.1.3.tgz',
+195 verbose readDependencies returned deps   open: 'https://registry.npmjs.org/open/-/open-0.0.5.tgz',
+195 verbose readDependencies returned deps   optimist: 'https://registry.npmjs.org/optimist/-/optimist-0.6.0.tgz',
+195 verbose readDependencies returned deps   progress: 'https://registry.npmjs.org/progress/-/progress-1.1.7.tgz',
+195 verbose readDependencies returned deps   prompt: 'https://registry.npmjs.org/prompt/-/prompt-0.2.12.tgz',
+195 verbose readDependencies returned deps   'proxy-middleware': 'https://registry.npmjs.org/proxy-middleware/-/proxy-middleware-0.7.0.tgz',
+195 verbose readDependencies returned deps   q: 'https://registry.npmjs.org/q/-/q-1.0.1.tgz',
+195 verbose readDependencies returned deps   request: 'https://registry.npmjs.org/request/-/request-2.51.0.tgz',
+195 verbose readDependencies returned deps   semver: 'https://registry.npmjs.org/semver/-/semver-4.3.6.tgz',
+195 verbose readDependencies returned deps   'serve-static': 'https://registry.npmjs.org/serve-static/-/serve-static-1.7.1.tgz',
+195 verbose readDependencies returned deps   shelljs: 'https://registry.npmjs.org/shelljs/-/shelljs-0.2.6.tgz',
+195 verbose readDependencies returned deps   'tiny-lr-fork': 'https://registry.npmjs.org/tiny-lr-fork/-/tiny-lr-fork-0.0.5.tgz',
+195 verbose readDependencies returned deps   underscore: 'https://registry.npmjs.org/underscore/-/underscore-1.7.0.tgz',
+195 verbose readDependencies returned deps   unzip: 'https://registry.npmjs.org/unzip/-/unzip-0.1.9.tgz',
+195 verbose readDependencies returned deps   'vinyl-fs': 'https://registry.npmjs.org/vinyl-fs/-/vinyl-fs-0.3.7.tgz',
+195 verbose readDependencies returned deps   xml2js: 'https://registry.npmjs.org/xml2js/-/xml2js-0.4.4.tgz' }
+196 silly cache add args [ 'cheerio@https://registry.npmjs.org/cheerio/-/cheerio-0.19.0.tgz',
+196 silly cache add   null ]
+197 verbose cache add spec cheerio@https://registry.npmjs.org/cheerio/-/cheerio-0.19.0.tgz
+198 silly cache add args [ 'cli-table@https://registry.npmjs.org/cli-table/-/cli-table-0.3.1.tgz',
+198 silly cache add   null ]
+199 verbose cache add spec cli-table@https://registry.npmjs.org/cli-table/-/cli-table-0.3.1.tgz
+200 silly cache add args [ 'colors@https://registry.npmjs.org/colors/-/colors-0.6.2.tgz',
+200 silly cache add   null ]
+201 verbose cache add spec colors@https://registry.npmjs.org/colors/-/colors-0.6.2.tgz
+202 silly cache add parsed spec { raw: 'cheerio@https://registry.npmjs.org/cheerio/-/cheerio-0.19.0.tgz',
+202 silly cache add   scope: null,
+202 silly cache add   name: 'cheerio',
+202 silly cache add   rawSpec: 'https://registry.npmjs.org/cheerio/-/cheerio-0.19.0.tgz',
+202 silly cache add   spec: 'https://registry.npmjs.org/cheerio/-/cheerio-0.19.0.tgz',
+202 silly cache add   type: 'remote' }
+203 silly mapToRegistry name cheerio@https://registry.npmjs.org/cheerio/-/cheerio-0.19.0.tgz
+204 silly mapToRegistry using default registry
+205 silly mapToRegistry registry https://registry.npm.taobao.org/
+206 silly mapToRegistry uri https://registry.npm.taobao.org/cheerio@https://registry.npmjs.org/cheerio/-/cheerio-0.19.0.tgz
+207 verbose addRemoteTarball https://registry.npmjs.org/cheerio/-/cheerio-0.19.0.tgz not in flight; adding
+208 verbose addRemoteTarball [ 'https://registry.npmjs.org/cheerio/-/cheerio-0.19.0.tgz',
+208 verbose addRemoteTarball   null ]
+209 silly cache add parsed spec { raw: 'cli-table@https://registry.npmjs.org/cli-table/-/cli-table-0.3.1.tgz',
+209 silly cache add   scope: null,
+209 silly cache add   name: 'cli-table',
+209 silly cache add   rawSpec: 'https://registry.npmjs.org/cli-table/-/cli-table-0.3.1.tgz',
+209 silly cache add   spec: 'https://registry.npmjs.org/cli-table/-/cli-table-0.3.1.tgz',
+209 silly cache add   type: 'remote' }
+210 silly mapToRegistry name cli-table@https://registry.npmjs.org/cli-table/-/cli-table-0.3.1.tgz
+211 silly mapToRegistry using default registry
+212 silly mapToRegistry registry https://registry.npm.taobao.org/
+213 silly mapToRegistry uri https://registry.npm.taobao.org/cli-table@https://registry.npmjs.org/cli-table/-/cli-table-0.3.1.tgz
+214 verbose addRemoteTarball https://registry.npmjs.org/cli-table/-/cli-table-0.3.1.tgz not in flight; adding
+215 verbose addRemoteTarball [ 'https://registry.npmjs.org/cli-table/-/cli-table-0.3.1.tgz',
+215 verbose addRemoteTarball   null ]
+216 silly cache add parsed spec { raw: 'colors@https://registry.npmjs.org/colors/-/colors-0.6.2.tgz',
+216 silly cache add   scope: null,
+216 silly cache add   name: 'colors',
+216 silly cache add   rawSpec: 'https://registry.npmjs.org/colors/-/colors-0.6.2.tgz',
+216 silly cache add   spec: 'https://registry.npmjs.org/colors/-/colors-0.6.2.tgz',
+216 silly cache add   type: 'remote' }
+217 silly mapToRegistry name colors@https://registry.npmjs.org/colors/-/colors-0.6.2.tgz
+218 silly mapToRegistry using default registry
+219 silly mapToRegistry registry https://registry.npm.taobao.org/
+220 silly mapToRegistry uri https://registry.npm.taobao.org/colors@https://registry.npmjs.org/colors/-/colors-0.6.2.tgz
+221 verbose addRemoteTarball https://registry.npmjs.org/colors/-/colors-0.6.2.tgz not in flight; adding
+222 verbose addRemoteTarball [ 'https://registry.npmjs.org/colors/-/colors-0.6.2.tgz', null ]
+223 silly cache add args [ 'connect@https://registry.npmjs.org/connect/-/connect-3.1.1.tgz',
+223 silly cache add   null ]
+224 verbose cache add spec connect@https://registry.npmjs.org/connect/-/connect-3.1.1.tgz
+225 silly cache add args [ 'connect-livereload@https://registry.npmjs.org/connect-livereload/-/connect-livereload-0.5.2.tgz',
+225 silly cache add   null ]
+226 verbose cache add spec connect-livereload@https://registry.npmjs.org/connect-livereload/-/connect-livereload-0.5.2.tgz
+227 silly cache add args [ 'crc@https://registry.npmjs.org/crc/-/crc-3.2.1.tgz', null ]
+228 verbose cache add spec crc@https://registry.npmjs.org/crc/-/crc-3.2.1.tgz
+229 silly cache add args [ 'cross-spawn@https://registry.npmjs.org/cross-spawn/-/cross-spawn-0.2.3.tgz',
+229 silly cache add   null ]
+230 verbose cache add spec cross-spawn@https://registry.npmjs.org/cross-spawn/-/cross-spawn-0.2.3.tgz
+231 silly cache add args [ 'event-stream@https://registry.npmjs.org/event-stream/-/event-stream-3.0.20.tgz',
+231 silly cache add   null ]
+232 verbose cache add spec event-stream@https://registry.npmjs.org/event-stream/-/event-stream-3.0.20.tgz
+233 silly cache add args [ 'finalhandler@https://registry.npmjs.org/finalhandler/-/finalhandler-0.2.0.tgz',
+233 silly cache add   null ]
+234 verbose cache add spec finalhandler@https://registry.npmjs.org/finalhandler/-/finalhandler-0.2.0.tgz
+235 silly cache add args [ 'form-data@https://registry.npmjs.org/form-data/-/form-data-0.1.4.tgz',
+235 silly cache add   null ]
+236 verbose cache add spec form-data@https://registry.npmjs.org/form-data/-/form-data-0.1.4.tgz
+237 silly cache add args [ 'gulp@https://registry.npmjs.org/gulp/-/gulp-3.8.8.tgz',
+237 silly cache add   null ]
+238 verbose cache add spec gulp@https://registry.npmjs.org/gulp/-/gulp-3.8.8.tgz
+239 silly cache add parsed spec { raw: 'connect@https://registry.npmjs.org/connect/-/connect-3.1.1.tgz',
+239 silly cache add   scope: null,
+239 silly cache add   name: 'connect',
+239 silly cache add   rawSpec: 'https://registry.npmjs.org/connect/-/connect-3.1.1.tgz',
+239 silly cache add   spec: 'https://registry.npmjs.org/connect/-/connect-3.1.1.tgz',
+239 silly cache add   type: 'remote' }
+240 silly mapToRegistry name connect@https://registry.npmjs.org/connect/-/connect-3.1.1.tgz
+241 silly mapToRegistry using default registry
+242 silly mapToRegistry registry https://registry.npm.taobao.org/
+243 silly mapToRegistry uri https://registry.npm.taobao.org/connect@https://registry.npmjs.org/connect/-/connect-3.1.1.tgz
+244 verbose addRemoteTarball https://registry.npmjs.org/connect/-/connect-3.1.1.tgz not in flight; adding
+245 verbose addRemoteTarball [ 'https://registry.npmjs.org/connect/-/connect-3.1.1.tgz',
+245 verbose addRemoteTarball   null ]
+246 silly cache add parsed spec { raw: 'connect-livereload@https://registry.npmjs.org/connect-livereload/-/connect-livereload-0.5.2.tgz',
+246 silly cache add   scope: null,
+246 silly cache add   name: 'connect-livereload',
+246 silly cache add   rawSpec: 'https://registry.npmjs.org/connect-livereload/-/connect-livereload-0.5.2.tgz',
+246 silly cache add   spec: 'https://registry.npmjs.org/connect-livereload/-/connect-livereload-0.5.2.tgz',
+246 silly cache add   type: 'remote' }
+247 silly mapToRegistry name connect-livereload@https://registry.npmjs.org/connect-livereload/-/connect-livereload-0.5.2.tgz
+248 silly mapToRegistry using default registry
+249 silly mapToRegistry registry https://registry.npm.taobao.org/
+250 silly mapToRegistry uri https://registry.npm.taobao.org/connect-livereload@https://registry.npmjs.org/connect-livereload/-/connect-livereload-0.5.2.tgz
+251 verbose addRemoteTarball https://registry.npmjs.org/connect-livereload/-/connect-livereload-0.5.2.tgz not in flight; adding
+252 verbose addRemoteTarball [ 'https://registry.npmjs.org/connect-livereload/-/connect-livereload-0.5.2.tgz',
+252 verbose addRemoteTarball   null ]
+253 silly cache add parsed spec { raw: 'crc@https://registry.npmjs.org/crc/-/crc-3.2.1.tgz',
+253 silly cache add   scope: null,
+253 silly cache add   name: 'crc',
+253 silly cache add   rawSpec: 'https://registry.npmjs.org/crc/-/crc-3.2.1.tgz',
+253 silly cache add   spec: 'https://registry.npmjs.org/crc/-/crc-3.2.1.tgz',
+253 silly cache add   type: 'remote' }
+254 silly mapToRegistry name crc@https://registry.npmjs.org/crc/-/crc-3.2.1.tgz
+255 silly mapToRegistry using default registry
+256 silly mapToRegistry registry https://registry.npm.taobao.org/
+257 silly mapToRegistry uri https://registry.npm.taobao.org/crc@https://registry.npmjs.org/crc/-/crc-3.2.1.tgz
+258 verbose addRemoteTarball https://registry.npmjs.org/crc/-/crc-3.2.1.tgz not in flight; adding
+259 verbose addRemoteTarball [ 'https://registry.npmjs.org/crc/-/crc-3.2.1.tgz', null ]
+260 silly cache add parsed spec { raw: 'cross-spawn@https://registry.npmjs.org/cross-spawn/-/cross-spawn-0.2.3.tgz',
+260 silly cache add   scope: null,
+260 silly cache add   name: 'cross-spawn',
+260 silly cache add   rawSpec: 'https://registry.npmjs.org/cross-spawn/-/cross-spawn-0.2.3.tgz',
+260 silly cache add   spec: 'https://registry.npmjs.org/cross-spawn/-/cross-spawn-0.2.3.tgz',
+260 silly cache add   type: 'remote' }
+261 silly mapToRegistry name cross-spawn@https://registry.npmjs.org/cross-spawn/-/cross-spawn-0.2.3.tgz
+262 silly mapToRegistry using default registry
+263 silly mapToRegistry registry https://registry.npm.taobao.org/
+264 silly mapToRegistry uri https://registry.npm.taobao.org/cross-spawn@https://registry.npmjs.org/cross-spawn/-/cross-spawn-0.2.3.tgz
+265 verbose addRemoteTarball https://registry.npmjs.org/cross-spawn/-/cross-spawn-0.2.3.tgz not in flight; adding
+266 verbose addRemoteTarball [ 'https://registry.npmjs.org/cross-spawn/-/cross-spawn-0.2.3.tgz',
+266 verbose addRemoteTarball   null ]
+267 silly cache add parsed spec { raw: 'event-stream@https://registry.npmjs.org/event-stream/-/event-stream-3.0.20.tgz',
+267 silly cache add   scope: null,
+267 silly cache add   name: 'event-stream',
+267 silly cache add   rawSpec: 'https://registry.npmjs.org/event-stream/-/event-stream-3.0.20.tgz',
+267 silly cache add   spec: 'https://registry.npmjs.org/event-stream/-/event-stream-3.0.20.tgz',
+267 silly cache add   type: 'remote' }
+268 silly mapToRegistry name event-stream@https://registry.npmjs.org/event-stream/-/event-stream-3.0.20.tgz
+269 silly mapToRegistry using default registry
+270 silly mapToRegistry registry https://registry.npm.taobao.org/
+271 silly mapToRegistry uri https://registry.npm.taobao.org/event-stream@https://registry.npmjs.org/event-stream/-/event-stream-3.0.20.tgz
+272 verbose addRemoteTarball https://registry.npmjs.org/event-stream/-/event-stream-3.0.20.tgz not in flight; adding
+273 verbose addRemoteTarball [ 'https://registry.npmjs.org/event-stream/-/event-stream-3.0.20.tgz',
+273 verbose addRemoteTarball   null ]
+274 silly cache add parsed spec { raw: 'finalhandler@https://registry.npmjs.org/finalhandler/-/finalhandler-0.2.0.tgz',
+274 silly cache add   scope: null,
+274 silly cache add   name: 'finalhandler',
+274 silly cache add   rawSpec: 'https://registry.npmjs.org/finalhandler/-/finalhandler-0.2.0.tgz',
+274 silly cache add   spec: 'https://registry.npmjs.org/finalhandler/-/finalhandler-0.2.0.tgz',
+274 silly cache add   type: 'remote' }
+275 silly mapToRegistry name finalhandler@https://registry.npmjs.org/finalhandler/-/finalhandler-0.2.0.tgz
+276 silly mapToRegistry using default registry
+277 silly mapToRegistry registry https://registry.npm.taobao.org/
+278 silly mapToRegistry uri https://registry.npm.taobao.org/finalhandler@https://registry.npmjs.org/finalhandler/-/finalhandler-0.2.0.tgz
+279 verbose addRemoteTarball https://registry.npmjs.org/finalhandler/-/finalhandler-0.2.0.tgz not in flight; adding
+280 verbose addRemoteTarball [ 'https://registry.npmjs.org/finalhandler/-/finalhandler-0.2.0.tgz',
+280 verbose addRemoteTarball   null ]
+281 silly cache add parsed spec { raw: 'form-data@https://registry.npmjs.org/form-data/-/form-data-0.1.4.tgz',
+281 silly cache add   scope: null,
+281 silly cache add   name: 'form-data',
+281 silly cache add   rawSpec: 'https://registry.npmjs.org/form-data/-/form-data-0.1.4.tgz',
+281 silly cache add   spec: 'https://registry.npmjs.org/form-data/-/form-data-0.1.4.tgz',
+281 silly cache add   type: 'remote' }
+282 silly mapToRegistry name form-data@https://registry.npmjs.org/form-data/-/form-data-0.1.4.tgz
+283 silly mapToRegistry using default registry
+284 silly mapToRegistry registry https://registry.npm.taobao.org/
+285 silly mapToRegistry uri https://registry.npm.taobao.org/form-data@https://registry.npmjs.org/form-data/-/form-data-0.1.4.tgz
+286 verbose addRemoteTarball https://registry.npmjs.org/form-data/-/form-data-0.1.4.tgz not in flight; adding
+287 verbose addRemoteTarball [ 'https://registry.npmjs.org/form-data/-/form-data-0.1.4.tgz',
+287 verbose addRemoteTarball   null ]
+288 silly cache add parsed spec { raw: 'gulp@https://registry.npmjs.org/gulp/-/gulp-3.8.8.tgz',
+288 silly cache add   scope: null,
+288 silly cache add   name: 'gulp',
+288 silly cache add   rawSpec: 'https://registry.npmjs.org/gulp/-/gulp-3.8.8.tgz',
+288 silly cache add   spec: 'https://registry.npmjs.org/gulp/-/gulp-3.8.8.tgz',
+288 silly cache add   type: 'remote' }
+289 silly mapToRegistry name gulp@https://registry.npmjs.org/gulp/-/gulp-3.8.8.tgz
+290 silly mapToRegistry using default registry
+291 silly mapToRegistry registry https://registry.npm.taobao.org/
+292 silly mapToRegistry uri https://registry.npm.taobao.org/gulp@https://registry.npmjs.org/gulp/-/gulp-3.8.8.tgz
+293 verbose addRemoteTarball https://registry.npmjs.org/gulp/-/gulp-3.8.8.tgz not in flight; adding
+294 verbose addRemoteTarball [ 'https://registry.npmjs.org/gulp/-/gulp-3.8.8.tgz', null ]
+295 silly cache add args [ 'ionic-app-lib@0.1.0', null ]
+296 verbose cache add spec ionic-app-lib@0.1.0
+297 silly cache add parsed spec { raw: 'ionic-app-lib@0.1.0',
+297 silly cache add   scope: null,
+297 silly cache add   name: 'ionic-app-lib',
+297 silly cache add   rawSpec: '0.1.0',
+297 silly cache add   spec: '0.1.0',
+297 silly cache add   type: 'version' }
+298 silly addNamed ionic-app-lib@0.1.0
+299 verbose addNamed "0.1.0" is a plain semver version for ionic-app-lib
+300 silly mapToRegistry name ionic-app-lib
+301 silly mapToRegistry using default registry
+302 silly mapToRegistry registry https://registry.npm.taobao.org/
+303 silly mapToRegistry uri https://registry.npm.taobao.org/ionic-app-lib
+304 verbose addNameVersion registry:https://registry.npm.taobao.org/ionic-app-lib not in flight; fetching
+305 silly cache add args [ 'ncp@https://registry.npmjs.org/ncp/-/ncp-0.4.2.tgz', null ]
+306 verbose cache add spec ncp@https://registry.npmjs.org/ncp/-/ncp-0.4.2.tgz
+307 silly cache add args [ 'npm@https://registry.npmjs.org/npm/-/npm-2.1.3.tgz', null ]
+308 verbose cache add spec npm@https://registry.npmjs.org/npm/-/npm-2.1.3.tgz
+309 silly cache add args [ 'opbeat-ionic@https://registry.npmjs.org/opbeat-ionic/-/opbeat-ionic-1.1.3.tgz',
+309 silly cache add   null ]
+310 verbose cache add spec opbeat-ionic@https://registry.npmjs.org/opbeat-ionic/-/opbeat-ionic-1.1.3.tgz
+311 silly cache add args [ 'open@https://registry.npmjs.org/open/-/open-0.0.5.tgz',
+311 silly cache add   null ]
+312 verbose cache add spec open@https://registry.npmjs.org/open/-/open-0.0.5.tgz
+313 silly cache add args [ 'optimist@https://registry.npmjs.org/optimist/-/optimist-0.6.0.tgz',
+313 silly cache add   null ]
+314 verbose cache add spec optimist@https://registry.npmjs.org/optimist/-/optimist-0.6.0.tgz
+315 silly cache add args [ 'progress@https://registry.npmjs.org/progress/-/progress-1.1.7.tgz',
+315 silly cache add   null ]
+316 verbose cache add spec progress@https://registry.npmjs.org/progress/-/progress-1.1.7.tgz
+317 silly cache add args [ 'prompt@https://registry.npmjs.org/prompt/-/prompt-0.2.12.tgz',
+317 silly cache add   null ]
+318 verbose cache add spec prompt@https://registry.npmjs.org/prompt/-/prompt-0.2.12.tgz
+319 silly cache add args [ 'proxy-middleware@https://registry.npmjs.org/proxy-middleware/-/proxy-middleware-0.7.0.tgz',
+319 silly cache add   null ]
+320 verbose cache add spec proxy-middleware@https://registry.npmjs.org/proxy-middleware/-/proxy-middleware-0.7.0.tgz
+321 silly cache add args [ 'q@https://registry.npmjs.org/q/-/q-1.0.1.tgz', null ]
+322 verbose cache add spec q@https://registry.npmjs.org/q/-/q-1.0.1.tgz
+323 silly cache add args [ 'request@https://registry.npmjs.org/request/-/request-2.51.0.tgz',
+323 silly cache add   null ]
+324 verbose cache add spec request@https://registry.npmjs.org/request/-/request-2.51.0.tgz
+325 silly cache add args [ 'semver@https://registry.npmjs.org/semver/-/semver-4.3.6.tgz',
+325 silly cache add   null ]
+326 verbose cache add spec semver@https://registry.npmjs.org/semver/-/semver-4.3.6.tgz
+327 silly cache add args [ 'serve-static@https://registry.npmjs.org/serve-static/-/serve-static-1.7.1.tgz',
+327 silly cache add   null ]
+328 verbose cache add spec serve-static@https://registry.npmjs.org/serve-static/-/serve-static-1.7.1.tgz
+329 silly cache add args [ 'shelljs@https://registry.npmjs.org/shelljs/-/shelljs-0.2.6.tgz',
+329 silly cache add   null ]
+330 verbose cache add spec shelljs@https://registry.npmjs.org/shelljs/-/shelljs-0.2.6.tgz
+331 silly cache add args [ 'tiny-lr-fork@https://registry.npmjs.org/tiny-lr-fork/-/tiny-lr-fork-0.0.5.tgz',
+331 silly cache add   null ]
+332 verbose cache add spec tiny-lr-fork@https://registry.npmjs.org/tiny-lr-fork/-/tiny-lr-fork-0.0.5.tgz
+333 silly cache add args [ 'underscore@https://registry.npmjs.org/underscore/-/underscore-1.7.0.tgz',
+333 silly cache add   null ]
+334 verbose cache add spec underscore@https://registry.npmjs.org/underscore/-/underscore-1.7.0.tgz
+335 silly cache add parsed spec { raw: 'ncp@https://registry.npmjs.org/ncp/-/ncp-0.4.2.tgz',
+335 silly cache add   scope: null,
+335 silly cache add   name: 'ncp',
+335 silly cache add   rawSpec: 'https://registry.npmjs.org/ncp/-/ncp-0.4.2.tgz',
+335 silly cache add   spec: 'https://registry.npmjs.org/ncp/-/ncp-0.4.2.tgz',
+335 silly cache add   type: 'remote' }
+336 silly mapToRegistry name ncp@https://registry.npmjs.org/ncp/-/ncp-0.4.2.tgz
+337 silly mapToRegistry using default registry
+338 silly mapToRegistry registry https://registry.npm.taobao.org/
+339 silly mapToRegistry uri https://registry.npm.taobao.org/ncp@https://registry.npmjs.org/ncp/-/ncp-0.4.2.tgz
+340 verbose addRemoteTarball https://registry.npmjs.org/ncp/-/ncp-0.4.2.tgz not in flight; adding
+341 verbose addRemoteTarball [ 'https://registry.npmjs.org/ncp/-/ncp-0.4.2.tgz', null ]
+342 silly cache add parsed spec { raw: 'npm@https://registry.npmjs.org/npm/-/npm-2.1.3.tgz',
+342 silly cache add   scope: null,
+342 silly cache add   name: 'npm',
+342 silly cache add   rawSpec: 'https://registry.npmjs.org/npm/-/npm-2.1.3.tgz',
+342 silly cache add   spec: 'https://registry.npmjs.org/npm/-/npm-2.1.3.tgz',
+342 silly cache add   type: 'remote' }
+343 silly mapToRegistry name npm@https://registry.npmjs.org/npm/-/npm-2.1.3.tgz
+344 silly mapToRegistry using default registry
+345 silly mapToRegistry registry https://registry.npm.taobao.org/
+346 silly mapToRegistry uri https://registry.npm.taobao.org/npm@https://registry.npmjs.org/npm/-/npm-2.1.3.tgz
+347 verbose addRemoteTarball https://registry.npmjs.org/npm/-/npm-2.1.3.tgz not in flight; adding
+348 verbose addRemoteTarball [ 'https://registry.npmjs.org/npm/-/npm-2.1.3.tgz', null ]
+349 silly cache add parsed spec { raw: 'opbeat-ionic@https://registry.npmjs.org/opbeat-ionic/-/opbeat-ionic-1.1.3.tgz',
+349 silly cache add   scope: null,
+349 silly cache add   name: 'opbeat-ionic',
+349 silly cache add   rawSpec: 'https://registry.npmjs.org/opbeat-ionic/-/opbeat-ionic-1.1.3.tgz',
+349 silly cache add   spec: 'https://registry.npmjs.org/opbeat-ionic/-/opbeat-ionic-1.1.3.tgz',
+349 silly cache add   type: 'remote' }
+350 silly mapToRegistry name opbeat-ionic@https://registry.npmjs.org/opbeat-ionic/-/opbeat-ionic-1.1.3.tgz
+351 silly mapToRegistry using default registry
+352 silly mapToRegistry registry https://registry.npm.taobao.org/
+353 silly mapToRegistry uri https://registry.npm.taobao.org/opbeat-ionic@https://registry.npmjs.org/opbeat-ionic/-/opbeat-ionic-1.1.3.tgz
+354 verbose addRemoteTarball https://registry.npmjs.org/opbeat-ionic/-/opbeat-ionic-1.1.3.tgz not in flight; adding
+355 verbose addRemoteTarball [ 'https://registry.npmjs.org/opbeat-ionic/-/opbeat-ionic-1.1.3.tgz',
+355 verbose addRemoteTarball   null ]
+356 silly cache add parsed spec { raw: 'open@https://registry.npmjs.org/open/-/open-0.0.5.tgz',
+356 silly cache add   scope: null,
+356 silly cache add   name: 'open',
+356 silly cache add   rawSpec: 'https://registry.npmjs.org/open/-/open-0.0.5.tgz',
+356 silly cache add   spec: 'https://registry.npmjs.org/open/-/open-0.0.5.tgz',
+356 silly cache add   type: 'remote' }
+357 silly mapToRegistry name open@https://registry.npmjs.org/open/-/open-0.0.5.tgz
+358 silly mapToRegistry using default registry
+359 silly mapToRegistry registry https://registry.npm.taobao.org/
+360 silly mapToRegistry uri https://registry.npm.taobao.org/open@https://registry.npmjs.org/open/-/open-0.0.5.tgz
+361 verbose addRemoteTarball https://registry.npmjs.org/open/-/open-0.0.5.tgz not in flight; adding
+362 verbose addRemoteTarball [ 'https://registry.npmjs.org/open/-/open-0.0.5.tgz', null ]
+363 silly cache add parsed spec { raw: 'optimist@https://registry.npmjs.org/optimist/-/optimist-0.6.0.tgz',
+363 silly cache add   scope: null,
+363 silly cache add   name: 'optimist',
+363 silly cache add   rawSpec: 'https://registry.npmjs.org/optimist/-/optimist-0.6.0.tgz',
+363 silly cache add   spec: 'https://registry.npmjs.org/optimist/-/optimist-0.6.0.tgz',
+363 silly cache add   type: 'remote' }
+364 silly mapToRegistry name optimist@https://registry.npmjs.org/optimist/-/optimist-0.6.0.tgz
+365 silly mapToRegistry using default registry
+366 silly mapToRegistry registry https://registry.npm.taobao.org/
+367 silly mapToRegistry uri https://registry.npm.taobao.org/optimist@https://registry.npmjs.org/optimist/-/optimist-0.6.0.tgz
+368 verbose addRemoteTarball https://registry.npmjs.org/optimist/-/optimist-0.6.0.tgz not in flight; adding
+369 verbose addRemoteTarball [ 'https://registry.npmjs.org/optimist/-/optimist-0.6.0.tgz',
+369 verbose addRemoteTarball   null ]
+370 silly cache add parsed spec { raw: 'progress@https://registry.npmjs.org/progress/-/progress-1.1.7.tgz',
+370 silly cache add   scope: null,
+370 silly cache add   name: 'progress',
+370 silly cache add   rawSpec: 'https://registry.npmjs.org/progress/-/progress-1.1.7.tgz',
+370 silly cache add   spec: 'https://registry.npmjs.org/progress/-/progress-1.1.7.tgz',
+370 silly cache add   type: 'remote' }
+371 silly mapToRegistry name progress@https://registry.npmjs.org/progress/-/progress-1.1.7.tgz
+372 silly mapToRegistry using default registry
+373 silly mapToRegistry registry https://registry.npm.taobao.org/
+374 silly mapToRegistry uri https://registry.npm.taobao.org/progress@https://registry.npmjs.org/progress/-/progress-1.1.7.tgz
+375 verbose addRemoteTarball https://registry.npmjs.org/progress/-/progress-1.1.7.tgz not in flight; adding
+376 verbose addRemoteTarball [ 'https://registry.npmjs.org/progress/-/progress-1.1.7.tgz',
+376 verbose addRemoteTarball   null ]
+377 silly cache add parsed spec { raw: 'prompt@https://registry.npmjs.org/prompt/-/prompt-0.2.12.tgz',
+377 silly cache add   scope: null,
+377 silly cache add   name: 'prompt',
+377 silly cache add   rawSpec: 'https://registry.npmjs.org/prompt/-/prompt-0.2.12.tgz',
+377 silly cache add   spec: 'https://registry.npmjs.org/prompt/-/prompt-0.2.12.tgz',
+377 silly cache add   type: 'remote' }
+378 silly mapToRegistry name prompt@https://registry.npmjs.org/prompt/-/prompt-0.2.12.tgz
+379 silly mapToRegistry using default registry
+380 silly mapToRegistry registry https://registry.npm.taobao.org/
+381 silly mapToRegistry uri https://registry.npm.taobao.org/prompt@https://registry.npmjs.org/prompt/-/prompt-0.2.12.tgz
+382 verbose addRemoteTarball https://registry.npmjs.org/prompt/-/prompt-0.2.12.tgz not in flight; adding
+383 verbose addRemoteTarball [ 'https://registry.npmjs.org/prompt/-/prompt-0.2.12.tgz',
+383 verbose addRemoteTarball   null ]
+384 silly cache add parsed spec { raw: 'proxy-middleware@https://registry.npmjs.org/proxy-middleware/-/proxy-middleware-0.7.0.tgz',
+384 silly cache add   scope: null,
+384 silly cache add   name: 'proxy-middleware',
+384 silly cache add   rawSpec: 'https://registry.npmjs.org/proxy-middleware/-/proxy-middleware-0.7.0.tgz',
+384 silly cache add   spec: 'https://registry.npmjs.org/proxy-middleware/-/proxy-middleware-0.7.0.tgz',
+384 silly cache add   type: 'remote' }
+385 silly mapToRegistry name proxy-middleware@https://registry.npmjs.org/proxy-middleware/-/proxy-middleware-0.7.0.tgz
+386 silly mapToRegistry using default registry
+387 silly mapToRegistry registry https://registry.npm.taobao.org/
+388 silly mapToRegistry uri https://registry.npm.taobao.org/proxy-middleware@https://registry.npmjs.org/proxy-middleware/-/proxy-middleware-0.7.0.tgz
+389 verbose addRemoteTarball https://registry.npmjs.org/proxy-middleware/-/proxy-middleware-0.7.0.tgz not in flight; adding
+390 verbose addRemoteTarball [ 'https://registry.npmjs.org/proxy-middleware/-/proxy-middleware-0.7.0.tgz',
+390 verbose addRemoteTarball   null ]
+391 silly cache add parsed spec { raw: 'q@https://registry.npmjs.org/q/-/q-1.0.1.tgz',
+391 silly cache add   scope: null,
+391 silly cache add   name: 'q',
+391 silly cache add   rawSpec: 'https://registry.npmjs.org/q/-/q-1.0.1.tgz',
+391 silly cache add   spec: 'https://registry.npmjs.org/q/-/q-1.0.1.tgz',
+391 silly cache add   type: 'remote' }
+392 silly mapToRegistry name q@https://registry.npmjs.org/q/-/q-1.0.1.tgz
+393 silly mapToRegistry using default registry
+394 silly mapToRegistry registry https://registry.npm.taobao.org/
+395 silly mapToRegistry uri https://registry.npm.taobao.org/q@https://registry.npmjs.org/q/-/q-1.0.1.tgz
+396 verbose addRemoteTarball https://registry.npmjs.org/q/-/q-1.0.1.tgz not in flight; adding
+397 verbose addRemoteTarball [ 'https://registry.npmjs.org/q/-/q-1.0.1.tgz', null ]
+398 silly cache add parsed spec { raw: 'request@https://registry.npmjs.org/request/-/request-2.51.0.tgz',
+398 silly cache add   scope: null,
+398 silly cache add   name: 'request',
+398 silly cache add   rawSpec: 'https://registry.npmjs.org/request/-/request-2.51.0.tgz',
+398 silly cache add   spec: 'https://registry.npmjs.org/request/-/request-2.51.0.tgz',
+398 silly cache add   type: 'remote' }
+399 silly mapToRegistry name request@https://registry.npmjs.org/request/-/request-2.51.0.tgz
+400 silly mapToRegistry using default registry
+401 silly mapToRegistry registry https://registry.npm.taobao.org/
+402 silly mapToRegistry uri https://registry.npm.taobao.org/request@https://registry.npmjs.org/request/-/request-2.51.0.tgz
+403 verbose addRemoteTarball https://registry.npmjs.org/request/-/request-2.51.0.tgz not in flight; adding
+404 verbose addRemoteTarball [ 'https://registry.npmjs.org/request/-/request-2.51.0.tgz',
+404 verbose addRemoteTarball   null ]
+405 silly cache add parsed spec { raw: 'semver@https://registry.npmjs.org/semver/-/semver-4.3.6.tgz',
+405 silly cache add   scope: null,
+405 silly cache add   name: 'semver',
+405 silly cache add   rawSpec: 'https://registry.npmjs.org/semver/-/semver-4.3.6.tgz',
+405 silly cache add   spec: 'https://registry.npmjs.org/semver/-/semver-4.3.6.tgz',
+405 silly cache add   type: 'remote' }
+406 silly mapToRegistry name semver@https://registry.npmjs.org/semver/-/semver-4.3.6.tgz
+407 silly mapToRegistry using default registry
+408 silly mapToRegistry registry https://registry.npm.taobao.org/
+409 silly mapToRegistry uri https://registry.npm.taobao.org/semver@https://registry.npmjs.org/semver/-/semver-4.3.6.tgz
+410 verbose addRemoteTarball https://registry.npmjs.org/semver/-/semver-4.3.6.tgz not in flight; adding
+411 verbose addRemoteTarball [ 'https://registry.npmjs.org/semver/-/semver-4.3.6.tgz', null ]
+412 silly cache add parsed spec { raw: 'serve-static@https://registry.npmjs.org/serve-static/-/serve-static-1.7.1.tgz',
+412 silly cache add   scope: null,
+412 silly cache add   name: 'serve-static',
+412 silly cache add   rawSpec: 'https://registry.npmjs.org/serve-static/-/serve-static-1.7.1.tgz',
+412 silly cache add   spec: 'https://registry.npmjs.org/serve-static/-/serve-static-1.7.1.tgz',
+412 silly cache add   type: 'remote' }
+413 silly mapToRegistry name serve-static@https://registry.npmjs.org/serve-static/-/serve-static-1.7.1.tgz
+414 silly mapToRegistry using default registry
+415 silly mapToRegistry registry https://registry.npm.taobao.org/
+416 silly mapToRegistry uri https://registry.npm.taobao.org/serve-static@https://registry.npmjs.org/serve-static/-/serve-static-1.7.1.tgz
+417 verbose addRemoteTarball https://registry.npmjs.org/serve-static/-/serve-static-1.7.1.tgz not in flight; adding
+418 verbose addRemoteTarball [ 'https://registry.npmjs.org/serve-static/-/serve-static-1.7.1.tgz',
+418 verbose addRemoteTarball   null ]
+419 silly cache add parsed spec { raw: 'shelljs@https://registry.npmjs.org/shelljs/-/shelljs-0.2.6.tgz',
+419 silly cache add   scope: null,
+419 silly cache add   name: 'shelljs',
+419 silly cache add   rawSpec: 'https://registry.npmjs.org/shelljs/-/shelljs-0.2.6.tgz',
+419 silly cache add   spec: 'https://registry.npmjs.org/shelljs/-/shelljs-0.2.6.tgz',
+419 silly cache add   type: 'remote' }
+420 silly mapToRegistry name shelljs@https://registry.npmjs.org/shelljs/-/shelljs-0.2.6.tgz
+421 silly mapToRegistry using default registry
+422 silly mapToRegistry registry https://registry.npm.taobao.org/
+423 silly mapToRegistry uri https://registry.npm.taobao.org/shelljs@https://registry.npmjs.org/shelljs/-/shelljs-0.2.6.tgz
+424 verbose addRemoteTarball https://registry.npmjs.org/shelljs/-/shelljs-0.2.6.tgz not in flight; adding
+425 verbose addRemoteTarball [ 'https://registry.npmjs.org/shelljs/-/shelljs-0.2.6.tgz',
+425 verbose addRemoteTarball   null ]
+426 silly cache add parsed spec { raw: 'tiny-lr-fork@https://registry.npmjs.org/tiny-lr-fork/-/tiny-lr-fork-0.0.5.tgz',
+426 silly cache add   scope: null,
+426 silly cache add   name: 'tiny-lr-fork',
+426 silly cache add   rawSpec: 'https://registry.npmjs.org/tiny-lr-fork/-/tiny-lr-fork-0.0.5.tgz',
+426 silly cache add   spec: 'https://registry.npmjs.org/tiny-lr-fork/-/tiny-lr-fork-0.0.5.tgz',
+426 silly cache add   type: 'remote' }
+427 silly mapToRegistry name tiny-lr-fork@https://registry.npmjs.org/tiny-lr-fork/-/tiny-lr-fork-0.0.5.tgz
+428 silly mapToRegistry using default registry
+429 silly mapToRegistry registry https://registry.npm.taobao.org/
+430 silly mapToRegistry uri https://registry.npm.taobao.org/tiny-lr-fork@https://registry.npmjs.org/tiny-lr-fork/-/tiny-lr-fork-0.0.5.tgz
+431 verbose addRemoteTarball https://registry.npmjs.org/tiny-lr-fork/-/tiny-lr-fork-0.0.5.tgz not in flight; adding
+432 verbose addRemoteTarball [ 'https://registry.npmjs.org/tiny-lr-fork/-/tiny-lr-fork-0.0.5.tgz',
+432 verbose addRemoteTarball   null ]
+433 silly cache add parsed spec { raw: 'underscore@https://registry.npmjs.org/underscore/-/underscore-1.7.0.tgz',
+433 silly cache add   scope: null,
+433 silly cache add   name: 'underscore',
+433 silly cache add   rawSpec: 'https://registry.npmjs.org/underscore/-/underscore-1.7.0.tgz',
+433 silly cache add   spec: 'https://registry.npmjs.org/underscore/-/underscore-1.7.0.tgz',
+433 silly cache add   type: 'remote' }
+434 silly mapToRegistry name underscore@https://registry.npmjs.org/underscore/-/underscore-1.7.0.tgz
+435 silly mapToRegistry using default registry
+436 silly mapToRegistry registry https://registry.npm.taobao.org/
+437 silly mapToRegistry uri https://registry.npm.taobao.org/underscore@https://registry.npmjs.org/underscore/-/underscore-1.7.0.tgz
+438 verbose addRemoteTarball https://registry.npmjs.org/underscore/-/underscore-1.7.0.tgz not in flight; adding
+439 verbose addRemoteTarball [ 'https://registry.npmjs.org/underscore/-/underscore-1.7.0.tgz',
+439 verbose addRemoteTarball   null ]
+440 silly cache add args [ 'unzip@https://registry.npmjs.org/unzip/-/unzip-0.1.9.tgz',
+440 silly cache add   null ]
+441 verbose cache add spec unzip@https://registry.npmjs.org/unzip/-/unzip-0.1.9.tgz
+442 silly cache add args [ 'vinyl-fs@https://registry.npmjs.org/vinyl-fs/-/vinyl-fs-0.3.7.tgz',
+442 silly cache add   null ]
+443 verbose cache add spec vinyl-fs@https://registry.npmjs.org/vinyl-fs/-/vinyl-fs-0.3.7.tgz
+444 silly cache add args [ 'xml2js@https://registry.npmjs.org/xml2js/-/xml2js-0.4.4.tgz',
+444 silly cache add   null ]
+445 verbose cache add spec xml2js@https://registry.npmjs.org/xml2js/-/xml2js-0.4.4.tgz
+446 silly cache add args [ 'archiver@https://registry.npmjs.org/archiver/-/archiver-0.5.1.tgz',
+446 silly cache add   null ]
+447 verbose cache add spec archiver@https://registry.npmjs.org/archiver/-/archiver-0.5.1.tgz
+448 silly cache add args [ 'async@https://registry.npmjs.org/async/-/async-0.9.2.tgz',
+448 silly cache add   null ]
+449 verbose cache add spec async@https://registry.npmjs.org/async/-/async-0.9.2.tgz
+450 silly cache add parsed spec { raw: 'unzip@https://registry.npmjs.org/unzip/-/unzip-0.1.9.tgz',
+450 silly cache add   scope: null,
+450 silly cache add   name: 'unzip',
+450 silly cache add   rawSpec: 'https://registry.npmjs.org/unzip/-/unzip-0.1.9.tgz',
+450 silly cache add   spec: 'https://registry.npmjs.org/unzip/-/unzip-0.1.9.tgz',
+450 silly cache add   type: 'remote' }
+451 silly mapToRegistry name unzip@https://registry.npmjs.org/unzip/-/unzip-0.1.9.tgz
+452 silly mapToRegistry using default registry
+453 silly mapToRegistry registry https://registry.npm.taobao.org/
+454 silly mapToRegistry uri https://registry.npm.taobao.org/unzip@https://registry.npmjs.org/unzip/-/unzip-0.1.9.tgz
+455 verbose addRemoteTarball https://registry.npmjs.org/unzip/-/unzip-0.1.9.tgz not in flight; adding
+456 verbose addRemoteTarball [ 'https://registry.npmjs.org/unzip/-/unzip-0.1.9.tgz', null ]
+457 silly cache add parsed spec { raw: 'vinyl-fs@https://registry.npmjs.org/vinyl-fs/-/vinyl-fs-0.3.7.tgz',
+457 silly cache add   scope: null,
+457 silly cache add   name: 'vinyl-fs',
+457 silly cache add   rawSpec: 'https://registry.npmjs.org/vinyl-fs/-/vinyl-fs-0.3.7.tgz',
+457 silly cache add   spec: 'https://registry.npmjs.org/vinyl-fs/-/vinyl-fs-0.3.7.tgz',
+457 silly cache add   type: 'remote' }
+458 silly mapToRegistry name vinyl-fs@https://registry.npmjs.org/vinyl-fs/-/vinyl-fs-0.3.7.tgz
+459 silly mapToRegistry using default registry
+460 silly mapToRegistry registry https://registry.npm.taobao.org/
+461 silly mapToRegistry uri https://registry.npm.taobao.org/vinyl-fs@https://registry.npmjs.org/vinyl-fs/-/vinyl-fs-0.3.7.tgz
+462 verbose addRemoteTarball https://registry.npmjs.org/vinyl-fs/-/vinyl-fs-0.3.7.tgz not in flight; adding
+463 verbose addRemoteTarball [ 'https://registry.npmjs.org/vinyl-fs/-/vinyl-fs-0.3.7.tgz',
+463 verbose addRemoteTarball   null ]
+464 silly cache add parsed spec { raw: 'xml2js@https://registry.npmjs.org/xml2js/-/xml2js-0.4.4.tgz',
+464 silly cache add   scope: null,
+464 silly cache add   name: 'xml2js',
+464 silly cache add   rawSpec: 'https://registry.npmjs.org/xml2js/-/xml2js-0.4.4.tgz',
+464 silly cache add   spec: 'https://registry.npmjs.org/xml2js/-/xml2js-0.4.4.tgz',
+464 silly cache add   type: 'remote' }
+465 silly mapToRegistry name xml2js@https://registry.npmjs.org/xml2js/-/xml2js-0.4.4.tgz
+466 silly mapToRegistry using default registry
+467 silly mapToRegistry registry https://registry.npm.taobao.org/
+468 silly mapToRegistry uri https://registry.npm.taobao.org/xml2js@https://registry.npmjs.org/xml2js/-/xml2js-0.4.4.tgz
+469 verbose addRemoteTarball https://registry.npmjs.org/xml2js/-/xml2js-0.4.4.tgz not in flight; adding
+470 verbose addRemoteTarball [ 'https://registry.npmjs.org/xml2js/-/xml2js-0.4.4.tgz', null ]
+471 silly cache add parsed spec { raw: 'archiver@https://registry.npmjs.org/archiver/-/archiver-0.5.1.tgz',
+471 silly cache add   scope: null,
+471 silly cache add   name: 'archiver',
+471 silly cache add   rawSpec: 'https://registry.npmjs.org/archiver/-/archiver-0.5.1.tgz',
+471 silly cache add   spec: 'https://registry.npmjs.org/archiver/-/archiver-0.5.1.tgz',
+471 silly cache add   type: 'remote' }
+472 silly mapToRegistry name archiver@https://registry.npmjs.org/archiver/-/archiver-0.5.1.tgz
+473 silly mapToRegistry using default registry
+474 silly mapToRegistry registry https://registry.npm.taobao.org/
+475 silly mapToRegistry uri https://registry.npm.taobao.org/archiver@https://registry.npmjs.org/archiver/-/archiver-0.5.1.tgz
+476 verbose addRemoteTarball https://registry.npmjs.org/archiver/-/archiver-0.5.1.tgz not in flight; adding
+477 verbose addRemoteTarball [ 'https://registry.npmjs.org/archiver/-/archiver-0.5.1.tgz',
+477 verbose addRemoteTarball   null ]
+478 silly cache add parsed spec { raw: 'async@https://registry.npmjs.org/async/-/async-0.9.2.tgz',
+478 silly cache add   scope: null,
+478 silly cache add   name: 'async',
+478 silly cache add   rawSpec: 'https://registry.npmjs.org/async/-/async-0.9.2.tgz',
+478 silly cache add   spec: 'https://registry.npmjs.org/async/-/async-0.9.2.tgz',
+478 silly cache add   type: 'remote' }
+479 silly mapToRegistry name async@https://registry.npmjs.org/async/-/async-0.9.2.tgz
+480 silly mapToRegistry using default registry
+481 silly mapToRegistry registry https://registry.npm.taobao.org/
+482 silly mapToRegistry uri https://registry.npm.taobao.org/async@https://registry.npmjs.org/async/-/async-0.9.2.tgz
+483 verbose addRemoteTarball https://registry.npmjs.org/async/-/async-0.9.2.tgz not in flight; adding
+484 verbose addRemoteTarball [ 'https://registry.npmjs.org/async/-/async-0.9.2.tgz', null ]
+485 info retry fetch attempt 1 at 16:38:05
+486 info attempt registry request try #1 at 16:38:05
+487 http fetch GET https://registry.npmjs.org/ncp/-/ncp-0.4.2.tgz
+488 info retry fetch attempt 1 at 16:38:05
+489 info attempt registry request try #1 at 16:38:05
+490 http fetch GET https://registry.npmjs.org/npm/-/npm-2.1.3.tgz
+491 info retry fetch attempt 1 at 16:38:05
+492 info attempt registry request try #1 at 16:38:05
+493 http fetch GET https://registry.npmjs.org/opbeat-ionic/-/opbeat-ionic-1.1.3.tgz
+494 info retry fetch attempt 1 at 16:38:05
+495 info attempt registry request try #1 at 16:38:05
+496 http fetch GET https://registry.npmjs.org/optimist/-/optimist-0.6.0.tgz
+497 info retry fetch attempt 1 at 16:38:05
+498 info attempt registry request try #1 at 16:38:05
+499 http fetch GET https://registry.npmjs.org/progress/-/progress-1.1.7.tgz
+500 info retry fetch attempt 1 at 16:38:05
+501 info attempt registry request try #1 at 16:38:05
+502 http fetch GET https://registry.npmjs.org/proxy-middleware/-/proxy-middleware-0.7.0.tgz
+503 info retry fetch attempt 1 at 16:38:05
+504 info attempt registry request try #1 at 16:38:05
+505 http fetch GET https://registry.npmjs.org/prompt/-/prompt-0.2.12.tgz
+506 info retry fetch attempt 1 at 16:38:05
+507 info attempt registry request try #1 at 16:38:05
+508 http fetch GET https://registry.npmjs.org/q/-/q-1.0.1.tgz
+509 info retry fetch attempt 1 at 16:38:05
+510 info attempt registry request try #1 at 16:38:05
+511 http fetch GET https://registry.npmjs.org/semver/-/semver-4.3.6.tgz
+512 info retry fetch attempt 1 at 16:38:05
+513 info attempt registry request try #1 at 16:38:05
+514 http fetch GET https://registry.npmjs.org/request/-/request-2.51.0.tgz
+515 info retry fetch attempt 1 at 16:38:05
+516 info attempt registry request try #1 at 16:38:05
+517 http fetch GET https://registry.npmjs.org/shelljs/-/shelljs-0.2.6.tgz
+518 info retry fetch attempt 1 at 16:38:05
+519 info attempt registry request try #1 at 16:38:05
+520 http fetch GET https://registry.npmjs.org/serve-static/-/serve-static-1.7.1.tgz
+521 info retry fetch attempt 1 at 16:38:05
+522 info attempt registry request try #1 at 16:38:05
+523 http fetch GET https://registry.npmjs.org/tiny-lr-fork/-/tiny-lr-fork-0.0.5.tgz
+524 info retry fetch attempt 1 at 16:38:05
+525 info attempt registry request try #1 at 16:38:05
+526 http fetch GET https://registry.npmjs.org/open/-/open-0.0.5.tgz
+527 info retry fetch attempt 1 at 16:38:05
+528 info attempt registry request try #1 at 16:38:05
+529 http fetch GET https://registry.npmjs.org/underscore/-/underscore-1.7.0.tgz
+530 info retry fetch attempt 1 at 16:38:05
+531 info attempt registry request try #1 at 16:38:05
+532 http fetch GET https://registry.npmjs.org/connect/-/connect-3.1.1.tgz
+533 verbose request uri https://registry.npm.taobao.org/ionic-app-lib
+534 verbose request no auth needed
+535 info attempt registry request try #1 at 16:38:05
+536 verbose etag "1433489287000"
+537 http request GET https://registry.npm.taobao.org/ionic-app-lib
+538 info retry fetch attempt 1 at 16:38:05
+539 info attempt registry request try #1 at 16:38:05
+540 http fetch GET https://registry.npmjs.org/unzip/-/unzip-0.1.9.tgz
+541 info retry fetch attempt 1 at 16:38:05
+542 info attempt registry request try #1 at 16:38:05
+543 http fetch GET https://registry.npmjs.org/vinyl-fs/-/vinyl-fs-0.3.7.tgz
+544 info retry fetch attempt 1 at 16:38:05
+545 info attempt registry request try #1 at 16:38:05
+546 http fetch GET https://registry.npmjs.org/xml2js/-/xml2js-0.4.4.tgz
+547 info retry fetch attempt 1 at 16:38:05
+548 info attempt registry request try #1 at 16:38:05
+549 http fetch GET https://registry.npmjs.org/archiver/-/archiver-0.5.1.tgz
+550 info retry fetch attempt 1 at 16:38:05
+551 info attempt registry request try #1 at 16:38:05
+552 http fetch GET https://registry.npmjs.org/async/-/async-0.9.2.tgz
+553 info retry fetch attempt 1 at 16:38:05
+554 info attempt registry request try #1 at 16:38:05
+555 http fetch GET https://registry.npmjs.org/crc/-/crc-3.2.1.tgz
+556 info retry fetch attempt 1 at 16:38:05
+557 info attempt registry request try #1 at 16:38:05
+558 http fetch GET https://registry.npmjs.org/connect-livereload/-/connect-livereload-0.5.2.tgz
+559 info retry fetch attempt 1 at 16:38:05
+560 info attempt registry request try #1 at 16:38:05
+561 http fetch GET https://registry.npmjs.org/event-stream/-/event-stream-3.0.20.tgz
+562 info retry fetch attempt 1 at 16:38:05
+563 info attempt registry request try #1 at 16:38:05
+564 http fetch GET https://registry.npmjs.org/form-data/-/form-data-0.1.4.tgz
+565 info retry fetch attempt 1 at 16:38:05
+566 info attempt registry request try #1 at 16:38:05
+567 http fetch GET https://registry.npmjs.org/finalhandler/-/finalhandler-0.2.0.tgz
+568 info retry fetch attempt 1 at 16:38:05
+569 info attempt registry request try #1 at 16:38:05
+570 http fetch GET https://registry.npmjs.org/cross-spawn/-/cross-spawn-0.2.3.tgz
+571 info retry fetch attempt 1 at 16:38:05
+572 info attempt registry request try #1 at 16:38:05
+573 http fetch GET https://registry.npmjs.org/gulp/-/gulp-3.8.8.tgz
+574 info retry fetch attempt 1 at 16:38:05
+575 info attempt registry request try #1 at 16:38:05
+576 http fetch GET https://registry.npmjs.org/cheerio/-/cheerio-0.19.0.tgz
+577 info retry fetch attempt 1 at 16:38:05
+578 info attempt registry request try #1 at 16:38:05
+579 http fetch GET https://registry.npmjs.org/cli-table/-/cli-table-0.3.1.tgz
+580 info retry fetch attempt 1 at 16:38:05
+581 info attempt registry request try #1 at 16:38:05
+582 http fetch GET https://registry.npmjs.org/colors/-/colors-0.6.2.tgz
+583 http 304 https://registry.npm.taobao.org/ionic-app-lib
+584 silly get cb [ 304,
+584 silly get   { server: 'nginx/1.1.19',
+584 silly get     date: 'Fri, 05 Jun 2015 08:38:05 GMT',
+584 silly get     connection: 'keep-alive',
+584 silly get     etag: '"1433489287000"',
+584 silly get     'x-readtime': '7' } ]
+585 verbose etag https://registry.npm.taobao.org/ionic-app-lib from cache
+586 verbose get saving ionic-app-lib to /Users/spon/.cnpm/registry.npm.taobao.org/ionic-app-lib/.cache.json
+587 silly cache afterAdd ionic-app-lib@0.1.0
+588 verbose afterAdd /Users/spon/.cnpm/ionic-app-lib/0.1.0/package/package.json not in flight; writing
+589 verbose afterAdd /Users/spon/.cnpm/ionic-app-lib/0.1.0/package/package.json written
+590 http fetch 200 https://registry.npmjs.org/npm/-/npm-2.1.3.tgz
+591 http fetch 200 https://registry.npmjs.org/unzip/-/unzip-0.1.9.tgz
+592 silly fetchAndShaCheck shasum 12ac4d05c0a19fc4546df4c50ae0a7f4706a9424
+593 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/unzip/-/unzip-0.1.9.tgz not in flight; adding
+594 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/unzip/-/unzip-0.1.9.tgz
+595 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/unzip/-/unzip-0.1.9.tgz
+596 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-663df01ce5b5
+597 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-663df01ce5b5 is being purged
+598 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-663df01ce5b5
+599 silly gunzTarPerm modes [ '755', '644' ]
+600 silly gunzTarPerm extractEntry package.json
+601 silly gunzTarPerm extractEntry .npmignore
+602 silly gunzTarPerm extractEntry README.md
+603 silly gunzTarPerm extractEntry LICENSE
+604 silly gunzTarPerm extractEntry unzip.js
+605 silly gunzTarPerm extractEntry .travis.yml
+606 silly gunzTarPerm extractEntry lib/entry.js
+607 silly gunzTarPerm extractEntry lib/extract.js
+608 silly gunzTarPerm extractEntry lib/parse.js
+609 silly gunzTarPerm extractEntry test/compressed.js
+610 silly gunzTarPerm extractEntry test/fileSizeUnknownFlag.js
+611 silly gunzTarPerm extractEntry test/pipeSingleEntry.js
+612 silly gunzTarPerm extractEntry test/uncompressed.js
+613 silly gunzTarPerm extractEntry testData/compressed-OSX-Finder/archive.zip
+614 silly gunzTarPerm extractEntry testData/compressed-OSX-Finder/inflated/dir/fileInsideDir.txt
+615 silly gunzTarPerm extractEntry testData/compressed-OSX-Finder/inflated/file.txt
+616 silly gunzTarPerm extractEntry testData/compressed-flags-set/archive.zip
+617 silly gunzTarPerm extractEntry testData/compressed-flags-set/inflated/dir/fileInsideDir.txt
+618 silly gunzTarPerm extractEntry testData/compressed-flags-set/inflated/file.txt
+619 silly gunzTarPerm extractEntry testData/compressed-standard/archive.zip
+620 silly gunzTarPerm extractEntry testData/compressed-standard/inflated/dir/fileInsideDir.txt
+621 silly gunzTarPerm extractEntry testData/compressed-standard/inflated/file.txt
+622 silly gunzTarPerm extractEntry testData/uncompressed/archive.zip
+623 silly gunzTarPerm extractEntry testData/uncompressed/inflated/dir/fileInsideDir.txt
+624 silly gunzTarPerm extractEntry testData/uncompressed/inflated/file.txt
+625 silly cache afterAdd unzip@0.1.9
+626 verbose afterAdd /Users/spon/.cnpm/unzip/0.1.9/package/package.json not in flight; writing
+627 verbose afterAdd /Users/spon/.cnpm/unzip/0.1.9/package/package.json written
+628 http fetch 200 https://registry.npmjs.org/optimist/-/optimist-0.6.0.tgz
+629 silly fetchAndShaCheck shasum 69424826f3405f79f142e6fc3d9ae58d4dbb9200
+630 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/optimist/-/optimist-0.6.0.tgz not in flight; adding
+631 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/optimist/-/optimist-0.6.0.tgz
+632 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/optimist/-/optimist-0.6.0.tgz
+633 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-fa034cba1229
+634 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-fa034cba1229 is being purged
+635 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-fa034cba1229
+636 silly gunzTarPerm modes [ '755', '644' ]
+637 silly gunzTarPerm extractEntry package.json
+638 silly gunzTarPerm extractEntry LICENSE
+639 silly gunzTarPerm extractEntry index.js
+640 silly gunzTarPerm extractEntry .travis.yml
+641 silly gunzTarPerm extractEntry example/bool.js
+642 silly gunzTarPerm extractEntry example/default_singles.js
+643 silly gunzTarPerm extractEntry example/divide.js
+644 silly gunzTarPerm extractEntry example/line_count.js
+645 silly gunzTarPerm extractEntry example/default_hash.js
+646 silly gunzTarPerm extractEntry example/line_count_wrap.js
+647 silly gunzTarPerm extractEntry example/nonopt.js
+648 silly gunzTarPerm extractEntry example/reflect.js
+649 silly gunzTarPerm extractEntry example/short.js
+650 silly gunzTarPerm extractEntry example/string.js
+651 silly gunzTarPerm extractEntry example/boolean_single.js
+652 silly gunzTarPerm extractEntry example/usage-options.js
+653 silly gunzTarPerm extractEntry example/boolean_double.js
+654 silly gunzTarPerm extractEntry example/xup.js
+655 silly gunzTarPerm extractEntry example/line_count_options.js
+656 silly gunzTarPerm extractEntry readme.markdown
+657 silly gunzTarPerm extractEntry test/_.js
+658 silly gunzTarPerm extractEntry test/dash.js
+659 silly gunzTarPerm extractEntry test/parse.js
+660 silly gunzTarPerm extractEntry test/parse_modified.js
+661 silly gunzTarPerm extractEntry test/short.js
+662 silly gunzTarPerm extractEntry test/usage.js
+663 silly gunzTarPerm extractEntry test/whitespace.js
+664 silly gunzTarPerm extractEntry test/_/argv.js
+665 silly gunzTarPerm extractEntry test/_/bin.js
+666 silly cache afterAdd optimist@0.6.0
+667 verbose afterAdd /Users/spon/.cnpm/optimist/0.6.0/package/package.json not in flight; writing
+668 verbose afterAdd /Users/spon/.cnpm/optimist/0.6.0/package/package.json written
+669 http fetch 200 https://registry.npmjs.org/xml2js/-/xml2js-0.4.4.tgz
+670 http fetch 200 https://registry.npmjs.org/ncp/-/ncp-0.4.2.tgz
+671 silly fetchAndShaCheck shasum abcc6cbd3ec2ed2a729ff6e7c1fa8f01784a8574
+672 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/ncp/-/ncp-0.4.2.tgz not in flight; adding
+673 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/ncp/-/ncp-0.4.2.tgz
+674 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/ncp/-/ncp-0.4.2.tgz
+675 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-42d876019920
+676 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-42d876019920 is being purged
+677 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-42d876019920
+678 silly gunzTarPerm modes [ '755', '644' ]
+679 silly gunzTarPerm extractEntry package.json
+680 silly gunzTarPerm extractEntry .npmignore
+681 silly gunzTarPerm extractEntry README.md
+682 silly gunzTarPerm extractEntry .travis.yml
+683 silly gunzTarPerm extractEntry bin/ncp
+684 silly gunzTarPerm extractEntry lib/ncp.js
+685 silly gunzTarPerm extractEntry LICENSE.md
+686 silly gunzTarPerm extractEntry test/ncp-test.js
+687 silly gunzTarPerm extractEntry test/fixtures/src/a
+688 silly gunzTarPerm extractEntry test/fixtures/src/b
+689 silly gunzTarPerm extractEntry test/fixtures/src/c
+690 silly gunzTarPerm extractEntry test/fixtures/src/d
+691 silly gunzTarPerm extractEntry test/fixtures/src/e
+692 silly gunzTarPerm extractEntry test/fixtures/src/f
+693 silly gunzTarPerm extractEntry test/fixtures/src/sub/a
+694 silly gunzTarPerm extractEntry test/fixtures/src/sub/b
+695 silly cache afterAdd ncp@0.4.2
+696 verbose afterAdd /Users/spon/.cnpm/ncp/0.4.2/package/package.json not in flight; writing
+697 verbose afterAdd /Users/spon/.cnpm/ncp/0.4.2/package/package.json written
+698 silly fetchAndShaCheck shasum 3111010003008ae19240eba17497b57c729c555d
+699 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/xml2js/-/xml2js-0.4.4.tgz not in flight; adding
+700 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/xml2js/-/xml2js-0.4.4.tgz
+701 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/xml2js/-/xml2js-0.4.4.tgz
+702 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-59b973c3b214
+703 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-59b973c3b214 is being purged
+704 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-59b973c3b214
+705 silly gunzTarPerm modes [ '755', '644' ]
+706 silly gunzTarPerm extractEntry package.json
+707 silly gunzTarPerm extractEntry .npmignore
+708 silly gunzTarPerm extractEntry README.md
+709 silly gunzTarPerm extractEntry LICENSE
+710 silly gunzTarPerm extractEntry x.js
+711 silly gunzTarPerm extractEntry incompat2.js
+712 silly gunzTarPerm extractEntry canon.xml
+713 silly gunzTarPerm extractEntry incompat.coffee
+714 silly gunzTarPerm extractEntry 83.coffee
+715 silly gunzTarPerm extractEntry lib/bom.js
+716 silly gunzTarPerm extractEntry lib/processors.js
+717 silly gunzTarPerm extractEntry lib/xml2js.js
+718 silly gunzTarPerm extractEntry text.xml
+719 silly gunzTarPerm extractEntry CONTRIBUTING.md
+720 silly gunzTarPerm extractEntry .travis.yml
+721 silly gunzTarPerm extractEntry text.coffee
+722 silly cache afterAdd xml2js@0.4.4
+723 verbose afterAdd /Users/spon/.cnpm/xml2js/0.4.4/package/package.json not in flight; writing
+724 verbose afterAdd /Users/spon/.cnpm/xml2js/0.4.4/package/package.json written
+725 http fetch 200 https://registry.npmjs.org/form-data/-/form-data-0.1.4.tgz
+726 silly fetchAndShaCheck shasum 91abd788aba9702b1aabfa8bc01031a2ac9e3b12
+727 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/form-data/-/form-data-0.1.4.tgz not in flight; adding
+728 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/form-data/-/form-data-0.1.4.tgz
+729 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/form-data/-/form-data-0.1.4.tgz
+730 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-1e860aff94d9
+731 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-1e860aff94d9 is being purged
+732 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-1e860aff94d9
+733 silly gunzTarPerm modes [ '755', '644' ]
+734 silly gunzTarPerm extractEntry package.json
+735 silly gunzTarPerm extractEntry License
+736 silly gunzTarPerm modified mode [ 'License', 438, 420 ]
+737 silly gunzTarPerm extractEntry Readme.md
+738 silly gunzTarPerm extractEntry lib/form_data.js
+739 silly cache afterAdd form-data@0.1.4
+740 verbose afterAdd /Users/spon/.cnpm/form-data/0.1.4/package/package.json not in flight; writing
+741 verbose afterAdd /Users/spon/.cnpm/form-data/0.1.4/package/package.json written
+742 http fetch 200 https://registry.npmjs.org/event-stream/-/event-stream-3.0.20.tgz
+743 silly fetchAndShaCheck shasum 038bbb2ea9ea90385b26fbc1854d0b539f2abea3
+744 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/event-stream/-/event-stream-3.0.20.tgz not in flight; adding
+745 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/event-stream/-/event-stream-3.0.20.tgz
+746 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/event-stream/-/event-stream-3.0.20.tgz
+747 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-5b9a81f545a3
+748 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-5b9a81f545a3 is being purged
+749 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-5b9a81f545a3
+750 silly gunzTarPerm modes [ '755', '644' ]
+751 silly gunzTarPerm extractEntry package.json
+752 silly gunzTarPerm extractEntry .npmignore
+753 silly gunzTarPerm extractEntry LICENCE
+754 silly gunzTarPerm extractEntry index.js
+755 silly gunzTarPerm extractEntry .travis.yml
+756 silly gunzTarPerm extractEntry examples/pretty.js
+757 silly gunzTarPerm extractEntry readme.markdown
+758 silly gunzTarPerm extractEntry test/connect.asynct.js
+759 silly gunzTarPerm extractEntry test/merge.asynct.js
+760 silly gunzTarPerm extractEntry test/pause.asynct.js
+761 silly gunzTarPerm extractEntry test/pipeline.asynct.js
+762 silly gunzTarPerm extractEntry test/readArray.asynct.js
+763 silly gunzTarPerm extractEntry test/stringify.js
+764 silly gunzTarPerm extractEntry test/replace.asynct.js
+765 silly gunzTarPerm extractEntry test/simple-map.asynct.js
+766 silly gunzTarPerm extractEntry test/spec.asynct.js
+767 silly gunzTarPerm extractEntry test/split.asynct.js
+768 silly gunzTarPerm extractEntry test/writeArray.asynct.js
+769 silly gunzTarPerm extractEntry test/readable.asynct.js
+770 silly gunzTarPerm extractEntry test/helper/index.js
+771 silly cache afterAdd event-stream@3.0.20
+772 verbose afterAdd /Users/spon/.cnpm/event-stream/3.0.20/package/package.json not in flight; writing
+773 verbose afterAdd /Users/spon/.cnpm/event-stream/3.0.20/package/package.json written
+774 http fetch 200 https://registry.npmjs.org/connect-livereload/-/connect-livereload-0.5.2.tgz
+775 silly fetchAndShaCheck shasum 476878c372dd84ef99081f3fd36aa36a7aaef2aa
+776 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/connect-livereload/-/connect-livereload-0.5.2.tgz not in flight; adding
+777 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/connect-livereload/-/connect-livereload-0.5.2.tgz
+778 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/connect-livereload/-/connect-livereload-0.5.2.tgz
+779 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-938ce0e8b7a9
+780 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-938ce0e8b7a9 is being purged
+781 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-938ce0e8b7a9
+782 silly gunzTarPerm modes [ '755', '644' ]
+783 silly gunzTarPerm extractEntry package.json
+784 silly gunzTarPerm extractEntry .npmignore
+785 silly gunzTarPerm extractEntry README.md
+786 silly gunzTarPerm extractEntry LICENSE
+787 silly gunzTarPerm extractEntry index.js
+788 silly gunzTarPerm extractEntry .travis.yml
+789 http fetch 200 https://registry.npmjs.org/progress/-/progress-1.1.7.tgz
+790 silly fetchAndShaCheck shasum 0c739597be1cceb68e9a66d4a70fd92705aa975b
+791 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/progress/-/progress-1.1.7.tgz not in flight; adding
+792 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/progress/-/progress-1.1.7.tgz
+793 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/progress/-/progress-1.1.7.tgz
+794 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-7c155516bdc0
+795 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-7c155516bdc0 is being purged
+796 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-7c155516bdc0
+797 silly gunzTarPerm modes [ '755', '644' ]
+798 silly gunzTarPerm extractEntry package.json
+799 silly gunzTarPerm extractEntry .npmignore
+800 silly gunzTarPerm extractEntry LICENSE
+801 silly gunzTarPerm extractEntry index.js
+802 silly gunzTarPerm extractEntry History.md
+803 silly cache afterAdd connect-livereload@0.5.2
+804 verbose afterAdd /Users/spon/.cnpm/connect-livereload/0.5.2/package/package.json not in flight; writing
+805 silly gunzTarPerm extractEntry Makefile
+806 silly gunzTarPerm extractEntry Readme.md
+807 verbose afterAdd /Users/spon/.cnpm/connect-livereload/0.5.2/package/package.json written
+808 silly gunzTarPerm extractEntry lib/node-progress.js
+809 silly cache afterAdd progress@1.1.7
+810 verbose afterAdd /Users/spon/.cnpm/progress/1.1.7/package/package.json not in flight; writing
+811 verbose afterAdd /Users/spon/.cnpm/progress/1.1.7/package/package.json written
+812 http fetch 200 https://registry.npmjs.org/cross-spawn/-/cross-spawn-0.2.3.tgz
+813 silly fetchAndShaCheck shasum 9b40ef3270fbdfba9a0ad42fec9db2c40027d08c
+814 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/cross-spawn/-/cross-spawn-0.2.3.tgz not in flight; adding
+815 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/cross-spawn/-/cross-spawn-0.2.3.tgz
+816 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/cross-spawn/-/cross-spawn-0.2.3.tgz
+817 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-e07d0969fe6a
+818 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-e07d0969fe6a is being purged
+819 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-e07d0969fe6a
+820 silly gunzTarPerm modes [ '755', '644' ]
+821 silly gunzTarPerm extractEntry package.json
+822 silly gunzTarPerm extractEntry .npmignore
+823 silly gunzTarPerm extractEntry README.md
+824 silly gunzTarPerm extractEntry LICENSE
+825 silly gunzTarPerm extractEntry index.js
+826 silly gunzTarPerm extractEntry .editorconfig
+827 silly gunzTarPerm extractEntry .jshintrc
+828 silly gunzTarPerm extractEntry .travis.yml
+829 silly cache afterAdd cross-spawn@0.2.3
+830 verbose afterAdd /Users/spon/.cnpm/cross-spawn/0.2.3/package/package.json not in flight; writing
+831 verbose afterAdd /Users/spon/.cnpm/cross-spawn/0.2.3/package/package.json written
+832 http fetch 200 https://registry.npmjs.org/archiver/-/archiver-0.5.1.tgz
+833 http fetch 200 https://registry.npmjs.org/shelljs/-/shelljs-0.2.6.tgz
+834 silly fetchAndShaCheck shasum 90492d72ffcc8159976baba62fb0f6884f0c3378
+835 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/shelljs/-/shelljs-0.2.6.tgz not in flight; adding
+836 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/shelljs/-/shelljs-0.2.6.tgz
+837 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/shelljs/-/shelljs-0.2.6.tgz
+838 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-95815f52d8e0
+839 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-95815f52d8e0 is being purged
+840 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-95815f52d8e0
+841 silly gunzTarPerm modes [ '755', '644' ]
+842 silly gunzTarPerm extractEntry package.json
+843 silly gunzTarPerm extractEntry .npmignore
+844 silly gunzTarPerm extractEntry README.md
+845 silly gunzTarPerm extractEntry LICENSE
+846 silly gunzTarPerm extractEntry global.js
+847 silly gunzTarPerm extractEntry make.js
+848 silly gunzTarPerm extractEntry shell.js
+849 silly gunzTarPerm extractEntry bin/shjs
+850 silly gunzTarPerm extractEntry .travis.yml
+851 silly gunzTarPerm extractEntry .jshintrc
+852 silly gunzTarPerm extractEntry scripts/generate-docs.js
+853 silly gunzTarPerm extractEntry scripts/run-tests.js
+854 silly gunzTarPerm extractEntry .documentup.json
+855 silly gunzTarPerm extractEntry src/cat.js
+856 silly gunzTarPerm extractEntry src/exec.js
+857 silly gunzTarPerm extractEntry src/find.js
+858 silly gunzTarPerm extractEntry src/grep.js
+859 silly gunzTarPerm extractEntry src/ls.js
+860 silly gunzTarPerm extractEntry src/error.js
+861 silly gunzTarPerm extractEntry src/mv.js
+862 silly gunzTarPerm extractEntry src/popd.js
+863 silly gunzTarPerm extractEntry src/pushd.js
+864 silly gunzTarPerm extractEntry src/pwd.js
+865 silly gunzTarPerm extractEntry src/rm.js
+866 silly gunzTarPerm extractEntry src/echo.js
+867 silly gunzTarPerm extractEntry src/sed.js
+868 silly gunzTarPerm extractEntry src/dirs.js
+869 silly gunzTarPerm extractEntry src/tempdir.js
+870 silly gunzTarPerm extractEntry src/cp.js
+871 silly gunzTarPerm extractEntry src/test.js
+872 silly gunzTarPerm extractEntry src/common.js
+873 silly gunzTarPerm extractEntry src/to.js
+874 silly gunzTarPerm extractEntry src/chmod.js
+875 silly gunzTarPerm extractEntry src/toEnd.js
+876 silly gunzTarPerm extractEntry src/cd.js
+877 silly gunzTarPerm extractEntry src/which.js
+878 silly gunzTarPerm extractEntry src/mkdir.js
+879 http fetch 200 https://registry.npmjs.org/vinyl-fs/-/vinyl-fs-0.3.7.tgz
+880 silly fetchAndShaCheck shasum 2e25cfe6df5c80818f97ff417bf5c21a41e4a49b
+881 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/vinyl-fs/-/vinyl-fs-0.3.7.tgz not in flight; adding
+882 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/vinyl-fs/-/vinyl-fs-0.3.7.tgz
+883 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/vinyl-fs/-/vinyl-fs-0.3.7.tgz
+884 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-8168b4ed4f7e
+885 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-8168b4ed4f7e is being purged
+886 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-8168b4ed4f7e
+887 silly gunzTarPerm modes [ '755', '644' ]
+888 silly gunzTarPerm extractEntry package.json
+889 silly gunzTarPerm extractEntry .npmignore
+890 silly gunzTarPerm extractEntry README.md
+891 silly gunzTarPerm extractEntry LICENSE
+892 silly gunzTarPerm extractEntry index.js
+893 silly gunzTarPerm extractEntry .jshintrc
+894 silly gunzTarPerm extractEntry .travis.yml
+895 silly gunzTarPerm extractEntry lib/dest/index.js
+896 silly gunzTarPerm extractEntry lib/dest/writeContents/index.js
+897 silly gunzTarPerm extractEntry lib/dest/writeContents/writeBuffer.js
+898 silly gunzTarPerm extractEntry lib/dest/writeContents/writeDir.js
+899 silly gunzTarPerm extractEntry lib/dest/writeContents/writeStream.js
+900 silly gunzTarPerm extractEntry lib/src/getStats.js
+901 silly gunzTarPerm extractEntry lib/src/index.js
+902 silly gunzTarPerm extractEntry lib/src/getContents/bufferFile.js
+903 silly gunzTarPerm extractEntry lib/src/getContents/index.js
+904 silly gunzTarPerm extractEntry lib/src/getContents/readDir.js
+905 silly gunzTarPerm extractEntry lib/src/getContents/streamFile.js
+906 silly gunzTarPerm extractEntry .editorconfig
+907 silly gunzTarPerm extractEntry test/dest.js
+908 silly gunzTarPerm extractEntry test/spy.js
+909 silly gunzTarPerm extractEntry test/src.js
+910 silly gunzTarPerm extractEntry test/fixtures/bom-utf16be.txt
+911 silly gunzTarPerm extractEntry test/fixtures/bom-utf16le.txt
+912 silly gunzTarPerm extractEntry test/fixtures/bom-utf8.txt
+913 silly gunzTarPerm extractEntry test/fixtures/test.coffee
+914 silly gunzTarPerm extractEntry test/fixtures/wow/suchempty
+915 silly cache afterAdd shelljs@0.2.6
+916 verbose afterAdd /Users/spon/.cnpm/shelljs/0.2.6/package/package.json not in flight; writing
+917 verbose afterAdd /Users/spon/.cnpm/shelljs/0.2.6/package/package.json written
+918 silly cache afterAdd vinyl-fs@0.3.7
+919 verbose afterAdd /Users/spon/.cnpm/vinyl-fs/0.3.7/package/package.json not in flight; writing
+920 verbose afterAdd /Users/spon/.cnpm/vinyl-fs/0.3.7/package/package.json written
+921 silly fetchAndShaCheck shasum 0ed2a882d9903e542d79b3131a4445c91167c84d
+922 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/archiver/-/archiver-0.5.1.tgz not in flight; adding
+923 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/archiver/-/archiver-0.5.1.tgz
+924 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/archiver/-/archiver-0.5.1.tgz
+925 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-252a4342644d
+926 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-252a4342644d is being purged
+927 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-252a4342644d
+928 silly gunzTarPerm modes [ '755', '644' ]
+929 silly gunzTarPerm extractEntry package.json
+930 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+931 silly gunzTarPerm extractEntry .npmignore
+932 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+933 silly gunzTarPerm extractEntry README.md
+934 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+935 silly gunzTarPerm extractEntry CHANGELOG
+936 silly gunzTarPerm modified mode [ 'CHANGELOG', 438, 420 ]
+937 silly gunzTarPerm extractEntry CONTRIBUTING.md
+938 silly gunzTarPerm modified mode [ 'CONTRIBUTING.md', 438, 420 ]
+939 silly gunzTarPerm extractEntry examples/pack-bulk.js
+940 silly gunzTarPerm modified mode [ 'examples/pack-bulk.js', 438, 420 ]
+941 silly gunzTarPerm extractEntry examples/pack-tar.js
+942 silly gunzTarPerm modified mode [ 'examples/pack-tar.js', 438, 420 ]
+943 silly gunzTarPerm extractEntry examples/pack-tgz.js
+944 silly gunzTarPerm modified mode [ 'examples/pack-tgz.js', 438, 420 ]
+945 silly gunzTarPerm extractEntry examples/pack-zip.js
+946 silly gunzTarPerm modified mode [ 'examples/pack-zip.js', 438, 420 ]
+947 silly gunzTarPerm extractEntry examples/fixtures/file1.txt
+948 silly gunzTarPerm modified mode [ 'examples/fixtures/file1.txt', 438, 420 ]
+949 silly gunzTarPerm extractEntry examples/fixtures/file2.txt
+950 silly gunzTarPerm modified mode [ 'examples/fixtures/file2.txt', 438, 420 ]
+951 silly gunzTarPerm extractEntry .travis.yml
+952 silly gunzTarPerm modified mode [ '.travis.yml', 438, 420 ]
+953 silly gunzTarPerm extractEntry lib/archiver.js
+954 silly gunzTarPerm modified mode [ 'lib/archiver.js', 438, 420 ]
+955 silly gunzTarPerm extractEntry lib/modules/core/index.js
+956 silly gunzTarPerm modified mode [ 'lib/modules/core/index.js', 438, 420 ]
+957 silly gunzTarPerm extractEntry lib/modules/core/queue.js
+958 silly gunzTarPerm modified mode [ 'lib/modules/core/queue.js', 438, 420 ]
+959 silly gunzTarPerm extractEntry lib/modules/json/index.js
+960 silly gunzTarPerm modified mode [ 'lib/modules/json/index.js', 438, 420 ]
+961 silly gunzTarPerm extractEntry lib/modules/tar/headers.js
+962 silly gunzTarPerm modified mode [ 'lib/modules/tar/headers.js', 438, 420 ]
+963 silly gunzTarPerm extractEntry lib/modules/tar/index.js
+964 silly gunzTarPerm modified mode [ 'lib/modules/tar/index.js', 438, 420 ]
+965 silly gunzTarPerm extractEntry lib/modules/zip/index.js
+966 silly gunzTarPerm modified mode [ 'lib/modules/zip/index.js', 438, 420 ]
+967 silly gunzTarPerm extractEntry lib/util/ChecksumStream.js
+968 silly gunzTarPerm modified mode [ 'lib/util/ChecksumStream.js', 438, 420 ]
+969 silly gunzTarPerm extractEntry lib/util/crc32.js
+970 silly gunzTarPerm modified mode [ 'lib/util/crc32.js', 438, 420 ]
+971 silly gunzTarPerm extractEntry lib/util/index.js
+972 silly gunzTarPerm modified mode [ 'lib/util/index.js', 438, 420 ]
+973 silly gunzTarPerm extractEntry LICENSE-MIT
+974 silly gunzTarPerm modified mode [ 'LICENSE-MIT', 438, 420 ]
+975 silly gunzTarPerm extractEntry test/archiver.js
+976 silly gunzTarPerm modified mode [ 'test/archiver.js', 438, 420 ]
+977 silly gunzTarPerm extractEntry test/headers.js
+978 silly gunzTarPerm modified mode [ 'test/headers.js', 438, 420 ]
+979 silly gunzTarPerm extractEntry test/util.js
+980 silly gunzTarPerm modified mode [ 'test/util.js', 438, 420 ]
+981 silly gunzTarPerm extractEntry test/fixtures/directory/level0.txt
+982 silly gunzTarPerm modified mode [ 'test/fixtures/directory/level0.txt', 438, 420 ]
+983 silly gunzTarPerm extractEntry test/fixtures/directory/subdir/level1.txt
+984 silly gunzTarPerm modified mode [ 'test/fixtures/directory/subdir/level1.txt', 438, 420 ]
+985 silly gunzTarPerm extractEntry test/fixtures/directory/subdir/subsub/level2.txt
+986 silly gunzTarPerm modified mode [ 'test/fixtures/directory/subdir/subsub/level2.txt', 438, 420 ]
+987 silly gunzTarPerm extractEntry test/fixtures/empty.txt
+988 silly gunzTarPerm modified mode [ 'test/fixtures/empty.txt', 438, 420 ]
+989 silly gunzTarPerm extractEntry test/fixtures/headers/tar-file.bin
+990 silly gunzTarPerm modified mode [ 'test/fixtures/headers/tar-file.bin', 438, 420 ]
+991 silly gunzTarPerm extractEntry test/fixtures/headers/tar-fileprefix.bin
+992 silly gunzTarPerm modified mode [ 'test/fixtures/headers/tar-fileprefix.bin', 438, 420 ]
+993 silly gunzTarPerm extractEntry test/fixtures/headers/zip-centralfooter.bin
+994 silly gunzTarPerm modified mode [ 'test/fixtures/headers/zip-centralfooter.bin', 438, 420 ]
+995 silly gunzTarPerm extractEntry test/fixtures/headers/zip-centralheader.bin
+996 silly gunzTarPerm modified mode [ 'test/fixtures/headers/zip-centralheader.bin', 438, 420 ]
+997 silly gunzTarPerm extractEntry test/fixtures/headers/zip-data.bin
+998 silly gunzTarPerm modified mode [ 'test/fixtures/headers/zip-data.bin', 438, 420 ]
+999 silly gunzTarPerm extractEntry test/fixtures/headers/zip-file.bin
+1000 silly gunzTarPerm modified mode [ 'test/fixtures/headers/zip-file.bin', 438, 420 ]
+1001 silly gunzTarPerm extractEntry test/fixtures/headers/zip-filedescriptor.bin
+1002 silly gunzTarPerm modified mode [ 'test/fixtures/headers/zip-filedescriptor.bin', 438, 420 ]
+1003 silly gunzTarPerm extractEntry test/fixtures/test.txt
+1004 silly gunzTarPerm modified mode [ 'test/fixtures/test.txt', 438, 420 ]
+1005 silly gunzTarPerm extractEntry test/helpers/common.js
+1006 silly gunzTarPerm modified mode [ 'test/helpers/common.js', 438, 420 ]
+1007 silly gunzTarPerm extractEntry benchmark/common.js
+1008 silly gunzTarPerm modified mode [ 'benchmark/common.js', 438, 420 ]
+1009 silly gunzTarPerm extractEntry benchmark/simple/pack-zip.js
+1010 silly gunzTarPerm modified mode [ 'benchmark/simple/pack-zip.js', 438, 420 ]
+1011 silly gunzTarPerm extractEntry formats/tar.md
+1012 silly gunzTarPerm modified mode [ 'formats/tar.md', 438, 420 ]
+1013 silly cache afterAdd archiver@0.5.1
+1014 verbose afterAdd /Users/spon/.cnpm/archiver/0.5.1/package/package.json not in flight; writing
+1015 verbose afterAdd /Users/spon/.cnpm/archiver/0.5.1/package/package.json written
+1016 http fetch 200 https://registry.npmjs.org/request/-/request-2.51.0.tgz
+1017 http fetch 200 https://registry.npmjs.org/q/-/q-1.0.1.tgz
+1018 http fetch 200 https://registry.npmjs.org/proxy-middleware/-/proxy-middleware-0.7.0.tgz
+1019 silly fetchAndShaCheck shasum b34cb956875edefbd5f9899c57acf101d980af95
+1020 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/proxy-middleware/-/proxy-middleware-0.7.0.tgz not in flight; adding
+1021 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/proxy-middleware/-/proxy-middleware-0.7.0.tgz
+1022 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/proxy-middleware/-/proxy-middleware-0.7.0.tgz
+1023 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-06b09035e3dd
+1024 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-06b09035e3dd is being purged
+1025 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-06b09035e3dd
+1026 silly gunzTarPerm modes [ '755', '644' ]
+1027 silly gunzTarPerm extractEntry package.json
+1028 silly gunzTarPerm modified mode [ 'package.json', 436, 420 ]
+1029 silly gunzTarPerm extractEntry .npmignore
+1030 silly gunzTarPerm modified mode [ '.npmignore', 436, 420 ]
+1031 silly gunzTarPerm extractEntry README.md
+1032 silly gunzTarPerm modified mode [ 'README.md', 436, 420 ]
+1033 silly gunzTarPerm extractEntry LICENSE
+1034 silly gunzTarPerm modified mode [ 'LICENSE', 436, 420 ]
+1035 silly gunzTarPerm extractEntry index.js
+1036 silly gunzTarPerm modified mode [ 'index.js', 436, 420 ]
+1037 silly gunzTarPerm extractEntry .travis.yml
+1038 silly gunzTarPerm modified mode [ '.travis.yml', 436, 420 ]
+1039 silly cache afterAdd proxy-middleware@0.7.0
+1040 verbose afterAdd /Users/spon/.cnpm/proxy-middleware/0.7.0/package/package.json not in flight; writing
+1041 verbose afterAdd /Users/spon/.cnpm/proxy-middleware/0.7.0/package/package.json written
+1042 http fetch 200 https://registry.npmjs.org/open/-/open-0.0.5.tgz
+1043 silly fetchAndShaCheck shasum 42c3e18ec95466b6bf0dc42f3a2945c3f0cad8fc
+1044 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/open/-/open-0.0.5.tgz not in flight; adding
+1045 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/open/-/open-0.0.5.tgz
+1046 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/open/-/open-0.0.5.tgz
+1047 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-d7eb9b4a05c9
+1048 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-d7eb9b4a05c9 is being purged
+1049 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-d7eb9b4a05c9
+1050 silly gunzTarPerm modes [ '755', '644' ]
+1051 silly gunzTarPerm extractEntry package.json
+1052 silly gunzTarPerm extractEntry .npmignore
+1053 silly gunzTarPerm extractEntry README.md
+1054 silly gunzTarPerm extractEntry LICENSE
+1055 silly gunzTarPerm extractEntry .jshintignore
+1056 silly gunzTarPerm extractEntry .jshintrc
+1057 silly gunzTarPerm extractEntry lib/open.js
+1058 silly gunzTarPerm extractEntry vendor/xdg-open
+1059 silly cache afterAdd open@0.0.5
+1060 verbose afterAdd /Users/spon/.cnpm/open/0.0.5/package/package.json not in flight; writing
+1061 verbose afterAdd /Users/spon/.cnpm/open/0.0.5/package/package.json written
+1062 silly fetchAndShaCheck shasum 11872aeedee89268110b10a718448ffb10112a14
+1063 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/q/-/q-1.0.1.tgz not in flight; adding
+1064 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/q/-/q-1.0.1.tgz
+1065 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/q/-/q-1.0.1.tgz
+1066 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-15c0da199149
+1067 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-15c0da199149 is being purged
+1068 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-15c0da199149
+1069 silly gunzTarPerm modes [ '755', '644' ]
+1070 silly gunzTarPerm extractEntry package.json
+1071 silly gunzTarPerm extractEntry README.md
+1072 silly gunzTarPerm extractEntry LICENSE
+1073 silly gunzTarPerm extractEntry q.js
+1074 silly gunzTarPerm extractEntry queue.js
+1075 silly gunzTarPerm extractEntry CONTRIBUTING.md
+1076 silly gunzTarPerm extractEntry benchmark/compare-with-callbacks.js
+1077 silly gunzTarPerm extractEntry benchmark/scenarios.js
+1078 silly cache afterAdd q@1.0.1
+1079 verbose afterAdd /Users/spon/.cnpm/q/1.0.1/package/package.json not in flight; writing
+1080 verbose afterAdd /Users/spon/.cnpm/q/1.0.1/package/package.json written
+1081 http fetch 200 https://registry.npmjs.org/cheerio/-/cheerio-0.19.0.tgz
+1082 http fetch 200 https://registry.npmjs.org/opbeat-ionic/-/opbeat-ionic-1.1.3.tgz
+1083 silly fetchAndShaCheck shasum 666aebbacf35fc7b243b71443b3173c65dc4d8a1
+1084 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/opbeat-ionic/-/opbeat-ionic-1.1.3.tgz not in flight; adding
+1085 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/opbeat-ionic/-/opbeat-ionic-1.1.3.tgz
+1086 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/opbeat-ionic/-/opbeat-ionic-1.1.3.tgz
+1087 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-7ddff2dda4fd
+1088 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-7ddff2dda4fd is being purged
+1089 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-7ddff2dda4fd
+1090 silly gunzTarPerm modes [ '755', '644' ]
+1091 silly gunzTarPerm extractEntry package.json
+1092 silly gunzTarPerm extractEntry .npmignore
+1093 silly gunzTarPerm extractEntry README.md
+1094 silly gunzTarPerm extractEntry LICENSE
+1095 silly gunzTarPerm extractEntry index.js
+1096 silly gunzTarPerm extractEntry .travis.yml
+1097 silly gunzTarPerm extractEntry History.md
+1098 silly gunzTarPerm extractEntry lib/config.js
+1099 silly gunzTarPerm extractEntry lib/parsers.js
+1100 silly gunzTarPerm extractEntry lib/request.js
+1101 silly gunzTarPerm extractEntry lib/middleware/connect.js
+1102 silly gunzTarPerm extractEntry test/_helpers.js
+1103 silly gunzTarPerm extractEntry test/client.js
+1104 silly gunzTarPerm extractEntry test/parsers.js
+1105 silly gunzTarPerm extractEntry test/request.js
+1106 silly gunzTarPerm extractEntry test/scripts/cli.js
+1107 silly cache afterAdd opbeat-ionic@1.1.3
+1108 verbose afterAdd /Users/spon/.cnpm/opbeat-ionic/1.1.3/package/package.json not in flight; writing
+1109 verbose afterAdd /Users/spon/.cnpm/opbeat-ionic/1.1.3/package/package.json written
+1110 http fetch 200 https://registry.npmjs.org/async/-/async-0.9.2.tgz
+1111 http fetch 200 https://registry.npmjs.org/underscore/-/underscore-1.7.0.tgz
+1112 silly fetchAndShaCheck shasum 6bbaf0877500d36be34ecaa584e0db9fef035209
+1113 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/underscore/-/underscore-1.7.0.tgz not in flight; adding
+1114 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/underscore/-/underscore-1.7.0.tgz
+1115 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/underscore/-/underscore-1.7.0.tgz
+1116 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-ccdeece2cb80
+1117 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-ccdeece2cb80 is being purged
+1118 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-ccdeece2cb80
+1119 silly gunzTarPerm modes [ '755', '644' ]
+1120 silly gunzTarPerm extractEntry package.json
+1121 silly gunzTarPerm extractEntry README.md
+1122 silly gunzTarPerm extractEntry LICENSE
+1123 silly gunzTarPerm extractEntry underscore-min.js
+1124 silly gunzTarPerm extractEntry underscore.js
+1125 silly cache afterAdd underscore@1.7.0
+1126 verbose afterAdd /Users/spon/.cnpm/underscore/1.7.0/package/package.json not in flight; writing
+1127 verbose afterAdd /Users/spon/.cnpm/underscore/1.7.0/package/package.json written
+1128 silly fetchAndShaCheck shasum aea74d5e61c1f899613bf64bda66d4c78f2fd17d
+1129 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/async/-/async-0.9.2.tgz not in flight; adding
+1130 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/async/-/async-0.9.2.tgz
+1131 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/async/-/async-0.9.2.tgz
+1132 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-da12a695e603
+1133 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-da12a695e603 is being purged
+1134 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-da12a695e603
+1135 silly gunzTarPerm modes [ '755', '644' ]
+1136 silly gunzTarPerm extractEntry package.json
+1137 silly gunzTarPerm extractEntry README.md
+1138 silly gunzTarPerm extractEntry LICENSE
+1139 silly gunzTarPerm extractEntry component.json
+1140 silly gunzTarPerm extractEntry .travis.yml
+1141 silly gunzTarPerm extractEntry bower.json
+1142 silly gunzTarPerm extractEntry lib/async.js
+1143 silly gunzTarPerm extractEntry support/sync-package-managers.js
+1144 silly cache afterAdd async@0.9.2
+1145 verbose afterAdd /Users/spon/.cnpm/async/0.9.2/package/package.json not in flight; writing
+1146 verbose afterAdd /Users/spon/.cnpm/async/0.9.2/package/package.json written
+1147 silly fetchAndShaCheck shasum 772e7015f2ee29965096d71ea4175b75ab354925
+1148 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/cheerio/-/cheerio-0.19.0.tgz not in flight; adding
+1149 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/cheerio/-/cheerio-0.19.0.tgz
+1150 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/cheerio/-/cheerio-0.19.0.tgz
+1151 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-0f2ccbf59cff
+1152 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-0f2ccbf59cff is being purged
+1153 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-0f2ccbf59cff
+1154 silly gunzTarPerm modes [ '755', '644' ]
+1155 silly gunzTarPerm extractEntry package.json
+1156 silly gunzTarPerm extractEntry .npmignore
+1157 silly gunzTarPerm extractEntry index.js
+1158 silly gunzTarPerm extractEntry Readme.md
+1159 silly gunzTarPerm extractEntry CONTRIBUTING.md
+1160 silly gunzTarPerm extractEntry History.md
+1161 silly gunzTarPerm modified mode [ 'History.md', 384, 420 ]
+1162 silly gunzTarPerm extractEntry Makefile
+1163 silly gunzTarPerm extractEntry .jshintrc
+1164 silly gunzTarPerm extractEntry lib/cheerio.js
+1165 silly gunzTarPerm extractEntry lib/parse.js
+1166 silly gunzTarPerm extractEntry lib/static.js
+1167 silly gunzTarPerm extractEntry lib/utils.js
+1168 silly gunzTarPerm extractEntry lib/api/attributes.js
+1169 silly gunzTarPerm extractEntry lib/api/css.js
+1170 silly gunzTarPerm extractEntry lib/api/forms.js
+1171 silly gunzTarPerm extractEntry lib/api/manipulation.js
+1172 silly gunzTarPerm extractEntry lib/api/traversing.js
+1173 silly gunzTarPerm extractEntry scripts/prepublish
+1174 silly gunzTarPerm extractEntry .travis.yml
+1175 silly gunzTarPerm extractEntry test/cheerio.js
+1176 silly gunzTarPerm extractEntry test/fixtures.js
+1177 silly gunzTarPerm extractEntry test/parse.js
+1178 silly gunzTarPerm extractEntry test/xml.js
+1179 silly gunzTarPerm extractEntry test/.jshintrc
+1180 silly gunzTarPerm extractEntry test/api/attributes.js
+1181 silly gunzTarPerm extractEntry test/api/css.js
+1182 silly gunzTarPerm extractEntry test/api/forms.js
+1183 silly gunzTarPerm extractEntry test/api/manipulation.js
+1184 silly gunzTarPerm extractEntry test/api/traversing.js
+1185 silly gunzTarPerm extractEntry test/api/utils.js
+1186 silly gunzTarPerm extractEntry test/mocha.opts
+1187 silly cache afterAdd cheerio@0.19.0
+1188 verbose afterAdd /Users/spon/.cnpm/cheerio/0.19.0/package/package.json not in flight; writing
+1189 verbose afterAdd /Users/spon/.cnpm/cheerio/0.19.0/package/package.json written
+1190 http fetch 200 https://registry.npmjs.org/colors/-/colors-0.6.2.tgz
+1191 silly fetchAndShaCheck shasum 2423fe6678ac0c5dae8852e5d0e5be08c997abcc
+1192 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/colors/-/colors-0.6.2.tgz not in flight; adding
+1193 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/colors/-/colors-0.6.2.tgz
+1194 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/colors/-/colors-0.6.2.tgz
+1195 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-5b3019c7991d
+1196 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-5b3019c7991d is being purged
+1197 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-5b3019c7991d
+1198 silly gunzTarPerm modes [ '755', '644' ]
+1199 silly gunzTarPerm extractEntry package.json
+1200 silly gunzTarPerm extractEntry colors.js
+1201 silly gunzTarPerm extractEntry example.js
+1202 silly gunzTarPerm extractEntry test.js
+1203 silly gunzTarPerm extractEntry MIT-LICENSE.txt
+1204 silly gunzTarPerm extractEntry ReadMe.md
+1205 silly gunzTarPerm extractEntry example.html
+1206 silly gunzTarPerm extractEntry themes/winston-dark.js
+1207 silly gunzTarPerm extractEntry themes/winston-light.js
+1208 silly cache afterAdd colors@0.6.2
+1209 verbose afterAdd /Users/spon/.cnpm/colors/0.6.2/package/package.json not in flight; writing
+1210 verbose afterAdd /Users/spon/.cnpm/colors/0.6.2/package/package.json written
+1211 http fetch 200 https://registry.npmjs.org/finalhandler/-/finalhandler-0.2.0.tgz
+1212 silly fetchAndShaCheck shasum 794082424b17f6a4b2a0eda39f9db6948ee4be8d
+1213 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/finalhandler/-/finalhandler-0.2.0.tgz not in flight; adding
+1214 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/finalhandler/-/finalhandler-0.2.0.tgz
+1215 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/finalhandler/-/finalhandler-0.2.0.tgz
+1216 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-19f400421787
+1217 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-19f400421787 is being purged
+1218 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-19f400421787
+1219 silly gunzTarPerm modes [ '755', '644' ]
+1220 silly gunzTarPerm extractEntry package.json
+1221 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+1222 silly gunzTarPerm extractEntry README.md
+1223 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+1224 silly gunzTarPerm extractEntry LICENSE
+1225 silly gunzTarPerm modified mode [ 'LICENSE', 438, 420 ]
+1226 silly gunzTarPerm extractEntry index.js
+1227 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+1228 silly gunzTarPerm extractEntry HISTORY.md
+1229 silly gunzTarPerm modified mode [ 'HISTORY.md', 438, 420 ]
+1230 silly cache afterAdd finalhandler@0.2.0
+1231 verbose afterAdd /Users/spon/.cnpm/finalhandler/0.2.0/package/package.json not in flight; writing
+1232 verbose afterAdd /Users/spon/.cnpm/finalhandler/0.2.0/package/package.json written
+1233 http fetch 200 https://registry.npmjs.org/gulp/-/gulp-3.8.8.tgz
+1234 silly fetchAndShaCheck shasum 0b0473e7cdfd04c785184513938397d4552cfe96
+1235 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/gulp/-/gulp-3.8.8.tgz not in flight; adding
+1236 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/gulp/-/gulp-3.8.8.tgz
+1237 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/gulp/-/gulp-3.8.8.tgz
+1238 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-0b0e6fd48881
+1239 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-0b0e6fd48881 is being purged
+1240 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-0b0e6fd48881
+1241 silly gunzTarPerm modes [ '755', '644' ]
+1242 silly gunzTarPerm extractEntry package.json
+1243 silly gunzTarPerm extractEntry README.md
+1244 silly gunzTarPerm extractEntry index.js
+1245 silly gunzTarPerm extractEntry bin/gulp.js
+1246 silly gunzTarPerm extractEntry completion/README.md
+1247 silly gunzTarPerm extractEntry completion/bash
+1248 silly gunzTarPerm extractEntry completion/powershell
+1249 silly gunzTarPerm extractEntry completion/zsh
+1250 silly gunzTarPerm extractEntry lib/completion.js
+1251 silly gunzTarPerm extractEntry lib/taskTree.js
+1252 silly cache afterAdd gulp@3.8.8
+1253 verbose afterAdd /Users/spon/.cnpm/gulp/3.8.8/package/package.json not in flight; writing
+1254 verbose afterAdd /Users/spon/.cnpm/gulp/3.8.8/package/package.json written
+1255 info retry will retry, error on last attempt: Error: read ECONNRESET
+1256 info attempt registry request try #2 at 16:40:31
+1257 http fetch GET https://registry.npmjs.org/connect/-/connect-3.1.1.tgz
+1258 http fetch 200 https://registry.npmjs.org/connect/-/connect-3.1.1.tgz
+1259 silly fetchAndShaCheck shasum a73e2449c3efc2dfd1661865977a09184d120196
+1260 verbose addTmpTarball /tmp/npm-91033-84a63c75/registry.npmjs.org/connect/-/connect-3.1.1.tgz not in flight; adding
+1261 verbose addTmpTarball validating metadata from /tmp/npm-91033-84a63c75/registry.npmjs.org/connect/-/connect-3.1.1.tgz
+1262 verbose tar unpack /tmp/npm-91033-84a63c75/registry.npmjs.org/connect/-/connect-3.1.1.tgz
+1263 verbose tar unpacking to /tmp/npm-91033-84a63c75/unpack-5223dd9305ab
+1264 silly gentlyRm /tmp/npm-91033-84a63c75/unpack-5223dd9305ab is being purged
+1265 verbose gentlyRm don't care about contents; nuking /tmp/npm-91033-84a63c75/unpack-5223dd9305ab
+1266 silly gunzTarPerm modes [ '755', '644' ]
+1267 silly gunzTarPerm extractEntry package.json
+1268 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+1269 silly gunzTarPerm extractEntry .npmignore
+1270 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+1271 silly gunzTarPerm extractEntry LICENSE
+1272 silly gunzTarPerm modified mode [ 'LICENSE', 438, 420 ]
+1273 silly gunzTarPerm extractEntry index.js
+1274 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+1275 silly gunzTarPerm extractEntry History.md
+1276 silly gunzTarPerm modified mode [ 'History.md', 438, 420 ]
+1277 silly gunzTarPerm extractEntry Readme.md
+1278 silly gunzTarPerm modified mode [ 'Readme.md', 438, 420 ]
+1279 silly gunzTarPerm extractEntry lib/connect.js
+1280 silly gunzTarPerm modified mode [ 'lib/connect.js', 438, 420 ]
+1281 silly gunzTarPerm extractEntry lib/proto.js
+1282 silly gunzTarPerm modified mode [ 'lib/proto.js', 438, 420 ]
+1283 silly cache afterAdd connect@3.1.1
+1284 verbose afterAdd /Users/spon/.cnpm/connect/3.1.1/package/package.json not in flight; writing
+1285 verbose afterAdd /Users/spon/.cnpm/connect/3.1.1/package/package.json written
+1286 verbose stack Error: read ETIMEDOUT
+1286 verbose stack     at exports._errnoException (util.js:746:11)
+1286 verbose stack     at TCP.onread (net.js:559:26)
+1287 verbose cwd /Users/spon/ProjectJ/jianjianbao/myApp/www
+1288 error Darwin 14.0.0
+1289 error argv "node" "/usr/local/lib/node_modules/cnpm/node_modules/.bin/npm" "--userconfig=/Users/spon/.cnpmrc" "--disturl=https://npm.taobao.org/mirrors/node" "--cache=/Users/spon/.cnpm" "--registry=https://registry.npm.taobao.org" "--node-gyp=/usr/local/lib/node_modules/cnpm/node_modules/pangyp/bin/node-gyp.js" "install" "-g" "ionic"
+1290 error node v0.12.2
+1291 error npm  v2.7.6
+1292 error code ETIMEDOUT
+1293 error errno ETIMEDOUT
+1294 error syscall read
+1295 error network read ETIMEDOUT
+1295 error network This is most likely not a problem with npm itself
+1295 error network and is related to network connectivity.
+1295 error network In most cases you are behind a proxy or have bad network settings.
+1295 error network
+1295 error network If you are behind a proxy, please make sure that the
+1295 error network 'proxy' config is set properly.  See: 'npm help config'
+1296 verbose exit [ 1, true ]

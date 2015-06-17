@@ -4,9 +4,35 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
+
+    <link href="/www/lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="/www/css/style.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="/www/lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- your app's js -->
+    <script src="/www/js/app.js"></script>
+    <script src="/www/js/controllers.js"></script>
+    
+    <!--TODO 待删-->
+    <script src="/www/js/services.js"></script>
+    
+    <script src="/www/js/services/dateUtil.js"></script>
+    <script src="/www/js/services/nodeSrv.js"></script>
+    <script src="/www/js/services/posterSrv.js"></script>
+    <script src="/www/js/services/userContextSrv.js"></script>
+    <script src="/www/js/services/userSrv.js"></script>
+    <script src="/test/js/stubServices/userLoginFacker.js"></script>
+    
+    <base href="/">
+    
+    <div id='wx_pic' style='margin:0 auto;display:none;'>
+      <img src='/www/img/pic300.jpg' />
+    </div>
     
   </head>
-  <body>
-    <p>currentNode=<%=currentNode%></p>
+  <body ng-app="app" ng-controller="AppMainCtrl" ng-init="initUsercontext('<%=currentNode%>')">
+    <ion-nav-view></ion-nav-view>
   </body>
 </html>
