@@ -17,9 +17,14 @@ module.exports = {
     "node": {
       model: 'node'
     },
-  	"privatetalks" :{
+  	"privatetalks" : {
   		type: 'array',
-  	}
+  	},
+    "status" : {
+      type: 'string',
+      enum: ['created', 'openned', 'closed'],
+      defaultsTo: 'created'
+    }
   },
 
   

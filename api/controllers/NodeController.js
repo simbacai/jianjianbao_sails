@@ -21,7 +21,7 @@ getOneNode : function  (req, res) {
     			res.ok(visitNode);
     			return;
     		} else {
-    			for (var i = 0; i < visitNode.childNodes; i++) {
+    			for (var i = 0; i < visitNode.childNodes.length; i++) {
     				if (visitNode.childNodes[i].createdBy == req.user.id) {
     					res.ok(visitNode.childNodes[i]);
     					return;

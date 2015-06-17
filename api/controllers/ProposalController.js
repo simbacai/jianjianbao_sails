@@ -37,6 +37,80 @@ module.exports = {
 	});
   },
   */
-	
+
+  commitProposal : function  (req, res) { 
+
+  	//First need to check whther this proposal has been committed
+  	Proposal
+      .findOne(req.params.id)
+      .exec (function (err, proposal){
+      	if (err) {
+      		sails.error (err);
+      		res.json(400, {errcode:999});
+      	} else {
+      		if(proposal.status == 'closed') {
+      			res.forbidden ("Proposal has already been commited!");
+      			return;
+      		}
+      		else {
+      			//Change proposal status to closed
+      			//Todo: only tip distribution finished, proposal can be closed
+      			proposal.status = 'closed';
+      			proposal.save (function (err) {
+      				if(err) {
+      					sails.error (err);
+      					res.json(400, {errcode:999});
+      				}
+      				else{
+						Node
+						.findOne (proposal.node)
+						.exec(function(err, node) {
+							if (err) {
+								sails.error (err);
+								res.json (400, {errcode:999});
+							} else {
+								node.path.push (node.id);
+								Node
+								  .find ({id: node.path})
+								  .exec (function (err, nodes) {
+								  	if (err) {
+								  		sails.error (err);
+								  		res.json (400, {errcode:999});
+								  	} else {
+								  		//Actually, here needs to launch WXTipDistribution Service
+								  		//Currently only create Tip record for demo
+								  		var createdTips = new Array();
+								  		for (var i = 0; i < nodes.length; i++) {
+								  			//For each user launch tip distribution logic
+								  			//Currently temporarily just generate tip record	 
+								  			Tip.create({poster: nodes[i].poster, user: nodes[i].createdBy, amount: 10})
+								  			.exec (function (err, tip) {
+								  				if (err) {
+								  					sails.error (err);
+								  					res.json (400, {errcode:999});
+													  return;
+								  				}
+								  			}); 
+								  		}
+										res.ok();
+								  	}
+								  })
+							}
+						})
+      				}
+      			})
+      		}
+      	}
+      });
+
+    //After commit proposal need to set the poster status to closed ??? could poster reopen the poster?
+
+
+  },
+
+  openProposal : function  (req, res) { 
+
+  	
+  }	
 };
 

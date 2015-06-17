@@ -8,7 +8,15 @@
 module.exports = {
 
   attributes: {
-
+  	"poster" : {
+  		model:'poster'
+  	},
+  	"user" : {
+  		model:'poster'
+  	},
+  	"amount" : {
+  		type: 'string'
+  	}
   }
 };
 

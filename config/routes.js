@@ -49,7 +49,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
   'get /node/:id' : 'NodeController.getOneNode',
-  'post /posterproposal/:id': 'PosterActionController.commitProposal',
-  'get /posterproposal/:id': 'PosterActionController.openProposal',
+  'post /proposal/:id/commit': 'ProposalController.commitProposal',
+  'Post /proposal/:id/open': 'ProposalController.openProposal',
   //'get /node/:id/chain' : "NodeController.getChain"
 };
