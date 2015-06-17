@@ -18,12 +18,12 @@ getOneNode : function  (req, res) {
     		res.json( 400, { errcode:999 });
     	} else {
     		if (visitNode.createdBy == req.user.id) {
-    			res.ok(visitNode);
+    			res.render('index', {currentNode:visitNode});
     			return;
     		} else {
     			for (var i = 0; i < visitNode.childNodes.length; i++) {
     				if (visitNode.childNodes[i].createdBy == req.user.id) {
-    					res.ok(visitNode.childNodes[i]);
+    					res.render('index', {currentNode:visitNode.childNodes[i]});
     					return;
     				}
     			}
@@ -37,7 +37,7 @@ getOneNode : function  (req, res) {
 			        poster.nodes = poster.nodes || [];
 			        poster.nodes.push(node.id);
 			        poster.save(function (err) {			          
-		          	  res.ok(node);
+		          	  res.render('index', {currentNode:node});
 			        });	
 		          })
 	             })   

@@ -9,7 +9,6 @@ module.exports = {
   attributes: {
     "poster" : {
       model: 'poster',
-      unique: true,
       required: true
     },
     "parentNode" : {
