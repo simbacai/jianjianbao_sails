@@ -1,16 +1,8 @@
 angular.module('app.controllers', [])
 
 .controller('AppMainCtrl', function($rootScope, $http, $location, $scope
-                                       , dateUtil, userContextSrvStub, userContextSrv){
+                                       , dateUtil, userContextSrv){
     $rootScope.poster = {};
-        
-    $scope.changeUserContext = function() {
-        
-        userContextSrvStub.changeUserContext();
-        $scope.currentUser = userContextSrvStub.currentUser().nickname;
-        
-        console.log("currentNode=" + userContextSrvStub.currentNode()._id);
-    }
 
     $rootScope.refresh = function() {
         userContextSrv.loadPosterAndFloors(function(currentPoster, posterOwner, floors, floorOwnerCashe) {
@@ -27,28 +19,43 @@ angular.module('app.controllers', [])
     
     /**
      * 被调用，情况1: index.html使用ng-init调用
-     * 被调用，情况2: PosterCreationCtrl中创建一张新Poster后
      */
-    $rootScope.initUsercontext = function(nodeId) {
-        userContextSrv.prepareContext(nodeId, function(currentPoster, posterOwner, floors, floorOwnerCashe) {
+    $rootScope.initUsercontext = function(currentNodeId, currentPosterId, currentUserId) {
+        console.log("current: node=" + currentNodeId + ", poster=" + currentPosterId + ", user=" + currentUserId);
+
+        userContextSrv.prepareContext(currentNodeId, currentPosterId, currentUserId, function() {
             //console.log("AppMainCtrl: posterOwner=" + angular.toJson(userContextSrv.posterOwner()));
             console.log("AppMainCtrl: isCurrentUserThePosterOwner=" + userContextSrv.isCurrentUserThePosterOwner());
             
-            $rootScope.posterOwner = posterOwner;
-            $rootScope.poster = currentPoster;
-            $rootScope.floors = floors.reverse();
-            $rootScope.floorOwnerCashe = floorOwnerCashe;
-            
-            //不刷新跳转
-            $rootScope.posterMainPath = "/node/" + nodeId;
-            $location.path($rootScope.posterMainPath);
-            //document.title = $rootScope.poster.subject;
-            var prefix = "";
-            if ($rootScope.poster.tip.tip_amount > 0) {
-                prefix = "悬赏" + $rootScope.poster.tip.tip_amount + "元：";
-            }
-            document.title = prefix + $rootScope.poster.subject;
+            $rootScope.populateUI();
         });
+    }
+
+    /**
+     * 被调用，情况1: index.html使用ng-init调用
+     * 被调用，情况2: PosterCreationCtrl中创建一张新Poster后
+     */
+    $rootScope.populateUI = function() {
+        $rootScope.poster = userContextSrv.currentPoster();
+        console.log("$rootScope.poster=" + angular.toJson($rootScope.poster));
+
+
+
+        /*
+        $rootScope.posterOwner = posterOwner;
+        $rootScope.floors = floors.reverse();
+        $rootScope.floorOwnerCashe = floorOwnerCashe;
+        */
+
+        //不刷新跳转
+        $rootScope.posterMainPath = "/node/" + userContextSrv.currentNode();
+        $location.path($rootScope.posterMainPath);
+        //document.title = $rootScope.poster.subject;
+        var prefix = "";
+        if ($rootScope.poster.tipAmount && $rootScope.poster.tipAmount > 0) {
+            prefix = "悬赏" + $rootScope.poster.tip.tip_amount + "元：";
+        }
+        document.title = prefix + $rootScope.poster.subject;
     }
     
     $scope.createContact = function(u) {        
@@ -65,13 +72,13 @@ angular.module('app.controllers', [])
 })
 
 .controller("PosterMainCtrl", function($scope, $rootScope
-    , userContextSrv, posterSrv
+    , userContextSrv
     , $ionicModal, $ionicPopover){
     console.log("PosterMainCtrl: BEGIN................");
 
     $rootScope.myNewPoster = {"tip" : {"tip_amount" : 0}};
 
-    $ionicModal.fromTemplateUrl('/static/www/templates/proposal_creation.html', {
+    $ionicModal.fromTemplateUrl('/www/templates/proposal_creation.html', {
       scope: $scope
     }).then(function(modal) {
       $scope.modal = modal;
@@ -91,7 +98,7 @@ angular.module('app.controllers', [])
     }
 
     
-    $ionicModal.fromTemplateUrl('/static/www/templates/poster_creation.html', {
+    $ionicModal.fromTemplateUrl('/www/templates/poster_creation.html', {
       scope: $scope
     }).then(function(modal) {
         $scope.posterCreationModal = modal;
@@ -102,7 +109,7 @@ angular.module('app.controllers', [])
 
 
 
-    $ionicPopover.fromTemplateUrl('/static/www/templates/main_menu.html', {
+    $ionicPopover.fromTemplateUrl('/www/templates/main_menu.html', {
         scope: $scope,
     }).then(function(popover) {
         $scope.popover = popover;
@@ -117,28 +124,18 @@ angular.module('app.controllers', [])
 
         var newPoster = {
             "subject" : $rootScope.myNewPoster.subject 
-            , "body" : $rootScope.myNewPoster.body 
-            , "tip" : {
-                "method" : "现金红包"
-                , "tip_amount" : $rootScope.myNewPoster.tip.tip_amount
-            }
+            , "body" : $rootScope.myNewPoster.body
         };
         
-        var successCallBack = function(data) {
-            
-            console.log("PosterCreationCtrl createPoster:" + angular.toJson(data));
-            
-            if (!data || !data["currentNode"]) {
-                console.log("Error in PosterCreationCtrl createPoster: !data || !data[currentNode]");
-                //TODO ERROR
-            }
-            var newNodeId = data["currentNode"];
+        var successCallBack = function(newPoster) {
 
-            $rootScope.myNewPoster = {"tip" : {"tip_amount" : 0}};
+            $rootScope.myNewPoster = {};
             $scope.posterCreationModal.hide();
-            $rootScope.initUsercontext(newNodeId);
+
+            $rootScope.populateUI();
         }
-        posterSrv.add(newPoster, successCallBack, null);
+
+        userContextSrv.createPosterAndUpdateContext(newPoster, successCallBack);
     };
 
 

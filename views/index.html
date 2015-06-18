@@ -32,7 +32,8 @@
     </div>
     
   </head>
-  <body ng-app="app" ng-controller="AppMainCtrl" ng-init="initUsercontext('<%=currentNode%>')">
+  <body ng-app="app" ng-controller="AppMainCtrl" 
+    ng-init="initUsercontext('<%=currentNode.id%>', '<%=currentNode.poster%>', '<%=currentNode.id%>')">
     <ion-nav-view></ion-nav-view>
   </body>
 </html>
