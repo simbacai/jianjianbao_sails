@@ -72,6 +72,17 @@ module.exports = {
         });
       });
     },
+    /**
+    * Create ProposalSummary automatically
+    */    
+    function createProposalSummary (proposal, next) {
+      sails.log('Proposal.afterCreate.createProposalSummary');
+      ProposalSummary.create({ poster: proposal.poster, proposal: proposal.id, createdBy: proposal.createdBy, createdAt: proposal.createdAt, updatedAt: proposal.updatedAt})
+      .then(function (proposalsummary) {
+          next();
+        })
+      .catch(next);
+      },  
   ],
 
   beforeDestroy: [
@@ -93,6 +104,17 @@ module.exports = {
         });
       } );
     },
+    /**
+    * delete ProposalSummary automatically
+    */    
+    function deleteProposalSummary (criteria, next) {
+      sails.log('Proposal.afterDestroy.deleteProposalSummary');
+      ProposalSummary.destroy({ proposal: criteria.where.id})
+      .then(function (proposalsummary) {
+          next();
+        })
+      .catch(next);
+      },     
   ]
 };
 
