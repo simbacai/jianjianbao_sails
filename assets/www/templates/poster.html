@@ -1,0 +1,102 @@
+<ion-view view-title="">
+    <ion-content>
+      <ion-refresher on-refresh="refresh()">
+      </ion-refresher>
+      <div class="list card">
+        <div class="item item-avatar">
+          <img src="{{posterOwner.headimgurl}}">
+          <h2>悬赏{{poster.tip.tip_amount}}元：{{poster.subject}}</h2>
+          <p>
+            楼主&nbsp;
+            {{posterOwner.nickname}}&nbsp;
+            {{timeDiff(poster.create_timestamp)}}
+          </p>
+        </div>
+
+        <div class="item item-body">
+          <!--img class="full-image" src="http://ionicframework.com/img/docs/delorean.jpg"-->
+          <p>
+            {{poster.body}}
+          </p>
+          <p>
+            <a href="#" class="subdued">5条留言</a>
+          </p>
+        </div>
+
+        <div class="item tabs tabs-secondary tabs-icon-left">
+          <a class="tab-item" href="#">
+            <i class="icon ion-ios-color-wand-outline"></i>
+            我来解决
+          </a>
+          <a class="tab-item" href="#">
+            <i class="icon ion-ios-timer-outline"></i>
+            管理
+          </a>
+          <a class="tab-item" href="#">
+            <i class="icon ion-ios-chatbubble-outline"></i>
+            留言
+          </a>
+          <a class="tab-item" href="#">
+            <i class="icon ion-ios-upload-outline"></i>
+            转发有礼
+          </a>
+        </div>
+
+      </div><!--list card-->
+      
+      <div class="list card" ng-repeat="floor in floors">
+
+        <div class="item item-avatar" >
+          <img src="{{floorOwnerCashe[floor.user].headimgurl}}">
+          <h2>解决方案</h2>
+          <p>
+            {{floor.floor.floorNumber + 1}}楼&nbsp;
+            {{floorOwnerCashe[floor.user].nickname}}&nbsp;
+            {{floor.floor.update_timestamp| date : 'M-d H:mm' }}
+          </p>
+        </div>
+
+        <a class="item item-body" href="/node/5555/detail">
+          <!--img class="full-image" src="http://ionicframework.com/img/docs/delorean.jpg"-->
+          
+
+          <p>
+            {{floor.floor.actionContent}}
+          </p>
+          <p ng-show="false"> 
+            隐藏内容，请打开后查看。
+          </p>
+          <p ng-show="false">
+            隐藏内容，榜主已经打开查看。
+          </p>
+          <p ng-show="false">
+            隐藏内容，榜主还没有打开查看。
+          </p>
+        </a>
+
+        <div class="item tabs tabs-secondary tabs-icon-left">
+          <a class="tab-item" href="#">
+            <i class="icon ion-ios-eye-outline"></i>
+            打开
+          </a>
+          <a class="tab-item" href="#">
+            <i class="icon ion-ios-chatbubble-outline"></i>
+            悄悄话
+          </a>
+          <a class="tab-item" href="#">
+            <i class="icon ion-ios-arrow-up"></i>
+            回到顶部
+          </a>
+        </div>
+      </div>
+    </ion-content>
+  <ion-footer-bar class="bar-dark">
+    <button class="button button-clear icon ion-navicon" ng-click="popover.show($event)"></button>
+    <h1 class="title">悬赏{{poster.tip.tip_amount}}元(未解决)</h1>
+    <button class="button button-assertive" ng-click="proposeBtnClick()">我来解决</button>
+
+    <!--button class="button button-clear icon-left ion-ios-color-wand-outline button-positive"><small>&nbsp我要揭榜</small></button>
+    <button class="button button-clear icon-right ion-ios-more-outline button-positive"><small>更多&nbsp</small></button-->
+  </ion-footer-bar>
+</ion-view>
+

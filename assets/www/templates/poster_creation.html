@@ -1,0 +1,70 @@
+<ion-modal-view>
+
+  <ion-header-bar class="bar bar-header bar-light">
+    <h1 class="title">发布悬赏</h1>
+  </ion-header-bar>
+
+  <ion-content>
+    <div class="list">
+
+      <label class="item item-input">
+        <input type="text" ng-model="$root.myNewPoster.subject" placeholder="标题，1-30字">
+      </label>
+      
+      <label class="item item-input text">
+        <textarea placeholder="选填，可以具体说说碰到了什么问题，需要什么样的人向你提供什么，0-300字" 
+          rows="5" ng-model="$root.myNewPoster.body" ng-Required="true" lose-focus-on-return>
+        </textarea>
+      </label>
+
+      <label class="item item-input item-select">
+        <div class="input-label">
+          酬谢形式
+        </div>
+        <select>
+          <option selected>现金红包</option>
+          <option disabled>其它(更有趣的玩法，请期待)</option>
+        </select>
+      </label>
+
+      <div class=" button-bar">
+        <button class="button button-light button-android" ng-class="{ 'button\-positive': $root.myNewPoster.tip.tip_amount == 20 }" ng-click="setTipAmount(20)">
+          20元
+        </button>
+        <button class="button button-light button-android" ng-class="{ 'button\-positive': $root.myNewPoster.tip.tip_amount == 50 }" ng-click="setTipAmount(50)">
+          50元
+        </button>
+        <button class="button button-light button-android" ng-class="{ 'button\-positive': $root.myNewPoster.tip.tip_amount == 100 }" ng-click="setTipAmount(100)">
+          100元
+        </button>
+        <button class="button button-light button-android" ng-class="{ 'button\-positive': $root.myNewPoster.tip.tip_amount == 500 }" ng-click="setTipAmount(500)">
+          500元
+        </button>
+      </div>
+
+      <label class="item item-input">
+        <div class="input-label">
+          其它金额（单位：元）
+        </div>
+        <input type="text" ng-model="$root.myNewPoster.tip.tip_amount">
+      </label>
+
+      <div class="padding">
+        <p align="center">发布，即表示你同意<a href="#">《用户协议》</a></p>
+        <button class="button button-block button-stable" ng-click="createPoster()">发布</button>
+      </div>
+
+    </div>
+  </ion-content>
+
+  <ion-footer-bar class="bar bar-footer bar-dark">
+    <button class="button button-clear button-primary" ng-click="posterCreationModal.hide()">
+      &nbsp;&nbsp;取消&nbsp;&nbsp;
+    </button>
+    <h1 class="title"></h1>
+    <button class="button button-clear button-primary" ng-click="createPoster()">
+      &nbsp;&nbsp;发布&nbsp;&nbsp;
+    </button>
+  </ion-footer-bar>
+
+</ion-modal-view>
