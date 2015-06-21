@@ -4,9 +4,7 @@
 //console.log("currentUser.nickname=" + userContextSrvStub.currentUser().nickname);
 //console.log("currentNode=" + userContextSrvStub.currentNode().actions[0].type);
 
-app.service('userContextSrv',
-            function(nodeSrv, userLoginFacker/*TODO*/, posterSrv, userSrv
-                     , $http) {
+app.service('userContextSrv', function(nodeSrv, posterSrv, userSrv) {
                 
     //私有属性，声明与始初化            
     
@@ -128,14 +126,19 @@ app.service('userContextSrv',
         }, errorCallBack);
     };
                 
-    this.prepareContext = function(currentNodeId, callback) {
+    this.prepareContext = function(currentNodeId, currentPosterId, currentUserId, callback) {
         
-        console.log("prepareContext(" + currentNodeId + ")");
-        
-        //steps
+        //console.log("prepareContext(" + currentNodeId + ", " + currentPosterId + ", " + currentUserId + ")");
+        currentNode = currentNodeId;
 
+        posterSrv.getPosterById(currentPosterId, function(poster) {
+            //console.log("prepareContext: poster=" + angular.toJson(poster))
+            currentPoster = poster;
+            if (callback) callback();
+        });
+        
         var step3_getPosterAndFloors = function(node) {
-            currentNode = node;
+            
             //console.log(angular.toJson(node));
 
             if (node.userid) {
@@ -151,19 +154,13 @@ app.service('userContextSrv',
                 }, null);
             }
         };
-        
-        var step2_getNode =  function(data){ 
-            nodeSrv.getNodeById(currentNodeId, step3_getPosterAndFloors, null);
-        };
-        step2_getNode(null);
-         
-        var step1_login =  function(){ 
-            //黄道奕
-            userLoginFacker.login("ooTyQs-VxOJhrgJd6KxF_z8Y7mQc", step2_getNode, null);
-
-            //白润发
-            //userLoginFacker.login("ooTyQsx4QRx_d8y21n7I-AVoUB1E", step2_getNode, null);
-        };
-        //step1_login();
+    }
+                
+    this.createPosterAndUpdateContext = function(newPoster, callback) {
+        posterSrv.create(newPoster, function(newPosterResult, newRootNodeId) {
+            currentNode = newRootNodeId;
+            currentPoster = newPosterResult;
+            if (callback) callback();
+        });
     }
 });
