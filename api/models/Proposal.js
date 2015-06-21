@@ -46,31 +46,31 @@ module.exports = {
     */
     function setAuthOwner (proposal, next) {
       sails.log('Proposal.afterCreate.setAuthOwner');
-      Poster.findOne({ id: proposal.poster }).exec(function (err,poster) {
-        if(err) {
-          next();
-        } else {
-          Proposal
-          .update({ id: proposal.id }, { authowner: poster.createdBy})
-          .then(function (proposal) {
-            next();
-          })
-          .catch(next);
-        };
-      }); 
+      Poster.findOne({ id: proposal.poster })
+      .then(function (poster) {
+          return Proposal
+          .update({ id: proposal.id }, { authowner: poster.createdBy});
+        })
+      .then(function (proposal) {
+        next();
+      })
+      .catch(next);  
     },
     /**
     * Connect to related Poster automatically
     */    
     function connectPoster (proposal, next) {
       sails.log('Proposal.afterCreate.connectPoster');
-      Poster.findOne({ id: proposal.poster }).exec(function (err,poster) {
+      Poster.findOne({ id: proposal.poster })
+      .then(function (poster) {
         poster.proposals = poster.proposals || [];
         poster.proposals.push(proposal.id);
-        poster.save(function (err) {
-          next();
-        });
-      });
+        return Poster.update({id: poster.id}, {proposals: poster.proposals});
+      })
+      .then (function (poster) {
+        next();
+      })
+      .catch(next);
     },
     /**
     * Create ProposalSummary automatically
@@ -91,18 +91,22 @@ module.exports = {
     */    
     function disconnectPoster (criteria, next) {
       sails.log('Proposal.afterDestroy.disconnectPoster', criteria);
-      Proposal.findOne({ id : criteria.where.id}).exec(function(err, proposal) {
-        Poster.findOne({ id: proposal.poster}).exec(function (err,poster) {
+      Proposal.findOne({ id : criteria.where.id})
+      .then(function(proposal) {
+        return Poster.findOne({ id: proposal.poster})
+      })
+      .then(function (poster) {
           poster.proposals = poster.proposals || [];
-          var index = poster.proposals.indexOf(proposal.id);
+          var index = poster.proposals.indexOf(criteria.where.id);
           if (index > -1) {
             poster.proposals.splice(index, 1);
           }
-          poster.save(function (err) {
-            next();
-          });
-        });
-      } );
+          return Poster.update({id: poster.id}, {proposals: poster.proposals});
+      })
+      .then (function (poster) {
+        next();
+      })
+      .catch(next);
     },
     /**
     * delete ProposalSummary automatically
@@ -114,7 +118,7 @@ module.exports = {
           next();
         })
       .catch(next);
-      },     
+    },     
   ]
 };
 

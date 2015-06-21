@@ -34,13 +34,16 @@ module.exports = {
     */    
     function connectPoster (comment, next) {
       sails.log('Comment.afterCreate.connectPoster');
-      Poster.findOne({ id: comment.poster }).exec(function (err,poster) {
+      Poster.findOne({ id: comment.poster })
+      .then(function (poster) {
         poster.comments = poster.comments || [];
         poster.comments.push(comment.id);
-        poster.save(function (err) {
-          next();
-        });
-      });
+        return Poster.update({id: poster.id}, {comments: poster.comments});
+      })
+      .then(function (poster) {
+        next();
+      })
+      .catch(next);
     },
   ],
 
@@ -50,18 +53,22 @@ module.exports = {
     */    
     function disconnectPoster (criteria, next) {
       sails.log('Comment.afterDestroy.disconnectPoster', criteria);
-      Comment.findOne({ id : criteria.where.id}).exec(function(err, comment) {
-        Poster.findOne({ id: comment.poster}).exec(function (err,poster) {
-          poster.comments = poster.comments || [];
-          var index = poster.comments.indexOf(comment.id);
-          if (index > -1) {
-            poster.comments.splice(index, 1);
-          }
-          poster.save(function (err) {
-            next();
-          });
-        });
-      } );
+      Comment.findOne({ id : criteria.where.id})
+      .then(function(comment) {
+        return Poster.findOne({ id: comment.poster});
+      })
+      .then(function (poster) {
+        poster.comments = poster.comments || [];
+        var index = poster.comments.indexOf(criteria.where.id);
+        if (index > -1) {
+          poster.comments.splice(index, 1);
+        }
+        return Poster.update({id: poster.id}, {comments: poster.comments});
+      })
+      .then(function (poster) {
+        next();
+      })
+      .catch(next);
     },
   ]  
 };

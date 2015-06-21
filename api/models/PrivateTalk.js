@@ -24,42 +24,42 @@ module.exports = {
     function setOwner (privatetalk, next) {
       sails.log('PrivateTalk.afterCreate.setOwner', privatetalk);
       PrivateTalk
-        .update({ id: privatetalk.id }, { owner: privatetalk.createdBy})
-        .then(function (privatetalk) {
-          next();
-        })
-        .catch(next);
+      .update({ id: privatetalk.id }, { owner: privatetalk.createdBy})
+      .then(function (privatetalk) {
+        next();
+      })
+      .catch(next);
     },
     /**
     * Set PrivateTalk Authorized Owner automatically
     */
     function setAuthOwner (privatetalk, next) {
       sails.log('PrivateTalk.afterCreate.setAuthOwner');
-      Proposal.findOne({ id: privatetalk.proposal }).exec(function (err,proposal) {
-        if(err) {
-          next();
-        } else {
-          PrivateTalk
-          .update({ id: privatetalk.id }, { authowner: proposal.createdBy})
-          .then(function (privatetalk) {
-            next();
-          })
-          .catch(next);
-        };
-      }); 
+      Proposal.findOne({ id: privatetalk.proposal })
+      .then(function (proposal) {
+        return PrivateTalk
+          .update({ id: privatetalk.id }, { authowner: proposal.createdBy});
+      })
+      .then(function (privatetalk) {
+        next();
+      })
+      .catch(next); 
     },
     /**
     * Connect to related Proposal automatically
     */    
     function connectProposal (privatetalk, next) {
       sails.log('PrivateTalk.afterCreate.connectProposal');
-      Proposal.findOne({ id: privatetalk.proposal }).exec(function (err,proposal) {
+      Proposal.findOne({ id: privatetalk.proposal })
+      .then(function (proposal) {
         proposal.privatetalks = proposal.privatetalks || [];
         proposal.privatetalks.push(privatetalk.id);
-        proposal.save(function (err) {
+        return Proposal.update({id: proposal.id}, {privatetalks: proposal.privatetalks});
+      })
+      .then(function (proposal) {
           next();
-        });
-      });
+      })
+      .catch(next);
     },
   ],
 
@@ -69,21 +69,23 @@ module.exports = {
     */    
     function disconnectProposal (criteria, next) {
       sails.log('PrivateTalk.afterDestroy.disconnectPoster', criteria);
-      PrivateTalk.findOne({ id : criteria.where.id}).exec(function(err, privatetalk) {
-        Proposal.findOne({ id: privatetalk.proposal}).exec(function (err,proposal) {
-          proposal.privatetalks = proposal.privatetalks || [];
-          var index = proposal.privatetalks.indexOf(privatetalk.id);
-          if (index > -1) {
-            proposal.privatetalks.splice(index, 1);
-          }
-          proposal.save(function (err) {
-            next();
-          });
-        });
-      } );
+      PrivateTalk.findOne({ id : criteria.where.id})
+      .then(function(privatetalk) {
+        return Proposal.findOne({ id: privatetalk.proposal});
+      })
+      .then(function (proposal) {
+        proposal.privatetalks = proposal.privatetalks || [];
+        var index = proposal.privatetalks.indexOf(criteria.where.id);
+        if (index > -1) {
+          proposal.privatetalks.splice(index, 1);
+        }
+        return Proposal.update({id: proposal.id}, {privatetalks: proposal.privatetalks});
+      })
+      .then(function (proposal) {
+          next();
+      })
+      .catch(next);
     },
   ]
-
-
 };
 

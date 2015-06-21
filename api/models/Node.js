@@ -34,7 +34,7 @@ module.exports = {
         .then(function (node) {
           next();
         })
-        .catch(sails.error);
+        .catch(next);
     },
   ]
 

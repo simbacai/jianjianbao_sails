@@ -17,7 +17,7 @@ module.exports = {
   		size: 300
   	},
     "tipAmount" : {
-      type: 'number',
+      type: 'string',
     },
   	"comments": {
   		type: 'array',
@@ -59,14 +59,13 @@ module.exports = {
         .then(function (node) {
           poster.nodes = poster.nodes || [];
           poster.nodes.push(node.id);
-          Poster
-          .update({ id: poster.id }, { nodes: poster.nodes})
-          .then(function (poster) {
-            next();
+          return Poster
+          .update({ id: poster.id }, { nodes: poster.nodes});
           })
-          .catch(sails.error);
-          })
-        .catch(sails.error);
+        .then (function (poster) {
+          next();
+        })
+        .catch(next);
     },
   ]
 
