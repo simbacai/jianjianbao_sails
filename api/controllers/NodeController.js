@@ -7,16 +7,11 @@
 
 module.exports = {
 
-getOneNode : function  (req, res) {
-
-  Node
-    .findOne(req.params.id)
-    .populate ('childNodes')
-    .exec (function (err, visitNode) {
-    	if (err) {
-    		sails.error(err);
-    		res.json( 400, { errcode:999 });
-    	} else {
+  getOneNode : function (req, res) {
+    Node
+      .findOne(req.params.id)
+      .populate('childNodes')
+      .then(function (visitNode) {
     		if (visitNode.createdBy == req.user.id) {
     			res.render('index', {currentNode:visitNode});
     			return;
@@ -27,25 +22,29 @@ getOneNode : function  (req, res) {
     					return;
     				}
     			}
-    		}
-
-    		//Create a new childe node
-    		Node
-		        .create({ poster: visitNode.poster, parentNode: visitNode.id, createdBy: req.user.id , path: visitNode.path.concat(visitNode.id)})
-		        .then(function (node) {
-	                Poster.findOne({ id: visitNode.poster }).exec(function (err,poster) {
-			        poster.nodes = poster.nodes || [];
-			        poster.nodes.push(node.id);
-			        poster.save(function (err) {			          
-		          	  res.render('index', {currentNode:node});
-			        });	
-		          })
-	             })   
-		        .catch(sails.error);
-    	}
-    });
-
-
+    	
+      		//Create a new child node
+          var childNode = {};
+      		return Node
+            .create({ poster: visitNode.poster, parentNode: visitNode.id, createdBy: req.user.id , path: visitNode.path.concat(visitNode.id)})
+            .then (function (node) {
+              childNode = node;
+              return Poster.findOne({ id: visitNode.poster });
+            })
+            .then (function (poster) {
+    	        poster.nodes = poster.nodes || [];
+    	        poster.nodes.push(childNode.id);
+    	        return Poster.update({id: poster.id}, {nodes: poster.nodes});
+            })
+            .then (function (poster) {
+              res.render('index', {currentNode:childNode});
+            })
+    	  }
+      })
+      .catch (function (error) {
+        sails.error (error);
+        res.json (400, {errcode: 999});
+      })
   },
   
 };

@@ -28,11 +28,11 @@ module.exports = {
     "nodes": {
       type: 'array',
     },
-  	"closeStatus" : {
-  		type: 'string',
-  		enum: ['Yes', 'No'],
-  		default: 'No'	
-  	}
+    "status" : {
+      type: 'string',
+      enum: ['created', 'closed'],
+      defaultsTo: 'created'
+    }
   },
 
 

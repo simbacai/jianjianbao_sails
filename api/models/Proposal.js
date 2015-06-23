@@ -27,7 +27,26 @@ module.exports = {
     }
   },
 
-  
+  beforeCreate: [
+    /**
+    * Check whether poster has been closed
+    */
+    function checkPosterStatus (values, next) {
+      sails.log('Proposal.beforeCreate.checkPosterStatus', values);
+      Poster
+        .findOne ({id: values.poster})
+        .then (function (poster) {
+          if (poster.status === 'closed') {
+            var err = new Error("Poster has already been closed!");
+            return next(err);
+          } else {
+            next();
+          }
+        })
+        .catch(next);
+      },  
+  ],
+
   afterCreate: [
     /**
     * Set Proposal Owner automatically
