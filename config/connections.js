@@ -40,12 +40,13 @@ module.exports.connections = {
   * Run: npm install sails-mysql                                             *
   *                                                                          *
   ***************************************************************************/
-  someMysqlServer: {
+  aliyunRDSMysqlServer: {
     adapter: 'sails-mysql',
-    host: 'YOUR_MYSQL_SERVER_HOSTNAME_OR_IP_ADDRESS',
-    user: 'YOUR_MYSQL_USER',
-    password: 'YOUR_MYSQL_PASSWORD',
-    database: 'YOUR_MYSQL_DB'
+    host: 'rdsb2jesf2tabtyji6dez.mysql.rds.aliyuncs.com',
+    port: '3306',
+    user: 'jianjianbao',
+    password: 'JianJian123',
+    database: 'jianjianbao_sails'
   },
 
   /***************************************************************************
@@ -56,7 +57,7 @@ module.exports.connections = {
   * Run: npm install sails-mongo                                             *
   *                                                                          *
   ***************************************************************************/
-  someMongodbServer: {
+  localMongodbServer: {
     adapter: 'sails-mongo',
     host: 'localhost',
     port: 27017,

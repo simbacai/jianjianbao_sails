@@ -50,6 +50,6 @@ module.exports.routes = {
   ***************************************************************************/
   'get /node/:id' : 'NodeController.getOneNode',
   'post /proposal/:id/commit': 'ProposalController.commitProposal',
-  'Post /proposal/:id/open': 'ProposalController.openProposal',
+  //'Post /proposal/:id/open': 'ProposalController.openProposal',
   //'get /node/:id/chain' : "NodeController.getChain"
 };

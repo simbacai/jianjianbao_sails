@@ -5,7 +5,7 @@
  *   The actions a Role is granted on a particular Model and its attributes
  */
 module.exports = {
-  autoCreatedBy: false,
+  autoCreatedBy: true,
 
   description: [
     'Defines a particular `action` that a `Role` can perform on a `Model`.',
