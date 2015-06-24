@@ -81,7 +81,7 @@ module.exports.connections = {
     user: 'YOUR_POSTGRES_USER',
     password: 'YOUR_POSTGRES_PASSWORD',
     database: 'YOUR_POSTGRES_DB'
-  }
+  },
 
 
   /***************************************************************************
@@ -89,5 +89,12 @@ module.exports.connections = {
   * More adapters: https://github.com/balderdashy/sails                      *
   *                                                                          *
   ***************************************************************************/
-
+  /***************************************************************************
+  *                                                                          *
+  * Memory storage for Testing ONLY                                  *
+  *                                                                          *
+  ***************************************************************************/
+  test: {
+    adapter: 'sails-memory'
+  },
 };
