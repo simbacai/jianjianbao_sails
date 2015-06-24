@@ -18,7 +18,7 @@ module.exports = {
    ***************************************************************************/
 
    models: {
-     //connection: 'localMongodbServer'
-     connection: 'aliyunRDSMysqlServer'
+     connection: 'localMongodbServer'
+     //connection: 'aliyunRDSMysqlServer'
    },
 };
