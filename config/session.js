@@ -32,7 +32,7 @@ module.exports.session = {
   ***************************************************************************/
 
    cookie: {
-     maxAge: 0.5 * 60 * 60 * 1000
+     maxAge: 24 * 60 * 60 * 1000
    },
 
   /***************************************************************************
@@ -41,7 +41,7 @@ module.exports.session = {
   * session store that can be shared across multiple Sails.js servers        *
   ***************************************************************************/
 
-   //adapter: 'redis',
+   adapter: 'redis',
 
   /***************************************************************************
   *                                                                          *
@@ -67,11 +67,11 @@ module.exports.session = {
   *                                                                          *
   ***************************************************************************/
 
-   adapter: 'mongo',
-   host: 'localhost',
-   port: 27017,
-   db: 'jianjianbao_sails',
-   collection: 'sessions',
+   //adapter: 'mongo',
+   //host: 'localhost',
+   //port: 27017,
+   //db: 'jianjianbao_sails',
+   //collection: 'sessions',
 
   /***************************************************************************
   *                                                                          *
