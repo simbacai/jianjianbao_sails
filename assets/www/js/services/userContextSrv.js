@@ -1,10 +1,6 @@
 "use strict";
 
-//TODO 移入Service集成测试
-//console.log("currentUser.nickname=" + userContextSrvStub.currentUser().nickname);
-//console.log("currentNode=" + userContextSrvStub.currentNode().actions[0].type);
-
-app.service('userContextSrv', function(nodeSrv, posterSrv, userSrv) {
+app.service('userContextSrv', function(nodeSrv, posterSrv, userSrv, apiHelper, $q) {
                 
     //私有属性，声明与始初化            
     
@@ -13,66 +9,109 @@ app.service('userContextSrv', function(nodeSrv, posterSrv, userSrv) {
     var currentUser = null;
     
     var posterOwner = null;
-    var floorOwnerCashe = {};
 
-    var loadFloors = function(successCallBack, errorCallBack) {
-        if (!currentNode) {
-            console.log("ERROR: currentNode is not init");
-            //TODO
-            return;
+    //TODO
+    var usersCache = {
+        "558a92b411e92001882d58ec": {
+            "owner": "558a92b411e92001882d58ec",
+            "openid": "ooTyQsx4QRx_d8y21n7I-AVoUB1E",
+            "nickname": "白润发",
+            "sex": "1",
+            "language": "zh_CN",
+            "city": "Pudong New District",
+            "province": "Shanghai",
+            "country": "CN",
+            "headimgurl": "http://wx.qlogo.cn/mmopen/ajNVdqHZLLA37ZzicZYNnSabo0tnXs1kZjiaqmQfEeQczc1Wlg5XWYYItXd5Z0k0fZjpgpicX3UIQQQ1UCSUTZjOg/0",
+            "privilege": "",
+            "username": "ooTyQsx4QRx_d8y21n7I-AVoUB1E",
+            "createdAt": "2015-06-24T11:21:24.166Z",
+            "updatedAt": "2015-06-24T11:21:24.271Z",
+            "id": "558a92b411e92001882d58ec"
+        }, 
+        "558a926511e92001882d58e8": {
+            "owner": "558a926511e92001882d58e8",
+            "openid": "ooTyQs-VxOJhrgJd6KxF_z8Y7mQc",
+            "nickname": "黄道奕",
+            "sex": "1",
+            "language": "zh_CN",
+            "city": "Pudong New District",
+            "province": "Shanghai",
+            "country": "CN",
+            "headimgurl": "http://wx.qlogo.cn/mmopen/VL8EXRZJbFVnOvY8FP1ZXORSdVXibYZyBULI40R5yg6HfUvPjkltuwLUgA9893sXsU4wxGzVEf9YuTNhiaiaQWRicn22DGxSg6b1/0",
+            "privilege": "",
+            "username": "ooTyQsx4QRx_d8y21n7I-AVoUB1E",
+            "createdAt": "2015-06-24T11:21:24.166Z",
+            "updatedAt": "2015-06-24T11:21:24.271Z",
+            "id": "558a926511e92001882d58e8"
         }
-       nodeSrv.getFloors(currentNode._id, function(data) {
-            
-            if (!angular.isArray(data)) {
-                console.log("ERROR: data is not Array");
-                //TODO
-                return;
+    };
+
+    var loadFloors = function(callBack) {
+        if (!currentPoster) {
+            throw new Error(2000, "currentPoster=" + currentPoster);
+        }
+        if (!currentPoster.id) {
+            throw new Error(2000, "currentPoster.id=" + currentPoster.id);
+        }
+
+        apiHelper.searchResource("proposal", "poster="+currentPoster.id, function(proposals) {
+            console.log("proposals" + angular.toJson(proposals));
+            currentPoster.proposalObjs = proposals.reverse();
+            for(var i=0; i<currentPoster.proposalObjs.length; i++) {
+                var userId = currentPoster.proposalObjs[i].createdBy;
+                currentPoster.proposalObjs[i].createdByUserObj = usersCache[userId];
             }
-            var floors = data;
-            var floorOwnerCashe = {};
-            
-            //TODO 待优化
-            
-            for (var i = 0; i < floors.length; i++) {
-                
-                if (!angular.isString(floors[i].user)) {
-                    console.log("ERROR: floors[" + i + "].user is not String");
-                    //TODO
-                    return;
-                }
-                
-                //console.log("floors[" + i + "].user=" + floors[i].user);
-                var userId = floors[i].user;
-                if (!floorOwnerCashe[userId]) {
-                    userSrv.getUserByWXOpenId(userId, function(user) {
-                        console.log(angular.toJson(user));
-                        floorOwnerCashe[userId] = user;
-                    }, null);
-                }
-            }
-            if (successCallBack) successCallBack(floors, floorOwnerCashe);
-        }, function(data, status) {
-            if (errorCallBack) errorCallBack();
+            if (callBack) callBack();
         });
     }
 
-    var loadPoster = function(successCallBack, errorCallBack) {
-        if (!currentNode || !currentNode.posterid) {
-            console.log("ERROR: currentNode is not init");
-            //TODO
-            return;
+    //TODO
+    var putUserToCache = function(userId, callback) {
+
+        apiHelper.getResourceById(userId, "user", function(user) {
+            console.log("user=" + angular.toJson(user));
+            console.log("user.id=" + user.id);
+            console.log("user.nickname=" + user.nickname);
+            console.log("user.headimgurl=" + user.headimgurl);
+            
+            if (!user.id) {
+                throw new Error(2000, "user.id=" + user.id);
+            }
+
+            usersCache[user.id] = user;
+
+        });
+    }
+
+    var loadPoster = function(posterId) {
+
+        return posterSrv.getPosterById(posterId, 
+            function(response) {
+                console.log("################# 3")
+                currentPoster = response.data;
+
+                if (!currentPoster.createdBy) {
+                    throw new Error(2000, "currentPoster.createdBy=" + currentPoster.createdBy);
+                }
+
+                //TODO
+                currentPoster.createdByUserObj = usersCache[currentPoster.createdBy];
+                //putUserToCache(currentPoster.createdBy, callback);
+
+                //loadFloors(callback);
+            }
+        );
+    }
+
+    var reloadPoster = function() {
+        if (!currentPoster) {
+            throw new Error(2000, "currentPoster=" + currentPoster);
+        }
+        if (!currentPoster.id) {
+            throw new Error(2000, "currentPoster.id=" + currentPoster.id);
         }
 
-        posterSrv.getPosterById(currentNode.posterid, function(poster) {
-            //console.log(angular.toJson(poster));
-            currentPoster = poster;
-            var wxOpenIdOfPosterOwner = poster.create_userid;
-            userSrv.getUserByWXOpenId(wxOpenIdOfPosterOwner, function(user) {
-                //console.log(angular.toJson(user));
-                posterOwner = user;
-                if (successCallBack) successCallBack(currentPoster, posterOwner);
-            }, null);
-        }, null);
+        return loadPoster(currentPoster.id);
     }
 
     
@@ -92,8 +131,8 @@ app.service('userContextSrv', function(nodeSrv, posterSrv, userSrv) {
         return posterOwner; 
     }
     
-    this.floorOwnerCashe = function() {
-        return floorOwnerCashe; 
+    this.usersCache = function() {
+        return usersCache; 
     }
     
     this.isCurrentUserThePosterOwner = function() {
@@ -104,56 +143,37 @@ app.service('userContextSrv', function(nodeSrv, posterSrv, userSrv) {
         }
     };
     
-    this.proposeAtCurrentNode = function(solution, successCallBack, errorCallBack) {
-        if (!currentNode || !currentNode._id) {
-            //TODO throw error
-            return null;
+    this.proposeAtCurrentNode = function(solution, callBack) {
+        if (!currentNode) {
+            throw new Error(2000, "currentNode=" + currentNode);
+        }
+        if (!currentPoster) {
+            throw new Error(2000, "currentPoster=" + currentPoster);
+        }
+        if (!currentPoster.id) {
+            throw new Error(2000, "currentPoster.id=" + currentPoster.id);
         }
         
-        return nodeSrv.propose(currentNode._id, solution, function(data){
-            if(successCallBack) successCallBack(data)
-        }, function(data, status){
-            if(errorCallBack) errorCallBack(data, status)
-        });
+        var newProposal = {
+            "content": solution
+        }
+        newProposal.poster = currentPoster.id;
+        newProposal.node = currentNode;
+        
+        apiHelper.createResource("proposal", newProposal, callBack);
     };
     
 
-    this.loadPosterAndFloors = function(successCallBack, errorCallBack) {
-        loadPoster(function(currentPoster, posterOwner) {
-            loadFloors(function(floors, floorOwnerCashe) {
-                if (successCallBack) successCallBack(currentPoster, posterOwner, floors, floorOwnerCashe);
-            });
-        }, errorCallBack);
+    this.reloadPosterAndFloors = function() {
+        return reloadPoster(callBack);
     };
                 
-    this.prepareContext = function(currentNodeId, currentPosterId, currentUserId, callback) {
+    this.prepareContext = function(currentNodeId, currentPosterId, currentUserId) {
         
         //console.log("prepareContext(" + currentNodeId + ", " + currentPosterId + ", " + currentUserId + ")");
         currentNode = currentNodeId;
 
-        posterSrv.getPosterById(currentPosterId, function(poster) {
-            //console.log("prepareContext: poster=" + angular.toJson(poster))
-            currentPoster = poster;
-            if (callback) callback();
-        });
-        
-        var step3_getPosterAndFloors = function(node) {
-            
-            //console.log(angular.toJson(node));
-
-            if (node.userid) {
-                userSrv.getUserByWXOpenId(node.userid, function(user) {
-                    //console.log(angular.toJson(user));
-                    currentUser = user;
-                    loadPoster(function(currentPoster, posterOwner) {
-                        loadFloors(function(floors, floorOwnerCashe) {
-                            if (callback) callback(currentPoster, posterOwner, floors, floorOwnerCashe);
-                        });
-                    }, null);
-
-                }, null);
-            }
-        };
+        return loadPoster(currentPosterId);
     }
                 
     this.createPosterAndUpdateContext = function(newPoster, callback) {

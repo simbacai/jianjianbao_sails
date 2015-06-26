@@ -19,6 +19,8 @@ module.exports = {
 
    models: {
      connection: 'localMongodbServer'
-     //connection: 'aliyunRDSMysqlServer'
    },
+
+  port:80
+
 };
