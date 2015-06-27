@@ -36,6 +36,7 @@
   "author": "root",
   "license": "",
   "devDependencies": {
+    "connect-redis": "^1.4.5",
     "should": "^6.0.3"
   }
 }
