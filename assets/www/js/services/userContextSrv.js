@@ -11,7 +11,8 @@ app.service('userContextSrv', function(resourceSrv, $q) {
 
     //私有方法：定义  
 
-    var loadFloors = function() {
+    var loadProposalSummary = function() {
+        console.log("################# loadProposalSummary 开始");
         if (!_currentPoster) {
             throw new Error(2000, "currentPoster=" + _currentPoster);
         }
@@ -20,15 +21,41 @@ app.service('userContextSrv', function(resourceSrv, $q) {
         }
 
         var promise = 
-            resourceSrv.searchResource("proposal", "poster="+_currentPoster.id).then(function(response) {
+            resourceSrv.searchResource("ProposalSummary", "poster="+_currentPoster.id).then(function(response) {
                 var proposals = response.data;
 
-                console.log("proposals" + angular.toJson(proposals));
-                currentPoster.proposalObjs = proposals.reverse();
-                for(var i=0; i<currentPoster.proposalObjs.length; i++) {
-                    var userId = currentPoster.proposalObjs[i].createdBy;
-                    currentPoster.proposalObjs[i].createdByUserObj = usersCache[userId];
+                console.log("proposals=" + angular.toJson(proposals));
+                _currentPoster.proposalObjs = proposals.reverse();
+                for(var i=0; i<_currentPoster.proposalObjs.length; i++) {
+                    var userId = _currentPoster.proposalObjs[i].createdBy;
+                    _currentPoster.proposalObjs[i].createdByUserObj = _usersCache[userId];
                 }
+                console.log("################# loadProposalSummary 完成");
+            });
+
+        return promise;
+    }
+
+    var loadOwnerUserForEveryProposalSummary = function() {
+        console.log("################# loadProposalSummary 开始");
+        if (!_currentPoster) {
+            throw new Error(2000, "currentPoster=" + _currentPoster);
+        }
+        if (!_currentPoster.id) {
+            throw new Error(2000, "currentPoster.id=" + _currentPoster.id);
+        }
+
+        var promise = 
+            resourceSrv.searchResource("ProposalSummary", "poster="+_currentPoster.id).then(function(response) {
+                var proposals = response.data;
+
+                console.log("proposals=" + angular.toJson(proposals));
+                _currentPoster.proposalObjs = proposals.reverse();
+                for(var i=0; i<_currentPoster.proposalObjs.length; i++) {
+                    var userId = _currentPoster.proposalObjs[i].createdBy;
+                    _currentPoster.proposalObjs[i].createdByUserObj = _usersCache[userId];
+                }
+                console.log("################# loadProposalSummary 完成");
             });
 
         return promise;
@@ -70,14 +97,13 @@ app.service('userContextSrv', function(resourceSrv, $q) {
             throw new Error(2000, "_currentPoster.createdBy=" + _currentPoster.createdBy);
         }
 
-        var promise1 = resourceSrv.getResourceById("user", _currentPoster.createdBy);
-        var promise2 = promise1.then(function(response) {
-                _usersCache[_currentPoster.createdBy] = response.data;
-                _currentPoster.createdByUserObj = _usersCache[_currentPoster.createdBy];
-                console.log("################# loadPosterOwner 完成");
+        var promise = resourceSrv.getResourceById("user", _currentPoster.createdBy).then(function(response) {
+            _usersCache[_currentPoster.createdBy] = response.data;
+            _currentPoster.createdByUserObj = _usersCache[_currentPoster.createdBy];
+            console.log("################# loadPosterOwner 完成");
         });
 
-        return promise2;
+        return promise;
 
     }
 
@@ -152,12 +178,13 @@ app.service('userContextSrv', function(resourceSrv, $q) {
     this.prepareContext = function(currentNodeId, currentPosterId, currentUserId) {
         _currentNodeId = currentNodeId;
 
-        var promise1 = loadPoster(currentPosterId);
-        var promise2 = promise1.then(function() {
+        var promise = loadPoster(currentPosterId).then(function() {
             return loadPosterOwner();
+        }).then(function() {
+            return loadProposalSummary();
         });
 
-        return promise2;
+        return promise;
     }
                 
     this.createPosterAndUpdateContext = function(newPoster, callback) {

@@ -57,19 +57,21 @@ app.service("resourceSrv", function($http, $q) {
 
         var apiURL = '/' + resourceName +  '?' + search;
 
-        return 
+        var promise = 
             $http.get(apiURL).then(function(response) {
                 console.log("success: get " + apiURL);
                 var resourceArray = response.data;
                 if (!angular.isArray(resourceArray)) {
                     throw new Error(1000, "resourceArray=" + resourceArray);
                 }
+                return response;
             }, function(response) {
                 //TODO
                 var errorMsg = "error:  get " + apiURL + ", status=" + status;
                 console.log(errorMsg);
                 throw new Error(1000, errorMsg);
             });
+        return promise;
     }
 
 });
