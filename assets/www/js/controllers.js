@@ -1,21 +1,19 @@
-angular.module('app.controllers', [])
+app
 
 .controller('AppMainCtrl', function($rootScope, $http, $location, $scope
                                        , dateUtil, userContextSrv){
     $rootScope.poster = {};
 
     $rootScope.refresh = function() {
-        userContextSrv.loadPosterAndFloors(function(currentPoster, posterOwner, floors, floorOwnerCashe) {
+        userContextSrv.reloadPosterAndFloors(function() {
 
-            $rootScope.posterOwner = posterOwner;
-            $rootScope.poster = currentPoster;
-            $rootScope.floors = floors.reverse();
-            $rootScope.floorOwnerCashe = floorOwnerCashe;
+            $rootScope.poster = userContextSrv.currentPoster();
+            //$rootScope.floors = floors.reverse();
 
             //Stop the ion-refresher from spinning
             $scope.$broadcast('scroll.refreshComplete');
-        }, null);
-    }
+        });
+    };
     
     /**
      * 被调用，情况1: index.html使用ng-init调用
@@ -23,12 +21,10 @@ angular.module('app.controllers', [])
     $rootScope.initUsercontext = function(currentNodeId, currentPosterId, currentUserId) {
         console.log("current: node=" + currentNodeId + ", poster=" + currentPosterId + ", user=" + currentUserId);
 
-        userContextSrv.prepareContext(currentNodeId, currentPosterId, currentUserId, function() {
-            //console.log("AppMainCtrl: posterOwner=" + angular.toJson(userContextSrv.posterOwner()));
-            console.log("AppMainCtrl: isCurrentUserThePosterOwner=" + userContextSrv.isCurrentUserThePosterOwner());
-            
-            $rootScope.populateUI();
-        });
+        userContextSrv.prepareContext(currentNodeId, currentPosterId, currentUserId)
+            .then($rootScope.populateUI());
+
+
     }
 
     /**
@@ -36,10 +32,10 @@ angular.module('app.controllers', [])
      * 被调用，情况2: PosterCreationCtrl中创建一张新Poster后
      */
     $rootScope.populateUI = function() {
+
+        console.log("################# 4");
         $rootScope.poster = userContextSrv.currentPoster();
-        console.log("$rootScope.poster=" + angular.toJson($rootScope.poster));
-
-
+        //console.log("$rootScope.poster=" + angular.toJson($rootScope.poster));
 
         /*
         $rootScope.posterOwner = posterOwner;
@@ -58,9 +54,8 @@ angular.module('app.controllers', [])
         document.title = prefix + $rootScope.poster.subject;
     }
     
-    $scope.createContact = function(u) {        
-      $scope.contacts.push({ name: u.firstName + ' ' + u.lastName });
-      $scope.modal.hide();
+    $scope.HeaderUrlOfuser = function(userId) {
+        return
     };
 
     
@@ -89,6 +84,7 @@ angular.module('app.controllers', [])
     }
 
     $scope.propose = function() {
+
         userContextSrv.proposeAtCurrentNode($rootScope.solution, function(data) {
             console.log("proposeAtCurrentNode:" + angular.toJson(data));
             $rootScope.solution = "";

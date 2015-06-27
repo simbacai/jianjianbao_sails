@@ -20,7 +20,7 @@ app.service("nodeSrv", function($http) {
         });
     }
     
-    this.propose = function(nodeId, solution, successCallBack, errorCallBack) {
+    this.propose = function(nodeId, solution, successCallBack) {
         
         var apiURL = "/api/v1/node/" + nodeId + "/propose";
         $http.post(apiURL, {body: solution})

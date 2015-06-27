@@ -1,5 +1,5 @@
 
-var app = angular.module('app', ['ionic', 'app.controllers', 'app.services']);
+var app = angular.module('app', ['ionic', 'app.services']);
 
 app.run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -25,6 +25,12 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         url: '/node/:node',
         templateUrl: '/www/templates/poster.html',
         controller: 'PosterMainCtrl'
+    })
+
+    .state('linkpath', {
+        url: '/node/:node/linkpath',
+        templateUrl: '/www/templates/linkpath.html',
+        controller: 'LinkPathCtrl'
     })
 
     $urlRouterProvider.otherwise('/');
