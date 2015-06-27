@@ -18,7 +18,8 @@ module.exports = {
    ***************************************************************************/
 
    models: {
-     connection: 'aliyunRDSMysqlServer'
+     connection: 'aliyunRDSMysqlServer',
+     migrate: 'safe'
    },
 
   /***************************************************************************

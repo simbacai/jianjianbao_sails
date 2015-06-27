@@ -18,9 +18,10 @@ module.exports = {
    ***************************************************************************/
 
    models: {
-     connection: 'localMongodbServer'
+     connection: 'localMongodbServer',
+     migrate: 'alter'
+     //connection: 'aliyunRDSMysqlServer'
    },
 
-  port:80
-
+   port:1337
 };
