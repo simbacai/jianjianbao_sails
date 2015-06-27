@@ -42,7 +42,7 @@ module.exports = {
     	  }
       })
       .catch (function (error) {
-        sails.error (error);
+        sails.log.error (error);
         res.json (400, {errcode: 999});
       })
   },

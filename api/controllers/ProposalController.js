@@ -55,7 +55,7 @@ module.exports = {
 	    	}
 	    })
 			.catch (function (err) {
-				sails.error (err);
+				sails.log.error (err);
 		    res.json (400, {errcode: 999});
 			})
 
