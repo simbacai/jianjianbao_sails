@@ -18,16 +18,15 @@ app
     /**
      * 被调用，情况1: index.html使用ng-init调用
      */
-    $rootScope.initUsercontext_123 = function(currentNodeId, currentPosterId, currentUserId) {
-        console.log("current: node=" + currentNodeId + ", poster=" + currentPosterId + ", user=" + currentUserId);
+    $rootScope.initUsercontext = function(currentNodeId, currentPosterId, currentUserId) {
+        //console.log("current: node=" + currentNodeId + ", poster=" + currentPosterId + ", user=" + currentUserId);
 
-        userContextSrv.prepareContext(currentNodeId, currentPosterId, currentUserId)
-            .then($rootScope.populateUI());
-
-
+        return userContextSrv.prepareContext(currentNodeId, currentPosterId, currentUserId).then(function() {
+            return $rootScope.populateUI();
+        });
     }
 
-    $rootScope.initUsercontext = function(currentNodeId, currentPosterId, currentUserId) {
+    $rootScope.initUsercontext_1 = function(currentNodeId, currentPosterId, currentUserId) {
         console.log("############# 1");
 
         var feachPoster = function(currentPosterId) {
@@ -85,7 +84,7 @@ app
      */
     $rootScope.populateUI = function() {
 
-        console.log("############# 5");
+        console.log("################# $rootScope.populateUI 开始");
 
         $rootScope.poster = userContextSrv.currentPoster();
         //console.log("$rootScope.poster=" + angular.toJson($rootScope.poster));
@@ -97,7 +96,7 @@ app
         */
 
         //不刷新跳转
-        $rootScope.posterMainPath = "/node/" + userContextSrv.currentNode();
+        $rootScope.posterMainPath = "/node/" + userContextSrv.currentNodeId();
         $location.path($rootScope.posterMainPath);
         //document.title = $rootScope.poster.subject;
         var prefix = "";
@@ -105,6 +104,8 @@ app
             prefix = "悬赏" + $rootScope.poster.tip.tip_amount + "元：";
         }
         document.title = prefix + $rootScope.poster.subject;
+
+        console.log("################# $rootScope.populateUI 完成");
     }
     
     $scope.HeaderUrlOfuser = function(userId) {
