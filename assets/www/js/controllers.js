@@ -5,10 +5,8 @@ app
     $rootScope.poster = {};
 
     $rootScope.refresh = function() {
-        userContextSrv.reloadPosterAndFloors(function() {
-
+        userContextSrv.reloadPosterAndFloors().then(function() {
             $rootScope.poster = userContextSrv.currentPoster();
-            //$rootScope.floors = floors.reverse();
 
             //Stop the ion-refresher from spinning
             $scope.$broadcast('scroll.refreshComplete');
@@ -16,76 +14,24 @@ app
     };
     
     /**
-     * 被调用，情况1: index.html使用ng-init调用
+     * 调用: index.html使用ng-init调用
      */
-    $rootScope.initUsercontext_123 = function(currentNodeId, currentPosterId, currentUserId) {
-        console.log("current: node=" + currentNodeId + ", poster=" + currentPosterId + ", user=" + currentUserId);
-
-        userContextSrv.prepareContext(currentNodeId, currentPosterId, currentUserId)
-            .then($rootScope.populateUI());
-
-
-    }
-
     $rootScope.initUsercontext = function(currentNodeId, currentPosterId, currentUserId) {
-        console.log("############# 1");
+        //console.log("current: node=" + currentNodeId + ", poster=" + currentPosterId + ", user=" + currentUserId);
 
-        var feachPoster = function(currentPosterId) {
-            console.log("############# 2.1");
-
-            var promise =  
-                $http.get("/poster/" + "558a92f511e92001882d58f0")
-                .then(function(response) {
-                    console.log(angular.toJson(response));
-                    console.log("############# 2.2");
-                }); 
-            return promise;
-        };
-
-        var feachProposals = function() {
-            console.log("############# 3.1");
-
-            var proposals = [
-                "558aae0111e92001882d58fa",
-                "558ab19511e92001882d5901",
-                "558ab19511e92001882d5903",
-                "558ab1b911e92001882d5905"
-            ];
-
-            var promises = proposals.map(function(proposalId) {
-                console.log("############# 3.2." + proposalId + " 开始");
-
-                return $http({
-                    url   : "/proposal/" + proposalId,
-                    method: 'GET'
-                }).success(function() {
-                    console.log("############# 3.2." + proposalId + " 完成")
-                });
-            });
-
-            return $q.all(promises);
-        };
-
-        var feachUsers = function() {
-            console.log("############# 4");
-        };
-
-        feachPoster(currentNodeId).then(function() {
-            return feachProposals();
-        }).then(function() {
-            return feachUsers();
-        }).then(function() {
+        return userContextSrv.prepareContext(currentNodeId, currentPosterId, currentUserId).then(function() {
             return $rootScope.populateUI();
         });
     }
 
     /**
-     * 被调用，情况1: index.html使用ng-init调用
-     * 被调用，情况2: PosterCreationCtrl中创建一张新Poster后
+     * 调用:
+     * 情况1: index.html使用ng-init调用
+     * 情况2: PosterCreationCtrl中创建一张新Poster后
      */
     $rootScope.populateUI = function() {
 
-        console.log("############# 5");
+        console.log("################# $rootScope.populateUI 开始");
 
         $rootScope.poster = userContextSrv.currentPoster();
         //console.log("$rootScope.poster=" + angular.toJson($rootScope.poster));
@@ -97,7 +43,7 @@ app
         */
 
         //不刷新跳转
-        $rootScope.posterMainPath = "/node/" + userContextSrv.currentNode();
+        $rootScope.posterMainPath = "/node/" + userContextSrv.currentNodeId();
         $location.path($rootScope.posterMainPath);
         //document.title = $rootScope.poster.subject;
         var prefix = "";
@@ -105,12 +51,9 @@ app
             prefix = "悬赏" + $rootScope.poster.tip.tip_amount + "元：";
         }
         document.title = prefix + $rootScope.poster.subject;
-    }
-    
-    $scope.HeaderUrlOfuser = function(userId) {
-        return
-    };
 
+        console.log("################# $rootScope.populateUI 完成");
+    }
     
     //TODO 可以用Filter实现
     $rootScope.timeDiff = function(dateTimeStamp) {
@@ -119,7 +62,7 @@ app
     
 })
 
-.controller("PosterMainCtrl", function($scope, $rootScope
+.controller("PosterMainCtrl", function($scope, $rootScope, $q
     , userContextSrv
     , $ionicModal, $ionicPopover){
     console.log("PosterMainCtrl: BEGIN................");
@@ -130,6 +73,9 @@ app
       scope: $scope
     }).then(function(modal) {
       $scope.modal = modal;
+
+      //TODO
+      $scope.modal.show();
     });
 
     $scope.proposeBtnClick = function() {
@@ -137,26 +83,21 @@ app
     }
 
     $scope.propose = function() {
+        console.log("################# $scope.propose 开始");
 
-        userContextSrv.proposeAtCurrentNode($rootScope.solution, function(data) {
-            console.log("proposeAtCurrentNode:" + angular.toJson(data));
+        userContextSrv.proposeAtCurrentNode($rootScope.solution).then(function() {
+            console.log("################# $scope.propose 完成");
             $rootScope.solution = "";
             $scope.modal.hide();
             $rootScope.refresh();
-        }, null);
+        });
     }
-
     
     $ionicModal.fromTemplateUrl('/www/templates/poster_creation.html', {
       scope: $scope
     }).then(function(modal) {
         $scope.posterCreationModal = modal;
-
-        //TODO 上线前删除
-        //$scope.posterCreationModal.show();
     });
-
-
 
     $ionicPopover.fromTemplateUrl('/www/templates/main_menu.html', {
         scope: $scope,
@@ -177,7 +118,6 @@ app
         };
         
         var successCallBack = function(newPoster) {
-
             $rootScope.myNewPoster = {};
             $scope.posterCreationModal.hide();
 
@@ -186,8 +126,6 @@ app
 
         userContextSrv.createPosterAndUpdateContext(newPoster, successCallBack);
     };
-
-
 })
 
 .controller("ProposeCtrl", function($scope, $rootScope, userContextSrv){
