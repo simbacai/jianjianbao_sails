@@ -197,7 +197,17 @@ app.service('userContextSrv', function(resourceSrv, $q) {
     
 
     this.reloadPosterAndFloors = function() {
-        return reloadPoster(callBack);
+        var promise = reloadPoster().then(function() {
+            return loadPosterOwner();
+        }).then(function() {
+            return loadProposalSummary();
+        }).then(function() {
+            return loadUserForAllProposals();
+        }).then(function() {
+            return loadContentForAllProposals();
+        });
+
+        return promise;
     };
                 
     this.prepareContext = function(currentNodeId, currentPosterId, currentUserId) {

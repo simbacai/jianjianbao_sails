@@ -5,10 +5,8 @@ app
     $rootScope.poster = {};
 
     $rootScope.refresh = function() {
-        userContextSrv.reloadPosterAndFloors(function() {
-
+        userContextSrv.reloadPosterAndFloors().then(function() {
             $rootScope.poster = userContextSrv.currentPoster();
-            //$rootScope.floors = floors.reverse();
 
             //Stop the ion-refresher from spinning
             $scope.$broadcast('scroll.refreshComplete');
@@ -16,7 +14,7 @@ app
     };
     
     /**
-     * 被调用，情况1: index.html使用ng-init调用
+     * 调用: index.html使用ng-init调用
      */
     $rootScope.initUsercontext = function(currentNodeId, currentPosterId, currentUserId) {
         //console.log("current: node=" + currentNodeId + ", poster=" + currentPosterId + ", user=" + currentUserId);
@@ -26,61 +24,10 @@ app
         });
     }
 
-    $rootScope.initUsercontext_1 = function(currentNodeId, currentPosterId, currentUserId) {
-        console.log("############# 1");
-
-        var feachPoster = function(currentPosterId) {
-            console.log("############# 2.1");
-
-            var promise =  
-                $http.get("/poster/" + "558a92f511e92001882d58f0")
-                .then(function(response) {
-                    console.log(angular.toJson(response));
-                    console.log("############# 2.2");
-                }); 
-            return promise;
-        };
-
-        var feachProposals = function() {
-            console.log("############# 3.1");
-
-            var proposals = [
-                "558aae0111e92001882d58fa",
-                "558ab19511e92001882d5901",
-                "558ab19511e92001882d5903",
-                "558ab1b911e92001882d5905"
-            ];
-
-            var promises = proposals.map(function(proposalId) {
-                console.log("############# 3.2." + proposalId + " 开始");
-
-                return $http({
-                    url   : "/proposal/" + proposalId,
-                    method: 'GET'
-                }).success(function() {
-                    console.log("############# 3.2." + proposalId + " 完成")
-                });
-            });
-
-            return $q.all(promises);
-        };
-
-        var feachUsers = function() {
-            console.log("############# 4");
-        };
-
-        feachPoster(currentNodeId).then(function() {
-            return feachProposals();
-        }).then(function() {
-            return feachUsers();
-        }).then(function() {
-            return $rootScope.populateUI();
-        });
-    }
-
     /**
-     * 被调用，情况1: index.html使用ng-init调用
-     * 被调用，情况2: PosterCreationCtrl中创建一张新Poster后
+     * 调用:
+     * 情况1: index.html使用ng-init调用
+     * 情况2: PosterCreationCtrl中创建一张新Poster后
      */
     $rootScope.populateUI = function() {
 
