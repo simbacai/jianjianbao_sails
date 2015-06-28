@@ -20,8 +20,7 @@ module.exports = {
    models: {
      connection: 'localMongodbServer',
      migrate: 'alter'
-     //connection: 'aliyunRDSMysqlServer'
-   },
+    },
 
    port:1337
 };

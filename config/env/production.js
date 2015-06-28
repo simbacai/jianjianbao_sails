@@ -33,7 +33,11 @@ module.exports = {
    ***************************************************************************/
 
    log: {
-     level: "silent"
+     level: "info"
+   },
+
+   session: {
+    adaptor: "redis"
    }
 
 };
