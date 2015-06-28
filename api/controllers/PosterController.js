@@ -11,5 +11,20 @@ module.exports = {
     shortcuts: false,
     rest: true
   },
+  
+  subscribe: function (req, res) {
+
+		Poster.findOne(req.params.id)
+		.then(function (poster) {
+		  Poster.subscribe(req, poster.id, ['message']);
+		})
+		.catch(function (err) {
+			sails.error.log(err);
+			res.json (400, {errcode: 999});
+		});
+
+		
+		// For earlier versions, use Foo.subscribe(req.socket) instead. 
+  }
 };
 
