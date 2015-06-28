@@ -36,29 +36,54 @@ app.service('userContextSrv', function(resourceSrv, $q) {
         return promise;
     }
 
-    var loadOwnerUserForEveryProposalSummary = function() {
-        console.log("################# loadProposalSummary 开始");
+    var loadContentForAllProposals = function() {
+        console.log("################# loadContentForAllProposals 开始");
+
         if (!_currentPoster) {
             throw new Error(2000, "currentPoster=" + _currentPoster);
         }
-        if (!_currentPoster.id) {
-            throw new Error(2000, "currentPoster.id=" + _currentPoster.id);
+
+        var promises = _currentPoster.proposalObjs.map(function(proposal) {
+            console.log("################# loadContentForAllProposals 子循环开始, proposal＝" + proposal.proposal);
+
+            return resourceSrv.getResourceById("proposal", proposal.proposal).then(function(response) {
+                var proposalContent = response.data;
+                proposal.content = proposalContent.content;
+                proposal.contentProtected = false;
+                console.log("################# loadContentForAllProposals 子循环完成, proposal＝" + proposal.proposal + ", content=" + proposal.content);
+                return;
+            }).catch(function(error) {
+                console.log("################# loadContentForAllProposals 子循环出错, proposal＝" + proposal.proposal);
+                if (error.message == "5001") {
+                    proposal.contentProtected = true;
+                } else {
+                    throw error;
+                }
+            });
+        });
+
+        return $q.all(promises);
+    }
+
+    var loadUserForAllProposals = function() {
+        console.log("################# loadUserForAllProposals 开始");
+
+        if (!_currentPoster) {
+            throw new Error(2000, "currentPoster=" + _currentPoster);
         }
 
-        var promise = 
-            resourceSrv.searchResource("ProposalSummary", "poster="+_currentPoster.id).then(function(response) {
-                var proposals = response.data;
+        var promises = _currentPoster.proposalObjs.map(function(proposal) {
+            console.log("################# loadUserForAllProposals 子循环开始, proposal＝" + proposal.proposal);
 
-                console.log("proposals=" + angular.toJson(proposals));
-                _currentPoster.proposalObjs = proposals.reverse();
-                for(var i=0; i<_currentPoster.proposalObjs.length; i++) {
-                    var userId = _currentPoster.proposalObjs[i].createdBy;
-                    _currentPoster.proposalObjs[i].createdByUserObj = _usersCache[userId];
-                }
-                console.log("################# loadProposalSummary 完成");
+            return resourceSrv.getResourceById("user", proposal.createdBy).then(function(response) {
+                _usersCache[proposal.createdBy] = response.data;
+                proposal.createdByUserObj = _usersCache[proposal.createdBy];
+                console.log("################# loadUserForAllProposals 子循环完成, proposal＝" + proposal.proposal);
+                return;
             });
+        });
 
-        return promise;
+        return $q.all(promises);
     }
 
     var putUserIntoCache = function(userId) {
@@ -182,6 +207,10 @@ app.service('userContextSrv', function(resourceSrv, $q) {
             return loadPosterOwner();
         }).then(function() {
             return loadProposalSummary();
+        }).then(function() {
+            return loadUserForAllProposals();
+        }).then(function() {
+            return loadContentForAllProposals();
         });
 
         return promise;

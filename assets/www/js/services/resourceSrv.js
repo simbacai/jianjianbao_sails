@@ -39,8 +39,18 @@ app.service("resourceSrv", function($http, $q) {
                 return response;
             }, function(response) {
                 //TODO
-                var errorMsg = "error:  get " + apiURL + ", status=" + status;
+
+                var errorMsg = "error:  get " + apiURL;
+                if (response.status) errorMsg += ", status=" + response.status;
+                if (response.statusText) errorMsg += "(" + response.statusText + ")";
+                if (response.data && response.data.error) errorMsg += ", apiError=" + response.data.error;
+
                 console.log(errorMsg);
+
+                if (response.status == 400) {
+                    throw new Error(5001, errorMsg);                       
+                }
+
                 throw new Error(1000, errorMsg);
             });
 
