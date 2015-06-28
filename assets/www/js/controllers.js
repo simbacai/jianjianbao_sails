@@ -73,9 +73,6 @@ app
       scope: $scope
     }).then(function(modal) {
       $scope.modal = modal;
-
-      //TODO
-      $scope.modal.show();
     });
 
     $scope.proposeBtnClick = function() {
@@ -124,7 +121,12 @@ app
             $rootScope.populateUI();
         }
 
-        userContextSrv.createPosterAndUpdateContext(newPoster, successCallBack);
+        userContextSrv.createPosterAndUpdateContext(newPoster).then(function(newPoster) {
+            $rootScope.myNewPoster = {};
+            $scope.posterCreationModal.hide();
+
+            $rootScope.populateUI();
+        });
     };
 })
 

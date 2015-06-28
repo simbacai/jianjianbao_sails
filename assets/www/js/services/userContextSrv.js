@@ -226,11 +226,28 @@ app.service('userContextSrv', function(resourceSrv, $q) {
         return promise;
     }
                 
-    this.createPosterAndUpdateContext = function(newPoster, callback) {
-        posterSrv.create(newPoster, function(newPosterResult, newRootNodeId) {
-            currentNode = newRootNodeId;
-            currentPoster = newPosterResult;
-            if (callback) callback();
+    this.createPosterAndUpdateContext = function(newPoster) {
+        var promise = resourceSrv.createResource("poster", newPoster).then(function(response) {
+            console.log(angular.toJson(response));
+
+            var newPosterReturned = response.data;
+            if (!angular.isArray(newPosterReturned.nodes)) {
+                throw new Error(2000, "newPosterReturned.nodes=" + newPosterReturned.nodes);
+            }
+            if (newPosterReturned.nodes.length < 1) {
+                throw new Error(2000, "newPosterReturned.nodes.length=" + newPosterReturned.nodes.length);
+            }
+            if (!newPosterReturned.nodes[0]) {
+                throw new Error(2000, "newPosterReturned.nodes[0]=" + newPosterReturned.nodes[0]);
+            }
+
+            _currentPoster = newPosterReturned;
+            _currentNodeId = newPosterReturned.nodes[0]
+            _usersCache = {};
+            
+            return loadPosterOwner();
         });
+
+        return promise;
     }
 });
