@@ -27,8 +27,8 @@ app.service('userContextSrv', function(resourceSrv, $q) {
                 console.log("proposals=" + angular.toJson(proposals));
                 _currentPoster.proposalObjs = proposals.reverse();
                 for(var i=0; i<_currentPoster.proposalObjs.length; i++) {
-                    var userId = _currentPoster.proposalObjs[i].createdBy;
-                    _currentPoster.proposalObjs[i].createdByUserObj = _usersCache[userId];
+                    _currentPoster.proposalObjs[i].createdAt = new Date(_currentPoster.proposalObjs[i].createdAt);
+                    _currentPoster.proposalObjs[i].updatedAt = new Date(_currentPoster.proposalObjs[i].updatedAt);
                 }
                 console.log("################# loadProposalSummary 完成");
             });
@@ -175,26 +175,26 @@ app.service('userContextSrv', function(resourceSrv, $q) {
         }
     };
     
-    this.proposeAtCurrentNode = function(solution, callBack) {
-        if (!currentNode) {
-            throw new Error(2000, "currentNode=" + currentNode);
+    this.proposeAtCurrentNode = function(solution) {
+        if (!_currentNodeId) {
+            throw new Error(2000, "_currentNodeId=" + _currentNodeId);
         }
-        if (!currentPoster) {
-            throw new Error(2000, "currentPoster=" + currentPoster);
+        if (!_currentPoster) {
+            throw new Error(2000, "_currentPoster=" + _currentPoster);
         }
-        if (!currentPoster.id) {
-            throw new Error(2000, "currentPoster.id=" + currentPoster.id);
+        if (!_currentPoster.id) {
+            throw new Error(2000, "_currentPoster.id=" + _currentPoster.id);
         }
         
-        var newProposal = {
-            "content": solution
-        }
-        newProposal.poster = currentPoster.id;
-        newProposal.node = currentNode;
+        var newProposal = {}
+        newProposal.content = solution;  
+        newProposal.poster = _currentPoster.id;
+        newProposal.node = _currentNodeId;
+
+        var promise = resourceSrv.createResource("proposal", newProposal);
         
-        apiHelper.createResource("proposal", newProposal, callBack);
+        return promise;
     };
-    
 
     this.reloadPosterAndFloors = function() {
         var promise = reloadPoster().then(function() {

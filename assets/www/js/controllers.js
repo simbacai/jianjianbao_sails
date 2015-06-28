@@ -55,11 +55,6 @@ app
         console.log("################# $rootScope.populateUI 完成");
     }
     
-    $scope.HeaderUrlOfuser = function(userId) {
-        return
-    };
-
-    
     //TODO 可以用Filter实现
     $rootScope.timeDiff = function(dateTimeStamp) {
         return dateUtil.timeDiff(dateTimeStamp);
@@ -67,7 +62,7 @@ app
     
 })
 
-.controller("PosterMainCtrl", function($scope, $rootScope
+.controller("PosterMainCtrl", function($scope, $rootScope, $q
     , userContextSrv
     , $ionicModal, $ionicPopover){
     console.log("PosterMainCtrl: BEGIN................");
@@ -78,6 +73,9 @@ app
       scope: $scope
     }).then(function(modal) {
       $scope.modal = modal;
+
+      //TODO
+      $scope.modal.show();
     });
 
     $scope.proposeBtnClick = function() {
@@ -85,26 +83,21 @@ app
     }
 
     $scope.propose = function() {
+        console.log("################# $scope.propose 开始");
 
-        userContextSrv.proposeAtCurrentNode($rootScope.solution, function(data) {
-            console.log("proposeAtCurrentNode:" + angular.toJson(data));
+        userContextSrv.proposeAtCurrentNode($rootScope.solution).then(function() {
+            console.log("################# $scope.propose 完成");
             $rootScope.solution = "";
             $scope.modal.hide();
             $rootScope.refresh();
-        }, null);
+        });
     }
-
     
     $ionicModal.fromTemplateUrl('/www/templates/poster_creation.html', {
       scope: $scope
     }).then(function(modal) {
         $scope.posterCreationModal = modal;
-
-        //TODO 上线前删除
-        //$scope.posterCreationModal.show();
     });
-
-
 
     $ionicPopover.fromTemplateUrl('/www/templates/main_menu.html', {
         scope: $scope,
@@ -125,7 +118,6 @@ app
         };
         
         var successCallBack = function(newPoster) {
-
             $rootScope.myNewPoster = {};
             $scope.posterCreationModal.hide();
 
@@ -134,8 +126,6 @@ app
 
         userContextSrv.createPosterAndUpdateContext(newPoster, successCallBack);
     };
-
-
 })
 
 .controller("ProposeCtrl", function($scope, $rootScope, userContextSrv){

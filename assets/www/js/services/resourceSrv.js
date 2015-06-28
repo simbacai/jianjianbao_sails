@@ -8,18 +8,21 @@ app.service("resourceSrv", function($http, $q) {
 
         var apiURL = '/' + resourceName;
 
-        return 
+        var promise = 
             $http.post(apiURL, resourceObject).then(function(response) {
                 var resourceObject = response.data;
                 console.log("success: post " + apiURL + ", obj=" + angular.toJson(resourceObject));
                 if (!resourceObject) {
                     throw new Error(1000, "resourceObject=" + resourceObject);
                 }
+                return response;
             }, function(response) {
                 var errorMsg = "error:  post " + apiURL + ", status=" + status + ", response=" + angular.toJson(data);
                 console.log(errorMsg);
                 throw new Error(1000, errorMsg);
             });
+
+        return promise;
     }
 
     this.getResourceById = function(resourceName, id) {
