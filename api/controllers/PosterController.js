@@ -22,9 +22,6 @@ module.exports = {
 			sails.error.log(err);
 			res.json (400, {errcode: 999});
 		});
-
-		
-		// For earlier versions, use Foo.subscribe(req.socket) instead. 
   }
 };
 

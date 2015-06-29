@@ -64,6 +64,14 @@ module.exports = {
       })
       .catch(next);
     },
+    /**
+    * Notify the created privatetalks to subscriber automatically
+    */    
+    function notifySubscriber (privatetalk, next) {
+      sails.log('PrivateTalk.afterCreate.notifySubscriber');
+      Proposal.message(privatetalk.proposal, privatetalk);
+      next();
+    },
   ],
 
   beforeDestroy: [
