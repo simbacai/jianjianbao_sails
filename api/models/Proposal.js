@@ -11,6 +11,9 @@ module.exports = {
   	"poster" : {
   		model:'poster'
   	},
+  	"authowner" : {
+  		model:'user'
+  	},
   	"content": {
   		type:'string'
   	},
@@ -97,7 +100,8 @@ module.exports = {
     function createProposalSummary (proposal, next) {
       sails.log('Proposal.afterCreate.createProposalSummary');
       ProposalSummary.create({ poster: proposal.poster, proposal: proposal.id, createdBy: proposal.createdBy, createdAt: proposal.createdAt, updatedAt: proposal.updatedAt})
-      .then(function (proposalsummary) {
+      .then(function (proposalsummary) {   
+          Poster.message(proposalsummary.poster, proposalsummary);
           next();
         })
       .catch(next);

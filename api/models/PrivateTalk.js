@@ -13,7 +13,10 @@ module.exports = {
   	},
   	"content": {
   		type:'string'
-  	}
+  	},
+  	"authowner" : {
+  		model:'user'
+  	},
   },
 
 
@@ -60,6 +63,14 @@ module.exports = {
           next();
       })
       .catch(next);
+    },
+    /**
+    * Notify the created privatetalks to subscriber automatically
+    */    
+    function notifySubscriber (privatetalk, next) {
+      sails.log('PrivateTalk.afterCreate.notifySubscriber');
+      Proposal.message(privatetalk.proposal, privatetalk);
+      next();
     },
   ],
 

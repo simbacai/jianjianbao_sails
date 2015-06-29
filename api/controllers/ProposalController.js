@@ -64,6 +64,25 @@ module.exports = {
   openProposal : function  (req, res) { 
 
   	
+  },
+
+  subscribe: function (req, res) {
+
+		Proposal.findOne(req.params.id)
+		.then(function (proposal) {
+			if(req.user.id == proposal.owner || req.user.id == proposal.authowner) {
+        Proposal.subscribe(req, proposal.id, ['message']); 
+        res.ok('Subscribe Succesfully!'); 
+			}
+			else {
+				res.forbidden('Not authorized to subscribe to the proposal');
+			}
+		  
+		})
+		.catch(function (err) {
+			sails.error.log(err);
+			res.json (400, {errcode: 999});
+		});
   }	
 };
 
