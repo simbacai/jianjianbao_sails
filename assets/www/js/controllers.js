@@ -79,6 +79,11 @@ app
       $scope.modal.show();
     }
 
+    $scope.commit = function(proposalId) {
+        console.log("################# $scope.commit 开始, proposal=" + proposalId);
+
+    }
+
     $scope.propose = function() {
         console.log("################# $scope.propose 开始");
 

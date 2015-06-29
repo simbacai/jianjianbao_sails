@@ -196,6 +196,10 @@ app.service('userContextSrv', function(resourceSrv, $q) {
         return promise;
     };
 
+    this.commit =  function(solution) {
+        
+    }
+
     this.reloadPosterAndFloors = function() {
         var promise = reloadPoster().then(function() {
             return loadPosterOwner();

@@ -87,4 +87,28 @@ app.service("resourceSrv", function($http, $q) {
         return promise;
     }
 
+    /*
+     * 参数: search, 形如"poster=a101", 不带"?"
+     */
+    this.post = function(url, data) {
+
+        if (!url) throw new Error(2000, "url=" + search);
+        if (!data) throw new Error(2000, "data=" + resourceName);
+
+        var promise = 
+            $http.post(url, data).then(function(response) {
+                var resultObject = response.data;
+                console.log("success: post " + apiURL + ", result=" + angular.toJson(resultObject));
+                if (!resultObject) {
+                    throw new Error(1000, "resultObject=" + resultObject);
+                }
+                return response;
+            }, function(response) {
+                var errorMsg = "error:  post " + apiURL + ", status=" + status + ", result=" + angular.toJson(data);
+                console.log(errorMsg);
+                throw new Error(1000, errorMsg);
+            });
+        return promise;
+    }
+
 });
