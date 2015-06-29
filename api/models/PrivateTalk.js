@@ -13,7 +13,10 @@ module.exports = {
   	},
   	"content": {
   		type:'string'
-  	}
+  	},
+  	"authowner" : {
+  		model:'user'
+  	},
   },
 
 

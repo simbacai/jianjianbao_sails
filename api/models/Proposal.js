@@ -11,6 +11,9 @@ module.exports = {
   	"poster" : {
   		model:'poster'
   	},
+  	"authowner" : {
+  		model:'user'
+  	},
   	"content": {
   		type:'string'
   	},
