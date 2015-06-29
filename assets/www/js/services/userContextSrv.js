@@ -21,11 +21,11 @@ app.service('userContextSrv', function(resourceSrv, $q) {
         }
 
         var promise = 
-            resourceSrv.searchResource("ProposalSummary", "poster="+_currentPoster.id).then(function(response) {
+            resourceSrv.searchResource("ProposalSummary", "poster="+_currentPoster.id + "&sort=createdAt DESC").then(function(response) {
                 var proposals = response.data;
 
                 console.log("proposals=" + angular.toJson(proposals));
-                _currentPoster.proposalObjs = proposals.reverse();
+                _currentPoster.proposalObjs = proposals;
                 for(var i=0; i<_currentPoster.proposalObjs.length; i++) {
                     _currentPoster.proposalObjs[i].createdAt = new Date(_currentPoster.proposalObjs[i].createdAt);
                     _currentPoster.proposalObjs[i].updatedAt = new Date(_currentPoster.proposalObjs[i].updatedAt);
