@@ -28,7 +28,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     })
 
     .state('linkpath', {
-        url: '/node/:node/linkpath',
+        url: '/node/:node/linkpath/proposal/:proposalid',
         templateUrl: '/www/templates/linkpath.html',
         controller: 'LinkPathCtrl'
     })

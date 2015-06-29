@@ -140,4 +140,9 @@ app
 
 })
 
+.controller("LinkPathCtrl", function($scope, $rootScope, userContextSrv){
+    console.log("LinkPathCtrl: BEGIN................");
+
+})
+
 ;

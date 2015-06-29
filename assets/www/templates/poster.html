@@ -9,7 +9,8 @@
           <p>
             楼主&nbsp;
             {{poster.createdByUserObj.nickname}}&nbsp;
-            {{timeDiff(poster.create_timestamp)}}
+            {{poster.createdAt | date : 'M-d H:mm' }}
+            <!--{{timeDiff(poster.create_timestamp)}}-->
           </p>
         </div>
 
@@ -57,7 +58,7 @@
           </p>
         </div>
 
-        <a class="item item-body" href="/node/5555/detail">
+        <a class="item item-body">
           <!--img class="full-image" src="http://ionicframework.com/img/docs/delorean.jpg"-->
           
 
@@ -76,7 +77,7 @@
         </a>
 
         <div class="item tabs tabs-secondary tabs-icon-left">
-          <a class="tab-item" ng-click="commit(floor.proposal)">
+          <a class="tab-item" href="{{posterMainPath}}/linkpath/proposal/{{floor.proposal}}" ng-click="commit(floor.proposal)">
             <i class="icon ion-ios-eye-outline"></i>
             采纳
           </a>
