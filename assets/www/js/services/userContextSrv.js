@@ -21,7 +21,7 @@ app.service('userContextSrv', function(resourceSrv, $q) {
         }
 
         var promise = 
-            resourceSrv.searchResource("ProposalSummary", "poster="+_currentPoster.id + "&sort=createdAt DESC").then(function(response) {
+            resourceSrv.searchResource("ProposalSummary", "poster="+_currentPoster.id + "&sort=id DESC").then(function(response) {
                 var proposals = response.data;
 
                 console.log("proposals=" + angular.toJson(proposals));
@@ -29,6 +29,14 @@ app.service('userContextSrv', function(resourceSrv, $q) {
                 for(var i=0; i<_currentPoster.proposalObjs.length; i++) {
                     _currentPoster.proposalObjs[i].createdAt = new Date(_currentPoster.proposalObjs[i].createdAt);
                     _currentPoster.proposalObjs[i].updatedAt = new Date(_currentPoster.proposalObjs[i].updatedAt);
+
+                    _currentPoster.proposalObjs[i].actionPermits = {};
+                    if (_currentPoster.status == "created") {
+                        _currentPoster.proposalObjs[i].actionPermits.commit = true; 
+                    }
+                    if (_currentPoster.status == "closed") {
+                        _currentPoster.proposalObjs[i].actionPermits.viewTips = true; 
+                    }
                 }
                 console.log("################# loadProposalSummary 完成");
             });
@@ -86,24 +94,6 @@ app.service('userContextSrv', function(resourceSrv, $q) {
         return $q.all(promises);
     }
 
-    var putUserIntoCache = function(userId) {
-
-        resourceSrv.getResourceById("user", userId).then(function(response) {
-
-            var user = response.data;
-            console.log("user=" + angular.toJson(user));
-            console.log("user.id=" + user.id);
-            console.log("user.nickname=" + user.nickname);
-            console.log("user.headimgurl=" + user.headimgurl);
-            
-            if (!user.id) {
-                throw new Error(2000, "user.id=" + user.id);
-            }
-            usersCache[user.id] = user;
-
-        });
-    }
-
     var loadPoster = function(posterId) {
         console.log("################# loadPoster 开始");
         var promise = 
@@ -113,6 +103,28 @@ app.service('userContextSrv', function(resourceSrv, $q) {
             });
 
         return promise;
+    }
+
+    var reloadPoster = function() {
+        if (!_currentPoster) {
+            throw new Error(2000, "_currentPoster=" + _currentPoster);
+        }
+        if (!_currentPoster.id) {
+            throw new Error(2000, "_currentPoster.id=" + _currentPoster.id);
+        }
+
+        return loadPoster(_currentPoster.id);
+    }
+
+    var reloadPoster = function() {
+        if (!_currentPoster) {
+            throw new Error(2000, "_currentPoster=" + _currentPoster);
+        }
+        if (!_currentPoster.id) {
+            throw new Error(2000, "_currentPoster.id=" + _currentPoster.id);
+        }
+
+        return loadPoster(_currentPoster.id);
     }
 
     var loadPosterOwner = function() {
@@ -130,17 +142,6 @@ app.service('userContextSrv', function(resourceSrv, $q) {
 
         return promise;
 
-    }
-
-    var reloadPoster = function() {
-        if (!_currentPoster) {
-            throw new Error(2000, "_currentPoster=" + _currentPoster);
-        }
-        if (!_currentPoster.id) {
-            throw new Error(2000, "_currentPoster.id=" + _currentPoster.id);
-        }
-
-        return loadPoster(_currentPoster.id);
     }
 
     //公开方法：定义
@@ -254,4 +255,34 @@ app.service('userContextSrv', function(resourceSrv, $q) {
 
         return promise;
     }
+                
+    this.commitProposal = function(proposalId) {
+        console.log("################# commitProposal 开始");
+
+        if (!proposalId) {
+            throw new Error(2000);
+        }
+
+        var url = "/proposal/" + proposalId + "/commit";
+
+        var promise = resourceSrv.post(url, null).then(function() {
+            console.log("################# commitProposal 完成");
+            return;
+        });
+
+        return promise;
+    };
+                
+    this.viewTips = function() {
+        console.log("################# viewTips 开始");
+
+        var query = "poster=" + _currentPoster.id + "&sort=id ASC";
+
+        var promise = resourceSrv.searchResource("tip", query).then(function() {
+            console.log("################# viewTips 完成");
+            return;
+        });
+
+        return promise;
+    };
 });
