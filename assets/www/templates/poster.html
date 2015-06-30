@@ -5,7 +5,7 @@
       <div class="list card">
         <div class="item item-avatar">
           <img src="{{poster.createdByUserObj.headimgurl}}">
-          <h2>悬赏{{poster.tip.tip_amount}}元：{{poster.subject}}</h2>
+          <h2>悬赏{{poster.tipAmount}}元：{{poster.subject}}</h2>
           <p>
             楼主&nbsp;
             {{poster.createdByUserObj.nickname}}&nbsp;
@@ -98,7 +98,7 @@
     </ion-content>
   <ion-footer-bar class="bar-dark">
     <button class="button button-clear icon ion-navicon" ng-click="popover.show($event)"></button>
-    <h1 class="title">悬赏{{poster.tip.tip_amount}}元(未解决)</h1>
+    <h1 class="title">悬赏{{poster.tipAmount}}元(未解决)</h1>
     <button class="button button-assertive" ng-click="proposeBtnClick()">我来解决</button>
 
     <!--button class="button button-clear icon-left ion-ios-color-wand-outline button-positive"><small>&nbsp我要揭榜</small></button>

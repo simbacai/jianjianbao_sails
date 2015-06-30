@@ -7,7 +7,8 @@
         <h2>{{poster.createdByUserObj.nickname}}</h2>
         <p>
           {{poster.createdAt | date : 'M-d H:mm' }}&nbsp;
-          发布悬赏
+          发布悬赏&nbsp;
+          {{poster.tipAmount}}元
         </p>
       </div>
       <div class="item item-avatar"  ng-repeat="tip in tips">
@@ -15,7 +16,8 @@
         <h2>{{tip.userObj.nickname}}</h2>
         <p>
           {{tip.updatedAt | date : 'M-d H:mm' }}&nbsp;
-          发布悬赏
+          赢得红包&nbsp;
+          {{tip.amount}}元
         </p>
       </div>
     </div> <!--list-->

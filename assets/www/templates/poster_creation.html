@@ -28,16 +28,16 @@
       </label>
 
       <div class=" button-bar">
-        <button class="button button-light button-android" ng-class="{ 'button\-positive': $root.myNewPoster.tip.tip_amount == 20 }" ng-click="setTipAmount(20)">
+        <button class="button button-light button-android" ng-class="{ 'button\-positive': $root.myNewPoster.tipAmount == 20 }" ng-click="setTipAmount(20)">
           20元
         </button>
-        <button class="button button-light button-android" ng-class="{ 'button\-positive': $root.myNewPoster.tip.tip_amount == 50 }" ng-click="setTipAmount(50)">
+        <button class="button button-light button-android" ng-class="{ 'button\-positive': $root.myNewPoster.tipAmount == 50 }" ng-click="setTipAmount(50)">
           50元
         </button>
-        <button class="button button-light button-android" ng-class="{ 'button\-positive': $root.myNewPoster.tip.tip_amount == 100 }" ng-click="setTipAmount(100)">
+        <button class="button button-light button-android" ng-class="{ 'button\-positive': $root.myNewPoster.tipAmount == 100 }" ng-click="setTipAmount(100)">
           100元
         </button>
-        <button class="button button-light button-android" ng-class="{ 'button\-positive': $root.myNewPoster.tip.tip_amount == 500 }" ng-click="setTipAmount(500)">
+        <button class="button button-light button-android" ng-class="{ 'button\-positive': $root.myNewPoster.tipAmount == 500 }" ng-click="setTipAmount(500)">
           500元
         </button>
       </div>
@@ -46,7 +46,7 @@
         <div class="input-label">
           其它金额（单位：元）
         </div>
-        <input type="text" ng-model="$root.myNewPoster.tip.tip_amount">
+        <input type="text" ng-model="$root.myNewPoster.tipAmount">
       </label>
 
       <div class="padding">

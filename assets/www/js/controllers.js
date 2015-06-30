@@ -48,7 +48,7 @@ app
         //document.title = $rootScope.poster.subject;
         var prefix = "";
         if ($rootScope.poster.tipAmount && $rootScope.poster.tipAmount > 0) {
-            prefix = "悬赏" + $rootScope.poster.tip.tip_amount + "元：";
+            prefix = "悬赏" + $rootScope.poster.tipAmount + "元：";
         }
         document.title = prefix + $rootScope.poster.subject;
 
@@ -67,7 +67,7 @@ app
     , $ionicModal, $ionicPopover){
     console.log("PosterMainCtrl: BEGIN................");
 
-    $rootScope.myNewPoster = {"tip" : {"tip_amount" : 0}};
+    $rootScope.myNewPoster = {"tipAmount" : 0};
 
     $ionicModal.fromTemplateUrl('/www/templates/proposal_creation.html', {
       scope: $scope
@@ -81,6 +81,14 @@ app
 
     $scope.commit = function(proposalId) {
         userContextSrv.commitProposal(proposalId).then(function() {
+            return userContextSrv.viewTips();
+        }).then(function(tips) {
+            $rootScope.tips = tips;
+
+            console.log("################# 跳转至linkpath ");
+            //不刷新跳转
+            $location.path($rootScope.posterMainPath + "/linkpath/proposal/" + proposalId);
+
             return;
         });
     }
@@ -122,7 +130,7 @@ app
     });
 
     $scope.setTipAmount = function(amount) {
-        $rootScope.myNewPoster.tip.tip_amount = amount;
+        $rootScope.myNewPoster.tipAmount = amount;
     };
 
 
@@ -131,6 +139,7 @@ app
         var newPoster = {
             "subject" : $rootScope.myNewPoster.subject 
             , "body" : $rootScope.myNewPoster.body
+            , "tipAmount":  $rootScope.myNewPoster.tipAmount
         };
         
         var successCallBack = function(newPoster) {
