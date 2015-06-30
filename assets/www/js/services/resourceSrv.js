@@ -62,13 +62,15 @@ app.service("resourceSrv", function($http, $q) {
 
     /*
      * 参数: search, 形如"poster=a101", 不带"?"
+     * 
+     * TODO: limit设为较大的300
      */
     this.searchResource = function(resourceName, search) {
 
         if (!search) throw new Error(2000, "search=" + search);
         if (!resourceName) throw new Error(2000, "resourceName=" + resourceName);
 
-        var apiURL = '/' + resourceName +  '?' + search;
+        var apiURL = '/' + resourceName +  '?' + search + "&limit=300";
 
         var promise = 
             $http.get(apiURL).then(function(response) {
@@ -87,24 +89,21 @@ app.service("resourceSrv", function($http, $q) {
         return promise;
     }
 
-    /*
-     * 参数: search, 形如"poster=a101", 不带"?"
-     */
     this.post = function(url, data) {
 
-        if (!url) throw new Error(2000, "url=" + search);
-        if (!data) throw new Error(2000, "data=" + resourceName);
+        if (!url) throw new Error(2000, "url=" + url);
 
         var promise = 
             $http.post(url, data).then(function(response) {
                 var resultObject = response.data;
-                console.log("success: post " + apiURL + ", result=" + angular.toJson(resultObject));
+                console.log("success: post " + url + ", result=" + angular.toJson(resultObject));
                 if (!resultObject) {
                     throw new Error(1000, "resultObject=" + resultObject);
                 }
                 return response;
             }, function(response) {
-                var errorMsg = "error:  post " + apiURL + ", status=" + status + ", result=" + angular.toJson(data);
+                var resultObject = response.data;
+                var errorMsg = "error:  post " + url + ", status=" + status + ", result=" + angular.toJson(resultObject);
                 console.log(errorMsg);
                 throw new Error(1000, errorMsg);
             });

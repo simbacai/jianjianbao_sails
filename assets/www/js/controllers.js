@@ -80,8 +80,15 @@ app
     }
 
     $scope.commit = function(proposalId) {
-        console.log("################# $scope.commit 开始, proposal=" + proposalId);
+        userContextSrv.commitProposal(proposalId).then(function() {
+            return;
+        });
+    }
 
+    $scope.viewTips = function() {
+        userContextSrv.viewTips().then(function() {
+            return;
+        });
     }
 
     $scope.propose = function() {
