@@ -7,6 +7,55 @@
 
 module.exports = {
 
+	  preCalTips : function  (req, res) {
+    Proposal
+	    .findOne (req.params.id)
+	    .then (function (proposal) {	    	
+	    	if(proposal.status == "closed") {
+	    		res.forbidden ("Proposal has already been commited!");
+	    		return;
+	    	} else {
+	    		return Poster
+	    		  .findOne ( proposal.poster)
+	    		  .then (function (poster) {
+	    		  	if (poster.status === 'closed') {
+	    		  		res.forbidden ("Poster has already been closed!");
+	    		  	} else {
+				    		var posterTipAmount = 0;
+				    			return Poster
+				    			.findOne ( proposal.poster )
+					    		.then (function (poster) {
+					    			posterTipAmount = Number( poster.tipAmount );
+					    			return Node.findOne ( proposal.node );
+					    		})
+					    		.then (function (node) {
+					    			node.path.push (node.id);
+					    			if(node.path.length != 1) {
+					    				node.path.shift();
+					    			}
+					    			return Node.find ({id: node.path});
+					    		})
+					    		.then (function (nodes) {
+					          var tipAmount = posterTipAmount / nodes.length;
+					    			var pretips = nodes.map (function (node) {
+					    				return {poster: node.poster, user: node.createdBy, amount: tipAmount};
+					    			});
+					    			return Promise.all(pretips);
+					    		})
+					    		.then (function (tips) {
+					    			res.ok(tips);
+					    		})	    		  		
+	    		  	}
+	    		  })
+	    	}
+	    })
+			.catch (function (err) {
+				sails.log.error (err);
+		    res.json (400, {errcode: 999});
+			})
+
+  },   
+
   commitProposal : function  (req, res) {
     Proposal
 	    .findOne (req.params.id)
@@ -15,7 +64,7 @@ module.exports = {
 	    		res.forbidden ("Not authorized to commit proposal!");
 	    		return;
 	    	}
-	    	
+
 	    	if(proposal.status == "closed") {
 	    		res.forbidden ("Proposal has already been commited!");
 	    		return;
