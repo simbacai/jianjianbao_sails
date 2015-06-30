@@ -38,6 +38,9 @@ module.exports = {
 					    		})
 					    		.then (function (node) {
 					    			node.path.push (node.id);
+					    			if(node.path.length != 1) {
+					    				node.path.shift();
+					    			}
 					    			return Node.find ({id: node.path});
 					    		})
 					    		.then (function (nodes) {
