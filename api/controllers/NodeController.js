@@ -22,23 +22,38 @@ module.exports = {
     					return;
     				}
     			}
-    	
-      		//Create a new child node
-          var childNode = {};
-      		return Node
-            .create({ poster: visitNode.poster, parentNode: visitNode.id, createdBy: req.user.id , path: visitNode.path.concat(visitNode.id)})
-            .then (function (node) {
-              childNode = node;
-              return Poster.findOne({ id: visitNode.poster });
-            })
-            .then (function (poster) {
-    	        poster.nodes = poster.nodes || [];
-    	        poster.nodes.push(childNode.id);
-    	        return Poster.update({id: poster.id}, {nodes: poster.nodes});
-            })
-            .then (function (poster) {
-              res.render('index', {currentNode:childNode});
-            })
+
+    			//To guarantee there is only one node for each user in the chain
+    			var parentNodes = visitNode.path.map (function (node) {
+					  return Node.findOne({id: node});
+					});
+					return Promise
+					.all(parentNodes)
+					.then (function (parentNodes) {
+						for (var i=0; i < parentNodes.length; i++) {
+							if (parentNodes[i].createdBy == req.user.id) {
+								res.render('index', {currentNode:parentNodes[i]});
+								return;
+							}
+						}
+
+						//Create a new child node
+            var childNode = {};
+      		  return Node
+	            .create({ poster: visitNode.poster, parentNode: visitNode.id, createdBy: req.user.id , path: visitNode.path.concat(visitNode.id)})
+	            .then (function (node) {
+	              childNode = node;
+	              return Poster.findOne({ id: visitNode.poster });
+	            })
+	            .then (function (poster) {
+	    	        poster.nodes = poster.nodes || [];
+	    	        poster.nodes.push(childNode.id);
+	    	        return Poster.update({id: poster.id}, {nodes: poster.nodes});
+	            })
+	            .then (function (poster) {
+	              res.render('index', {currentNode:childNode});
+	            })
+					})
     	  }
       })
       .catch (function (error) {
