@@ -62,7 +62,7 @@ app
     
 })
 
-.controller("PosterMainCtrl", function($scope, $rootScope, $q
+.controller("PosterMainCtrl", function($scope, $rootScope, $q, $location
     , userContextSrv
     , $ionicModal, $ionicPopover){
     console.log("PosterMainCtrl: BEGIN................");
@@ -85,8 +85,15 @@ app
         });
     }
 
-    $scope.viewTips = function() {
-        userContextSrv.viewTips().then(function() {
+    $scope.viewTips = function(proposalId) {
+        userContextSrv.viewTips().then(function(tips) {
+            console.log("$scope.viewTips: tips= " + angular.toJson(tips))
+            $rootScope.tips = tips;
+
+            console.log("################# 跳转至linkpath ");
+            //不刷新跳转
+            $location.path($rootScope.posterMainPath + "/linkpath/proposal/" + proposalId);
+
             return;
         });
     }

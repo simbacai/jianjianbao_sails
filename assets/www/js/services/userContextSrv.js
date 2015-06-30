@@ -278,9 +278,16 @@ app.service('userContextSrv', function(resourceSrv, $q) {
 
         var query = "poster=" + _currentPoster.id + "&sort=id ASC";
 
-        var promise = resourceSrv.searchResource("tip", query).then(function() {
+        var promise = resourceSrv.searchResource("tip", query).then(function(response) {
+            var tips = response.data;
+
+            for (var i=0; i< tips.length; i++) {
+                tips[i].userObj = _usersCache[tips[i].user]; 
+            }
+
             console.log("################# viewTips 完成");
-            return;
+
+            return tips;
         });
 
         return promise;
