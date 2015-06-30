@@ -11,6 +11,11 @@ module.exports = {
     Proposal
 	    .findOne (req.params.id)
 	    .then (function (proposal) {
+	    	if(proposal.authowner != req.user.id) {
+	    		res.forbidden ("Not authorized to commit proposal!");
+	    		return;
+	    	}
+	    	
 	    	if(proposal.status == "closed") {
 	    		res.forbidden ("Proposal has already been commited!");
 	    		return;
