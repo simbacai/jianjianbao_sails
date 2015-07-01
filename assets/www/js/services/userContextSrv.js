@@ -32,10 +32,11 @@ app.service('userContextSrv', function(resourceSrv, $q) {
 
                     _currentPoster.proposalObjs[i].actionPermits = {};
                     if (_currentPoster.status == "created") {
-                        _currentPoster.proposalObjs[i].actionPermits.commit = true; 
+                        //_currentPoster.proposalObjs[i].actionPermits.commit = true; 
+                        _currentPoster.proposalObjs[i].actionPermits.tipsCalc = true;
                     }
                     if (_currentPoster.status == "closed") {
-                        _currentPoster.proposalObjs[i].actionPermits.viewTips = true; 
+                        //_currentPoster.proposalObjs[i].actionPermits.viewTips = true; 
                     }
                 }
                 console.log("################# loadProposalSummary 完成");
@@ -87,6 +88,30 @@ app.service('userContextSrv', function(resourceSrv, $q) {
                 _usersCache[proposal.createdBy] = response.data;
                 proposal.createdByUserObj = _usersCache[proposal.createdBy];
                 console.log("################# loadUserForAllProposals 子循环完成, proposal＝" + proposal.proposal);
+                return;
+            });
+        });
+
+        return $q.all(promises);
+    }
+
+    var loadUserForAllTips = function(tips) {
+        console.log("################# loadUserForAllTips 开始");
+
+        if (!tips) {
+            throw new Error(2000, "tips=" + tips);
+        }
+        if (!angular.isArray(tips)) {
+            throw new Error(2000, "tips=" + tips);
+        }
+
+        var promises = tips.map(function(tip) {
+            console.log("################# loadUserForAllTips 子循环开始, tip.user=" + tip.user);
+
+            return resourceSrv.getResourceById("user", tip.user).then(function(response) {
+                _usersCache[tip.user] = response.data;
+                tip.userObj = _usersCache[tip.user];
+                console.log("################# loadUserForAllTips 子循环完成, tip.user=" + tip.user);
                 return;
             });
         });
@@ -268,25 +293,6 @@ app.service('userContextSrv', function(resourceSrv, $q) {
 
         return promise;
     };
-
-
-                
-    this.commitProposal = function(proposalId) {
-        console.log("################# commitProposal 开始");
-
-        if (!proposalId) {
-            throw new Error(2000);
-        }
-
-        var url = "/proposal/" + proposalId + "/commit";
-
-        var promise = resourceSrv.post(url, null).then(function() {
-            console.log("################# commitProposal 完成");
-            return;
-        });
-
-        return promise;
-    };
                 
     this.viewTips = function() {
         console.log("################# viewTips 开始");
@@ -309,22 +315,18 @@ app.service('userContextSrv', function(resourceSrv, $q) {
     };
                 
     this.tipsCalc = function(proposalId) {
-        console.log("################# tipsCalc 开始");
 
         if (!proposalId) {
             throw new Error(2000);
         }
 
         var url = "/proposal/" + proposalId + "/precalc";
+        var tips;
 
         var promise = resourceSrv.post(url, null).then(function(response) {
-            var tips = response.data;
-
-            for (var i=0; i< tips.length; i++) {
-                tips[i].userObj = _usersCache[tips[i].user]; 
-            }
-
-            console.log("################# tipsCalc 完成");
+            tips = response.data;
+            return loadUserForAllTips(tips);
+        }).then(function() {
             return tips;
         });
 
