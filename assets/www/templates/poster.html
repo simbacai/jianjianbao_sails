@@ -58,11 +58,9 @@
           </p>
         </div>
 
-        <a class="item item-body">
+        <a class="item item-body" ng-show="floor.contentVisable">
           <!--img class="full-image" src="http://ionicframework.com/img/docs/delorean.jpg"-->
-          
-
-          <p>
+          <p >
             {{floor.content}}
           </p>
           <p ng-show="false"> 
@@ -77,10 +75,10 @@
         </a>
 
         <div class="item tabs tabs-secondary tabs-icon-left">
-          <a class="tab-item" href="{{posterMainPath}}/linkpath/proposal/{{floor.proposal}}" ng-click="commit(floor.proposal)" ng-show="floor.actionPermits.commit">
+          <!--a class="tab-item" href="{{posterMainPath}}/linkpath/proposal/{{floor.proposal}}" ng-click="commit(floor.proposal)" ng-show="floor.actionPermits.commit">
             <i class="icon ion-ios-nutrition-outline"></i>
             采纳
-          </a>
+          </a-->
           <a class="tab-item" ng-click="viewTips(floor.proposal)" ng-show="floor.actionPermits.viewTips">
             <i class="icon ion-ios-eye-outline"></i>
             红包分配结果

@@ -34,6 +34,7 @@ app.service('userContextSrv', function(resourceSrv, $q) {
                     if (_currentPoster.status == "created") {
                         //_currentPoster.proposalObjs[i].actionPermits.commit = true; 
                         _currentPoster.proposalObjs[i].actionPermits.tipsCalc = true;
+                        _currentPoster.proposalObjs[i].actionPermits.commit = false;
                     }
                     if (_currentPoster.status == "closed") {
                         //_currentPoster.proposalObjs[i].actionPermits.viewTips = true; 
@@ -58,13 +59,13 @@ app.service('userContextSrv', function(resourceSrv, $q) {
             return resourceSrv.getResourceById("proposal", proposal.proposal).then(function(response) {
                 var proposalContent = response.data;
                 proposal.content = proposalContent.content;
-                proposal.contentProtected = false;
+                proposal.contentVisable = true;
                 console.log("################# loadContentForAllProposals 子循环完成, proposal＝" + proposal.proposal + ", content=" + proposal.content);
                 return;
             }).catch(function(error) {
                 console.log("################# loadContentForAllProposals 子循环出错, proposal＝" + proposal.proposal);
                 if (error.message == "5001") {
-                    proposal.contentProtected = true;
+                    proposal.contentVisable = false;
                 } else {
                     throw error;
                 }
