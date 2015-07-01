@@ -197,10 +197,6 @@ app.service('userContextSrv', function(resourceSrv, $q) {
         return promise;
     };
 
-    this.commit =  function(solution) {
-        
-    }
-
     this.reloadPosterAndFloors = function() {
         var promise = reloadPoster().then(function() {
             return loadPosterOwner();
@@ -272,6 +268,25 @@ app.service('userContextSrv', function(resourceSrv, $q) {
 
         return promise;
     };
+
+
+                
+    this.commitProposal = function(proposalId) {
+        console.log("################# commitProposal 开始");
+
+        if (!proposalId) {
+            throw new Error(2000);
+        }
+
+        var url = "/proposal/" + proposalId + "/commit";
+
+        var promise = resourceSrv.post(url, null).then(function() {
+            console.log("################# commitProposal 完成");
+            return;
+        });
+
+        return promise;
+    };
                 
     this.viewTips = function() {
         console.log("################# viewTips 开始");
@@ -287,6 +302,29 @@ app.service('userContextSrv', function(resourceSrv, $q) {
 
             console.log("################# viewTips 完成");
 
+            return tips;
+        });
+
+        return promise;
+    };
+                
+    this.tipsCalc = function(proposalId) {
+        console.log("################# tipsCalc 开始");
+
+        if (!proposalId) {
+            throw new Error(2000);
+        }
+
+        var url = "/proposal/" + proposalId + "/precalc";
+
+        var promise = resourceSrv.post(url, null).then(function(response) {
+            var tips = response.data;
+
+            for (var i=0; i< tips.length; i++) {
+                tips[i].userObj = _usersCache[tips[i].user]; 
+            }
+
+            console.log("################# tipsCalc 完成");
             return tips;
         });
 

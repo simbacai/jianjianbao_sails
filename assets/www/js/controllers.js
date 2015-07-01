@@ -106,6 +106,21 @@ app
         });
     }
 
+    $scope.tipsCalc = function(proposalId) {
+        userContextSrv.tipsCalc(proposalId).then(function(tips) {
+            console.log("$scope.tipsCalc: tips= " + angular.toJson(tips))
+            $rootScope.tips = tips;
+
+            console.log("################# 跳转至linkpath ");
+            //不刷新跳转
+            $location.path($rootScope.posterMainPath + "/linkpath/proposal/" + proposalId);
+
+            return;
+        });
+    }
+
+    
+
     $scope.propose = function() {
         console.log("################# $scope.propose 开始");
 
