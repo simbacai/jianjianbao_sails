@@ -5,6 +5,8 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+var redpack = require('../services/redpack');
+
 module.exports = {
 
 	  preCalTips : function  (req, res) {
@@ -77,6 +79,7 @@ module.exports = {
 	    		  	} else {
 				    		var posterTipAmount = 0;
 				    		proposal.status = 'closed';
+				    		var tipsToBeDistributed = {};
 				    		return Proposal
 					    		.update ({id: proposal.id}, {status: proposal.status})
 					    		.then (function (updatedProposal) {
@@ -105,8 +108,25 @@ module.exports = {
 					    			return Promise.all(createdTips);
 					    		})
 					    		.then (function (tips) {
-					    			res.ok(tips);
-					    		})	    		  		
+					    			tipsToBeDistributed = tips;
+					    			//Call Redpack service to distribute redpack
+					    			var distributedTips = tips.map( function (tip) {
+					    				var userToTip = {};
+					    				return User.
+					    				findOne(tip.user).
+					    				then (function (user) {
+					    					userToTip = user;
+					    					return Poster.findOne(tip.poster);
+					    				})
+					    				.then (function (poster) {
+					    					redpack({re_openid: userToTip.openid, act_name: poster.subject + " redpack"});
+					    				})
+					    			});
+					    			return Promise.all(distributedTips);
+					    		})
+					    		.then (function (distributedTips) {
+					    			res.ok(tipsToBeDistributed);
+					    		});	    		  		
 	    		  	}
 	    		  })
 	    	}
