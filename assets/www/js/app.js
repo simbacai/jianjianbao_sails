@@ -33,6 +33,12 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         controller: 'LinkPathCtrl'
     })
 
+    .state('commitresult', {
+        url: '/node/:node/commitresult',
+        templateUrl: '/www/templates/commit_result.html',
+        controller: 'CommitResultCtrl'
+    })
+
     $urlRouterProvider.otherwise('/');
 
     //html5Mode

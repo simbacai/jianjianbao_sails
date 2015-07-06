@@ -37,7 +37,7 @@ app.service('userContextSrv', function(resourceSrv, $q) {
                         _currentPoster.proposalObjs[i].actionPermits.commit = false;
                     }
                     if (_currentPoster.status == "closed") {
-                        //_currentPoster.proposalObjs[i].actionPermits.viewTips = true; 
+                        _currentPoster.proposalObjs[i].actionPermits.viewTips = true; 
                     }
                 }
                 console.log("################# loadProposalSummary 完成");

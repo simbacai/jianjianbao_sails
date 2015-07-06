@@ -16,8 +16,8 @@
         <h2>{{tip.userObj.nickname}}</h2>
         <p>
           {{tip.updatedAt | date : 'M-d H:mm' }}&nbsp;
-          （采纳后，将得到红包&nbsp;
-          {{tip.amount}}元）
+          得到红包&nbsp;
+          {{tip.amount}}元
         </p>
       </div>
     </div> <!--list-->
@@ -28,9 +28,6 @@
       &nbsp;&nbsp;取消&nbsp;&nbsp;
     </a>
     <h1 class="title"></h1>
-    <a class="button button-clear button-primary" ng-click="commit()">
-      &nbsp;&nbsp;采纳&nbsp;&nbsp;
-    </a>
   </ion-footer-bar>
 
 </ion-view>
