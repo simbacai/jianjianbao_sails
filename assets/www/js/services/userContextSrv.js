@@ -116,7 +116,7 @@ app.service('userContextSrv', function(resourceSrv, $q) {
                 return;
             });
         });
-
+ 
         return $q.all(promises);
     }
 
@@ -125,21 +125,23 @@ app.service('userContextSrv', function(resourceSrv, $q) {
         var promise = 
             resourceSrv.getResourceById("poster", posterId).then(function(response) {
                 _currentPoster = response.data;
+
+                _currentPoster.commited = false;
+                if (_currentPoster.status == "closed" ) {
+                    _currentPoster.commited = true;
+                }
+
+
+                if (_currentPoster.createdBy && _currentUserId) {
+                    _currentPoster.ownerIsCurrentUser = angular.equals(_currentPoster.createdBy, _currentUserId);
+                } else {
+                    throw new Error(2000);
+                }
+
                 console.log("################# loadPoster 完成");
             });
 
         return promise;
-    }
-
-    var reloadPoster = function() {
-        if (!_currentPoster) {
-            throw new Error(2000, "_currentPoster=" + _currentPoster);
-        }
-        if (!_currentPoster.id) {
-            throw new Error(2000, "_currentPoster.id=" + _currentPoster.id);
-        }
-
-        return loadPoster(_currentPoster.id);
     }
 
     var reloadPoster = function() {
@@ -193,15 +195,6 @@ app.service('userContextSrv', function(resourceSrv, $q) {
         return null;
     }
     
-    this.isCurrentUserThePosterOwner = function() {
-        //TODO
-        if (currentPoster && currentNode && currentPoster.create_userid && currentNode.userid) {
-            return angular.equals(currentPoster.create_userid, currentNode.userid);
-        } else {
-            return null;
-        }
-    };
-    
     this.proposeAtCurrentNode = function(solution) {
         if (!_currentNodeId) {
             throw new Error(2000, "_currentNodeId=" + _currentNodeId);
@@ -239,6 +232,7 @@ app.service('userContextSrv', function(resourceSrv, $q) {
                 
     this.prepareContext = function(currentNodeId, currentPosterId, currentUserId) {
         _currentNodeId = currentNodeId;
+        _currentUserId = currentUserId;
 
         var promise = loadPoster(currentPosterId).then(function() {
             return loadPosterOwner();

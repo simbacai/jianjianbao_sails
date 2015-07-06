@@ -191,6 +191,8 @@ app
             console.log("################# 跳转首页");
             //不刷新跳转
             $location.path($rootScope.posterMainPath);
+            
+            $rootScope.refresh();
 
             return;
         });

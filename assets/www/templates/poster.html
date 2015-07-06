@@ -25,7 +25,12 @@
         </div>
 
         <div class="item tabs tabs-secondary tabs-icon-left">
-          <a class="tab-item" href="#">
+
+          <a class="tab-item" ng-click="viewTips()" ng-show="poster.commited">
+            <i class="icon ion-ios-eye-outline"></i>
+            红包分配结果
+          </a>
+          <a class="tab-item"  ng-show="!poster.commited && !poster.ownerIsCurrentUser">
             <i class="icon ion-ios-color-wand-outline"></i>
             我来解决
           </a>
@@ -79,13 +84,13 @@
             <i class="icon ion-ios-nutrition-outline"></i>
             采纳
           </a-->
-          <a class="tab-item" ng-click="viewTips(floor.proposal)" ng-show="floor.actionPermits.viewTips">
-            <i class="icon ion-ios-eye-outline"></i>
-            红包分配结果
-          </a>
-          <a class="tab-item" ng-click="tipsCalc(floor.proposal)" ng-show="floor.actionPermits.tipsCalc">
+          <a class="tab-item" ng-click="tipsCalc(floor.proposal)" ng-show="floor.actionPermits.tipsCalc && poster.ownerIsCurrentUser">
             <i class="icon ion-ios-nutrition-outline"></i>
             采纳
+          </a>
+          <a class="tab-item" ng-click="tipsCalc(floor.proposal)" ng-show="floor.actionPermits.tipsCalc && !poster.ownerIsCurrentUser">
+            <i class="icon ion-ios-infinite-outline"></i>
+            关系链
           </a>
           <a class="tab-item" href="#">
             <i class="icon ion-ios-chatbubble-outline"></i>
@@ -100,8 +105,9 @@
     </ion-content>
   <ion-footer-bar class="bar-dark">
     <button class="button button-clear icon ion-navicon" ng-click="popover.show($event)"></button>
-    <h1 class="title">悬赏{{poster.tipAmount}}元(未解决)</h1>
-    <button class="button button-assertive" ng-click="proposeBtnClick()">我来解决</button>
+    <h1 class="title" ng-show="!poster.commited">悬赏{{poster.tipAmount}}元(未解决)</h1>
+    <h1 class="title" ng-show="poster.commited">悬赏{{poster.tipAmount}}元(已解决)</h1>
+    <button class="button button-assertive" ng-click="proposeBtnClick()" ng-show="!poster.commited && !poster.ownerIsCurrentUser">我来解决</button>
 
     <!--button class="button button-clear icon-left ion-ios-color-wand-outline button-positive"><small>&nbsp我要揭榜</small></button>
     <button class="button button-clear icon-right ion-ios-more-outline button-positive"><small>更多&nbsp</small></button-->
