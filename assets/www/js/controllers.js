@@ -137,6 +137,12 @@ app
     }).then(function(modal) {
         $scope.posterCreationModal = modal;
     });
+    
+    $ionicModal.fromTemplateUrl('/www/templates/share.html', {
+      scope: $scope
+    }).then(function(modal) {
+        $scope.shareModal = modal;
+    });
 
     $ionicPopover.fromTemplateUrl('/www/templates/main_menu.html', {
         scope: $scope,
@@ -191,7 +197,7 @@ app
             console.log("################# 跳转首页");
             //不刷新跳转
             $location.path($rootScope.posterMainPath);
-            
+
             $rootScope.refresh();
 
             return;
