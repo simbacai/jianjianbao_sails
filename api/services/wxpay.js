@@ -37,7 +37,7 @@ function getNowFormatDate(){
     return CurrentDate;
   }
 
-function wxPay (opts) {
+function wxPay (opts, res) {
 	opts["out_trade_no"] = '1247772901' + getNowFormatDate() + Math.random().toString().substr(2,10);
 	opts["notify_url"] = 'http://www.jianjianbao.cn/wxpay/notify';
 	opts["spbill_create_ip"] = '121.41.75.11';
@@ -47,7 +47,7 @@ function wxPay (opts) {
 	    	sails.log.error(err);
 	    } else {
 	    	sails.log(result);
-	    	res.render('wxpay/jsapi', { payargs: result});	
+	    	res.ok({ payargs: result});	
 	    }	    
 	  });  
 }

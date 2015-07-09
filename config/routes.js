@@ -53,7 +53,8 @@ module.exports.routes = {
   'post /proposal/:id/precalc': 'ProposalController.preCalTips',
   'get /poster/subscribe/:id' : 'PosterController.subscribe',
   'get /proposal/subscribe/:id' : 'ProposalController.subscribe',
-  'get /wxpay/notify' : 'sails.service.wxpay.wxPayCallback'
+  'post /poster/:id/wxpay': 'PosterController.wxPay',
+  'get /wxpay/notify' : 'PosterController.wxPayCallback'
   //'Post /proposal/:id/open': 'ProposalController.openProposal',
   //'get /node/:id/chain' : "NodeController.getChain"
 };
