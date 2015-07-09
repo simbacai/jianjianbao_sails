@@ -14,7 +14,7 @@ var redpack = Redpack({
     total_amount: 100,
     total_num: 1,
     remark: 'RedPack from JianJianBao!',
-    wishing: "Thanks for useing JianJianBao!"
+    wishing: "Thanks for using JianJianBao!"
 });
 
 function sendRedpack (opts) {
@@ -52,20 +52,5 @@ function getNowFormatDate(){
     }
     return CurrentDate;
   }
-
-/*
-redpack.send({
-    mch_billno: '1247772901'+Date.now()+Math.random().toString().substr(1,10),
-    wishing: 'ÊÕºÃ²»Ð»£¡',
-    re_openid: 'ºì°ü½ÓÊÕÈËopenid',
-    act_name: '·¢²âÊÔºì°ü',
-}, function(err,l result){
-    if(err) {
-    	sails.log.error (err);
-    } else {
-    	sails.log.info(result);
-    }
-});
-*/
 
 module.exports = sendRedpack;

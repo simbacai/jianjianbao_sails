@@ -63,7 +63,7 @@ module.exports.connections = {
     port: 27017,
     // user: 'username',
     // password: 'password',
-    database: 'jianjianbao_sails'
+    database: 'jianjianbao_sails_test'
   },
 
   /***************************************************************************
