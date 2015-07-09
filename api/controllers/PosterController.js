@@ -34,7 +34,7 @@ module.exports = {
 		  return User.findOne(poster.createdBy);
 		})
 		.then(function (user) {
-			wxpay({body: poster.subject, total_fee: 1, openid: user.openid}, res);
+			wxpay({body: posterToPay.subject, total_fee: 1, openid: user.openid}, res);
 		})
 		.catch(function (err) {
 			sails.error.log(err);
