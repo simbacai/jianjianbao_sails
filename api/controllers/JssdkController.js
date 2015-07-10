@@ -8,8 +8,6 @@
 var weixin = require('weixin-node');
 var co = require('co'); 
 
-var sign = require('../services/jssign');
-
 module.exports = {
 	getsign : function (req, res) {
 
