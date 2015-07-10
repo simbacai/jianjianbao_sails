@@ -3,7 +3,6 @@
 var WXPay = require('weixin-pay');
 var fs = require('fs');
 
-module.exports = wxPay;
 
 var wxpay = WXPay({
     appid: 'wxcd3e2f8024ba7f49',
@@ -37,25 +36,56 @@ function getNowFormatDate(){
     return CurrentDate;
   }
 
-function wxPay (opts, res) {
+exports.wxPay = function(opts, res) {
 	opts["out_trade_no"] = '1247772901' + getNowFormatDate() + Math.random().toString().substr(2,10);
-	opts["notify_url"] = 'http://www.jianjianbao.cn/wxpay/notify';
+	opts["notify_url"] = 'http://www.jianjianbao.cn/pay/wxpaynotify';
 	opts["spbill_create_ip"] = '121.41.75.11';
 	wxpay.getBrandWCPayRequestParams(opts, function(err, result){
 	    // in express
 	    if(err) {
 	    	sails.log.error(err);
 	    } else {
+        //Here should create a order record
+        result["out_trade_no"] = opts["out_trade_no"];
 	    	sails.log(result);
 	    	res.ok({ payargs: result});	
 	    }	    
 	  });  
 }
 
-function wxPayCallback() {
-	return wxpay.useWXCallback(function(msg, req, res, next) {
-		//To handle business logic
+var wxCallback = wxpay.useWXCallback(function(msg, req, res, next) {
+    
+    sails.log(msg);
+    
+    //Here need to check the msg content
+    //check the out_trade_no and update the internal record accordingly
 
-		res.success();
-	})
+    res.success();
+  });
+
+exports.wxPayCallback = function(req, res, next) {
+	  wxCallback(req, res, next);
+}
+
+exports.queryorder = function(req, res) {
+  wxpay.queryOrder({out_trade_no: req.query.order}, function(err, order) {
+    if(err) {
+      sails.log.error(err);
+    } else {
+      sails.log(order);
+      res.ok({order:order});
+    }
+
+  })
+}
+
+//close order API should be called if some order has not been payed for quite a long time
+exports.closeorder = function(orderNumber) {
+  wxpay.closeOrder({out_trade_no: orderNumber}, function(err, result) {
+    if(err) {
+      sails.log.error(err);
+    } else {
+      sails.log(result);
+    }
+  })
 }
