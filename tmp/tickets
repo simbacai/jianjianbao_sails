@@ -1,0 +1,12 @@
+{
+  "8r2H0USu1G0qo90GPKs3v1HNxn_KG3dI3wzh3JuKmwKC_lKcETcaOGZhPJeQ4tA38RcMH4UynEJFX_SK1CHJnJe6BbasG1nsw6eqx-x3Ac0": {
+    "ticket": {
+      "errcode": 0,
+      "errmsg": "ok",
+      "ticket": "sM4AOVdWfPE4DxkXGEs8VL7rG74R5ArMXZSgYJeWumGu4_w7bxeHD0S_BuLGr7NZhKv9cjgYqLW1t76p0ldCEw",
+      "expires_in": 7200
+    },
+    "expires_in": 7200,
+    "timestamp": 1436506680782
+  }
+}
