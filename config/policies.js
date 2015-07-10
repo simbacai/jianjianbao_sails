@@ -55,7 +55,8 @@ module.exports.policies = {
     '*' : ['basicAuth',
            'passport',
            'sessionAuth',
-          ]
+          ],
+    'wxPayNotify': true      
   },
   /***************************************************************************
   *                                                                          *
