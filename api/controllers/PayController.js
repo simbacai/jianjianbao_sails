@@ -11,12 +11,19 @@ module.exports = {
   	var posterToPay = {};
 		Poster.findOne(req.query.poster)
 		.then(function (poster) {
-			//1) Need to check whether req.user is the owner of poster
+			if(poster.status == "payed" || poster.status == "closed") {
+		  	res.forbidden("Poster status is " + poster.status);
+		  	return;
+		  }
+		  if(req.user.id != poster.createdBy) {
+		  	res.forbdiden("Not authorized to pay this poster");
+		  	return;
+		  }
 			posterToPay = poster;
 		  return User.findOne(poster.createdBy);
 		})
 		.then(function (user) {
-			pay.wxPay({body: posterToPay.subject, total_fee: 1, openid: user.openid}, res);
+			pay.wxPay({body: posterToPay.subject, total_fee: 1, openid: user.openid}, posterToPay, res);
 		})
 		.catch(function (err) {
 			sails.log.error(err);
@@ -30,6 +37,9 @@ module.exports = {
   },
 
   wxQueryOrder: function (req, res) {
+  	//First check the internal order status
+
+  	//If nt paye
   	pay.queryorder(req, res);
   },
 };
