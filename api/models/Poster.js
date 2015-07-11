@@ -30,7 +30,7 @@ module.exports = {
     },
     "status" : {
       type: 'string',
-      enum: ['created', 'closed'],
+      enum: ['created', 'payed','closed'],
       defaultsTo: 'created'
     }
   },

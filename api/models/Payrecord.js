@@ -90,7 +90,14 @@ module.exports = {
   	},
   	"end": {
   		type: 'string',
-  	}, 
+  	},
+  	//query contents
+  	"trade_state": {
+  		type: 'string',
+  	},
+    "trade_state_desc": {
+  		type: 'string',
+  	},
   }
 };
 

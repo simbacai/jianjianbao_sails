@@ -60,7 +60,7 @@ exports.wxPay = function(opts, posterToPay, res) {
           sails.log.error(err);
           res.serverError(err);
           //create record fail, so need to close the order
-          closeOrder(result.out_trade_no);
+          //closeOrder(result.out_trade_no);
         })	
 	    }	    
 	  });  
@@ -70,26 +70,33 @@ var wxCallback = wxpay.useWXCallback(function(msg, req, res, next) {
     //Need to check whether msg need to be transfered to Json
     sails.log.info(msg);
 
-    //Todo: actually need to use the sign to check the msg validity 
-    
-    Payrecord.findOne(msg.out_trade_no)
-    .then(function (payrecord) {
-      return Payrecord.update({id: payrecord.id}, msg);
-    })
-    .then(function (payrecord) {
-      return Poster.findOne(payrecord.poster);
-    })
-    .then(function (poster) {
-      if(msg.result_code == "SUCCESS") {
-        return Poster.update({id: poster.id}, {status: "payed"})
-      }
-      res.success();
-      return null;
-    })
-    .catch(function (err) {
-      sails.log.error(err);
-      res.fail();
-    })
+    //No parameter check yet, told weixin server success get the result directly
+    res.success();
+
+    if(msg.return_code == "SUCCESS") {
+      //Todo: actually need to use the sign to check the msg validity 
+      Payrecord.findOne({out_trade_no: msg.out_trade_no})
+      .then(function (payrecord) {
+        return Payrecord.update({id: payrecord.id}, msg);
+      })
+      .then(function (payrecords) {
+        return Poster.findOne(payrecords[0].poster);
+      })
+      .then(function (poster) {
+        if(msg.result_code == "SUCCESS") {
+          return Poster.update({id: poster.id}, {status: "payed"});
+        } else {
+          return null;
+        }
+      })
+      .catch(function (err) {
+        sails.log.error(err);
+      })  
+    } 
+
+    if(msg.return_code == "FAIL") {
+      sails.log.error(msg);
+    } 
   });
 
 exports.wxPayCallback = function(req, res, next) {
@@ -97,19 +104,33 @@ exports.wxPayCallback = function(req, res, next) {
 }
 
 exports.queryorder = function(req, res) {
-  Payrecord.find({out_trade_no: req.query.order})
-  .then(function(order) {
-    if(order.result_code !== undefined) {
-      res.ok({order:order});
+  Payrecord.findOne({out_trade_no: req.query.order})
+  .then(function(payorder) {
+    if(payorder.result_code !== undefined || payorder.trade_state !== undefined) {
+      res.ok({order:payorder});
     } else {
-      wxpay.queryOrder({out_trade_no: req.query.order}, function(err, order) {
+      wxpay.queryOrder({out_trade_no: req.query.order}, function(err, queryresult) {
           if(err) {
             sails.log.error(err);
             res.serverError(err);
           } else {
             //Here needs to update the payrecord
-            sails.log(order);
-            res.ok({order:order});
+            sails.log(queryresult);
+            if(queryresult.return_code == "FAIL") {
+              sails.log.error(queryresult);
+              res.serverError(queryresult);
+             } 
+
+            if(queryresult.return_code == "SUCCESS") {
+              Payrecord.update({id: payorder.id}, queryresult)
+              .then(function (payrecords) {
+                res.ok({order: payrecords[0]});
+              })
+              .catch(function (error) {
+                sails.log.error(error);
+                res.serverError(error);
+              })
+            }
           }
         })
     }
