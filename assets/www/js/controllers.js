@@ -21,8 +21,102 @@ app
 
         return userContextSrv.prepareContext(currentNodeId, currentPosterId, currentUserId).then(function() {
             return $rootScope.populateUI();
+        }).then(function() {
+            var apiURL = "/jssdk/getsign?url=" + $location.absUrl()
+            var promise = 
+                $http.get(apiURL).then(function(response) {
+                    console.log("success: get " + apiURL);
+                    alert("getsign: 完成");
+                    return response;
+                }, function(response) {
+                    var errorMsg = "error:  get " + apiURL + ", status=" + status;
+                    console.log(errorMsg);
+                    throw new Error(1000, errorMsg);
+                });
+            return promise;
+        }).then(function(response) {
+            alert("wx.config: 开始, timestamp=" + response.data.timestamp
+                + ", nonceStr=" + response.data.nonceStr
+                + ", signature=" + response.data.signature);
+
+            
+            wx.config({
+              debug: false,
+              appId: 'wxf13d012c692b6895', //TODO config
+              timestamp: response.data.timestamp,
+              nonceStr: response.data.nonceStr,
+              signature: response.data.signature,
+              jsApiList: [
+                'checkJsApi',
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'onMenuShareQQ',
+                'onMenuShareWeibo',
+                'hideMenuItems',
+                'showMenuItems',
+                'hideAllNonBaseMenuItem',
+                'showAllNonBaseMenuItem',
+                'translateVoice',
+                'startRecord',
+                'stopRecord',
+                'onRecordEnd',
+                'playVoice',
+                'pauseVoice',
+                'stopVoice',
+                'uploadVoice',
+                'downloadVoice',
+                'chooseImage',
+                'previewImage',
+                'uploadImage',
+                'downloadImage',
+                'getNetworkType',
+                'openLocation',
+                'getLocation',
+                'hideOptionMenu',
+                'showOptionMenu',
+                'closeWindow',
+                'scanQRCode',
+                'chooseWXPay',
+                'openProductSpecificView',
+                'addCard',
+                'chooseCard',
+                'openCard'
+              ]
+            });
+
+            wx.ready(function(){
+                alert("wx.config: ready");
+                wx.onMenuShareAppMessage({
+                  title: $rootScope.documentTitle,
+                  desc: $rootScope.poster.body,
+                  link: $location.protocol() + "://" + $location.host() + $rootScope.posterMainPath,
+                  imgUrl: $location.protocol() + "://" + $location.host() + "/www/img/beauty.jpg",
+                  trigger: function (res) {
+                    // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
+                    //alert('用户点击发送给朋友');
+                  },
+                  success: function (res) {
+                    //alert('已分享');
+
+                  },
+                  cancel: function (res) {
+                    //alert('已取消');
+                  },
+                  fail: function (res) {
+                    alert(JSON.stringify(res));
+                  }
+                });
+            });
+
+            wx.error(function(res){
+                alert("wx.config: error");
+                //throw new Error(1001);
+            });
+
+
+
         });
-    }
+    };
 
     /**
      * 调用:
@@ -44,13 +138,15 @@ app
 
         //不刷新跳转
         $rootScope.posterMainPath = "/node/" + userContextSrv.currentNodeId();
-        $location.path($rootScope.posterMainPath);
-        //document.title = $rootScope.poster.subject;
         var prefix = "";
         if ($rootScope.poster.tipAmount && $rootScope.poster.tipAmount > 0) {
             prefix = "悬赏" + $rootScope.poster.tipAmount + "元：";
         }
-        document.title = prefix + $rootScope.poster.subject;
+        $rootScope.documentTitle = prefix + $rootScope.poster.subject;
+
+        $location.path($rootScope.posterMainPath);
+        document.title = $rootScope.documentTitle;
+
 
         console.log("################# $rootScope.populateUI 完成");
     }
@@ -76,7 +172,7 @@ app
     });
 
     $scope.proposeBtnClick = function() {
-      $scope.modal.show();
+        $scope.modal.show();
     }
 
     $scope.commit = function(proposalId) {
