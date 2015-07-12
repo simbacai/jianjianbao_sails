@@ -53,4 +53,6 @@ module.exports.routes = {
   'post /proposal/:id/precalc': 'ProposalController.preCalTips',
   'get /poster/subscribe/:id' : 'PosterController.subscribe',
   'get /proposal/subscribe/:id' : 'ProposalController.subscribe',
+  'post /poster/image/:id' : 'PosterController.uploadImage',
+  'get /poster/image/:id' : 'PosterController.downloadImage',
 };

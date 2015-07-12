@@ -32,7 +32,13 @@ module.exports = {
       type: 'string',
       enum: ['created', 'payed','closed'],
       defaultsTo: 'created'
-    }
+    },
+    "imageUrl" : {
+      type: 'string',
+    },
+    "imageFd" : {
+      type: 'string',
+    },    
   },
 
 
