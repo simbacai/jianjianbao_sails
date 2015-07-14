@@ -5,8 +5,6 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
-var wxpay = require('../services/wxpay');
-
 module.exports = {
   _config: {
     actions: false,
