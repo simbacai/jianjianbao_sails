@@ -22,5 +22,13 @@ module.exports = {
      migrate: 'alter'
     },
 
-   port:1337
+   port:1337,
+
+   session: {
+    adapter: 'mongo',
+    host: 'localhost',
+    port: 27017,
+    db: 'jianjianbao_sails',
+    collection: 'sessions',
+   }
 };
