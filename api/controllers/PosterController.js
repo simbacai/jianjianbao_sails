@@ -89,7 +89,7 @@ downloadImage: function (req, res){
     var fileAdapter = SkipperGridfs({
       dbname: 'jianjianbao_sails',
       bucket: 'image_uploads',
-      uri: 'mongodb://localhost:27017/'
+      uri: 'mongodb://localhost:27017/jianjianbao_sails.image_uploads'
     });
 
     // Stream the file down
@@ -98,7 +98,7 @@ downloadImage: function (req, res){
         if(err) {
           return res.serverError(err);
         } else {
-          return res.ok(data);
+          return res.send(data);
         }
     });
   });

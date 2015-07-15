@@ -28,7 +28,7 @@ module.exports = {
     adapter: 'mongo',
     host: 'localhost',
     port: 27017,
-    db: 'jianjianbao_sails',
+    db: 'jianjianbao_sails_test',
     collection: 'sessions',
    }
 };
