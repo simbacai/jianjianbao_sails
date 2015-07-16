@@ -26,7 +26,8 @@
   "scripts": {
     "debug": "node debug app.js",
     "start": "node --harmony app.js",
-    "test": "PORT=9999 NODE_ENV=test mocha --harmony -R spec -b --recursive"
+    "test": "PORT=9999 NODE_ENV=development mocha --harmony -R spec -b --recursive",
+    "testdebug": "PORT=9999 NODE_ENV=development mocha --debug-brk --harmony -R spec -b --recursive"
   },
   "main": "app.js",
   "repository": {
