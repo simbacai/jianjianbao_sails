@@ -48,7 +48,8 @@
     "sails-disk": "~0.10.0",
     "sails-memory": "^0.10.5",
     "sails-mongo": "^0.11.2",
-    "should": "^6.0.3",
-    "skipper-disk": "^0.5.4"
+    "should": "^7.0.2",
+    "skipper-disk": "^0.5.4",
+    "supertest": "^1.0.1"
   }
 }
