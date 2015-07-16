@@ -18,17 +18,13 @@ module.exports = {
    ***************************************************************************/
 
    models: {
-     connection: 'localMongodbServer',
+     connection: 'test',
      migrate: 'alter'
     },
 
    port:1337,
 
    session: {
-    adapter: 'mongo',
-    host: 'localhost',
-    port: 27017,
-    db: 'jianjianbao_sails_test',
-    collection: 'sessions',
+    adapter: 'memory',
    }
 };
