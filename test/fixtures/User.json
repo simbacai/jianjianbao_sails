@@ -1,17 +1,5 @@
 [
   {
     "openid": "posterowner"
-  },
-  {
-    "openid": "posterforwarder1"
-  },
-  {
-    "openid": "posterforwarder2"
-  },
-  {
-    "openid": "posterproposaler1"
-  },   
-  {
-    "openid": "posterproposaler2"
-  }   
+  }
 ]

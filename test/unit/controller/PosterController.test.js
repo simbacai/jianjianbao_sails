@@ -14,11 +14,15 @@ describe('PosterController', function() {
 
   describe('#post() with localpassport', function() {
     it('should post succesfully', function (done) {
+      User.findOne({openid: 'posterowner'})
+      .then(function(user) {
+        console.log(user);
+      });
       request(sails.hooks.http.app)
         .post('/poster')
-        .set('Authorization', 'Basic YWRtaW46YWRtaW4xMjM0')
+        .set('Authorization', 'Basic cG9zdGVyb3duZXI6dGVzdGpqMTIz')
         .send({ subject: 'testsubject', body: 'testbody', tipAmount: "100" })
-        .expect(403, done);
+        .expect(201, done);
     });
   });
 
