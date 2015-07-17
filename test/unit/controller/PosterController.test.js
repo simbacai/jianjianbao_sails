@@ -73,7 +73,7 @@ describe('PosterController', function() {
   });
 
   describe('#put() with localpassport', function() {
-    it('should get succesfully', function (done) {
+    it('should put succesfully', function (done) {
       request(sails.hooks.http.app)
         .put('/poster/1')
         .set('Authorization', 'Basic cG9zdGVyb3duZXI6dGVzdGpqMTIz')
@@ -88,8 +88,38 @@ describe('PosterController', function() {
     });
   });
 
+  describe('#post image with localpassport', function() {
+    it('should post image succesfully', function (done) {
+      request(sails.hooks.http.app)
+        .post('/poster/image/1')
+        .set('Authorization', 'Basic cG9zdGVyb3duZXI6dGVzdGpqMTIz')
+        .attach('image', 'test/fixtures/ab.jpg')
+        .expect(200)
+        .end(function(err, res) {
+          if (err) return done(err);
+          sails.log.silly(res);
+          done();
+        }) 
+    });
+  });
+  
+  /*
+  describe('#get image with localpassport', function() {
+    it('should get image succesfully', function (done) {
+      request(sails.hooks.http.app)
+        .get('/poster/image/1')
+        .set('Authorization', 'Basic cG9zdGVyb3duZXI6dGVzdGpqMTIz')
+        .end(function(err, res) {
+          if (err) return done(err);
+          sails.log.silly(res);
+          done();
+        }) 
+    });
+  });
+*/
+
   describe('#delete() with localpassport', function() {
-    it('should get succesfully', function (done) {
+    it('should delete succesfully', function (done) {
       request(sails.hooks.http.app)
         .delete('/poster/1')
         .set('Authorization', 'Basic cG9zdGVyb3duZXI6dGVzdGpqMTIz')

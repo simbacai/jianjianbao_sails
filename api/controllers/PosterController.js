@@ -33,7 +33,7 @@ uploadImage: function (req, res) {
 
   req.file('image').upload({
     // don't allow the total upload size to exceed ~10MB
-    adapter: require('skipper-gridfs'),
+    adapter: process.env.NODE_ENV === 'development' ? require('skipper-memory') : require('skipper-gridfs'),
     maxBytes: 10000000,
     uri: 'mongodb://localhost:27017/jianjianbao_sails.image_uploads'
   },function whenDone(err, uploadedFiles) {
@@ -85,12 +85,20 @@ downloadImage: function (req, res){
       return res.notFound();
     }
 
-    var SkipperGridfs = require('skipper-gridfs');
-    var fileAdapter = SkipperGridfs({
-      dbname: 'jianjianbao_sails',
-      bucket: 'image_uploads',
-      uri: 'mongodb://localhost:27017/jianjianbao_sails.image_uploads'
-    });
+    var fileAdapter = {};
+    if(process.env.NODE_ENV === 'development') {
+      var SkipperMemory = require('skipper-memory');
+      fileAdapter = SkipperMemory();  
+    } else {
+      var SkipperGridfs = require('skipper-gridfs');
+      fileAdapter = SkipperGridfs({
+        dbname: 'jianjianbao_sails',
+        bucket: 'image_uploads',
+        uri: 'mongodb://localhost:27017/jianjianbao_sails.image_uploads'
+      });
+    }
+
+    
 
     // Stream the file down
     fileAdapter.read(poster.imageFd, 
