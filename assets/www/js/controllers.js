@@ -256,6 +256,15 @@ app
     $scope.createPoster = function() {
 
         alert("createPoster");
+        
+        wx.chooseWXPay({
+          timestamp: 1437233137,
+          nonceStr: 'tb5biB1DpLG0ptrg',
+          package: 'prepay_id=wx201507182325376c15b89ad40907999222',
+          signType: 'MD5', // 注意：新版支付接口使用 MD5 加密
+          paySign: '73E1F78350CF40A8573CEEC499896840'
+        });
+
         return;
 
         var newPoster = {
