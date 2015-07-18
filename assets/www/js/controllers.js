@@ -255,6 +255,9 @@ app
 
     $scope.createPoster = function() {
 
+        alert("createPoster");
+        return;
+
         var newPoster = {
             "subject" : $rootScope.myNewPoster.subject 
             , "body" : $rootScope.myNewPoster.body
