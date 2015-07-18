@@ -22,11 +22,12 @@ app
         return userContextSrv.prepareContext(currentNodeId, currentPosterId, currentUserId).then(function() {
             return $rootScope.populateUI();
         }).then(function() {
-            var apiURL = "/jssdk/getsign?url=" + $location.absUrl()
+            var apiURL = "/jssdk/getsign?url=" + encodeURIComponent($location.absUrl());
+            //alert("getsign, $location.absUrl()=" + encodeURIComponent($location.absUrl()));
             var promise = 
                 $http.get(apiURL).then(function(response) {
                     console.log("success: get " + apiURL);
-                    alert("getsign: 完成");
+                    //alert("getsign: 完成");
                     return response;
                 }, function(response) {
                     var errorMsg = "error:  get " + apiURL + ", status=" + status;
@@ -35,15 +36,16 @@ app
                 });
             return promise;
         }).then(function(response) {
-            alert("wx.config: 开始, timestamp=" + response.data.timestamp
+            var msg = "wx.config: 开始, timestamp=" + response.data.timestamp
                 + ", nonceStr=" + response.data.nonceStr
-                + ", signature=" + response.data.signature);
+                + ", signature=" + response.data.signature
+                + "$location.absUrl()=" + $location.absUrl();
+            //alert(msg);
 
-            
             wx.config({
               debug: false,
               appId: 'wxf13d012c692b6895', //TODO config
-              timestamp: response.data.timestamp,
+              timestamp: parseInt(response.data.timestamp),
               nonceStr: response.data.nonceStr,
               signature: response.data.signature,
               jsApiList: [
@@ -85,7 +87,7 @@ app
             });
 
             wx.ready(function(){
-                alert("wx.config: ready");
+                //alert("wx.config: ready");
                 wx.onMenuShareAppMessage({
                   title: $rootScope.documentTitle,
                   desc: $rootScope.poster.body,
@@ -109,7 +111,7 @@ app
             });
 
             wx.error(function(res){
-                alert("wx.config: error");
+                //alert("wx.config: error, " + angular.toJson(res));
                 //throw new Error(1001);
             });
 
@@ -232,6 +234,7 @@ app
       scope: $scope
     }).then(function(modal) {
         $scope.posterCreationModal = modal;
+        $scope.posterCreationModal.show();
     });
     
     $ionicModal.fromTemplateUrl('/www/templates/share.html', {
