@@ -18,9 +18,13 @@ module.exports = {
    ***************************************************************************/
 
    models: {
-     connection: 'localMongodbServer',
+     connection: 'test',
      migrate: 'alter'
     },
 
-   port:1337
+   port:1337,
+
+   session: {
+    adapter: 'memory',
+   }
 };

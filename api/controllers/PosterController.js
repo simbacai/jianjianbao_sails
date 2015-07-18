@@ -5,8 +5,6 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
-var wxpay = require('../services/wxpay');
-
 module.exports = {
   _config: {
     actions: false,
@@ -35,7 +33,9 @@ uploadImage: function (req, res) {
 
   req.file('image').upload({
     // don't allow the total upload size to exceed ~10MB
-    maxBytes: 10000000
+    adapter: process.env.NODE_ENV === 'development' ? require('skipper-memory') : require('skipper-gridfs'),
+    maxBytes: 10000000,
+    uri: 'mongodb://localhost:27017/jianjianbao_sails.image_uploads'
   },function whenDone(err, uploadedFiles) {
     if (err) {
       return res.negotiate(err);
@@ -85,15 +85,30 @@ downloadImage: function (req, res){
       return res.notFound();
     }
 
-    var SkipperDisk = require('skipper-disk');
-    var fileAdapter = SkipperDisk(/* optional opts */);
+    var fileAdapter = {};
+    if(process.env.NODE_ENV === 'development') {
+      var SkipperMemory = require('skipper-memory');
+      fileAdapter = SkipperMemory();  
+    } else {
+      var SkipperGridfs = require('skipper-gridfs');
+      fileAdapter = SkipperGridfs({
+        dbname: 'jianjianbao_sails',
+        bucket: 'image_uploads',
+        uri: 'mongodb://localhost:27017/jianjianbao_sails.image_uploads'
+      });
+    }
+
+    
 
     // Stream the file down
-    fileAdapter.read(poster.imageFd)
-    .on('error', function (err){
-      return res.serverError(err);
-    })
-    .pipe(res);
+    fileAdapter.read(poster.imageFd, 
+      function (err, data){
+        if(err) {
+          return res.serverError(err);
+        } else {
+          return res.send(data);
+        }
+    });
   });
 }
 };

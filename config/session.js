@@ -59,6 +59,12 @@ module.exports.session = {
   // pass: <redis auth password>,
   // prefix: 'sess:',
 
+  //adapter: 'connect-aliyunocs',
+  //host:'10.159.72.1',
+  //ocsKey: 'eb6c04f97e4a4dab',
+  //ocsSecret: 'JianJian123'
+
+
 
   /***************************************************************************
   *                                                                          *
@@ -67,11 +73,11 @@ module.exports.session = {
   *                                                                          *
   ***************************************************************************/
 
-   adapter: 'mongo',
-   host: 'localhost',
-   port: 27017,
-   db: 'jianjianbao_sails',
-   collection: 'sessions',
+   //adapter: 'mongo',
+   //host: 'localhost',
+   //port: 27017,
+   //db: 'jianjianbao_sails',
+   //collection: 'sessions',
 
   /***************************************************************************
   *                                                                          *

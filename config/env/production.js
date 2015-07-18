@@ -37,7 +37,10 @@ module.exports = {
    },
 
    session: {
-    adaptor: "redis"
+    adapter: 'connect-aliyunocs',
+    host:'10.159.72.1',
+    ocsKey: 'eb6c04f97e4a4dab',
+    ocsSecret: 'JianJian123'
    }
 
 };
