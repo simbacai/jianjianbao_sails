@@ -120,6 +120,8 @@ describe('ProposalController', function() {
 
     });
   });
+
+  
   //Testing Poster Non-owner's proposal Actions
 
 

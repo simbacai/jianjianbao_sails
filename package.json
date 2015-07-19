@@ -27,7 +27,7 @@
     "sails": "~0.11.0",
     "sails-mysql": "^0.11.0",
     "skipper": "^0.5.5",
-    "skipper-gridfs": "^0.5.3",
+    "skipper-aliyunoss": "0.0.1",
     "weixin-node": "^1.0.0",
     "weixin-pay": "^1.1.6",
     "weixin-redpack": "^1.1.1"
@@ -53,7 +53,6 @@
     "sails-memory": "^0.10.5",
     "sails-mongo": "^0.11.2",
     "should": "^7.0.2",
-    "skipper-disk": "^0.5.4",
     "skipper-memory": "0.0.1",
     "supertest": "^1.0.1"
   }

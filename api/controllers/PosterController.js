@@ -5,6 +5,22 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+var skipperAliyunOSS = require('skipper-aliyunoss');
+var skipperMemory = require('skipper-memory');
+
+var fileAdapter = {};
+if(process.env.NODE_ENV !== 'development') {
+  fileAdapter = skipperAliyunOSS({
+    accessKeyId: 'fPyMxwAG8DrNZ9b2',
+    secretAccessKey: '3xO0RWlT7nzleHVjZCuto7wE7NNVB3',
+    endpoint: 'http://oss-cn-hangzhou.aliyuncs.com',
+    apiVersion: '2013-10-15',
+    Bucket: 'jianjianbao'
+  });
+} else {
+  fileAdapter = skipperMemory();
+}
+
 module.exports = {
   _config: {
     actions: false,
@@ -30,12 +46,10 @@ module.exports = {
  * (POST /poster/image/:id)
  */
 uploadImage: function (req, res) {
-
   req.file('image').upload({
     // don't allow the total upload size to exceed ~10MB
-    adapter: process.env.NODE_ENV === 'development' ? require('skipper-memory') : require('skipper-gridfs'),
+    adapter: fileAdapter,
     maxBytes: 10000000,
-    uri: 'mongodb://localhost:27017/jianjianbao_sails.image_uploads'
   },function whenDone(err, uploadedFiles) {
     if (err) {
       return res.negotiate(err);
@@ -85,28 +99,13 @@ downloadImage: function (req, res){
       return res.notFound();
     }
 
-    var fileAdapter = {};
-    if(process.env.NODE_ENV === 'development') {
-      var SkipperMemory = require('skipper-memory');
-      fileAdapter = SkipperMemory();  
-    } else {
-      var SkipperGridfs = require('skipper-gridfs');
-      fileAdapter = SkipperGridfs({
-        dbname: 'jianjianbao_sails',
-        bucket: 'image_uploads',
-        uri: 'mongodb://localhost:27017/jianjianbao_sails.image_uploads'
-      });
-    }
-
-    
-
     // Stream the file down
     fileAdapter.read(poster.imageFd, 
       function (err, data){
         if(err) {
           return res.serverError(err);
         } else {
-          return res.send(data);
+          return res.ok(data);
         }
     });
   });
