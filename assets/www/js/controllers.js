@@ -44,7 +44,8 @@ app
 
             wx.config({
               debug: false,
-              appId: 'wxf13d012c692b6895', //TODO config
+              //appId: 'wxf13d012c692b6895',
+              appId: 'wxcd3e2f8024ba7f49',
               timestamp: parseInt(response.data.timestamp),
               nonceStr: response.data.nonceStr,
               signature: response.data.signature,
@@ -87,7 +88,7 @@ app
             });
 
             wx.ready(function(){
-                //alert("wx.config: ready");
+                alert("wx.config: ready");
                 wx.onMenuShareAppMessage({
                   title: $rootScope.documentTitle,
                   desc: $rootScope.poster.body,
@@ -111,7 +112,7 @@ app
             });
 
             wx.error(function(res){
-                //alert("wx.config: error, " + angular.toJson(res));
+                alert("wx.config: error, " + angular.toJson(res));
                 //throw new Error(1001);
             });
 
@@ -162,7 +163,7 @@ app
 
 .controller("PosterMainCtrl", function($scope, $rootScope, $q, $location
     , userContextSrv
-    , $ionicModal, $ionicPopover){
+    , $ionicModal, $ionicPopover, $http){
     console.log("PosterMainCtrl: BEGIN................");
 
     $rootScope.myNewPoster = {"tipAmount" : 0};
@@ -234,6 +235,11 @@ app
       scope: $scope
     }).then(function(modal) {
         $scope.posterCreationModal = modal;
+
+        //TODO
+        $rootScope.myNewPoster.subject = "test Subj";
+        $rootScope.myNewPoster.body =  "test Body";
+        $rootScope.myNewPoster.tipAmount = "123";
         $scope.posterCreationModal.show();
     });
     
@@ -255,36 +261,54 @@ app
 
     $scope.createPoster = function() {
 
-        alert("createPoster");
-        
-        wx.chooseWXPay({
-          timestamp: 1437233137,
-          nonceStr: 'tb5biB1DpLG0ptrg',
-          package: 'prepay_id=wx201507182325376c15b89ad40907999222',
-          signType: 'MD5', // 注意：新版支付接口使用 MD5 加密
-          paySign: '73E1F78350CF40A8573CEEC499896840'
-        });
+        var createWXOrder = function(posterId) {
 
-        return;
+            alert("createWXOrder: 开始");
+            var apiURL = "/pay/wxpay?poster=" + posterId;
+            var promise = 
+                $http.get(apiURL).then(function(response) {
+                    //console.log("success: get " + apiURL + ", data=" + angular.toJson(response.data));
+                    alert("createWXOrder: 完成");
+
+                    if (!response || !response.data || !response.data.payargs) {
+                        throw new Error(1000);
+                    }
+
+                    alert("wx.chooseWXPay: 开始");
+                    wx.chooseWXPay({
+                        timestamp: parseInt(response.data.payargs.timeStamp),
+                        nonceStr: response.data.payargs.nonceStr,
+                        package: response.data.payargs.package,
+                        signType: response.data.payargs.signType,
+                        paySign: response.data.payargs.paySign,
+                        success: function (res) {
+                            alert("wx.chooseWXPay: 完成, res" + angular.toJson(res));
+                        }
+                    });
+
+                    return;
+                }, function(response) {
+                    var errorMsg = "error:  get " + apiURL + ", status=" + status;
+                    console.log(errorMsg);
+                    throw new Error(1000, errorMsg);
+                });
+            return promise;
+        }
 
         var newPoster = {
             "subject" : $rootScope.myNewPoster.subject 
             , "body" : $rootScope.myNewPoster.body
             , "tipAmount":  $rootScope.myNewPoster.tipAmount
         };
-        
-        var successCallBack = function(newPoster) {
+
+        userContextSrv.createPosterAndUpdateContext(newPoster).then(function() {
+            return createWXOrder(userContextSrv.currentPoster().id);
+        }).then(function() {
+            alert("wx.chooseWXPay: 完成后的下一步");
             $rootScope.myNewPoster = {};
             $scope.posterCreationModal.hide();
-
             $rootScope.populateUI();
-        }
-
-        userContextSrv.createPosterAndUpdateContext(newPoster).then(function(newPoster) {
-            $rootScope.myNewPoster = {};
-            $scope.posterCreationModal.hide();
-
-            $rootScope.populateUI();
+            return;
         });
     };
 })
