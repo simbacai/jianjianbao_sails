@@ -66,43 +66,6 @@ exports.wxPay = function(opts, posterToPay, res) {
 	  });  
 }
 
-var wxCallback = wxpay.useWXCallback(function(msg, req, res, next) {
-    //Need to check whether msg need to be transfered to Json
-    sails.log.info(msg);
-
-    //No parameter check yet, told weixin server success get the result directly
-    res.success();
-
-    if(msg.return_code == "SUCCESS") {
-      //Todo: actually need to use the sign to check the msg validity 
-      Payrecord.findOne({out_trade_no: msg.out_trade_no})
-      .then(function (payrecord) {
-        return Payrecord.update({id: payrecord.id}, msg);
-      })
-      .then(function (payrecords) {
-        return Poster.findOne(payrecords[0].poster);
-      })
-      .then(function (poster) {
-        if(msg.result_code == "SUCCESS") {
-          return Poster.update({id: poster.id}, {status: "payed"});
-        } else {
-          return null;
-        }
-      })
-      .catch(function (err) {
-        sails.log.error(err);
-      })  
-    } 
-
-    if(msg.return_code == "FAIL") {
-      sails.log.error(msg);
-    } 
-  });
-
-exports.wxPayCallback = function(req, res, next) {
-	  wxCallback(req, res, next);
-}
-
 exports.queryorder = function(req, res) {
   Payrecord.findOne({out_trade_no: req.query.order})
   .then(function(payorder) {
