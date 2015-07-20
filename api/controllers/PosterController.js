@@ -68,7 +68,10 @@ uploadImage: function (req, res) {
       imageUrl: require('util').format('%s/poster/image/%s', sails.getBaseUrl(), req.params.id),
 
       // Grab the first file and use it's `fd` (file descriptor)
-      imageFd: uploadedFiles[0].fd
+      imageFd: uploadedFiles[0].fd,
+
+      //Save the file name
+      imageName: uploadedFiles[0].filename
     })
     .exec(function (err){
       if (err) return res.negotiate(err);
@@ -99,8 +102,14 @@ downloadImage: function (req, res){
       return res.notFound();
     }
 
+    var fileFd = {};
+    if (process.env.NODE_ENV === 'development') {
+      fileFd = '/' + poster.imageName
+    } else {
+      fileFd = poster.imageFd;
+    }
     // Stream the file down
-    fileAdapter.read(poster.imageFd, 
+    fileAdapter.read(fileFd, 
       function (err, data){
         if(err) {
           return res.serverError(err);

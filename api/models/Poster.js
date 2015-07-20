@@ -38,7 +38,10 @@ module.exports = {
     },
     "imageFd" : {
       type: 'string',
-    },    
+    },
+    "imageName" : {
+      type: 'string',
+    },      
   },
 
 

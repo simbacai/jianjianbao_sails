@@ -104,7 +104,6 @@ describe('PosterController', function() {
   });
   
   //There is undefined error of fileadaptor, to be debugged
-  /*
   describe('#get image with localpassport', function() {
     it('should get image succesfully', function (done) {
       request(sails.hooks.http.app)
@@ -117,7 +116,6 @@ describe('PosterController', function() {
         }) 
     });
   });
-*/
 
   describe('#delete() with localpassport', function() {
     it('should delete succesfully', function (done) {
