@@ -45,6 +45,7 @@ module.exports = {
         return Poster.update({id: poster.id}, {chatRooms: poster.chatRooms});
       })
       .then (function (poster) {
+        Poster.message(poster[0].id, _.merge(chatRoom, {msgType: "ChatRoom"}));
         next();
       })
       .catch(next);

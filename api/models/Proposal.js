@@ -100,8 +100,8 @@ module.exports = {
     function createProposalSummary (proposal, next) {
       sails.log('Proposal.afterCreate.createProposalSummary');
       ProposalSummary.create({ poster: proposal.poster, proposal: proposal.id, createdBy: proposal.createdBy, createdAt: proposal.createdAt, updatedAt: proposal.updatedAt})
-      .then(function (proposalsummary) {   
-          Poster.message(proposalsummary.poster, proposalsummary);
+      .then(function (proposalsummary) { 
+          Poster.message(proposalsummary.poster, _.merge(proposalsummary, {msgType: "ProposalSumary"}));
           next();
         })
       .catch(next);
