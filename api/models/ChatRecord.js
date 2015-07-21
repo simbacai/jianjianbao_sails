@@ -42,7 +42,7 @@ module.exports = {
       })
       .then (function (chatRoom) {
         //Distribute the record to all subscribed user
-        ChatRoom.message(chatRoom.id, chatRecord);
+        ChatRoom.message(chatRoom[0].id, chatRecord);
         next();
       })
       .catch(next);
