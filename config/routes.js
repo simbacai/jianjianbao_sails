@@ -55,4 +55,5 @@ module.exports.routes = {
   'get /proposal/subscribe/:id' : 'ProposalController.subscribe',
   'post /poster/image/:id' : 'PosterController.uploadImage',
   'get /poster/image/:id' : 'PosterController.downloadImage',
+  'get /poster/users/:id' : 'PosterController.getRelateUsers',
 };

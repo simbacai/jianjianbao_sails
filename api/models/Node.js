@@ -18,8 +18,7 @@ module.exports = {
       type: 'array'
     },
     "childNodes" : {
-      collection : 'node',
-      via: 'parentNode'
+      type : 'array'
     }    
   },
 
