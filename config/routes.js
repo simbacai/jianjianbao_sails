@@ -56,4 +56,5 @@ module.exports.routes = {
   'post /poster/image/:id' : 'PosterController.uploadImage',
   'get /poster/image/:id' : 'PosterController.downloadImage',
   'get /poster/users/:id' : 'PosterController.getRelateUsers',
+  'get /chatroom/subscribe/:id' : 'ChatRoomController.subscribe',
 };

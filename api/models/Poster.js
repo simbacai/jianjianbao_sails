@@ -28,6 +28,9 @@ module.exports = {
     "nodes": {
       type: 'array',
     },
+    "chatRooms": {
+      type: 'array',
+    },
     "status" : {
       type: 'string',
       enum: ['created', 'payed','closed'],
