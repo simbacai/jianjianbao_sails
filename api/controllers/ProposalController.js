@@ -103,7 +103,7 @@ module.exports = {
 					    			return Node.find ({id: node.path});
 					    		})
 					    		.then (function (nodes) {
-					          var forwarderTipAmount = Math.round(posterTipAmount * 0.8 / (nodes.length-1));
+					          var forwarderTipAmount = Math.round(posterTipAmount * 0.2 / (nodes.length-1));
 			          		var proposalTipAmount = posterTipAmount - forwarderTipAmount * (nodes.length-1);
 					    			var createdTips = nodes.map (function (node, i) {
 					    				if(i === (nodes.length-1)) {
