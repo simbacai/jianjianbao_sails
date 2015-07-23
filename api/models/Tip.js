@@ -16,7 +16,13 @@ module.exports = {
   	},
   	"amount" : {
   		type: 'string'
-  	}
+  	},
+    "action" : {
+      type: 'string'
+    },
+    "actionTime" : {
+      type: 'datetime'
+    },
   }
 };
 

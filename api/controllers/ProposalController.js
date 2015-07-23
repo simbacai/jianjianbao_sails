@@ -9,53 +9,55 @@ var redpack = require('../services/redpack');
 
 module.exports = {
 
-	  preCalTips : function  (req, res) {
+	preCalTips : function  (req, res) {
     Proposal
 	    .findOne (req.params.id)
 	    .then (function (proposal) {	    	
-	    	if(proposal.status == "closed") {
-	    		res.forbidden ("Proposal has already been commited!");
-	    		return;
-	    	} else {
-	    		return Poster
-	    		  .findOne ( proposal.poster)
-	    		  .then (function (poster) {
-	    		  	if (poster.status === 'closed') {
-	    		  		res.forbidden ("Poster has already been closed!");
-	    		  	} else {
-				    		var posterTipAmount = 0;
-				    			return Poster
-				    			.findOne ( proposal.poster )
-					    		.then (function (poster) {
-					    			posterTipAmount = Number( poster.tipAmount );
-					    			return Node.findOne ( proposal.node );
-					    		})
-					    		.then (function (node) {
-					    			node.path.push (node.id);
-					    			if(node.path.length != 1) {
-					    				node.path.shift();
-					    			}
-					    			return Node.find ({id: node.path});
-					    		})
-					    		.then (function (nodes) {
-					          var tipAmount = posterTipAmount / nodes.length;
-					    			var pretips = nodes.map (function (node) {
-					    				return {poster: node.poster, user: node.createdBy, amount: tipAmount};
-					    			});
-					    			return Promise.all(pretips);
-					    		})
-					    		.then (function (tips) {
-					    			res.ok(tips);
-					    		})	    		  		
-	    		  	}
-	    		  })
-	    	}
+    		return Poster
+    		  .findOne ( proposal.poster)
+    		  .then (function (poster) {
+						var posterTipAmount = 0;
+		    			return Poster
+		    			.findOne ( proposal.poster )
+			    		.then (function (poster) {
+			    			posterTipAmount = Number( poster.tipAmount );
+			    			return Node.findOne ( proposal.node );
+			    		})
+			    		.then (function (node) {
+			    			node.path.push (node.id);
+			    			if(node.path.length != 1) {
+			    				node.path.shift();
+			    			}
+			    			return Node.find ({id: node.path});
+			    		})
+			    		.then (function (nodes) {
+			          var forwarderTipAmount = Math.round(posterTipAmount * 0.8 / (nodes.length-1));
+			          var proposalTipAmount = posterTipAmount - forwarderTipAmount * (nodes.length-1);
+			    			var pretips = nodes.map (function (node, i) {
+			    				if(i === (nodes.length-1)) {
+			    					return {poster: node.poster, 
+			    									user: node.createdBy, 
+			    									amount: proposalTipAmount, 
+			    									action:"propose", 
+			    									actionTime: node.createdAt};	
+			    				} else {
+			    					return {poster: node.poster, 
+			    									user: node.createdBy, 
+			    									amount: forwarderTipAmount, 
+			    									action:"forward", 
+			    									actionTime: node.createdAt};	
+			    				}
+			    			});
+			    			return Promise.all(pretips);
+			    		})
+			    		.then (function (tips) {
+			    			res.ok(tips);
+			    		})	    		  		
+    		  })
 	    })
 			.catch (function (err) {
-				sails.log.error (err);
-		    res.json (400, {errcode: 999});
-			})
-
+				res.serverError (err);
+			});
   },   
 
   commitProposal : function  (req, res) {
@@ -101,9 +103,22 @@ module.exports = {
 					    			return Node.find ({id: node.path});
 					    		})
 					    		.then (function (nodes) {
-					          var tipAmount = posterTipAmount / nodes.length;
-					    			var createdTips = nodes.map (function (node) {
-					    				return Tip.create ({poster: node.poster, user: node.createdBy, amount: tipAmount});
+					          var forwarderTipAmount = Math.round(posterTipAmount * 0.8 / (nodes.length-1));
+			          		var proposalTipAmount = posterTipAmount - forwarderTipAmount * (nodes.length-1);
+					    			var createdTips = nodes.map (function (node, i) {
+					    				if(i === (nodes.length-1)) {
+					    					return Tip.create({poster: node.poster, 
+					    									user: node.createdBy, 
+					    									amount: proposalTipAmount, 
+					    									action:"propose", 
+					    									actionTime: node.createdAt});	
+					    					} else {
+						    					return Tip.create({poster: node.poster, 
+						    									user: node.createdBy, 
+						    									amount: forwarderTipAmount, 
+						    									action:"forward", 
+						    									actionTime: node.createdAt});	
+						    				}
 					    			});
 					    			return Promise.all(createdTips);
 					    		})
@@ -132,10 +147,8 @@ module.exports = {
 	    	}
 	    })
 			.catch (function (err) {
-				sails.log.error (err);
-		    res.json (400, {errcode: 999});
+				res.serverError (err);
 			})
-
   },   
 
   openProposal : function  (req, res) { 
