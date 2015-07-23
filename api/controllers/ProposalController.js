@@ -31,8 +31,12 @@ module.exports = {
 			    			return Node.find ({id: node.path});
 			    		})
 			    		.then (function (nodes) {
-			          var forwarderTipAmount = Math.round(posterTipAmount * 0.8 / (nodes.length-1));
-			          var proposalTipAmount = posterTipAmount - forwarderTipAmount * (nodes.length-1);
+	          		if(nodes.length === 1) {
+			    				proposalTipAmount = posterTipAmount;
+			    			} else {
+				    			var forwarderTipAmount = Math.round(posterTipAmount * 0.2 / (nodes.length-1));
+		          		var proposalTipAmount = posterTipAmount - forwarderTipAmount * (nodes.length-1);	
+				    		}
 			    			var pretips = nodes.map (function (node, i) {
 			    				if(i === (nodes.length-1)) {
 			    					return {poster: node.poster, 
@@ -103,9 +107,15 @@ module.exports = {
 					    			return Node.find ({id: node.path});
 					    		})
 					    		.then (function (nodes) {
-					          var forwarderTipAmount = Math.round(posterTipAmount * 0.2 / (nodes.length-1));
-			          		var proposalTipAmount = posterTipAmount - forwarderTipAmount * (nodes.length-1);
-					    			var createdTips = nodes.map (function (node, i) {
+					    			var forwarderTipAmount = 0;
+					    			var proposalTipAmount = 0;
+					    			if(nodes.length === 1) {
+					    				proposalTipAmount = posterTipAmount;
+					    			} else {
+						    			var forwarderTipAmount = Math.round(posterTipAmount * 0.2 / (nodes.length-1));
+				          		var proposalTipAmount = posterTipAmount - forwarderTipAmount * (nodes.length-1);	
+						    		}
+					          var createdTips = nodes.map (function (node, i) {
 					    				if(i === (nodes.length-1)) {
 					    					return Tip.create({poster: node.poster, 
 					    									user: node.createdBy, 
