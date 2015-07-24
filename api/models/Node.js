@@ -27,7 +27,7 @@ module.exports = {
 	*/
   afterCreate: [
     function setOwner (node, next) {
-      sails.log('Node.afterCreate.setOwner', node);
+      sails.log.silly('Node.afterCreate.setOwner', node);
       Node
         .update({ id: node.id }, { owner: node.createdBy})
         .then(function (node) {

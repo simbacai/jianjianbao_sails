@@ -35,8 +35,7 @@ module.exports = {
 		  Poster.subscribe(req, poster.id, ['message']);
 		})
 		.catch(function (err) {
-			sails.error.log(err);
-			res.json (400, {errcode: 999});
+      res.serverError(err);
 		});
   },
 
@@ -189,7 +188,6 @@ module.exports = {
       res.ok(_.flatten(relatedUsers, true));
     })
     .catch(function (err) {
-      sails.log.error(err);
       res.serverError(err);
     });
   }

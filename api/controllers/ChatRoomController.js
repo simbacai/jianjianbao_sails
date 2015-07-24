@@ -20,7 +20,6 @@ module.exports = {
       res.ok();
     })
     .catch(function (err) {
-      sails.error.log(err);
       res.serverError(err);
     });
   },

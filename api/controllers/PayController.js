@@ -26,8 +26,7 @@ module.exports = {
 			pay.wxPay({body: posterToPay.subject, total_fee: Number(posterToPay.tipAmount), openid: user.openid}, posterToPay, res);
 		})
 		.catch(function (err) {
-			sails.log.error(err);
-			res.json (400, {errcode: 999});
+			res.serverError (err);
 		});
   },
 
@@ -53,7 +52,7 @@ module.exports = {
       	res.ok();
       })
       .catch(function (err) {
-        sails.log.error(err);
+        res.serverError(err);
       })  
     } 
 

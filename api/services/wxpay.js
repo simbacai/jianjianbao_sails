@@ -43,7 +43,6 @@ exports.wxPay = function(opts, posterToPay, res) {
 	wxpay.getBrandWCPayRequestParams(opts, function(err, result){
 	    // in express
 	    if(err) {
-	    	sails.log.error(err);
         res.serverError(err);
 	    } else {
         //Here should create a order record
@@ -53,11 +52,10 @@ exports.wxPay = function(opts, posterToPay, res) {
 	    	sails.log(result);
         Payrecord.create (result)
         .then(function(payrecord) {
-          sails.log.info("Created payrecord" + payrecord);
+          sails.log.silly("Created payrecord" + payrecord);
           res.ok({payargs: payrecord});
         })
         .catch(function(err) {
-          sails.log.error(err);
           res.serverError(err);
           //create record fail, so need to close the order
           //closeOrder(result.out_trade_no);
@@ -74,13 +72,11 @@ exports.queryorder = function(req, res) {
     } else {
       wxpay.queryOrder({out_trade_no: req.query.order}, function(err, queryresult) {
           if(err) {
-            sails.log.error(err);
             res.serverError(err);
           } else {
             //Here needs to update the payrecord
             sails.log(queryresult);
             if(queryresult.return_code == "FAIL") {
-              sails.log.error(queryresult);
               res.serverError(queryresult);
              } 
 
@@ -90,7 +86,6 @@ exports.queryorder = function(req, res) {
                 res.ok({order: payrecords[0]});
               })
               .catch(function (error) {
-                sails.log.error(error);
                 res.serverError(error);
               })
             }
@@ -99,7 +94,6 @@ exports.queryorder = function(req, res) {
     }
   })
   .catch(function (err) {
-    sails.log.error(err);
     res.serverError(err);
   })
 }
@@ -110,7 +104,7 @@ function closeOrder(orderNumber) {
     if(err) {
       sails.log.error(err);
     } else {
-      sails.log(result);
+      sails.log.silly(result);
     }
   })
 }

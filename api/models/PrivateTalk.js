@@ -25,7 +25,7 @@ module.exports = {
     * Set PrivateTalk Owner automatically
     */
     function setOwner (privatetalk, next) {
-      sails.log('PrivateTalk.afterCreate.setOwner', privatetalk);
+      sails.log.silly('PrivateTalk.afterCreate.setOwner', privatetalk);
       PrivateTalk
       .update({ id: privatetalk.id }, { owner: privatetalk.createdBy})
       .then(function (privatetalk) {
@@ -37,7 +37,7 @@ module.exports = {
     * Set PrivateTalk Authorized Owner automatically
     */
     function setAuthOwner (privatetalk, next) {
-      sails.log('PrivateTalk.afterCreate.setAuthOwner');
+      sails.log.silly('PrivateTalk.afterCreate.setAuthOwner');
       Proposal.findOne({ id: privatetalk.proposal })
       .then(function (proposal) {
         return PrivateTalk
@@ -52,7 +52,7 @@ module.exports = {
     * Connect to related Proposal automatically
     */    
     function connectProposal (privatetalk, next) {
-      sails.log('PrivateTalk.afterCreate.connectProposal');
+      sails.log.silly('PrivateTalk.afterCreate.connectProposal');
       Proposal.findOne({ id: privatetalk.proposal })
       .then(function (proposal) {
         proposal.privatetalks = proposal.privatetalks || [];
@@ -68,7 +68,7 @@ module.exports = {
     * Notify the created privatetalks to subscriber automatically
     */    
     function notifySubscriber (privatetalk, next) {
-      sails.log('PrivateTalk.afterCreate.notifySubscriber');
+      sails.log.sily('PrivateTalk.afterCreate.notifySubscriber');
       Proposal.message(privatetalk.proposal, privatetalk);
       next();
     },
@@ -79,7 +79,7 @@ module.exports = {
     * disconnect to related Proposal automatically
     */    
     function disconnectProposal (criteria, next) {
-      sails.log('PrivateTalk.afterDestroy.disconnectPoster', criteria);
+      sails.log.silly('PrivateTalk.afterDestroy.disconnectPoster', criteria);
       PrivateTalk.findOne({ id : criteria.where.id})
       .then(function(privatetalk) {
         return Proposal.findOne({ id: privatetalk.proposal});

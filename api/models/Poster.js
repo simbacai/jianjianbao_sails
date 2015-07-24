@@ -53,7 +53,7 @@ module.exports = {
    */
   afterCreate: [
     function setOwner (poster, next) {
-      sails.log('Poster.afterCreate.setOwner', poster);
+      sails.log.silly('Poster.afterCreate.setOwner', poster);
       Poster
         .update({ id: poster.id }, { owner: poster.createdBy})
         .then(function (poster) {
@@ -65,7 +65,7 @@ module.exports = {
     * Create RootNode automatically
     */
     function createRootNode (poster, next) {
-      sails.log('Poster.afterCreate.createRootNode');
+      sails.log.silly('Poster.afterCreate.createRootNode');
       Node
         .create({ poster: poster.id, createdBy: poster.createdBy, path: [] })
         .then(function (node) {

@@ -58,7 +58,6 @@ module.exports = {
     	  }
       })
       .catch (function (error) {
-        sails.log.error (error);
         res.serverError(error);
       })
   },

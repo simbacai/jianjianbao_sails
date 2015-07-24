@@ -180,8 +180,7 @@ module.exports = {
 		  
 		})
 		.catch(function (err) {
-			sails.error.log(err);
-			res.json (400, {errcode: 999});
+			res.serverError(err);
 		});
   }	
 };

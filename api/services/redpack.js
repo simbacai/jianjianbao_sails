@@ -22,7 +22,7 @@ function sendRedpack (opts) {
     if(err) {
     	sails.log.error (err);
     } else {
-    	sails.log.info(result);
+    	sails.log.silly(result);
     }
 	});
 } 

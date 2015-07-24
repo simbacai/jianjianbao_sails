@@ -25,7 +25,6 @@ module.exports = {
 	    res.ok(sign);
 	  })
 	  .catch (function (err) {
-	  	sails.log.error(err);
 	  	res.serverError(err);
 	  });
 
