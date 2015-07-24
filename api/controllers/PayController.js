@@ -23,7 +23,7 @@ module.exports = {
 		  return User.findOne(poster.createdBy);
 		})
 		.then(function (user) {
-			pay.wxPay({body: posterToPay.subject, total_fee: Number(posterToPay.tipAmount), openid: user.openid}, posterToPay, res);
+			pay.wxPay({body: posterToPay.subject, total_fee: Number(posterToPay.tipAmount)*100, openid: user.openid}, posterToPay, res);
 		})
 		.catch(function (err) {
 			res.serverError (err);
