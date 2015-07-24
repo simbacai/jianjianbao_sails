@@ -2,7 +2,7 @@
 
 var WXPay = require('weixin-pay');
 
-var wxpay = WXPay(sails.config.wxpay);
+var wxpay = WXPay(sails.config.wxpay.wxpayconfig);
 /*
 var wxpay = WXPay({
     appid: 'wxcd3e2f8024ba7f49',
@@ -38,6 +38,7 @@ function getNowFormatDate(){
   }
 
 exports.wxPay = function(opts, posterToPay, res) {
+  console.log(sails.config.wxpay);
 	opts["out_trade_no"] = sails.config.wxpay.wxpayconfig.mch_id + getNowFormatDate() + Math.random().toString().substr(2,10);
 	opts["notify_url"] = sails.config.wxpay.unifiedOrderConfig.notify_url;
 	opts["spbill_create_ip"] = sails.config.wxpay.unifiedOrderConfig.spbill_create_ip;
