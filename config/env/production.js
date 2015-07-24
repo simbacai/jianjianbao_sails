@@ -39,10 +39,10 @@ module.exports = {
   },
 
   session: {
-  adapter: 'connect-aliyunocs',
-  host:'10.159.72.1',
-  ocsKey: 'eb6c04f97e4a4dab',
-  ocsSecret: 'JianJian123'
+    adapter: 'connect-aliyunocs',
+    host:'10.159.72.1',
+    ocsKey: 'eb6c04f97e4a4dab',
+    ocsSecret: 'JianJian123'
   },
 
   wxpay: {
@@ -58,7 +58,6 @@ module.exports = {
     }
   },
 
-
   redpack: {
     mch_id: '1247772901',
     partner_key: 'JianJian35398841JianJian35398841',
@@ -70,5 +69,13 @@ module.exports = {
     total_num: 1,
     remark: 'RedPack from JianJianBao!',
     wishing: 'Thanks for using JianJianBao!'  
+  },
+
+  skippeross: {
+    accessKeyId: 'fPyMxwAG8DrNZ9b2',
+    secretAccessKey: '3xO0RWlT7nzleHVjZCuto7wE7NNVB3',
+    endpoint: 'http://oss-cn-hangzhou.aliyuncs.com',
+    apiVersion: '2013-10-15',
+    Bucket: 'jianjianbao'
   }
 };

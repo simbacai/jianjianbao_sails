@@ -10,13 +10,7 @@ var skipperMemory = require('skipper-memory');
 
 var fileAdapter = {};
 if(process.env.NODE_ENV !== 'development') {
-  fileAdapter = skipperAliyunOSS({
-    accessKeyId: 'fPyMxwAG8DrNZ9b2',
-    secretAccessKey: '3xO0RWlT7nzleHVjZCuto7wE7NNVB3',
-    endpoint: 'http://oss-cn-hangzhou.aliyuncs.com',
-    apiVersion: '2013-10-15',
-    Bucket: 'jianjianbao'
-  });
+  fileAdapter = skipperAliyunOSS(sails.config.skippeross);
 } else {
   fileAdapter = skipperMemory();
 }
