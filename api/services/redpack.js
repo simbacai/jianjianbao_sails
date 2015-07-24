@@ -11,7 +11,6 @@ var redpack = Redpack({
     send_name: 'JianJianBao',
     nick_name: 'JianJianBao',
     client_ip: '121.41.75.11',
-    total_amount: 100,
     total_num: 1,
     remark: 'RedPack from JianJianBao!',
     wishing: "Thanks for using JianJianBao!"
