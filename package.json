@@ -47,6 +47,7 @@
   "author": "simbacai",
   "license": "",
   "devDependencies": {
+    "base-64": "^0.1.0",
     "connect-mongo": "^0.8.2",
     "connect-redis": "^1.4.5",
     "mocha": "^2.2.5",
