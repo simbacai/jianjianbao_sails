@@ -56,5 +56,19 @@ module.exports = {
       notify_url: 'http://www.jianjianbao.cn/pay/wxpaynotify',
       spbill_create_ip: '121.41.75.11'
     }
+  },
+
+
+  redpack: {
+    mch_id: '1247772901',
+    partner_key: 'JianJian35398841JianJian35398841',
+    pfx: fs.readFileSync('./apiclient_cert.p12'),
+    wxappid: 'wxcd3e2f8024ba7f49',
+    send_name: 'JianJianBao',
+    nick_name: 'JianJianBao',
+    client_ip: '121.41.75.11',
+    total_num: 1,
+    remark: 'RedPack from JianJianBao!',
+    wishing: 'Thanks for using JianJianBao!'  
   }
 };

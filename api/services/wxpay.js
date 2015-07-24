@@ -3,14 +3,6 @@
 var WXPay = require('weixin-pay');
 
 var wxpay = WXPay(sails.config.wxpay.wxpayconfig);
-/*
-var wxpay = WXPay({
-    appid: 'wxcd3e2f8024ba7f49',
-    mch_id: '1247772901',
-    partner_key: 'JianJian35398841JianJian35398841', 
-    pfx: fs.readFileSync('./apiclient_cert.p12'), 
-});
-*/
 
 function getNowFormatDate(){
     var day = new Date();

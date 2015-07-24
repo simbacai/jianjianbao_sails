@@ -9,8 +9,6 @@
  * any private information to this file!
  *
  */
-var fs = require('fs');
-
 module.exports = {
 
   /***************************************************************************
@@ -44,5 +42,18 @@ module.exports = {
       notify_url: '',
       spbill_create_ip: ''
     }
+  },
+
+  redpack: {
+    mch_id: '',
+    partner_key: '',
+    pfx: '',
+    wxappid: '',
+    send_name: '',
+    nick_name: '',
+    client_ip: '',
+    total_num: null,
+    remark: '',
+    wishing: ''
   }
 };

@@ -1,23 +1,11 @@
 // api/services/redpack.js
 
 var Redpack = require('weixin-redpack').Redpack;
-var fs = require('fs');
 
-var redpack = Redpack({
-    mch_id: '1247772901',
-    partner_key: 'JianJian35398841JianJian35398841',
-    pfx: fs.readFileSync('./apiclient_cert.p12'),
-    wxappid: 'wxcd3e2f8024ba7f49',
-    send_name: 'JianJianBao',
-    nick_name: 'JianJianBao',
-    client_ip: '121.41.75.11',
-    total_num: 1,
-    remark: 'RedPack from JianJianBao!',
-    wishing: "Thanks for using JianJianBao!"
-});
+var redpack = Redpack(sails.config.redpack);
 
 function sendRedpack (opts) {
-	opts["mch_billno"] = '1247772901' + getNowFormatDate() + Math.random().toString().substr(2,10);
+	opts["mch_billno"] = sails.config.redpack.mch_id + getNowFormatDate() + Math.random().toString().substr(2,10);
 	redpack.send(opts, function(err, result){
     if(err) {
     	sails.log.error (err);
