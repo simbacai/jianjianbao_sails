@@ -9,6 +9,7 @@
  * any private information to this file!
  *
  */
+var fs = require('fs');
 
 module.exports = {
 
@@ -17,18 +18,31 @@ module.exports = {
    * environment (see config/connections.js and config/models.js )           *
    ***************************************************************************/
 
-   models: {
-     connection: 'test',
-     migrate: 'alter'
+  models: {
+   connection: 'test',
+   migrate: 'alter'
+  },
+
+  port:1337,
+
+  log: {
+   level: "silly"
+  },
+
+  session: {
+  adapter: 'memory',
+  },
+
+  wxpay: {
+    wxpayconfig: {
+      appid: '',
+      mch_id: '',
+      partner_key: '', 
+      pfx: '', 
     },
-
-   port:1337,
-
-   log: {
-     level: "silly"
-   },
-
-   session: {
-    adapter: 'memory',
-   }
+    unifiedOrderConfig: {
+      notify_url: '',
+      spbill_create_ip: ''
+    }
+  }
 };

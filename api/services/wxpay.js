@@ -1,15 +1,16 @@
 // api/services/wxpay.js
 
 var WXPay = require('weixin-pay');
-var fs = require('fs');
 
-
+var wxpay = WXPay(sails.config.wxpay);
+/*
 var wxpay = WXPay({
     appid: 'wxcd3e2f8024ba7f49',
     mch_id: '1247772901',
     partner_key: 'JianJian35398841JianJian35398841', 
     pfx: fs.readFileSync('./apiclient_cert.p12'), 
 });
+*/
 
 function getNowFormatDate(){
     var day = new Date();
@@ -37,9 +38,9 @@ function getNowFormatDate(){
   }
 
 exports.wxPay = function(opts, posterToPay, res) {
-	opts["out_trade_no"] = '1247772901' + getNowFormatDate() + Math.random().toString().substr(2,10);
-	opts["notify_url"] = 'http://www.jianjianbao.cn/pay/wxpaynotify';
-	opts["spbill_create_ip"] = '121.41.75.11';
+	opts["out_trade_no"] = sails.config.wxpay.wxpayconfig.mch_id + getNowFormatDate() + Math.random().toString().substr(2,10);
+	opts["notify_url"] = sails.config.wxpay.unifiedOrderConfig.notify_url;
+	opts["spbill_create_ip"] = sails.config.wxpay.unifiedOrderConfig.spbill_create_ip;
 	wxpay.getBrandWCPayRequestParams(opts, function(err, result){
 	    // in express
 	    if(err) {
