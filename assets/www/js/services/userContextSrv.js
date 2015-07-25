@@ -11,7 +11,7 @@ app.service('userContextSrv', function(resourceSrv, $q) {
     //私有属性：声明与始初化            
     
     var _currentNodeId = null;
-    var _currentUserId = null;
+    var _currentUserId = null
     var _currentPoster = null;
     var _usersCache = {};
 
@@ -145,7 +145,7 @@ app.service('userContextSrv', function(resourceSrv, $q) {
 
 
                 if (_currentPoster.createdBy && _currentUserId) {
-                    _currentPoster.ownerIsCurrentUser = angular.equals(_currentPoster.createdBy, _currentUserId);
+                    _currentPoster.ownerIsCurrentUser = angular.equals(String(_currentPoster.createdBy), String(_currentUserId));
                 } else {
                     throw new Error(2000);
                 }
