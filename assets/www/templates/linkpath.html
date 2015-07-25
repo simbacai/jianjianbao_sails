@@ -29,9 +29,8 @@
         <img src="{{tip.userObj.headimgurl}}">
         <h2>{{tip.userObj.nickname}}</h2>
         <p>
-          {{tip.updatedAt | date : 'M-d H:mm' }}&nbsp;
-          （采纳后，将得到红包&nbsp;
-          {{tip.amount}}元）
+
+          {{tip.actionTime | date : 'M-d H:mm' }}&nbsp;{{tip.actionLabel}}<br>（采纳后，将得到红包&nbsp;{{tip.amount}}元）
         </p>
       </div>
     </div> <!--list-->

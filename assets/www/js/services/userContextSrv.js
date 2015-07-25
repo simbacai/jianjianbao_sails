@@ -1,3 +1,9 @@
+/*
+ * userContextSrv.js
+ *
+ */
+
+
 "use strict";
 
 app.service('userContextSrv', function(resourceSrv, $q) {
@@ -112,6 +118,12 @@ app.service('userContextSrv', function(resourceSrv, $q) {
             return resourceSrv.getResourceById("user", tip.user).then(function(response) {
                 _usersCache[tip.user] = response.data;
                 tip.userObj = _usersCache[tip.user];
+
+                if ("propose" == tip.action) {
+                    tip.actionLabel = "提交解决方案";
+                } else if ("forward" == tip.action) {
+                    tip.actionLabel = "转发";
+                } 
                 console.log("################# loadUserForAllTips 子循环完成, tip.user=" + tip.user);
                 return;
             });
@@ -263,7 +275,8 @@ app.service('userContextSrv', function(resourceSrv, $q) {
             }
 
             _currentPoster = newPosterReturned;
-            _currentNodeId = newPosterReturned.nodes[0]
+            _currentNodeId = newPosterReturned.nodes[0];
+            _currentPoster.ownerIsCurrentUser = true;
             _usersCache = {};
             
             return loadPosterOwner();

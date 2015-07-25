@@ -21,21 +21,54 @@ app
 
         return userContextSrv.prepareContext(currentNodeId, currentPosterId, currentUserId).then(function() {
             return $rootScope.populateUI();
-        }).then(function() {
-            var apiURL = "/jssdk/getsign?url=" + encodeURIComponent($location.absUrl());
-            //alert("getsign, $location.absUrl()=" + encodeURIComponent($location.absUrl()));
-            var promise = 
-                $http.get(apiURL).then(function(response) {
-                    console.log("success: get " + apiURL);
-                    //alert("getsign: 完成");
-                    return response;
-                }, function(response) {
-                    var errorMsg = "error:  get " + apiURL + ", status=" + status;
-                    console.log(errorMsg);
-                    throw new Error(1000, errorMsg);
-                });
-            return promise;
-        }).then(function(response) {
+        });
+    };
+
+    /**
+     * 调用:
+     * 情况1: index.html使用ng-init调用
+     * 情况2: PosterCreationCtrl中创建一张新Poster后
+     */
+    $rootScope.populateUI = function() {
+
+        console.log("################# $rootScope.populateUI 开始");
+
+        $rootScope.poster = userContextSrv.currentPoster();
+        //console.log("$rootScope.poster=" + angular.toJson($rootScope.poster));
+
+        /*
+        $rootScope.posterOwner = posterOwner;
+        $rootScope.floors = floors.reverse();
+        $rootScope.floorOwnerCashe = floorOwnerCashe;
+        */
+
+        //不刷新跳转
+        $rootScope.posterMainPath = "/node/" + userContextSrv.currentNodeId();
+        var prefix = "";
+        if ($rootScope.poster.tipAmount && $rootScope.poster.tipAmount > 0) {
+            prefix = "悬赏" + $rootScope.poster.tipAmount + "元：";
+        }
+        $rootScope.documentTitle = prefix + $rootScope.poster.subject;
+
+        $location.path($rootScope.posterMainPath);
+        document.title = $rootScope.documentTitle;
+
+
+        console.log("################# $rootScope.populateUI 完成");
+
+        var apiURL = "/jssdk/getsign?url=" + encodeURIComponent($location.absUrl());
+        //alert("getsign, $location.absUrl()=" + encodeURIComponent($location.absUrl()));
+        var promise = 
+            $http.get(apiURL).then(function(response) {
+                console.log("success: get " + apiURL);
+                //alert("getsign: 完成");
+                return response;
+            }, function(response) {
+                var errorMsg = "error:  get " + apiURL + ", status=" + status;
+                console.log(errorMsg);
+                throw new Error(1000, errorMsg);
+            });
+        promise.then(function(response) {
             var msg = "wx.config: 开始, timestamp=" + response.data.timestamp
                 + ", nonceStr=" + response.data.nonceStr
                 + ", signature=" + response.data.signature
@@ -88,7 +121,7 @@ app
             });
 
             wx.ready(function(){
-                alert("wx.config: ready");
+                //alert("wx.config: ready");
                 wx.onMenuShareAppMessage({
                   title: $rootScope.documentTitle,
                   desc: $rootScope.poster.body,
@@ -112,46 +145,10 @@ app
             });
 
             wx.error(function(res){
-                alert("wx.config: error, " + angular.toJson(res));
+                alert("错误：wx.config error, " + angular.toJson(res));
                 //throw new Error(1001);
             });
-
-
-
         });
-    };
-
-    /**
-     * 调用:
-     * 情况1: index.html使用ng-init调用
-     * 情况2: PosterCreationCtrl中创建一张新Poster后
-     */
-    $rootScope.populateUI = function() {
-
-        console.log("################# $rootScope.populateUI 开始");
-
-        $rootScope.poster = userContextSrv.currentPoster();
-        //console.log("$rootScope.poster=" + angular.toJson($rootScope.poster));
-
-        /*
-        $rootScope.posterOwner = posterOwner;
-        $rootScope.floors = floors.reverse();
-        $rootScope.floorOwnerCashe = floorOwnerCashe;
-        */
-
-        //不刷新跳转
-        $rootScope.posterMainPath = "/node/" + userContextSrv.currentNodeId();
-        var prefix = "";
-        if ($rootScope.poster.tipAmount && $rootScope.poster.tipAmount > 0) {
-            prefix = "悬赏" + $rootScope.poster.tipAmount + "元：";
-        }
-        $rootScope.documentTitle = prefix + $rootScope.poster.subject;
-
-        $location.path($rootScope.posterMainPath);
-        document.title = $rootScope.documentTitle;
-
-
-        console.log("################# $rootScope.populateUI 完成");
     }
     
     //TODO 可以用Filter实现
@@ -237,10 +234,12 @@ app
         $scope.posterCreationModal = modal;
 
         //TODO
+        /*
         $rootScope.myNewPoster.subject = "test Subj";
         $rootScope.myNewPoster.body =  "test Body";
         $rootScope.myNewPoster.tipAmount = "123";
         $scope.posterCreationModal.show();
+        */
     });
     
     $ionicModal.fromTemplateUrl('/www/templates/share.html', {
@@ -263,18 +262,18 @@ app
 
         var createWXOrder = function(posterId) {
 
-            alert("createWXOrder: 开始");
+            //alert("createWXOrder: 开始");
             var apiURL = "/pay/wxpay?poster=" + posterId;
             var promise = 
                 $http.get(apiURL).then(function(response) {
                     //console.log("success: get " + apiURL + ", data=" + angular.toJson(response.data));
-                    alert("createWXOrder: 完成");
+                    //alert("createWXOrder: 完成");
 
                     if (!response || !response.data || !response.data.payargs) {
                         throw new Error(1000);
                     }
 
-                    alert("wx.chooseWXPay: 开始");
+                    //alert("wx.chooseWXPay: 开始");
                     wx.chooseWXPay({
                         timestamp: parseInt(response.data.payargs.timeStamp),
                         nonceStr: response.data.payargs.nonceStr,
@@ -282,7 +281,7 @@ app
                         signType: response.data.payargs.signType,
                         paySign: response.data.payargs.paySign,
                         success: function (res) {
-                            alert("wx.chooseWXPay: 完成, res" + angular.toJson(res));
+                            //alert("wx.chooseWXPay: 完成, res" + angular.toJson(res));
                         }
                     });
 
@@ -304,7 +303,7 @@ app
         userContextSrv.createPosterAndUpdateContext(newPoster).then(function() {
             return createWXOrder(userContextSrv.currentPoster().id);
         }).then(function() {
-            alert("wx.chooseWXPay: 完成后的下一步");
+            //alert("wx.chooseWXPay: 完成后的下一步");
             $rootScope.myNewPoster = {};
             $scope.posterCreationModal.hide();
             $rootScope.populateUI();
