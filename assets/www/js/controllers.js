@@ -160,7 +160,7 @@ app
 
 .controller("PosterMainCtrl", function($scope, $rootScope, $q, $location
     , userContextSrv
-    , $ionicModal, $ionicPopover, $http){
+    , $ionicModal, $ionicPopover, $ionicPopup, $http){
     console.log("PosterMainCtrl: BEGIN................");
 
     $rootScope.myNewPoster = {"tipAmount" : 0};
@@ -259,6 +259,27 @@ app
     };
 
     $scope.createPoster = function() {
+
+        try {
+            var tipAmount = $rootScope.myNewPoster.tipAmount;
+            if (isNaN(tipAmount)) {
+                throw new Error("红包金额格式不正确，请输入数字，最小金额为1元。");
+            }
+            var tipAmount = Number(tipAmount);
+            if (tipAmount < 1) {
+                throw new Error("红包金额格式不正确，请输入数字，最小金额为1元。");
+            }
+            //TODO  最大金额
+        } catch(err) {
+            $ionicPopup.alert({
+               title: '提示',
+               template: err.message,
+               okText: "关闭",
+               okType: "button-stable"
+            });
+            return;
+        }
+
 
         var createWXOrder = function(posterId) {
 
