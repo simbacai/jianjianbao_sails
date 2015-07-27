@@ -1,0 +1,23 @@
+<ion-modal-view>
+
+  <ion-header-bar class="bar bar-header bar-light">
+    <h1 class="title">相关用户</h1>
+  </ion-header-bar>
+
+
+  <ion-content>
+    <div class="list">
+
+
+      <div class="list card" ng-repeat="floor in users">
+        <div class="item item-avatar" >
+          <img src="{{floor.headimgurl}}">
+          <h2>{{floor.nickname}}&nbsp;</h2>
+        </div>
+      </div>
+
+    </div>
+  </ion-content>
+
+</ion-modal-view>
+

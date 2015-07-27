@@ -1,0 +1,32 @@
+<ion-modal-view>
+
+  <ion-content>
+
+    <div class="row">
+      <div class="col">
+        <button class="button icon-left ion-compose button-positive" ng-click="proposeBtnClick()">方案</button>
+      </div>
+      <div class="col">
+        <button class="button icon ion-edit button-positive">发榜</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <button class="button icon-left ion-chatbubble-working button-positive">评论</button>
+      </div>
+      <div class="col">
+        <button class="button icon ion-forward button-positive" ng-click="shareModal.show();">转发</button>
+      </div>
+    </div>
+
+
+  </ion-content>
+
+  <ion-footer-bar class="bar bar-footer bar-dark">
+    <button class="button button-clear button-primary" ng-click="editModal.hide()">
+      &nbsp;&nbsp;取消&nbsp;&nbsp;
+    </button>
+  </ion-footer-bar>
+
+</ion-modal-view>

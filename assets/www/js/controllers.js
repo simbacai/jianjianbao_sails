@@ -175,6 +175,10 @@ app
         $scope.modal.show();
     }
 
+    $scope.editBtnClick = function() {
+        $scope.editModal.show();
+    }
+
     $scope.commit = function(proposalId) {
         userContextSrv.commitProposal(proposalId).then(function() {
             return userContextSrv.viewTips();
@@ -246,6 +250,12 @@ app
       scope: $scope
     }).then(function(modal) {
         $scope.shareModal = modal;
+    });
+
+    $ionicModal.fromTemplateUrl('/www/templates/edit.html', {
+      scope: $scope
+    }).then(function(modal) {
+        $scope.editModal = modal;
     });
 
     $ionicPopover.fromTemplateUrl('/www/templates/main_menu.html', {
