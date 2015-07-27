@@ -6,17 +6,12 @@
 
 
   <ion-content>
-    <div class="list">
-
-
-      <div class="list card" ng-repeat="floor in poster.users">
-        <div class="item item-avatar" >
+      <div class="list" ng-repeat="floor in poster.users">
+        <a class="item item-avatar" ng-click="userEntryClick($index)">
           <img src="{{floor.headimgurl}}">
           <h2>{{floor.nickname}}&nbsp;</h2>
-        </div>
+        </a>
       </div>
-
-    </div>
   </ion-content>
 
 

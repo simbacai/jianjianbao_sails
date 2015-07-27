@@ -194,6 +194,17 @@ app
         $scope.memberModal.show();
     }
 
+    $scope.userEntryClick = function(index) {
+
+        $ionicModal.fromTemplateUrl('/www/templates/user.html', {
+          scope: $scope//.poster.users[index]
+        }).then(function(modal) {
+            $scope.displayUser = $scope.poster.users[index];
+            $scope.userModal = modal;
+            modal.show();
+        });
+    }
+
     $scope.commit = function(proposalId) {
         userContextSrv.commitProposal(proposalId).then(function() {
             return userContextSrv.viewTips();
@@ -278,6 +289,14 @@ app
     }).then(function(modal) {
         $scope.memberModal = modal;
     });
+
+    /*
+    $ionicModal.fromTemplateUrl('/www/templates/user.html', {
+      scope: $scope
+    }).then(function(modal) {
+        $scope.userModal = modal;
+    });
+*/
 
     $ionicPopover.fromTemplateUrl('/www/templates/main_menu.html', {
         scope: $scope,

@@ -1,0 +1,39 @@
+<ion-modal-view>
+
+  <ion-header-bar class="bar bar-header bar-light">
+    <img src="{{floor.headimgurl}}">
+    <h1 class="title">{{displayUser.nickname}}</h1>
+  </ion-header-bar>
+
+  <ion-content>
+    <div class="list list-inset">
+
+        <div class="item">
+          微信号：  {{displayUser.openid}}
+        </div>
+
+        <div class="item">
+          性别：  {{displayUser.sex}}
+        </div>
+
+        <div class="item">
+          注册地：  {{displayUser.country + displayUser.prinvince + displayUser.city}}
+        </div>
+
+        <div class="item">
+          创建时间：{{displayUser.createdAt}}
+        </div>
+  </div>
+  
+  <div class="button-bar">
+    <a class="button icon-center ion-chatbox button-full button-positive">  发消息</a>
+  </div>
+
+  </ion-content>
+
+  <ion-footer-bar class="bar bar-footer bar-dark">
+    <button class="button button-clear button-primary" ng-click="userModal.hide()">
+      &nbsp;&nbsp;取消&nbsp;&nbsp;
+    </button>
+  </ion-footer-bar>
+</ion-modal-view>
