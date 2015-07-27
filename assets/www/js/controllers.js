@@ -35,7 +35,18 @@ app
 
         $rootScope.poster = userContextSrv.currentPoster();
         //console.log("$rootScope.poster=" + angular.toJson($rootScope.poster));
-
+        /*
+        $rootScope.poster.users =[
+            {
+                headimgurl: "",
+                nickname: "haha"
+            },
+            {
+                headimgurl: "",
+                nickname: "hehe"
+            },
+        ]
+        */
         /*
         $rootScope.posterOwner = posterOwner;
         $rootScope.floors = floors.reverse();
@@ -179,6 +190,10 @@ app
         $scope.editModal.show();
     }
 
+    $scope.memberBtnClick = function() {
+        $scope.memberModal.show();
+    }
+
     $scope.commit = function(proposalId) {
         userContextSrv.commitProposal(proposalId).then(function() {
             return userContextSrv.viewTips();
@@ -256,6 +271,12 @@ app
       scope: $scope
     }).then(function(modal) {
         $scope.editModal = modal;
+    });
+
+    $ionicModal.fromTemplateUrl('/www/templates/member.html', {
+      scope: $scope
+    }).then(function(modal) {
+        $scope.memberModal = modal;
     });
 
     $ionicPopover.fromTemplateUrl('/www/templates/main_menu.html', {

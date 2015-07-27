@@ -163,7 +163,6 @@ app.service('userContextSrv', function(resourceSrv, $q) {
         if (!_currentPoster.id) {
             throw new Error(2000, "_currentPoster.id=" + _currentPoster.id);
         }
-
         return loadPoster(_currentPoster.id);
     }
 
@@ -183,6 +182,14 @@ app.service('userContextSrv', function(resourceSrv, $q) {
         return promise;
 
     }
+
+    var loadPosterActiveUsers = function(posterId) {
+        var url = "/poster/"  + posterId + "/users" ;
+
+        return io.socket.get(url, function(data) {
+            _currentPoster.users = data;
+        }); 
+    }    
 
     //公开方法：定义
     
@@ -254,6 +261,8 @@ app.service('userContextSrv', function(resourceSrv, $q) {
             return loadUserForAllProposals();
         }).then(function() {
             return loadContentForAllProposals();
+        }).then(function() {
+            return loadPosterActiveUsers(currentPosterId);
         });
 
         return promise;
