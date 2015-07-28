@@ -145,7 +145,7 @@ app
             });
 
             wx.error(function(res){
-                alert("错误：wx.config error, " + angular.toJson(res));
+                //alert("错误：wx.config error, " + angular.toJson(res));
                 //throw new Error(1001);
             });
         });
