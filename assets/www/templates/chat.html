@@ -1,7 +1,7 @@
 <ion-modal-view>
 
 
-  <ion-pane ng-controller="PosterMainCtrl" class="messaging-view">
+  <ion-pane class="messaging-view">
     <ion-header-bar class="bar-calm">
       <button class="button button-clear button-primary" ng-click="chatModal.hide()">
       &nbsp;&nbsp;退出聊天&nbsp;&nbsp;
@@ -29,7 +29,7 @@
 
     <ion-footer-bar keyboard-attach class="bar-stable item-input-inset">
       <label class="item-input-wrapper">
-        <input type="text" placeholder="Type your message" on-return="sendMessage(); closeKeyboard()" ng-model="data.message" on-focus="inputUp()" on-blur="inputDown()" />
+        <input type="text" placeholder="输入..." on-return="sendMessage(); closeKeyboard()" ng-model="data.message" on-focus="inputUp()" on-blur="inputDown()" />
       </label>
       <button class="button button-clear" ng-click="sendMessage()">
         发送

@@ -181,7 +181,7 @@ app
         alternate = !alternate;
 
         var d = new Date();
-      d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+        d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
 
         $scope.messages.push({
           userId: alternate ? '12345' : '54321',
