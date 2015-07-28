@@ -244,6 +244,8 @@ app.service('userContextSrv', function(resourceSrv, $q) {
             return loadUserForAllProposals();
         }).then(function() {
             return loadContentForAllProposals();
+        }).then(function() {
+            return loadPosterActiveUsers(currentPosterId);
         });
 
         return promise;
