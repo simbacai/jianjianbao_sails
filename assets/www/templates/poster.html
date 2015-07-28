@@ -19,9 +19,6 @@
             {{poster.body}}
           </p>
           <!--img class="full-image" src="/www/img/beauty.jpg"-->
-          <p>
-            <a href="#" class="subdued">5条留言</a>
-          </p>
         </div>
 
         <div class="item tabs tabs-secondary tabs-icon-left">
@@ -59,7 +56,7 @@
           </p>
         </div>
 
-        <a class="item item-body" ng-show="floor.contentVisable">
+        <a class="item item-body" ng-show="floor.contentVispble">
           <!--img class="full-image" src="http://ionicframework.com/img/docs/delorean.jpg"-->
           <p >
             {{floor.content}}
@@ -80,11 +77,11 @@
             <i class="icon ion-ios-nutrition-outline"></i>
             采纳
           </a-->
-          <a class="tab-item" ng-click="tipsCalc(floor.proposal)" ng-show="floor.actionPermits.tipsCalc && poster.ownerIsCurrentUser">
+          <a class="tab-item" ng-click="tipsCalc(floor.proposal)" ng-show="poster.ownerIsCurrentUser">
             <i class="icon ion-ios-nutrition-outline"></i>
             采纳
           </a>
-          <a class="tab-item" ng-click="tipsCalc(floor.proposal)" ng-show="floor.actionPermits.tipsCalc && !poster.ownerIsCurrentUser">
+          <a class="tab-item" ng-click="tipsCalc(floor.proposal)" >
             <i class="icon ion-ios-infinite-outline"></i>
             关系链
           </a>

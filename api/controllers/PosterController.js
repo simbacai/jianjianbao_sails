@@ -150,7 +150,7 @@ module.exports = {
     })
     .then(function (endNodes) {
       var endUsers = endNodes.map(function (endNode) {
-        if(endNode.childNodes !== undefined)
+        if(endNode.childNodes !== null)
         {
         } else {
           return User.findOne(endNode.createdBy);  
