@@ -187,7 +187,7 @@ app
     }
 
     $scope.editBtnClick = function() {
-        $scope.editModal.show();
+        $scope.posterCreationModal.show();
     }
 
     $scope.memberBtnClick = function() {

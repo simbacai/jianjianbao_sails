@@ -30,19 +30,15 @@
             <i class="icon ion-ios-eye-outline"></i>
             红包分配结果
           </a>
-          <a class="tab-item"  ng-show="!poster.commited && !poster.ownerIsCurrentUser">
+          <a class="tab-item"  ng-click="proposeBtnClick()" ng-show="!poster.commited && !poster.ownerIsCurrentUser">
             <i class="icon ion-ios-color-wand-outline"></i>
             我来解决
-          </a>
-          <a class="tab-item" href="#">
-            <i class="icon ion-ios-timer-outline"></i>
-            管理
           </a>
           <a class="tab-item" href="#">
             <i class="icon ion-ios-chatbubble-outline"></i>
             留言
           </a>
-          <a class="tab-item" href="#">
+          <a class="tab-item" ng-click="shareModal.show()" href="#">
             <i class="icon ion-ios-upload-outline"></i>
             转发有礼
           </a>
@@ -111,7 +107,7 @@
       </a>
       <a class="tab-item">
         <i class="icon ion-plus-circled" ng-click="editBtnClick()"></i>
-        编辑
+        悬赏
       </a>      
       <a class="tab-item">
         <i class="icon ion-chatboxes"></i>
