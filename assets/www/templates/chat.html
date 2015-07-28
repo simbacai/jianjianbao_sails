@@ -1,0 +1,29 @@
+<ion-modal-view>
+
+  <ion-header-bar class="bar bar-header bar-light">
+    <h1 class="title">{{friend.nickname}}</h1>
+  </ion-header-bar>
+
+
+  <ion-content>
+    <div class="list">
+
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+          <input type="text" placeholder="">
+        </label>
+        <button class="button button-small">
+          发送
+        </button>
+      </div>
+
+    </div>  
+  </ion-content>
+
+
+  <ion-footer-bar class="bar bar-footer bar-dark">
+    <button class="button button-clear button-primary" ng-click="chatModal.hide()">
+      &nbsp;&nbsp;返回&nbsp;&nbsp;
+    </button>
+  </ion-footer-bar>
+</ion-modal-view>
