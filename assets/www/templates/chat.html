@@ -1,8 +1,12 @@
 <ion-modal-view>
 
-  <ion-pane ng-controller="Messages" class="messaging-view">
+
+  <ion-pane ng-controller="PosterMainCtrl" class="messaging-view">
     <ion-header-bar class="bar-calm">
-      <h1 class="title">{{friend.nickname}}</h1>
+      <button class="button button-clear button-primary" ng-click="chatModal.hide()">
+      &nbsp;&nbsp;退出聊天&nbsp;&nbsp;
+      </button>
+      <h2 class="title">{{friend.nickname}}</h1>
     </ion-header-bar>
 
     <ion-content class="content-stable"
@@ -31,7 +35,7 @@
         发送
       </button>
     </ion-footer-bar>
-
+  </ion-pane>
 
 
 </ion-modal-view>
