@@ -236,6 +236,7 @@ app.service('userContextSrv', function(resourceSrv, $q) {
     };
 
     this.reloadPosterAndFloors = function() {
+        var currentPostId = _currentPoster.id; 
         var promise = reloadPoster().then(function() {
             return loadPosterOwner();
         }).then(function() {
