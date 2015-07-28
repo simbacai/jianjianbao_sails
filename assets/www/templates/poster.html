@@ -5,7 +5,8 @@
       <div class="list card">
         <div class="item item-avatar">
           <img src="{{poster.createdByUserObj.headimgurl}}">
-          <h2>悬赏{{poster.tipAmount}}元：{{poster.subject}}</h2>
+          <h2 ng-show="!poster.commited">悬赏{{poster.tipAmount}}元：{{poster.subject}}</h2>
+          <h2 ng-show="poster.commited">悬赏{{poster.tipAmount}}元(已解决)：{{poster.subject}}</h2>
           <p>
             楼主&nbsp;
             {{poster.createdByUserObj.nickname}}&nbsp;
@@ -77,11 +78,11 @@
             <i class="icon ion-ios-nutrition-outline"></i>
             采纳
           </a-->
-          <a class="tab-item" ng-click="tipsCalc(floor.proposal)" ng-show="poster.ownerIsCurrentUser">
+          <a class="tab-item" ng-click="tipsCalc(floor.proposal)" ng-show="poster.ownerIsCurrentUser && !poster.commited">
             <i class="icon ion-ios-nutrition-outline"></i>
             采纳
           </a>
-          <a class="tab-item" ng-click="tipsCalc(floor.proposal)" >
+          <a class="tab-item" ng-click="tipsCalc(floor.proposal)" ng-show="!poster.commited" >
             <i class="icon ion-ios-infinite-outline"></i>
             关系链
           </a>
