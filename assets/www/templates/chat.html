@@ -1,29 +1,37 @@
 <ion-modal-view>
 
-  <ion-header-bar class="bar bar-header bar-light">
-    <h1 class="title">{{friend.nickname}}</h1>
-  </ion-header-bar>
+  <ion-pane ng-controller="Messages" class="messaging-view">
+    <ion-header-bar class="bar-calm">
+      <h1 class="title">{{friend.nickname}}</h1>
+    </ion-header-bar>
+
+    <ion-content class="content-stable"
+                 on-tap="showTime = !showTime">
+
+      <div ng-repeat="message in messages"
+           ng-class="{other: message.userId != myId}"
+           class="messages">
+
+        <div class="message" ng-class="{'slide-right': showTime, '': !showTime}">
+          <span>{{ message.text }}</span>
+        </div>
+
+        <div class="time" ng-class="{'slide-right': showTime, '': !showTime}">{{message.time}}</div>
 
 
-  <ion-content>
-    <div class="list">
-
-      <div class="item item-input-inset">
-        <label class="item-input-wrapper">
-          <input type="text" placeholder="">
-        </label>
-        <button class="button button-small">
-          发送
-        </button>
       </div>
 
-    </div>  
-  </ion-content>
+    </ion-content>
+
+    <ion-footer-bar keyboard-attach class="bar-stable item-input-inset">
+      <label class="item-input-wrapper">
+        <input type="text" placeholder="Type your message" on-return="sendMessage(); closeKeyboard()" ng-model="data.message" on-focus="inputUp()" on-blur="inputDown()" />
+      </label>
+      <button class="button button-clear" ng-click="sendMessage()">
+        发送
+      </button>
+    </ion-footer-bar>
 
 
-  <ion-footer-bar class="bar bar-footer bar-dark">
-    <button class="button button-clear button-primary" ng-click="chatModal.hide()">
-      &nbsp;&nbsp;返回&nbsp;&nbsp;
-    </button>
-  </ion-footer-bar>
+
 </ion-modal-view>
