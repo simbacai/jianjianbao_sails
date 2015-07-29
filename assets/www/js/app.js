@@ -58,31 +58,69 @@ app.directive('input', function($timeout) {
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
-    //router
+  //router
 
-    $stateProvider
+  $stateProvider
 
-    .state('main', {
-        url: '/node/:node',
-        templateUrl: '/www/templates/poster.html',
-        controller: 'PosterMainCtrl'
-    })
+  .state('tab', {
+    url: '/tab',
+    abstract: true,
+    templateUrl: '/www/templates/tabs.html'
+  })  
 
-    .state('linkpath', {
-        url: '/node/:node/linkpath/proposal/:proposalid',
-        templateUrl: '/www/templates/linkpath.html',
-        controller: 'LinkPathCtrl'
-    })
+  .state('tab.home', {
+    url: '/home',
+    views: {
+      'tab-home': {
+        templateUrl: '/www/templates/tab-home.html',
+        controller: 'HomeCtrl'
+      }
+    }
+  })
 
-    .state('commitresult', {
-        url: '/node/:node/commitresult',
-        templateUrl: '/www/templates/commit_result.html',
-        controller: 'CommitResultCtrl'
-    })
+  .state('tab.edit', {
+    url: '/edit',
+    views: {
+      'tab-edit': {
+        templateUrl: '/www/templates/tab-edit.html',
+        controller: 'EditCtrl'
+      }
+    }
+  })
 
-    $urlRouterProvider.otherwise('/');
+  .state('tab.messages', {
+    url: '/messages',
+    views: {
+      'tab-messages': {
+        templateUrl: '/www/templates/tab-messages.html',
+        controller: 'MessagesCtrl'
+      }
+    }
+  })
 
-    //html5Mode
-    
-    $locationProvider.html5Mode(true);
+  .state('tab.friends', {
+    url: '/friends',
+    views: {
+      'tab-friends': {
+        templateUrl: '/www/templates/tab-friends.html',
+        controller: 'FriendsCtrl'
+      }
+    }
+  })
+
+  .state('tab.personal', {
+    url: '/personal',
+    views: {
+      'tab-personal': {
+        templateUrl: '/www/templates/tab-personal.html',
+        controller: 'PersonalCtrl'
+      }
+    }
+  })
+
+  $urlRouterProvider.otherwise('/tab/home');
+
+  //html5Mode
+  
+  $locationProvider.html5Mode(true);
 });
