@@ -28,7 +28,8 @@ module.exports = {
     			.then(function (childNodes) {
     				for(var i=0; i< childNodes.length; i++) {
     					if (childNodes[i].createdBy == req.user.id) {
-    						res.render('index', {currentNode: childNodes[i]});
+    						//res.render('index', {currentNode: childNodes[i]});
+    						res.redirect('/node/' + childNodes[i].id);
     						return;
     					}
     				}
@@ -43,7 +44,8 @@ module.exports = {
 	            //If there is existing node which belongs to req.user, return directly
 							for (var i=0; i < parentNodes.length; i++) {
 								if (parentNodes[i].createdBy == req.user.id) {
-									res.render('index', {currentNode:parentNodes[i]});
+									//res.render('index', {currentNode:parentNodes[i]});
+									res.redirect('/node/' + parentNodes[i].id);
 									return;
 								}
 							}
@@ -69,7 +71,8 @@ module.exports = {
 	                return Node.update({id: visitNode.id}, {childNodes: visitNode.childNodes});
 	              })
 		            .then (function () {
-		              res.render('index', {currentNode:childNode});
+		              //res.render('index', {currentNode:childNode});
+		              res.redirect('/node/' + childNode.id);
 		            })
 							})
 
