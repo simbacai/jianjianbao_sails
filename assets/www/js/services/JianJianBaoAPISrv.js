@@ -219,26 +219,7 @@ app
         return null;
     }
     
-    this.proposeAtCurrentNode = function(solution) {
-        if (!_currentNodeId) {
-            throw new Error(2000, "_currentNodeId=" + _currentNodeId);
-        }
-        if (!_currentPoster) {
-            throw new Error(2000, "_currentPoster=" + _currentPoster);
-        }
-        if (!_currentPoster.id) {
-            throw new Error(2000, "_currentPoster.id=" + _currentPoster.id);
-        }
-        
-        var newProposal = {}
-        newProposal.content = solution;  
-        newProposal.poster = _currentPoster.id;
-        newProposal.node = _currentNodeId;
 
-        var promise = resourceSrv.createResource("proposal", newProposal);
-        
-        return promise;
-    };
 
     this.reloadPosterAndFloors = function() {
         var currentPosterId = _currentPoster.id; 
@@ -387,9 +368,9 @@ app
     this.getProposal = function(proposalId) {
         var proposalRet = {};
         return resourceSrv
-        .getResourceById("proposalSummary", proposalId)
+        .searchResource("ProposalSummary", "proposal=" + proposalId)
         .then(function(response) {
-          proposalRet = response.data;
+          proposalRet = response.data[0];
           return resourceSrv.getResourceById("user", proposalRet.createdBy)
         })
         .then(function (proposalOwner) {
@@ -416,5 +397,15 @@ app
         return  resourceSrv.getResourceById("user", userId).then(function(response) {
                 return response.data;
             });
+    };
+
+    this.postProposal = function(solution, posterId, nodeId) {
+        
+        var newProposal = {}
+        newProposal.content = solution;  
+        newProposal.poster = posterId;
+        newProposal.node = nodeId;
+
+        return resourceSrv.createResource("proposal", newProposal);
     };
 });

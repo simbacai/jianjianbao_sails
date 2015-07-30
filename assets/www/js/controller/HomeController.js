@@ -1,7 +1,7 @@
 app
 
 .controller("HomeCtrl", 
-  function($scope, $rootScope, $q, $location, JianJianBaoAPISrv, $ionicModal, $http)  {
+  function($scope, $rootScope, $q, $location, JianJianBaoAPISrv)  {
     console.log("HomeCtrl: BEGIN................");
     $scope.poster = {};
     $scope.proposals = [];
@@ -26,14 +26,15 @@ app
 })
 
 .controller("HomeProposalCtrl", 
-  function($scope, $rootScope, $q, $location, JianJianBaoAPISrv, $ionicModal, $http)  {
+  function($scope, $rootScope, $q, $location, JianJianBaoAPISrv)  {
     $scope.solution = "";
 
     //TBD: $scope.solution not reflect the view change
     $scope.propose = function() {
         console.log("################# $scope.propose 开始");
 
-        JianJianBaoAPISrv.proposeAtCurrentNode($scope.solution).then(function(proposal) {
+        JianJianBaoAPISrv.postProposal($scope.solution, $rootScope.poster, $rootScope.node)
+        .then(function(proposal) {
             console.log("################# $scope.propose 完成");
             //return to home page
             $location.path("/tab/home");
