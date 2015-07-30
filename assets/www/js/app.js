@@ -69,14 +69,23 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   })  
 
   .state('tab.home', {
-    url: '/home',
-    views: {
-      'tab-home': {
-        templateUrl: '/www/templates/tab-home.html',
-        controller: 'HomeCtrl'
+      url: '/home',
+      views: {
+        'tab-home': {
+          templateUrl: '/www/templates/tab-home.html',
+          controller: 'HomeCtrl'
+        }
       }
-    }
-  })
+    })
+    .state('tab.home-makeproposal', {
+      url: '/home/makeproposal',
+      views: {
+        'tab-home': {
+          templateUrl: '/www/templates/proposal_creation.html',
+          controller: 'HomeCtrl'
+        }
+      }
+    })
 
   .state('tab.edit', {
     url: '/edit',
