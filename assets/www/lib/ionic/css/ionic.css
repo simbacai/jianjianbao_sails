@@ -4149,7 +4149,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
   display: none; }
 
 .tabs-icon-top > .tabs .tab-item, .tabs-icon-top.tabs .tab-item, .tabs-icon-bottom > .tabs .tab-item, .tabs-icon-bottom.tabs .tab-item {
-  font-size: 10px;
+  font-size: 4px;
   line-height: 14px; }
 
 .tab-item .icon {
