@@ -1,7 +1,7 @@
 app
 
 .controller('EditCtrl', function($rootScope, $http, $location, $scope
-                                       , dateUtil, userContextSrv, $q){    
+                                       , dateUtil, JianJianBaoAPISrv, $q){    
 
     $scope.setTipAmount = function(amount) {
         $rootScope.myNewPoster.tipAmount = amount;
@@ -70,8 +70,8 @@ app
             , "tipAmount":  $rootScope.myNewPoster.tipAmount
         };
 
-        userContextSrv.createPosterAndUpdateContext(newPoster).then(function() {
-            return createWXOrder(userContextSrv.currentPoster().id);
+        JianJianBaoAPISrv.createPosterAndUpdateContext(newPoster).then(function() {
+            return createWXOrder(JianJianBaoAPISrv.currentPoster().id);
         }).then(function() {
             //alert("wx.chooseWXPay: 完成后的下一步");
             $rootScope.myNewPoster = {};

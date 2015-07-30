@@ -1,5 +1,5 @@
 /*
- * userContextSrv.js
+ * JianJianBaoAPISrv.js
  *
  */
 
@@ -8,7 +8,7 @@
 
 app
 
-.service('userContextSrv', function(resourceSrv, $q) {
+.service('JianJianBaoAPISrv', function(resourceSrv, $q, $rootScope) {
                 
     //私有属性：声明与始初化            
     
@@ -18,6 +18,7 @@ app
     var _usersCache = {};
 
     //私有方法：定义  
+
 
     var loadProposalSummary = function() {
         console.log("################# loadProposalSummary 开始");
@@ -133,6 +134,8 @@ app
  
         return $q.all(promises);
     }
+
+
 
     var loadPoster = function(posterId) {
         console.log("################# loadPoster 开始");
@@ -353,5 +356,64 @@ app
         });
 
         return promise;
+    };
+
+    this.getPoster = function(posterId) {
+        var posterRet = {};
+        return resourceSrv
+        .getResourceById("poster", posterId)
+        .then(function(poster) {
+          posterRet = poster.data;
+          posterRet.commited = false;
+          if (posterRet.status == "closed" ) {
+              posterRet.commited = true;
+          }
+
+          if (posterRet.createdBy && $rootScope.user) {
+              posterRet.ownerIsCurrentUser = angular.equals(String(posterRet.createdBy), String($rootScope.user));
+          } else {
+              throw new Error(2000);
+          }
+
+          return resourceSrv.getResourceById("user", posterRet.createdBy);
+        })
+        .then(function (posterOwner) {
+          posterRet.owner = posterOwner.data;
+          return posterRet;
+        });
+    };
+
+
+    this.getProposal = function(proposalId) {
+        var proposalRet = {};
+        return resourceSrv
+        .getResourceById("proposalSummary", proposalId)
+        .then(function(response) {
+          proposalRet = response.data;
+          return resourceSrv.getResourceById("user", proposalRet.createdBy)
+        })
+        .then(function (proposalOwner) {
+          proposalRet.owner = proposalOwner.data;
+          return resourceSrv.getResourceById("proposal", proposalId)
+        })
+        .then(function(proposal) {
+          proposalRet.content = proposal.data.content;
+          proposalRet.contentVisable = true;
+          return proposalRet;
+        })
+        .catch(function (err) {
+          if (err.message == "5001") {
+            proposalRet.contentVisable = false;
+            return proposalRet;
+          } else {
+            throw err;
+          }
+        });
+    };
+
+    this.getUser = function(userId) {
+        return  resourceSrv.getResourceById("user", userId).then(function(response) {
+                return response.data;
+            });
     };
 });

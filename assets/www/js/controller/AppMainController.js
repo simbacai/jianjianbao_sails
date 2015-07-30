@@ -1,13 +1,13 @@
 app
 
 .controller('AppMainCtrl', function($rootScope, $http, $location, $scope,
-                                       userContextSrv, $q){
+                                       JianJianBaoAPISrv, $q){
 
     $rootScope.poster = {};
 
     $rootScope.refresh = function() {
-        userContextSrv.reloadPosterAndFloors().then(function() {
-            $rootScope.poster = userContextSrv.currentPoster();
+        JianJianBaoAPISrv.reloadPosterAndFloors().then(function() {
+            $rootScope.poster = JianJianBaoAPISrv.currentPoster();
 
             //Stop the ion-refresher from spinning
             $scope.$broadcast('scroll.refreshComplete');

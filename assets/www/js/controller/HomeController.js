@@ -1,27 +1,38 @@
 app
 
 .controller("HomeCtrl", 
-  function($scope, $rootScope, $q, $location, userContextSrv, $ionicModal, $http)  {
-
+  function($scope, $rootScope, $q, $location, JianJianBaoAPISrv, $ionicModal, $http)  {
     console.log("HomeCtrl: BEGIN................");
+    $scope.poster = {};
+    $scope.proposals = [];
 
-    //Load the data
-    userContextSrv.
-    prepareContext($rootScope.node, $rootScope.poster, $rootScope.user)
-    .then(function(){
-      $scope.poster = userContextSrv.currentPoster();
+    //Load the Poster
+    JianJianBaoAPISrv.getPoster($rootScope.poster)
+    .then(function (poster) {
+      $scope.poster = poster;
+      return null;
     })
+    //Load the proposals
+    .then(function () {
+      $scope.poster.proposals.map(function (proposalId) {
+        return JianJianBaoAPISrv
+        .getProposal(proposalId)
+        .then(function (proposal) {
+          $scope.proposals.push(proposal);
+        });
+      })   
+    });
 })
 
 .controller("HomeProposalCtrl", 
-  function($scope, $rootScope, $q, $location, userContextSrv, $ionicModal, $http)  {
+  function($scope, $rootScope, $q, $location, JianJianBaoAPISrv, $ionicModal, $http)  {
     $scope.solution = "";
 
     //TBD: $scope.solution not reflect the view change
     $scope.propose = function() {
         console.log("################# $scope.propose 开始");
 
-        userContextSrv.proposeAtCurrentNode($scope.solution).then(function(proposal) {
+        JianJianBaoAPISrv.proposeAtCurrentNode($scope.solution).then(function(proposal) {
             console.log("################# $scope.propose 完成");
             //return to home page
             $location.path("/tab/home");
@@ -30,15 +41,15 @@ app
 })
 
 .controller("HomeShareCtrl", 
-  function($scope, $rootScope, $q, $location, userContextSrv, $ionicModal, $http)  {
+  function($scope, $rootScope, $q, $location, JianJianBaoAPISrv, $ionicModal, $http)  {
 })
 
 .controller("HomeProposalLinkPathCtrl", 
-  function($scope, $rootScope, $q, $location, userContextSrv, $ionicModal, $http)  {
+  function($scope, $rootScope, $q, $location, JianJianBaoAPISrv, $ionicModal, $http)  {
     $scope.tipsCalc = function(proposalId) {
         $rootScope.tips = [];
 
-        userContextSrv.tipsCalc(proposalId).then(function(tips) {
+        JianJianBaoAPISrv.tipsCalc(proposalId).then(function(tips) {
             console.log("$scope.tipsCalc: tips= " + angular.toJson(tips))
             $rootScope.tips = tips;
 
@@ -52,11 +63,11 @@ app
 })
 
 .controller("HomeProposalAdoptCtrl", 
-  function($scope, $rootScope, $q, $location, userContextSrv, $ionicModal, $http)  {
+  function($scope, $rootScope, $q, $location, JianJianBaoAPISrv, $ionicModal, $http)  {
     $scope.tipsCalc = function(proposalId) {
         $rootScope.tips = [];
 
-        userContextSrv.tipsCalc(proposalId).then(function(tips) {
+        JianJianBaoAPISrv.tipsCalc(proposalId).then(function(tips) {
             console.log("$scope.tipsCalc: tips= " + angular.toJson(tips))
             $rootScope.tips = tips;
 
@@ -69,8 +80,8 @@ app
     }
 
     $scope.commit = function() {
-        userContextSrv.commitProposal($stateParams.proposalid).then(function() {
-            return userContextSrv.viewTips();
+        JianJianBaoAPISrv.commitProposal($stateParams.proposalid).then(function() {
+            return JianJianBaoAPISrv.viewTips();
         }).then(function(tips) {
             //$rootScope.tips = tips;
             console.log("tips=" + angular.toJson(tips));
@@ -87,9 +98,9 @@ app
 })
 
 .controller("HomeCheckTipsCtrl", 
-  function($scope, $rootScope, $q, $location, userContextSrv, $ionicModal, $http)  {
+  function($scope, $rootScope, $q, $location, JianJianBaoAPISrv, $ionicModal, $http)  {
     $scope.viewTips = function(proposalId) {
-        userContextSrv.viewTips().then(function(tips) {
+        JianJianBaoAPISrv.viewTips().then(function(tips) {
             console.log("$scope.viewTips: tips= " + angular.toJson(tips))
             $rootScope.tips = tips;
 

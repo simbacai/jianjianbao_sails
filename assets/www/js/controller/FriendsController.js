@@ -2,7 +2,7 @@
 app
 
 .controller('FriendsCtrl', function($rootScope, $http, $location, $scope
-                                       , dateUtil, userContextSrv, $q){   
+                                       , dateUtil, JianJianBaoAPISrv, $q){   
     $scope.userEntryClick = function(index) {
 
         $ionicModal.fromTemplateUrl('/www/templates/user.html', {

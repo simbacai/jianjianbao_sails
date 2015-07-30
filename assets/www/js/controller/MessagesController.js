@@ -1,7 +1,7 @@
 app
 
 .controller('MessagesCtrl', function($rootScope, $http, $location, $scope
-                                       , dateUtil, userContextSrv, $q){    
+                                       , dateUtil, JianJianBaoAPISrv, $q){    
 
     //For chat testing
       $scope.showTime = true;

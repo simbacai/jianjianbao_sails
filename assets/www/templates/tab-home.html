@@ -9,7 +9,7 @@
           <h2 ng-show="poster.commited">悬赏{{poster.tipAmount}}元(已解决)：{{poster.subject}}</h2>
           <p>
             楼主&nbsp;
-            {{poster.createdByUserObj.nickname}}&nbsp;
+            {{poster.owner.nickname}}&nbsp;
             {{poster.createdAt | date : 'M-d H:mm' }}
             <!--{{timeDiff(poster.create_timestamp)}}-->
           </p>
@@ -44,14 +44,13 @@
 
       </div><!--list card-->
       
-      <div class="list card" ng-repeat="floor in poster.proposalObjs">
+      <div class="list card" ng-repeat="floor in proposals">
 
         <div class="item item-avatar" >
-          <img src="{{floor.createdByUserObj.headimgurl}}">
+          <img src="{{floor.owner.headimgurl}}">
           <h2>解决方案</h2>
           <p>
-            {{poster.proposalObjs.length + 1 - $index}}楼&nbsp;
-            {{floor.createdByUserObj.nickname}}&nbsp;
+            {{floor.owner.nickname}}&nbsp;
             {{floor.updatedAt| date : 'M-d H:mm' }}
             <!--<br>{{floor.createdBy}}-->
           </p>
