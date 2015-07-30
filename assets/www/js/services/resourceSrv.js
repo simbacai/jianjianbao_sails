@@ -1,6 +1,8 @@
 "use strict";
 
-app.service("resourceSrv", function($http, $q) {
+app
+
+.service("resourceSrv", function($http, $q) {
 
     this.createResource = function(resourceName, resourceObject) {
 

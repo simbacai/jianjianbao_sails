@@ -1,3 +1,8 @@
+app
+
+.controller('MessagesCtrl', function($rootScope, $http, $location, $scope
+                                       , dateUtil, userContextSrv, $q){    
+
     //For chat testing
       $scope.showTime = true;
       $scope.data = {};
@@ -42,3 +47,5 @@
         // cordova.plugins.Keyboard.close();
       };
     //End of Chat testing  
+
+  });

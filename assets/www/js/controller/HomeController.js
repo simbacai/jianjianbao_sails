@@ -1,5 +1,6 @@
-app.
-controller("HomeCtrl", 
+app
+
+.controller("HomeCtrl", 
   function($scope, $rootScope, $q, $location, userContextSrv, $ionicModal, $http)  {
 
     console.log("HomeCtrl: BEGIN................");
@@ -77,7 +78,7 @@ controller("HomeCtrl",
 
     //Load the data
     userContextSrv.
-    prepareContext($rootscope.node, $rootScope.poster, $rootScope.user)
+    prepareContext($rootScope.node, $rootScope.poster, $rootScope.user)
     .then(function(){
       $scope.poster = userContextSrv.currentPoster();
     })

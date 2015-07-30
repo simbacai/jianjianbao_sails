@@ -1,3 +1,8 @@
+ 
+app
+
+.controller('FriendsCtrl', function($rootScope, $http, $location, $scope
+                                       , dateUtil, userContextSrv, $q){   
     $scope.userEntryClick = function(index) {
 
         $ionicModal.fromTemplateUrl('/www/templates/user.html', {
@@ -19,3 +24,4 @@
             modal.show();
         });
     }
+});

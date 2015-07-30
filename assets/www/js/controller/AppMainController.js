@@ -1,7 +1,8 @@
 app
 
-.controller('AppMainCtrl', function($rootScope, $http, $location, $scope
-                                       , dateUtil, userContextSrv, $q){
+.controller('AppMainCtrl', function($rootScope, $http, $location, $scope,
+                                       userContextSrv, $q){
+
     $rootScope.poster = {};
 
     $rootScope.refresh = function() {
@@ -125,11 +126,11 @@ app
                 //throw new Error(1001);
             });
         });
-    }
+    };
     
     //TODO 可以用Filter实现
     $rootScope.timeDiff = function(dateTimeStamp) {
         return dateUtil.timeDiff(dateTimeStamp);
-    }
+    };
     
 });

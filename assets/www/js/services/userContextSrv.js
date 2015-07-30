@@ -6,7 +6,9 @@
 
 "use strict";
 
-app.service('userContextSrv', function(resourceSrv, $q) {
+app
+
+.service('userContextSrv', function(resourceSrv, $q) {
                 
     //私有属性：声明与始初化            
     
