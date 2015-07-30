@@ -1,0 +1,45 @@
+<ion-view view-title="">
+
+  <ion-content>
+    <div class="list">
+      <div class="item item-avatar">
+        <img src="{{poster.createdByUserObj.headimgurl}}">
+        <h2>{{poster.createdByUserObj.nickname}}&nbsp;
+          <i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i class="icon ion-ios-star-outline"></i><i class="ion-ios-star-outline"></i>
+        </h2>
+        <p>
+          {{poster.createdAt | date : 'M-d H:mm' }}&nbsp;
+          发布悬赏&nbsp;
+          {{poster.tipAmount}}元
+        </p>
+      </div>
+      <!--div class="item item-avatar">
+        <img src="http://wx.qlogo.cn/mmopen/VL8EXRZJbFVnOvY8FP1ZXORSdVXibYZyBULI40R5yg6HfUvPjkltuwLUgA9893sXsU4wxGzVEf9YuTNhiaiaQWRicn22DGxSg6b1/0">
+        <h2>黄道奕</h2>
+        <p>
+          7-11 14:05&nbsp;转发<br>（采纳后，将得到红包&nbsp;20元）
+        </p>
+      </div>
+      <div class="item item-avatar">
+        <img src="http://wx.qlogo.cn/mmopen/KetjXWSVpputNUPq4Aj3zIr5eTcug26rxMNUUj9V4lMgTMialkDcmkUlYooK3qQarp5eUe152wdgxFQluNRdWwoJC2YSvyWCD/0">
+        <h2>amyzhou</h2>
+        <p>
+          7-11 16:28&nbsp;提交解决方案<br>（采纳后，将得到红包&nbsp;80元）
+        </p>
+      </div-->
+      <div class="item item-avatar"  ng-repeat="tip in tips">
+        <img src="{{tip.userObj.headimgurl}}">
+        <h2>{{tip.userObj.nickname}}&nbsp;
+          <i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i class="icon ion-ios-star-outline"></i><i class="ion-ios-star-outline"></i>
+        </h2>
+        <p>
+
+          {{tip.actionTime | date : 'M-d H:mm' }}&nbsp;
+          {{tip.actionLabel}}<br>（采纳后，将得到红包&nbsp;{{tip.amount}}元）
+        </p>
+      </div>
+    </div> <!--list-->
+  </ion-content>
+
+</ion-view>
+

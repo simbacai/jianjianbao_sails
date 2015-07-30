@@ -1,14 +1,16 @@
-<ion-modal-view>
+<ion-view view-title="tab-home-makeproposal">
 
   <ion-header-bar class="bar bar-header bar-light">
     <h1 class="title">解决方案</h1>
   </ion-header-bar>
 
+  <p>{{greeting}}</p>
+
   <ion-content>
     <div class="list">
       <label class="item item-input text">
         <textarea placeholder="解决方案，10-300字" 
-          rows="5" ng-model="$root.solution" ng-Required="true" lose-focus-on-return>
+          rows="5" ng-bind="solution" ng-Required="true" lose-focus-on-return>
         </textarea>
       </label>
 
@@ -32,4 +34,5 @@
 
     </div>
   </ion-content>
-</ion-modal-view>
+
+</ion-view>

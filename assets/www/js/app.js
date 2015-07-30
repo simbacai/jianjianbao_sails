@@ -82,7 +82,43 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       views: {
         'tab-home': {
           templateUrl: '/www/templates/proposal_creation.html',
-          controller: 'HomeCtrl'
+          controller: 'HomeProposalCtrl'
+        }
+      }
+    })
+    .state('tab.home-share', {
+      url: '/home/share',
+      views: {
+        'tab-home': {
+          templateUrl: '/www/templates/share.html',
+          controller: 'HomeShareCtrl'
+        }
+      }
+    })
+    .state('tab.home-proposal-linkparth', {
+      url: '/home/proposal/linkpath/:id',
+      views: {
+        'tab-home': {
+          templateUrl: '/www/templates/proposal_linkpath.html',
+          controller: 'HomeProposalLinkPathCtrl'
+        }
+      }
+    })
+    .state('tab.home-proposal-adopt', {
+      url: '/home/proposal/adopt/:id',
+      views: {
+        'tab-home': {
+          templateUrl: '/www/templates/proposal_adopt.html',
+          controller: 'HomeProposalLinkPathCtrl'
+        }
+      }
+    })
+    .state('tab.home-checktips', {
+      url: '/home/checktips',
+      views: {
+        'tab-home': {
+          templateUrl: '/www/templates/commit_result.html',
+          controller: 'HomeCheckTipsCtrl'
         }
       }
     })

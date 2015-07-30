@@ -5,51 +5,36 @@ app
 
     console.log("HomeCtrl: BEGIN................");
 
-    $ionicModal.fromTemplateUrl('/www/templates/proposal_creation.html', {
-      scope: $scope
-    }).then(function(modal) {
-      $scope.proposalModal = modal;
-    });
+    //Load the data
+    userContextSrv.
+    prepareContext($rootScope.node, $rootScope.poster, $rootScope.user)
+    .then(function(){
+      $scope.poster = userContextSrv.currentPoster();
+    })
+})
 
+.controller("HomeProposalCtrl", 
+  function($scope, $rootScope, $q, $location, userContextSrv, $ionicModal, $http)  {
+    $scope.solution = "";
 
-    $ionicModal.fromTemplateUrl('/www/templates/share.html', {
-      scope: $scope
-    }).then(function(modal) {
-        $scope.shareModal = modal;
-    });
+    //TBD: $scope.solution not reflect the view change
+    $scope.propose = function() {
+        console.log("################# $scope.propose 开始");
 
-
-    $scope.proposeBtnClick = function() {
-        $scope.proposalModal.show();
-    }
-
-    $scope.commit = function(proposalId) {
-        userContextSrv.commitProposal(proposalId).then(function() {
-            return userContextSrv.viewTips();
-        }).then(function(tips) {
-            $rootScope.tips = tips;
-
-            console.log("################# 跳转至linkpath ");
-            //不刷新跳转
-            $location.path($rootScope.posterMainPath + "/linkpath/proposal/" + proposalId);
-
-            return;
+        userContextSrv.proposeAtCurrentNode($scope.solution).then(function(proposal) {
+            console.log("################# $scope.propose 完成");
+            //return to home page
+            $location.path("/tab/home");
         });
-    }
+    }  
+})
 
-    $scope.viewTips = function(proposalId) {
-        userContextSrv.viewTips().then(function(tips) {
-            console.log("$scope.viewTips: tips= " + angular.toJson(tips))
-            $rootScope.tips = tips;
+.controller("HomeShareCtrl", 
+  function($scope, $rootScope, $q, $location, userContextSrv, $ionicModal, $http)  {
+})
 
-            console.log("################# 跳转至linkpath ");
-            //不刷新跳转
-            $location.path($rootScope.posterMainPath + "/commitresult");
-
-            return;
-        });
-    }
-
+.controller("HomeProposalLinkPathCtrl", 
+  function($scope, $rootScope, $q, $location, userContextSrv, $ionicModal, $http)  {
     $scope.tipsCalc = function(proposalId) {
         $rootScope.tips = [];
 
@@ -64,30 +49,24 @@ app
             return;
         });
     }
-
-    $scope.propose = function() {
-        console.log("################# $scope.propose 开始");
-
-        userContextSrv.proposeAtCurrentNode($rootScope.solution).then(function() {
-            console.log("################# $scope.propose 完成");
-            $rootScope.solution = "";
-            $scope.modal.hide();
-            $rootScope.refresh();
-        });
-    }  
-
-    //Load the data
-    userContextSrv.
-    prepareContext($rootScope.node, $rootScope.poster, $rootScope.user)
-    .then(function(){
-      $scope.poster = userContextSrv.currentPoster();
-    })
-    
 })
 
-.controller("LinkPathCtrl", function($scope, $rootScope, userContextSrv, $stateParams, $location){
-    // + $routeParams.proposalid
-    console.log("LinkPathCtrl: BEGIN................$routeParams.proposalId=" + $stateParams.proposalid);
+.controller("HomeProposalAdoptCtrl", 
+  function($scope, $rootScope, $q, $location, userContextSrv, $ionicModal, $http)  {
+    $scope.tipsCalc = function(proposalId) {
+        $rootScope.tips = [];
+
+        userContextSrv.tipsCalc(proposalId).then(function(tips) {
+            console.log("$scope.tipsCalc: tips= " + angular.toJson(tips))
+            $rootScope.tips = tips;
+
+            console.log("################# 跳转至linkpath ");
+            //不刷新跳转
+            $location.path($rootScope.posterMainPath + "/linkpath/proposal/" + proposalId);
+
+            return;
+        });
+    }
 
     $scope.commit = function() {
         userContextSrv.commitProposal($stateParams.proposalid).then(function() {
@@ -105,5 +84,21 @@ app
             return;
         });
     }
+})
 
-});
+.controller("HomeCheckTipsCtrl", 
+  function($scope, $rootScope, $q, $location, userContextSrv, $ionicModal, $http)  {
+    $scope.viewTips = function(proposalId) {
+        userContextSrv.viewTips().then(function(tips) {
+            console.log("$scope.viewTips: tips= " + angular.toJson(tips))
+            $rootScope.tips = tips;
+
+            console.log("################# 跳转至linkpath ");
+            //不刷新跳转
+            $location.path($rootScope.posterMainPath + "/commitresult");
+
+            return;
+        });
+    }
+})
+

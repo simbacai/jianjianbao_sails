@@ -24,7 +24,7 @@
 
         <div class="item tabs tabs-secondary tabs-icon-left">
 
-          <a class="tab-item" ng-click="viewTips()" ng-show="poster.commited">
+          <a class="tab-item" ng-show="poster.commited" href="/tab/home/viewtips">
             <i class="icon ion-ios-eye-outline"></i>
             红包分配结果
           </a>
@@ -36,7 +36,7 @@
             <i class="icon ion-ios-chatbubble-outline"></i>
             留言
           </a>
-          <a class="tab-item" ng-click="shareModal.show()" href="#">
+          <a class="tab-item" href="/tab/home/share">
             <i class="icon ion-ios-upload-outline"></i>
             转发有礼
           </a>
@@ -78,11 +78,11 @@
             <i class="icon ion-ios-nutrition-outline"></i>
             采纳
           </a-->
-          <a class="tab-item" ng-click="tipsCalc(floor.proposal)" ng-show="poster.ownerIsCurrentUser && !poster.commited">
+          <a class="tab-item" ng-show="poster.ownerIsCurrentUser && !poster.commited" href="/tab/home/proposal/adopt/"+floor.proposal.id >
             <i class="icon ion-ios-nutrition-outline"></i>
             采纳
           </a>
-          <a class="tab-item" ng-click="tipsCalc(floor.proposal)" ng-show="!poster.commited" >
+          <a class="tab-item" ng-show="!poster.commited" href="/tab/home/proposal/linkpath/"+floor.proposal>
             <i class="icon ion-ios-infinite-outline"></i>
             关系链
           </a>
