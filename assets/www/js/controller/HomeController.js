@@ -14,7 +14,8 @@ app
     })
     //Load the proposals
     .then(function () {
-      $scope.poster.proposals.map(function (proposalId) {
+      //var proposals = 
+      $scope.poster.proposals.reverse().map(function (proposalId) {
         return JianJianBaoAPISrv
         .getProposal(proposalId)
         .then(function (proposal) {

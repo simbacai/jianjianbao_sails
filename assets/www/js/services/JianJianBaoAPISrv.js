@@ -398,6 +398,7 @@ app
         })
         .then(function(proposal) {
           proposalRet.content = proposal.data.content;
+          proposalRet.createdAt = proposal.data.createdAt;
           proposalRet.contentVisable = true;
           return proposalRet;
         })

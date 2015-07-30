@@ -10,7 +10,7 @@
           <p>
             楼主&nbsp;
             {{poster.owner.nickname}}&nbsp;
-            {{poster.createdAt | date : 'M-d H:mm' }}
+            {{poster.createdAt | date : 'y-M-d H:mm' }}
             <!--{{timeDiff(poster.create_timestamp)}}-->
           </p>
         </div>
@@ -51,8 +51,7 @@
           <h2>解决方案</h2>
           <p>
             {{floor.owner.nickname}}&nbsp;
-            {{floor.updatedAt| date : 'M-d H:mm' }}
-            <!--<br>{{floor.createdBy}}-->
+            {{floor.createdAt | date : 'y-M-d H:mm' }}
           </p>
         </div>
 
