@@ -1,5 +1,5 @@
 
-var app = angular.module('app', ['ionic']);
+var app = angular.module('app', ['ionic', 'ngLodash']);
 
 app.run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {

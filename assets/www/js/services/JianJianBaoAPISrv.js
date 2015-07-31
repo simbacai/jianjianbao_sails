@@ -386,6 +386,7 @@ app
         .catch(function (err) {
           if (err.message == "5001") {
             proposalRet.contentVisable = false;
+            //proposalRet.createdAt = proposal.data.createdAt;
             return proposalRet;
           } else {
             throw err;

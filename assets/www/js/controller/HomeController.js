@@ -1,7 +1,7 @@
 app
 
 .controller("HomeCtrl", 
-  function ($scope, $q, $location, JianJianBaoAPISrv)  {
+  function ($scope, lodash, $q, $location, JianJianBaoAPISrv)  {
     console.log("HomeCtrl: BEGIN................");
     $scope.poster = {};
     $scope.proposals = [];
@@ -16,13 +16,27 @@ app
     //Load the proposals
     .then(function () {
       //var proposals = 
+      /*
       $scope.poster.proposals.reverse().map(function (proposalId) {
         return JianJianBaoAPISrv
         .getProposal(proposalId)
         .then(function (proposal) {
           $scope.proposals.push(proposal);
         });
-      })   
+      })
+      */
+      var dfd = $q.defer();
+      dfd.resolve();
+      promise = dfd.promise;
+   
+      lodash.each($scope.poster.proposals.reverse(), function(proposalId) {
+          promise = promise.then(function() {
+              return JianJianBaoAPISrv.getProposal(proposalId);
+          }).then(function(proposal) {
+              // ...
+              $scope.proposals.push(proposal);
+          });
+      });   
     });
 
 })
