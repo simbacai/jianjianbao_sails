@@ -1,12 +1,13 @@
  
 app
 
-.controller('FriendsCtrl', function($scope){ 
+.controller('FriendsCtrl', function($scope, $http){ 
 
     var url = "/poster/"  + $scope.posterId + "/users" ;
-    io.socket.get(url, function(data) {
-            $scope.friends = data;
-    }); 
+    $http.get(url)
+    .then(function (data){
+      $scope.friends = data.data;
+    });  
 })
 
 .controller('FriendsUserCtrl', function($scope, JianJianBaoAPISrv,$stateParams){ 
@@ -25,7 +26,7 @@ app
     .then(function(user){
       $scope.friend = user;
     })
- 
+
     $scope.showTime = true;
 
     var alternate,
