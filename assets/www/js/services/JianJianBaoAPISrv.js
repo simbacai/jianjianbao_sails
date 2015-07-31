@@ -8,7 +8,7 @@
 
 app
 
-.service('JianJianBaoAPISrv', function(resourceSrv, $q, $rootScope) {
+.service('JianJianBaoAPISrv', function(resourceSrv, $q) {
                 
     //私有属性：声明与始初化            
     
@@ -339,7 +339,7 @@ app
         return promise;
     };
 
-    this.getPoster = function(posterId) {
+    this.getPoster = function(posterId, currentUserId) {
         var posterRet = {};
         return resourceSrv
         .getResourceById("poster", posterId)
@@ -350,8 +350,8 @@ app
               posterRet.commited = true;
           }
 
-          if (posterRet.createdBy && $rootScope.user) {
-              posterRet.ownerIsCurrentUser = angular.equals(String(posterRet.createdBy), String($rootScope.user));
+          if (posterRet.createdBy && currentUserId) {
+              posterRet.ownerIsCurrentUser = angular.equals(String(posterRet.createdBy), String(currentUserId));
           } else {
               throw new Error(2000);
           }

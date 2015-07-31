@@ -1,11 +1,9 @@
 app
 
-.controller('AppMainCtrl', function($rootScope, $http, $location, $scope,
+.controller('AppMainCtrl', function($http, $location, $scope,
                                        JianJianBaoAPISrv, $q){
 
-    $rootScope.poster = {};
-
-    $rootScope.refresh = function() {
+    $scope.refresh = function() {
         JianJianBaoAPISrv.reloadPosterAndFloors().then(function() {
             $rootScope.poster = JianJianBaoAPISrv.currentPoster();
 
@@ -17,12 +15,12 @@ app
     /**
      * 调用: index.html使用ng-init调用
      */
-    $rootScope.initialize = function(node, poster, user) {
+    $scope.initialize = function(node, poster, user) {
         //console.log("current: node=" + currentNodeId + ", poster=" + currentPosterId + ", user=" + currentUserId);
-        $rootScope.node = node;
-        $rootScope.poster = poster;
-        $rootScope.user = user;
-        $rootScope.initializeJssdk();
+        $scope.nodeId = node;
+        $scope.posterId = poster;
+        $scope.userId = user;
+        $scope.initializeJssdk();
     };
 
     /**
@@ -30,7 +28,7 @@ app
      * 情况1: index.html使用ng-init调用
      * 情况2: PosterCreationCtrl中创建一张新Poster后
      */
-    $rootScope.initializeJssdk = function() {
+    $scope.initializeJssdk = function() {
 
         var apiURL = "/jssdk/getsign?url=" + encodeURIComponent($location.absUrl());
         //alert("getsign, $location.absUrl()=" + encodeURIComponent($location.absUrl()));
@@ -129,7 +127,7 @@ app
     };
     
     //TODO 可以用Filter实现
-    $rootScope.timeDiff = function(dateTimeStamp) {
+    $scope.timeDiff = function(dateTimeStamp) {
         return dateUtil.timeDiff(dateTimeStamp);
     };
     

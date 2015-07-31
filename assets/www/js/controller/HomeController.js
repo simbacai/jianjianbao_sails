@@ -1,13 +1,14 @@
 app
 
 .controller("HomeCtrl", 
-  function($scope, $rootScope, $q, $location, JianJianBaoAPISrv)  {
+  function ($scope, $q, $location, JianJianBaoAPISrv)  {
     console.log("HomeCtrl: BEGIN................");
     $scope.poster = {};
     $scope.proposals = [];
 
+
     //Load the Poster
-    JianJianBaoAPISrv.getPoster($rootScope.poster)
+    JianJianBaoAPISrv.getPoster($scope.posterId, $scope.userId)
     .then(function (poster) {
       $scope.poster = poster;
       return null;
@@ -23,27 +24,37 @@ app
         });
       })   
     });
+
 })
 
 .controller("HomeProposalCtrl", 
-  function($scope, $rootScope, $q, $location, JianJianBaoAPISrv)  {
+  function ($scope, $location, JianJianBaoAPISrv, $window)  {
+    //$controller('HomeCtrl', {$scope : $scope}); //Make HomeProposalCtrl as child of HomeCtrl
     $scope.solution = "";
-
-    //TBD: $scope.solution not reflect the view change
     $scope.propose = function() {
         console.log("################# $scope.propose 开始");
+        //Ugly jump with refresh, i need the homepage refresh automatially
+        $window.location.href = "/node/" + $scope.nodeId;
 
-        JianJianBaoAPISrv.postProposal($scope.solution, $rootScope.poster, $rootScope.node)
-        .then(function(proposal) {
+        /*
+        JianJianBaoAPISrv.postProposal($scope.solution, $scope.posterId, $scope.nodeId)
+        .then(function(response) {
             console.log("################# $scope.propose 完成");
-            //return to home page
-            $location.path("/tab/home");
+            JianJianBaoAPISrv
+            .getProposal(response.data.id)
+            .then(function (proposal) {
+              //To be done: How to update the Home Data model since HomeProposalCtrl is not child of HomeCtrl???
+              $scope.proposals.push(proposal);
+              //return to home page
+              $location.path("/tab/home");
+            });
         });
-    }  
+        */
+    } ;
 })
 
 .controller("HomeShareCtrl", 
-  function($scope, $rootScope, $q, $location, JianJianBaoAPISrv, $ionicModal, $http)  {
+  function($scope, $q, $location, JianJianBaoAPISrv, $ionicModal, $http)  {
 })
 
 .controller("HomeProposalLinkPathCtrl", 
