@@ -77,50 +77,30 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         }
       }
     })
-    .state('tab.home-makeproposal', {
-      url: '/home/makeproposal',
-      views: {
-        'tab-home': {
-          templateUrl: '/www/templates/proposal_creation.html',
-          controller: 'HomeProposalCtrl'
-        }
-      }
+    .state('tab-home-makeproposal', {
+      url: '/tab/home/makeproposal',
+      templateUrl: '/www/templates/proposal_creation.html',
+      controller: 'HomeProposalCtrl'
     })
-    .state('tab.home-share', {
-      url: '/home/share',
-      views: {
-        'tab-home': {
-          templateUrl: '/www/templates/share.html',
-          controller: 'HomeShareCtrl'
-        }
-      }
+    .state('tab-home-share', {
+      url: '/tab/home/share',
+      templateUrl: '/www/templates/share.html',
+      controller: 'HomeShareCtrl'
     })
-    .state('tab.home-proposal-linkparth', {
-      url: '/home/proposal/linkpath/:id',
-      views: {
-        'tab-home': {
-          templateUrl: '/www/templates/proposal_linkpath.html',
-          controller: 'HomeProposalLinkPathCtrl'
-        }
-      }
+    .state('tab-home-proposal-linkparth', {
+      url: '/tab/home/proposal/linkpath/:id',
+      templateUrl: '/www/templates/proposal_linkpath.html',
+      controller: 'HomeProposalLinkPathCtrl'
     })
-    .state('tab.home-proposal-adopt', {
-      url: '/home/proposal/adopt/:id',
-      views: {
-        'tab-home': {
-          templateUrl: '/www/templates/proposal_adopt.html',
-          controller: 'HomeProposalAdoptCtrl'
-        }
-      }
+    .state('tab-home-proposal-adopt', {
+      url: '/tab/home/proposal/adopt/:id',      
+      templateUrl: '/www/templates/proposal_adopt.html',
+      controller: 'HomeProposalAdoptCtrl'
     })
-    .state('tab.home-checktips', {
-      url: '/home/checktips',
-      views: {
-        'tab-home': {
-          templateUrl: '/www/templates/commit_result.html',
-          controller: 'HomeCheckTipsCtrl'
-        }
-      }
+    .state('tab-home-checktips', {
+      url: '/tab/home/checktips',
+      templateUrl: '/www/templates/commit_result.html',
+      controller: 'HomeCheckTipsCtrl'
     })
 
   .state('tab.edit', {
@@ -152,23 +132,15 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     }
   })
-    .state('tab.friends-user', {
-      url: '/friends/user/:id',
-      views: {
-        'tab-friends': {
-          templateUrl: '/www/templates/user.html',
-          controller: 'FriendsUserCtrl'
-        }
-      }
+    .state('tab-friends-user', {
+      url: '/tab/friends/user/:id',
+      templateUrl: '/www/templates/user.html',
+      controller: 'FriendsUserCtrl'      
     })
-      .state('tab.friends-user-chat', {
-      url: '/friends/user/:id/chat',
-      views: {
-        'tab-friends': {
-          templateUrl: '/www/templates/chat.html',
-          controller: 'FriendsChatCtrl'
-        }
-      }
+    .state('tab-friends-user-chat', {
+      url: '/tab/friends/user/:id/chat',
+      templateUrl: '/www/templates/chat.html',
+      controller: 'FriendsChatCtrl'
     })
 
   .state('tab.personal', {

@@ -24,9 +24,7 @@ app
             console.log("################# loadUserForAllTips 子循环开始, tip.user=" + tip.user);
 
             return resourceSrv.getResourceById("user", tip.user).then(function(response) {
-                _usersCache[tip.user] = response.data;
-                tip.userObj = _usersCache[tip.user];
-
+                tip.userObj = response.data;
                 if ("propose" == tip.action) {
                     tip.actionLabel = "提交解决方案";
                 } else if ("forward" == tip.action) {
