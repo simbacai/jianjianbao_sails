@@ -30,11 +30,11 @@ app
             return;
         }
 
-        var createWXOrder = function(posterId) {
+        var createWXOrder = function(posterId, $window) {
           //alert("createWXOrder: 开始");
           var apiURL = "/pay/wxpay?poster=" + posterId;
-          var promise = 
-              $http.get(apiURL).then(function(response) {
+          return  $http.get(apiURL)
+		  .then(function(response) {
                   //console.log("success: get " + apiURL + ", data=" + angular.toJson(response.data));
                   //alert("createWXOrder: 完成");
 
@@ -43,24 +43,22 @@ app
                   }
 
                   //alert("wx.chooseWXPay: 开始");
-                  wx.chooseWXPay({
+                  return wx.chooseWXPay({
                       timestamp: parseInt(response.data.payargs.timeStamp),
                       nonceStr: response.data.payargs.nonceStr,
                       package: response.data.payargs.package,
                       signType: response.data.payargs.signType,
                       paySign: response.data.payargs.paySign,
                       success: function (res) {
-                          //alert("wx.chooseWXPay: 完成, res" + angular.toJson(res));
+                         //alert("wx.chooseWXPay: 完成, res" + angular.toJson(res));
+	                 $window.location.href = "/node/" + createdPoster.nodes[0];
                       }
                   });
-
-                  return;
               }, function(response) {
                   var errorMsg = "error:  get " + apiURL + ", status=" + status;
                   console.log(errorMsg);
                   throw new Error(1000, errorMsg);
               });
-          return promise;
         }
 
         var newPoster = {
@@ -73,13 +71,8 @@ app
         JianJianBaoAPISrv.postPoster(newPoster)
         .then(function(poster) {
             createdPoster = poster;
-            return createWXOrder(poster.id);
+            createWXOrder(poster.id, $window);
         })
-        .then(function() {
-            //Todo:  this is ugly jump
-            $window.location.href = "/node/" + createdPoster.nodes[0];
-            return;
-        });
     };
 
 });
