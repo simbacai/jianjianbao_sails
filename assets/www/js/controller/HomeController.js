@@ -1,43 +1,45 @@
 app
 
 .controller("HomeCtrl", 
-  function ($scope, lodash, $q, $location, JianJianBaoAPISrv)  {
+  function ($scope, lodash, $q, $window, JianJianBaoAPISrv)  {
     console.log("HomeCtrl: BEGIN................");
     $scope.poster = {};
     $scope.proposals = [];
 
+    loadHomePage();
 
-    //Load the Poster
-    JianJianBaoAPISrv.getPoster($scope.posterId, $scope.userId)
-    .then(function (poster) {
-      $scope.poster = poster;
-      return null;
-    })
-    //Load the proposals
-    .then(function () {
-      //var proposals = 
-      /*
-      $scope.poster.proposals.reverse().map(function (proposalId) {
-        return JianJianBaoAPISrv
-        .getProposal(proposalId)
-        .then(function (proposal) {
-          $scope.proposals.push(proposal);
-        });
+    $scope.refresh = function() {
+      $window.location.href = "/node/" + $scope.nodeId;
+    };
+
+    function loadHomePage() {
+      //Load the Poster
+      return JianJianBaoAPISrv
+      .getPoster($scope.posterId, $scope.userId)
+      .then(function (poster) {
+        $scope.poster = poster;
+        return null;
       })
-      */
-      var dfd = $q.defer();
-      dfd.resolve();
-      promise = dfd.promise;
-   
-      lodash.each($scope.poster.proposals.reverse(), function(proposalId) {
-          promise = promise.then(function() {
-              return JianJianBaoAPISrv.getProposal(proposalId);
-          }).then(function(proposal) {
-              // ...
-              $scope.proposals.push(proposal);
-          });
-      });   
-    });
+      //Load the proposals
+      .then(function () {
+        var dfd = $q.defer();
+        dfd.resolve();
+        promise = dfd.promise;
+     
+        var results = lodash.each($scope.poster.proposals.reverse(), function(proposalId) {
+            return promise.then(function() {
+                return JianJianBaoAPISrv.getProposal(proposalId);
+            }).then(function(proposal) {
+                // ...
+                $scope.proposals.push(proposal);
+                return proposal;
+            });
+        });
+
+        return $q.all(results);   
+      });
+    }
+
 
 })
 
