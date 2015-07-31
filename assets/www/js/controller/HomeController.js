@@ -75,53 +75,29 @@ app
 })
 
 .controller("HomeProposalAdoptCtrl", 
-  function($scope, $rootScope, $q, $location, JianJianBaoAPISrv, $ionicModal, $http)  {
-    $scope.tipsCalc = function(proposalId) {
-        $rootScope.tips = [];
-
-        JianJianBaoAPISrv.tipsCalc(proposalId).then(function(tips) {
-            console.log("$scope.tipsCalc: tips= " + angular.toJson(tips))
-            $rootScope.tips = tips;
-
-            console.log("################# 跳转至linkpath ");
-            //不刷新跳转
-            $location.path($rootScope.posterMainPath + "/linkpath/proposal/" + proposalId);
-
-            return;
-        });
-    }
+  function($scope, $q, $location, JianJianBaoAPISrv, $stateParams, $controller)  {
+    $controller('HomeCtrl', {$scope : $scope});
+    var proposalId = $stateParams.id;
+    JianJianBaoAPISrv.tipsCalc(proposalId)
+    .then(function (tips) {
+      $scope.tips = tips;
+    });
 
     $scope.commit = function() {
-        JianJianBaoAPISrv.commitProposal($stateParams.proposalid).then(function() {
-            return JianJianBaoAPISrv.viewTips();
-        }).then(function(tips) {
-            //$rootScope.tips = tips;
-            console.log("tips=" + angular.toJson(tips));
-
-            console.log("################# 跳转首页");
-            //不刷新跳转
-            $location.path($rootScope.posterMainPath);
-
-            $rootScope.refresh();
-
-            return;
+        JianJianBaoAPISrv.commitProposal($stateParams.id)
+        .then(function(tips) {
+          //Todo: commit satus does not refresh view
+          $scope.poster.commited = true;
+          $location.path("/tab/home");
         });
     }
 })
 
 .controller("HomeCheckTipsCtrl", 
-  function($scope, $rootScope, $q, $location, JianJianBaoAPISrv, $ionicModal, $http)  {
-    $scope.viewTips = function(proposalId) {
-        JianJianBaoAPISrv.viewTips().then(function(tips) {
-            console.log("$scope.viewTips: tips= " + angular.toJson(tips))
-            $rootScope.tips = tips;
-
-            console.log("################# 跳转至linkpath ");
-            //不刷新跳转
-            $location.path($rootScope.posterMainPath + "/commitresult");
-
-            return;
-        });
-    }
+  function($scope, JianJianBaoAPISrv)  {
+    JianJianBaoAPISrv.viewTips($scope.poster)
+    .then(function(tips) {
+        $scope.tips = tips;
+    });
 })
 

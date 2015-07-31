@@ -22,7 +22,7 @@
 
         <div class="item tabs tabs-secondary tabs-icon-left">
 
-          <a class="tab-item" ng-show="poster.commited" href="/tab/home/viewtips">
+          <a class="tab-item" ng-show="poster.commited" href="/tab/home/checktips">
             <i class="icon ion-ios-eye-outline"></i>
             红包分配结果
           </a>
@@ -70,10 +70,6 @@
         </a>
 
         <div class="item tabs tabs-secondary tabs-icon-left">
-          <!--a class="tab-item" href="{{posterMainPath}}/linkpath/proposal/{{floor.proposal}}" ng-click="commit(floor.proposal)" ng-show="floor.actionPermits.commit">
-            <i class="icon ion-ios-nutrition-outline"></i>
-            采纳
-          </a-->
           <a class="tab-item" ng-show="poster.ownerIsCurrentUser && !poster.commited" href="/tab/home/proposal/adopt/{{floor.proposal}}" >
             <i class="icon ion-ios-nutrition-outline"></i>
             采纳

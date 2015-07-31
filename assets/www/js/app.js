@@ -109,7 +109,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       views: {
         'tab-home': {
           templateUrl: '/www/templates/proposal_adopt.html',
-          controller: 'HomeProposalLinkPathCtrl'
+          controller: 'HomeProposalAdoptCtrl'
         }
       }
     })

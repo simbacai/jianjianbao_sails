@@ -3,8 +3,8 @@
   <ion-content>
     <div class="list">
       <div class="item item-avatar">
-        <img src="{{poster.createdByUserObj.headimgurl}}">
-        <h2>{{poster.createdByUserObj.nickname}}&nbsp;
+        <img src="{{poster.owner.headimgurl}}">
+        <h2>{{poster.owner.nickname}}&nbsp;
           <i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i class="icon ion-ios-star-outline"></i><i class="ion-ios-star-outline"></i>
         </h2>
         <p>
@@ -25,13 +25,10 @@
         </p>
       </div>
     </div> <!--list-->
+
+    <button class="button button-full button-calm" ng-click="commit()"  ng-show="poster.ownerIsCurrentUser">
+      采纳
+    </button>
   </ion-content>
-
-  <ion-footer-bar class="bar bar-footer" >
-    <a class="button button-clear button-primary" ng-click="commit()" ng-show="poster.ownerIsCurrentUser">
-      &nbsp;&nbsp;采纳&nbsp;&nbsp;
-    </a>
-  </ion-footer-bar>
-
 </ion-view>
 

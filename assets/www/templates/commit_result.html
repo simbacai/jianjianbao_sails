@@ -3,8 +3,8 @@
   <ion-content>
     <div class="list">
       <div class="item item-avatar">
-        <img src="{{poster.createdByUserObj.headimgurl}}">
-        <h2>{{poster.createdByUserObj.nickname}}</h2>
+        <img src="{{poster.owner.headimgurl}}">
+        <h2>{{poster.owner.nickname}}</h2>
         <p>
           {{poster.createdAt | date : 'M-d H:mm' }}&nbsp;
           发布悬赏&nbsp;
@@ -22,13 +22,5 @@
       </div>
     </div> <!--list-->
   </ion-content>
-
-  <ion-footer-bar class="bar bar-footer bar-dark">
-    <a class="button button-clear button-primary" href="{{posterMainPath}}">
-      &nbsp;&nbsp;取消&nbsp;&nbsp;
-    </a>
-    <h1 class="title"></h1>
-  </ion-footer-bar>
-
 </ion-view>
 

@@ -300,10 +300,10 @@ app
         return promise;
     };
                 
-    this.viewTips = function() {
+    this.viewTips = function(posterId) {
         console.log("################# viewTips 开始");
 
-        var query = "poster=" + _currentPoster.id + "&sort=id ASC";
+        var query = "poster=" + posterId + "&sort=id ASC";
 
         var promise = resourceSrv.searchResource("tip", query).then(function(response) {
             var tips = response.data;
