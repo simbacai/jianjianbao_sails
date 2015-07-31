@@ -144,7 +144,7 @@ module.exports = {
 					    					return Poster.findOne(tip.poster);
 					    				})
 					    				.then (function (poster) {
-					    					redpack({re_openid: userToTip.openid, act_name: poster.subject + " redpack", total_amount: Number(tip.amount)});
+					    					redpack({re_openid: userToTip.openid, act_name: poster.subject + " redpack", total_amount: Number(tip.amount)*100});
 					    				})
 					    			});
 					    			return Promise.all(distributedTips);
