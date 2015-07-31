@@ -11,56 +11,50 @@ app
       $window.location.href = "/node/" + $scope.nodeId;
     };
 
-      //Load the Poster
-      JianJianBaoAPISrv
-      .getPoster($scope.posterId, $scope.userId)
-      .then(function (poster) {
-        $scope.poster = poster;
-        return null;
-      })
-      //Load the proposals
-      .then(function () {
-        var dfd = $q.defer();
-        dfd.resolve();
-        promise = dfd.promise;
-     
-        lodash.each($scope.poster.proposals.reverse(), function(proposalId) {
-            promise = promise.then(function() {
-                return JianJianBaoAPISrv.getProposal(proposalId);
-            }).then(function(proposal) {
-                // ...
-                $scope.proposals.push(proposal);
-            });
-        });   
+    //Load the Poster
+    JianJianBaoAPISrv
+    .getPoster($scope.posterId, $scope.userId)
+    .then(function (poster) {
+      $scope.poster = poster;
+      return null;
+    })
+    //Load the proposals
+    .then(function () {
+      var dfd = $q.defer();
+      dfd.resolve();
+      promise = dfd.promise;
+   
+      lodash.each($scope.poster.proposals.reverse(), function(proposalId) {
+          promise = promise.then(function() {
+              return JianJianBaoAPISrv.getProposal(proposalId);
+          }).then(function(proposal) {
+              // ...
+              $scope.proposals.push(proposal);
+          });
+      });   
+    });
+
+    //Get the proposalsummary push message
+    io.socket.on('poster', function (proposalSummary) { 
+      JianJianBaoAPISrv.getProposal(proposalSummary.data.proposal)
+      .then(function(proposal){
+        //Todo: $scope update does not update view
+        $scope.proposals.unshift(proposal);
+        //$scope.$apply();
       });
-
-
+    });
+    io.socket.get("/poster/" + $scope.posterId);
 })
 
 .controller("HomeProposalCtrl", 
   function ($scope, $location, JianJianBaoAPISrv,$controller, $window)  {
     $controller('HomeCtrl', {$scope : $scope}); //Make HomeProposalCtrl as child of HomeCtrl
     $scope.solution = "";
-    $scope.propose = function() {
-        console.log("################# $scope.propose 开始");
-        //Ugly jump with refresh, i need the homepage refresh automatially
-        //$window.location.href = "/node/" + $scope.nodeId;
-
-        
+    $scope.propose = function() {        
         JianJianBaoAPISrv.postProposal($scope.solution, $scope.posterId, $scope.nodeId)
         .then(function(response) {
-            console.log("################# $scope.propose 完成");
-            JianJianBaoAPISrv
-            .getProposal(response.data.id)
-            .then(function (proposal) {
-              //To be done: How to update the Home Data model since HomeProposalCtrl is not child of HomeCtrl???
-              $scope.proposals.push(proposal);
-              //return to home page
-              //$location.path("/tab/home");
-              $window.location.href = "/node/" + $scope.nodeId;
-            });
-        });
-        
+            $location.path("/tab/home");
+        });   
     } ;
 })
 
