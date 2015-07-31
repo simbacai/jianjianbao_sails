@@ -28,15 +28,15 @@ app
 })
 
 .controller("HomeProposalCtrl", 
-  function ($scope, $location, JianJianBaoAPISrv, $window)  {
-    //$controller('HomeCtrl', {$scope : $scope}); //Make HomeProposalCtrl as child of HomeCtrl
+  function ($scope, $location, JianJianBaoAPISrv,$controller, $window)  {
+    $controller('HomeCtrl', {$scope : $scope}); //Make HomeProposalCtrl as child of HomeCtrl
     $scope.solution = "";
     $scope.propose = function() {
         console.log("################# $scope.propose 开始");
         //Ugly jump with refresh, i need the homepage refresh automatially
-        $window.location.href = "/node/" + $scope.nodeId;
+        //$window.location.href = "/node/" + $scope.nodeId;
 
-        /*
+        
         JianJianBaoAPISrv.postProposal($scope.solution, $scope.posterId, $scope.nodeId)
         .then(function(response) {
             console.log("################# $scope.propose 完成");
@@ -46,10 +46,11 @@ app
               //To be done: How to update the Home Data model since HomeProposalCtrl is not child of HomeCtrl???
               $scope.proposals.push(proposal);
               //return to home page
-              $location.path("/tab/home");
+              //$location.path("/tab/home");
+              $window.location.href = "/node/" + $scope.nodeId;
             });
         });
-        */
+        
     } ;
 })
 
