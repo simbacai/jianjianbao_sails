@@ -257,8 +257,8 @@ app
         return promise;
     }
                 
-    this.createPosterAndUpdateContext = function(newPoster) {
-        var promise = resourceSrv.createResource("poster", newPoster).then(function(response) {
+    this.postPoster = function(newPoster) {
+        return resourceSrv.createResource("poster", newPoster).then(function(response) {
             console.log(angular.toJson(response));
 
             var newPosterReturned = response.data;
@@ -272,15 +272,8 @@ app
                 throw new Error(2000, "newPosterReturned.nodes[0]=" + newPosterReturned.nodes[0]);
             }
 
-            _currentPoster = newPosterReturned;
-            _currentNodeId = newPosterReturned.nodes[0];
-            _currentPoster.ownerIsCurrentUser = true;
-            _usersCache = {};
-            
-            return loadPosterOwner();
+            return newPosterReturned;
         });
-
-        return promise;
     }
                 
     this.commitProposal = function(proposalId) {

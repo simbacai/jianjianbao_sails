@@ -1,7 +1,7 @@
 app
 
 .controller('EditCtrl', function($http, $location, $scope, $ionicPopup,
-                                       dateUtil, JianJianBaoAPISrv, $q){    
+                                       JianJianBaoAPISrv, $q, $window){    
     $scope.myNewPoster = {};
 
     $scope.setTipAmount = function(amount) {
@@ -69,15 +69,15 @@ app
             , "tipAmount":  $scope.myNewPoster.tipAmount
         };
 
-        JianJianBaoAPISrv.createPosterAndUpdateContext(newPoster)
-        .then(function() {
-            return createWXOrder(JianJianBaoAPISrv.currentPoster().id);
+        var createdPoster = {};
+        JianJianBaoAPISrv.postPoster(newPoster)
+        .then(function(poster) {
+            createdPoster = poster;
+            return createWXOrder(poster.id);
         })
         .then(function() {
-            //alert("wx.chooseWXPay: 完成后的下一步");
-            $rootScope.myNewPoster = {};
-            $scope.posterCreationModal.hide();
-            $rootScope.populateUI();
+            //Todo:  this is ugly jump
+            $window.location.href = "/node/" + createdPoster.nodes[0];
             return;
         });
     };

@@ -110,14 +110,11 @@ app
 
             wx.ready(function(){
                 alert("wx.config: ready");
-		//alert("scope.poster.subject" + $scope.poster.subject);
-		//alert("scope.poster.body" + $scope.poster.body);
-		//alert("scope.nodeId" + $scope.nodeId);
-		//alert("URL" + $location.protocol() + "://" + $location.host() + "/node/" + $scope.nodeId);
-		//alert("scope.poster.owner.hedimgurl" + $scope.poster.owner.headimgurl);
-
-
-
+              		//alert("scope.poster.subject" + $scope.poster.subject);
+              		//alert("scope.poster.body" + $scope.poster.body);
+              		//alert("scope.nodeId" + $scope.nodeId);
+              		//alert("URL" + $location.protocol() + "://" + $location.host() + "/node/" + $scope.nodeId);
+              		//alert("scope.poster.owner.hedimgurl" + $scope.poster.owner.headimgurl);
 
                 wx.onMenuShareTimeline({
                   title: $scope.poster.subject,
