@@ -371,6 +371,8 @@ app
         .searchResource("ProposalSummary", "proposal=" + proposalId)
         .then(function(response) {
           proposalRet = response.data[0];
+          //Todo: fix time issue in mysql
+          proposalRet.createdAt = new Date(proposalRet.createdAt);
           return resourceSrv.getResourceById("user", proposalRet.createdBy)
         })
         .then(function (proposalOwner) {
@@ -379,14 +381,12 @@ app
         })
         .then(function(proposal) {
           proposalRet.content = proposal.data.content;
-          proposalRet.createdAt = proposal.data.createdAt;
           proposalRet.contentVisable = true;
           return proposalRet;
         })
         .catch(function (err) {
           if (err.message == "5001") {
             proposalRet.contentVisable = false;
-            //proposalRet.createdAt = proposal.data.createdAt;
             return proposalRet;
           } else {
             throw err;
