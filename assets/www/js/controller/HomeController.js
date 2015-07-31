@@ -6,15 +6,13 @@ app
     $scope.poster = {};
     $scope.proposals = [];
 
-    loadHomePage();
 
     $scope.refresh = function() {
       $window.location.href = "/node/" + $scope.nodeId;
     };
 
-    function loadHomePage() {
       //Load the Poster
-      return JianJianBaoAPISrv
+      JianJianBaoAPISrv
       .getPoster($scope.posterId, $scope.userId)
       .then(function (poster) {
         $scope.poster = poster;
@@ -26,19 +24,15 @@ app
         dfd.resolve();
         promise = dfd.promise;
      
-        var results = lodash.each($scope.poster.proposals.reverse(), function(proposalId) {
-            return promise.then(function() {
+        lodash.each($scope.poster.proposals.reverse(), function(proposalId) {
+            promise = promise.then(function() {
                 return JianJianBaoAPISrv.getProposal(proposalId);
             }).then(function(proposal) {
                 // ...
                 $scope.proposals.push(proposal);
-                return proposal;
             });
-        });
-
-        return $q.all(results);   
+        });   
       });
-    }
 
 
 })
