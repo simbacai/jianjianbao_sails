@@ -74,11 +74,11 @@
             <i class="icon ion-ios-nutrition-outline"></i>
             采纳
           </a-->
-          <a class="tab-item" ng-show="poster.ownerIsCurrentUser && !poster.commited" href="/tab/home/proposal/adopt/"+floor.proposal.id >
+          <a class="tab-item" ng-show="poster.ownerIsCurrentUser && !poster.commited" href="/tab/home/proposal/adopt/{{floor.proposal}}" >
             <i class="icon ion-ios-nutrition-outline"></i>
             采纳
           </a>
-          <a class="tab-item" ng-show="!poster.commited" href="/tab/home/proposal/linkpath/"+floor.proposal>
+          <a class="tab-item" ng-show="!poster.commited" href="/tab/home/proposal/linkpath/{{floor.proposal}}">
             <i class="icon ion-ios-infinite-outline"></i>
             关系链
           </a>

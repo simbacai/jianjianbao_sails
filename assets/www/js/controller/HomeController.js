@@ -1,15 +1,10 @@
 app
 
 .controller("HomeCtrl", 
-  function ($scope, lodash, $q, $window, JianJianBaoAPISrv)  {
+  function ($scope, lodash, $q, JianJianBaoAPISrv)  {
     console.log("HomeCtrl: BEGIN................");
     $scope.poster = {};
     $scope.proposals = [];
-
-
-    $scope.refresh = function() {
-      $window.location.href = "/node/" + $scope.nodeId;
-    };
 
     //Load the Poster
     JianJianBaoAPISrv
@@ -47,7 +42,7 @@ app
 })
 
 .controller("HomeProposalCtrl", 
-  function ($scope, $location, JianJianBaoAPISrv,$controller, $window)  {
+  function ($scope, $location, JianJianBaoAPISrv,$controller)  {
     $controller('HomeCtrl', {$scope : $scope}); //Make HomeProposalCtrl as child of HomeCtrl
     $scope.solution = "";
     $scope.propose = function() {        
@@ -59,25 +54,24 @@ app
 })
 
 .controller("HomeShareCtrl", 
-  function($scope, $q, $location, JianJianBaoAPISrv, $ionicModal, $http)  {
+  function($scope, $q, JianJianBaoAPISrv)  {
 })
 
 .controller("HomeProposalLinkPathCtrl", 
-  function($scope, $rootScope, $q, $location, JianJianBaoAPISrv, $ionicModal, $http)  {
-    $scope.tipsCalc = function(proposalId) {
-        $rootScope.tips = [];
-
-        JianJianBaoAPISrv.tipsCalc(proposalId).then(function(tips) {
-            console.log("$scope.tipsCalc: tips= " + angular.toJson(tips))
-            $rootScope.tips = tips;
-
-            console.log("################# 跳转至linkpath ");
-            //不刷新跳转
-            $location.path($rootScope.posterMainPath + "/linkpath/proposal/" + proposalId);
-
-            return;
-        });
-    }
+  function($scope, $q, $location, JianJianBaoAPISrv, $stateParams)  {
+    var proposalId = $stateParams.id;
+    JianJianBaoAPISrv
+    .getPoster($scope.posterId, $scope.userId)
+    .then(function (poster) {
+      $scope.poster = poster;
+      return null;
+    })
+    .then(function () {
+      return JianJianBaoAPISrv.tipsCalc(proposalId);
+    })
+    .then(function (tips) {
+      $scope.tips = tips;
+    });
 })
 
 .controller("HomeProposalAdoptCtrl", 
