@@ -2,15 +2,6 @@
 
   <ion-content>
     <div class="list">
-      <div class="item item-avatar">
-        <img src="{{poster.owner.headimgurl}}">
-        <h2>{{poster.owner.nickname}}</h2>
-        <p>
-          {{poster.createdAt | date : 'M-d H:mm' }}&nbsp;
-          发布悬赏&nbsp;
-          {{poster.tipAmount}}元
-        </p>
-      </div>
       <div class="item item-avatar"  ng-repeat="tip in tips">
         <img src="{{tip.userObj.headimgurl}}">
         <h2>{{tip.userObj.nickname}}</h2>

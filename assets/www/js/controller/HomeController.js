@@ -164,6 +164,15 @@ app
   function($scope, $q, JianJianBaoAPISrv)  {
 })
 
+.controller("HomeCheckTipsCtrl", 
+  function($scope, JianJianBaoAPISrv, $stateParams)  {
+    var posterId = $stateParams.id;
+    JianJianBaoAPISrv.viewTips(posterId)
+    .then(function(tips) {
+        $scope.tips = tips;
+    });
+})
+
 .controller("HomeProposalLinkPathCtrl", 
   function($scope, $q, $location, JianJianBaoAPISrv, $stateParams)  {
     var proposalId = $stateParams.id;
@@ -200,11 +209,5 @@ app
     }
 })
 
-.controller("HomeCheckTipsCtrl", 
-  function($scope, JianJianBaoAPISrv)  {
-    JianJianBaoAPISrv.viewTips($scope.poster)
-    .then(function(tips) {
-        $scope.tips = tips;
-    });
-})
+
 

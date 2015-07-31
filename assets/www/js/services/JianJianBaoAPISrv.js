@@ -37,14 +37,6 @@ app
  
         return $q.all(promises);
     }
-
-    this.loadPosterActiveUsers = function(posterId) {
-        var url = "/poster/"  + posterId + "/users" ;
-
-        return io.socket.get(url, function(data) {
-            _currentPoster.users = data;
-        }); 
-    }    
                 
     this.postPoster = function(newPoster) {
         return resourceSrv.createResource("poster", newPoster).then(function(response) {
@@ -86,20 +78,18 @@ app
         console.log("################# viewTips 开始");
 
         var query = "poster=" + posterId + "&sort=id ASC";
+        var tips;
 
-        var promise = resourceSrv.searchResource("tip", query).then(function(response) {
-            var tips = response.data;
+        return resourceSrv.searchResource("tip", query)
+              .then(function(response) {
+                  tips = response.data;
+                  return loadUserForAllTips(tips);
 
-            for (var i=0; i< tips.length; i++) {
-                tips[i].userObj = _usersCache[tips[i].user]; 
-            }
-
-            console.log("################# viewTips 完成");
-
-            return tips;
-        });
-
-        return promise;
+              })
+              .then(function(){
+                  console.log("################# viewTips 完成");
+                  return tips;
+              })
     };
                 
     this.tipsCalc = function(proposalId) {

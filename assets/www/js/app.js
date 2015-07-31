@@ -98,7 +98,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: 'HomeProposalAdoptCtrl'
     })
     .state('tab-home-checktips', {
-      url: '/tab/home/checktips',
+      url: '/tab/home/checktips/:id',
       templateUrl: '/www/templates/commit_result.html',
       controller: 'HomeCheckTipsCtrl'
     })
