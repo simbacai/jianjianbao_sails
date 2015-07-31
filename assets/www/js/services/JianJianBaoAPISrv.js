@@ -40,7 +40,7 @@ app
         return $q.all(promises);
     }
 
-    var loadPosterActiveUsers = function(posterId) {
+    this.loadPosterActiveUsers = function(posterId) {
         var url = "/poster/"  + posterId + "/users" ;
 
         return io.socket.get(url, function(data) {

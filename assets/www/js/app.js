@@ -152,6 +152,24 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     }
   })
+    .state('tab.friends-user', {
+      url: '/friends/user/:id',
+      views: {
+        'tab-friends': {
+          templateUrl: '/www/templates/user.html',
+          controller: 'FriendsUserCtrl'
+        }
+      }
+    })
+      .state('tab.friends-user-chat', {
+      url: '/friends/user/:id/chat',
+      views: {
+        'tab-friends': {
+          templateUrl: '/www/templates/chat.html',
+          controller: 'FriendsChatCtrl'
+        }
+      }
+    })
 
   .state('tab.personal', {
     url: '/personal',

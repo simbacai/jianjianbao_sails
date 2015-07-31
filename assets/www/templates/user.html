@@ -1,4 +1,4 @@
-<ion-modal-view>
+<ion-view view-title="">
 
 
   <ion-content>
@@ -28,14 +28,9 @@
   </div>
   
   <div class="button-bar">
-    <a class="button icon-center ion-chatbox button-full button-positive" ng-click="chatClick(displayUser)">  发消息</a>
+    <a class="button icon-center ion-chatbox button-full button-calm" href="/tab/friends/user/{{displayUser.id}}/chat"">  发消息</a>
   </div>
 
   </ion-content>
 
-  <ion-footer-bar class="bar bar-footer bar-dark">
-    <button class="button button-clear button-primary" ng-click="userModal.hide()">
-      &nbsp;&nbsp;返回&nbsp;&nbsp;
-    </button>
-  </ion-footer-bar>
-</ion-modal-view>
+</ion-view>
