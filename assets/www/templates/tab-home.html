@@ -22,11 +22,11 @@
 
         <div class="item tabs tabs-secondary tabs-icon-left">
 
-          <a class="tab-item" ng-show="poster.commited" href="/tab/home/checktips/{{poster.id}}">
+          <a class="tab-item" ng-show="poster.commited" href="{{absUrl}}#/tab/home/checktips/{{poster.id}}">
             <i class="icon ion-ios-eye-outline"></i>
             红包分配结果
           </a>
-          <a class="tab-item"  ng-show="!poster.commited && !poster.ownerIsCurrentUser" href="/tab/home/makeproposal">
+          <a class="tab-item"  ng-show="!poster.commited && !poster.ownerIsCurrentUser" href="{{absUrl}}#/tab/home/makeproposal">
             <i class="icon ion-ios-color-wand-outline"></i>
             我来解决
           </a>
@@ -34,7 +34,7 @@
             <i class="icon ion-ios-chatbubble-outline"></i>
             留言
           </a>
-          <a class="tab-item" href="/tab/home/share">
+          <a class="tab-item" href="{{absUrl}}#/tab/home/share">
             <i class="icon ion-ios-upload-outline"></i>
             转发有礼
           </a>
@@ -70,11 +70,11 @@
         </a>
 
         <div class="item tabs tabs-secondary tabs-icon-left">
-          <a class="tab-item" ng-show="poster.ownerIsCurrentUser && !poster.commited" href="/tab/home/proposal/adopt/{{floor.proposal}}" >
+          <a class="tab-item" ng-show="poster.ownerIsCurrentUser && !poster.commited" href="{{absUrl}}#/tab/home/proposal/adopt/{{floor.proposal}}" >
             <i class="icon ion-ios-nutrition-outline"></i>
             采纳
           </a>
-          <a class="tab-item" ng-show="!poster.commited" href="/tab/home/proposal/linkpath/{{floor.proposal}}">
+          <a class="tab-item" ng-show="!poster.commited" href="{{absUrl}}#/tab/home/proposal/linkpath/{{floor.proposal}}">
             <i class="icon ion-ios-infinite-outline"></i>
             关系链
           </a>

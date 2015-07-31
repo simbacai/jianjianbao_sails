@@ -8,6 +8,7 @@ app
         $scope.nodeId = node;
         $scope.posterId = poster;
         $scope.userId = user;
+        $scope.absUrl = $location.absUrl();
     };
 
     //TODO 可以用Filter实现
