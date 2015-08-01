@@ -44,7 +44,7 @@ app
 
     $scope.initializeJssdk = function($scope) {
 
-        var apiURL = "/jssdk/getsign?url=" + encodeURIComponent($scope.absUrl;
+        var apiURL = "/jssdk/getsign?url=" + encodeURIComponent($scope.absUrl);
         //alert("getsign, $location.absUrl()=" + encodeURIComponent($location.absUrl()));
         var promise = 
             $http.get(apiURL).then(function(response) {
