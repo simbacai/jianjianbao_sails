@@ -2,7 +2,7 @@
     <ion-content>
       <div class="list card">
         <div class="item item-avatar">
-          <img src="{{poster.owner.headimgurl}}">
+          <img ng-src="{{poster.owner.headimgurl2}}" >
           <h2 ng-show="!poster.commited">悬赏{{poster.tipAmount}}元：{{poster.subject}}</h2>
           <h2 ng-show="poster.commited">悬赏{{poster.tipAmount}}元(已解决)：{{poster.subject}}</h2>
           <p>
@@ -45,7 +45,7 @@
       <div class="list card" ng-repeat="floor in proposals">
 
         <div class="item item-avatar" >
-          <img src="{{floor.owner.headimgurl}}">
+          <img ng-src="{{floor.owner.headimgurl}}">
           <h2>解决方案</h2>
           <p>
             {{floor.owner.nickname}}&nbsp;
