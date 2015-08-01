@@ -96,7 +96,7 @@ $ionicons-font-path:'../lib/ionic/fonts' !default;
     background-color: #C7C7CC;
   }
 }
-span {
+spanchat {
   background: #007AFF;
   display: inline-block;
   color: white;
