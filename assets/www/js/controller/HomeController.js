@@ -11,7 +11,7 @@ app
     .getPoster($scope.posterId, $scope.userId)
     .then(function (poster) {
       $scope.poster = poster;
-      $scope.initializeJssdk();
+      $scope.initializeJssdk($scope);
       return null;
     })
     //Load the proposals
@@ -42,9 +42,9 @@ app
     io.socket.get("/poster/" + $scope.posterId);
 
 
-    $scope.initializeJssdk = function() {
+    $scope.initializeJssdk = function($scope) {
 
-        var apiURL = "/jssdk/getsign?url=" + encodeURIComponent($location.absUrl());
+        var apiURL = "/jssdk/getsign?url=" + encodeURIComponent($scope.absUrl;
         //alert("getsign, $location.absUrl()=" + encodeURIComponent($location.absUrl()));
         var promise = 
             $http.get(apiURL).then(function(response) {
@@ -137,6 +137,28 @@ app
                     //alert(JSON.stringify(res));
                   }
                 });
+
+                wx.onMenuShareAppMessage({
+                  title: $scope.poster.subject,
+                  desc: $scope.poster.body,
+                  link: $location.protocol() + "://" + $location.host() + "/node/" + $scope.nodeId,
+                  //imgUrl: $location.protocol() + "://" + $location.host() + "/www/img/beauty.jpg",
+                  imgUrl: $scope.poster.owner.headimgurl,
+                  trigger: function (res) {
+                    // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
+                    //alert('用户点击发送给朋友');
+                  },
+                  success: function (res) {
+                    //alert('已分享');
+
+                  },
+                  cancel: function (res) {
+                    //alert('已取消');
+                  },
+                  fail: function (res) {
+                    //alert(JSON.stringify(res));
+                  }
+                });                
             });
 
             wx.error(function(res){

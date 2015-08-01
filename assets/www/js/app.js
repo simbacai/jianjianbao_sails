@@ -157,5 +157,5 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
   //html5Mode
   
-  //$locationProvider.html5Mode(true);
+  $locationProvider.html5Mode(true);
 });
