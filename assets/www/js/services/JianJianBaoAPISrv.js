@@ -182,8 +182,8 @@ app
         return resourceSrv.createResource("proposal", newProposal);
     };
 
-    this.getChatroomByUsers = function(users) {
-      var query = "users=[" + users + "]";
+    this.getChatroomByUsers = function(users, posterId) {
+      var query = "users=[" + users + "]" + "&poster=" + posterId;
         
       return resourceSrv.searchResource('chatroom', query)
              .then(function(chatRoom) {
