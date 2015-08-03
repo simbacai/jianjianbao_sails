@@ -23,7 +23,7 @@ app
        var users = [$scope.userId, userId];
        JianJianBaoAPISrv.getChatroomByUsers(users)
        .then(function(existingChatRoom) {
-        if(existingChatRoom.length !== 0)
+        if(existingChatRoom !== null && existingChatRoom.length !== 0)
         {
           //Subscribe to the chatRoom
           io.socket.get("/chatroom/" + existingChatRoom[0].id);
