@@ -61,7 +61,7 @@ app
     }
 })
 
-.controller('FriendsChatCtrl', function($scope, lodash, JianJianBaoAPISrv,$stateParams, $ionicScrollDelegate){ 
+.controller('FriendsChatCtrl', function($scope, lodash, JianJianBaoAPISrv,$stateParams, $ionicScrollDelegate, $timeout){ 
     var roomId = $stateParams.id;
 
     JianJianBaoAPISrv.getChatroomById(roomId)
@@ -85,6 +85,7 @@ app
             var d = new Date(chatRecords[i].createdAt);
             d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
             chatRecords[i].createdAt = d; 
+            chatRecords[i].createdBy = String(chatRecords[i].createdBy);
             $scope.messages.push(chatRecords[i]);
         }  
       }
@@ -96,7 +97,8 @@ app
         io.socket.on('chatroom', function(msg) {
           var d = new Date(msg.data.createdAt);
           d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
-          msg.data.createdAt = d;    
+          msg.data.createdAt = d; 
+          msg.data.createdBy = String(msg.data.createdBy);   
           $scope.messages.push(msg.data)});
     });
 
