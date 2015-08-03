@@ -57,17 +57,32 @@ app
       return chatRoom.users;
     })
     .then(function(guestUser) {
-      JianJianBaoAPISrv.getUser(guestUser[1])
-      .then(function(guest) {
-        $scope.friend = guest;
-        //monitor the chatting
+      return JianJianBaoAPISrv.getUser(guestUser[1]);  
+    })
+    .then(function(guest) {
+      $scope.friend = guest;
+      return JianJianBaoAPISrv.getChatRecords(roomId);
+    })
+    .then(function(chatRecords) {
+      if(chatRecords !== null) {
+        for(var i=0; i < chatRecords.length; i++) {
+            var d = new Date(chatRecords[i].createdAt);
+            d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+            chatRecords[i].createdAt = d; 
+            $scope.messages.push(chatRecords[i]);
+        }  
+      }
+      
+      return null;
+    })
+    .then(function() {
+      //monitor the chatting
         io.socket.on('chatroom', function(msg) {
           var d = new Date(msg.data.createdAt);
           d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
           msg.data.createdAt = d;    
           $scope.messages.push(msg.data)});
-      })
-    })
+    });
 
     $scope.showTime = true;
 

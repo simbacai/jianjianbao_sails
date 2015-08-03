@@ -222,4 +222,16 @@ app
               return chatRecord.data;
             });
     };
+
+    this.getChatRecords = function(roomId) {
+      //This query is slow, any optimization idea?
+      var query = "chatRoom=" + roomId; 
+      return resourceSrv.searchResource('chatrecord', query)
+             .then(function (chatRecords) {
+              return chatRecords.data;
+             })
+             .catch(function (err) {
+              return null;
+             })
+    }
 });
