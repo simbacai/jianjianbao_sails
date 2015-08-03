@@ -168,6 +168,47 @@ app
         });
     };
 
+
+    $scope.privateTalk = function(userId) {
+       //Check whether there is chatroom with userId
+       var users = [Number($scope.userId), userId];
+       var users_normal = users.slice();
+       var users_reverse = users.reverse();
+       JianJianBaoAPISrv.getChatroomByUsers(users_normal, $scope.posterId)
+       .then(function(existingChatRoom) {
+        if(existingChatRoom !== null && existingChatRoom.length !== 0)
+        {
+          //Subscribe to the chatRoom
+          io.socket.get("/chatroom/" + existingChatRoom[0].id);
+          //Go to the chatting room
+          $location.path("/tab/friends/chatroom/" + existingChatRoom[0].id);
+          return;
+        } else {
+          return JianJianBaoAPISrv.getChatroomByUsers(users_reverse, $scope.posterId)
+        }
+       })
+      .then(function(existingChatRoomReverse) {
+        if(existingChatRoomReverse !== null && existingChatRoomReverse.length !== 0)
+        {
+          //Subscribe to the chatRoom
+          io.socket.get("/chatroom/" + existingChatRoomReverse[0].id);
+          //Go to the chatting room
+          $location.path("/tab/friends/chatroom/" + existingChatRoomReverse[0].id);
+          return;
+        } else {
+          return JianJianBaoAPISrv.postChatroom($scope.posterId, users_normal);
+        }
+       })
+       .then(function(newChatRoom) {
+        //Subscribe to the chatRoom
+        io.socket.get("/chatroom/" + newChatRoom.id);
+        //Go to the chatting room
+        $location.path("/tab/friends/chatroom/" + newChatRoom.id);
+       })
+       .catch(function(err) {
+        console.log(err);
+       })
+    };
 })
 
 .controller("HomeProposalCtrl", 
@@ -180,6 +221,49 @@ app
             $location.path("/tab/home");
         });   
     } ;
+})
+
+.controller("HomePrivateTalkCtrl", 
+  function ($scope, $location, JianJianBaoAPISrv, $stateParams)  {
+    var userId = $stateParams.id;
+
+    var users = [Number($scope.userId), userId];
+    var users_normal = users.slice();
+    var users_reverse = users.reverse();
+    JianJianBaoAPISrv.getChatroomByUsers(users_normal, $scope.posterId)
+    .then(function(existingChatRoom) {
+    if(existingChatRoom !== null && existingChatRoom.length !== 0)
+    {
+      //Subscribe to the chatRoom
+      io.socket.get("/chatroom/" + existingChatRoom[0].id);
+      //Go to the chatting room
+      $location.path("/tab/friends/chatroom/" + existingChatRoom[0].id);
+      return;
+    } else {
+      return JianJianBaoAPISrv.getChatroomByUsers(users_reverse, $scope.posterId)
+    }
+    })
+    .then(function(existingChatRoomReverse) {
+    if(existingChatRoomReverse !== null && existingChatRoomReverse.length !== 0)
+    {
+      //Subscribe to the chatRoom
+      io.socket.get("/chatroom/" + existingChatRoomReverse[0].id);
+      //Go to the chatting room
+      $location.path("/tab/friends/chatroom/" + existingChatRoomReverse[0].id);
+      return;
+    } else {
+      return JianJianBaoAPISrv.postChatroom($scope.posterId, users_normal);
+    }
+    })
+    .then(function(newChatRoom) {
+    //Subscribe to the chatRoom
+    io.socket.get("/chatroom/" + newChatRoom.id);
+    //Go to the chatting room
+    $location.path("/tab/friends/chatroom/" + newChatRoom.id);
+    })
+    .catch(function(err) {
+    console.log(err);
+    });
 })
 
 .controller("HomeShareCtrl", 

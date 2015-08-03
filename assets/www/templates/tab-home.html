@@ -30,7 +30,7 @@
             <i class="icon ion-ios-color-wand-outline"></i>
             我来解决
           </a>
-          <a class="tab-item" href="#">
+          <a class="tab-item" ng-show="!poster.commited" ng-click="privateTalk(poster.owner.id)">
             <i class="icon ion-ios-chatbubble-outline"></i>
             留言
           </a>
@@ -74,12 +74,12 @@
             <i class="icon ion-ios-nutrition-outline"></i>
             采纳
           </a>
-          <a class="tab-item" ng-show="!poster.commited" href="/tab/home/proposal/linkpath/{{floor.proposal}}">
+          <a class="tab-item" ng-show="!poster.commited" href="/tab/home/proposal/adopt/{{floor.proposal}}">
             <i class="icon ion-ios-infinite-outline"></i>
             关系链
           </a>
-          <a class="tab-item" href="#">
-            <i class="icon ion-ios-chatbubble-outline"></i>
+          <a class="tab-item" ng-show="!poster.commited" ng-click="privateTalk(floor.owner.id)">
+            <i class="icon ion-ios-chatbubble-outline" ></i>
             悄悄话
           </a>
           <a class="tab-item" href="#">
