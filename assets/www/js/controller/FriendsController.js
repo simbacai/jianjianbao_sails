@@ -66,12 +66,14 @@ app
 
     JianJianBaoAPISrv.getChatroomById(roomId)
     .then(function(chatRoom){
-      //Todo: lodash.drop does not work
-      lodash.drop(chatRoom.users, $scope.userId);
+      var index = chatRoom.users.indexOf(Number($scope.myId));
+      if(index >= 0) {
+        chatRoom.users.splice(index, 1);
+      }
       return chatRoom.users;
     })
     .then(function(guestUser) {
-      return JianJianBaoAPISrv.getUser(guestUser[1]);  
+      return JianJianBaoAPISrv.getUser(guestUser[0]);  
     })
     .then(function(guest) {
       $scope.friend = guest;
