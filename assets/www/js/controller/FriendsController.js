@@ -21,8 +21,9 @@ app
     $scope.inviteChatting = function(userId) {
        //Check whether there is chatroom with userId
        var users = [Number($scope.userId), userId];
+       var users_normal = users;
        var users_reverse = users.reverse();
-       JianJianBaoAPISrv.getChatroomByUsers(users, $scope.posterId)
+       JianJianBaoAPISrv.getChatroomByUsers(users_normal, $scope.posterId)
        .then(function(existingChatRoom) {
         if(existingChatRoom !== null && existingChatRoom.length !== 0)
         {
@@ -44,7 +45,7 @@ app
           $location.path("/tab/friends/chatroom/" + existingChatRoomReverse[0].id);
           return;
         } else {
-          return JianJianBaoAPISrv.postChatroom($scope.posterId, users);
+          return JianJianBaoAPISrv.postChatroom($scope.posterId, users_normal);
         }
        })
        .then(function(newChatRoom) {
