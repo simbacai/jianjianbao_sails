@@ -21,7 +21,7 @@ app
     $scope.inviteChatting = function(userId) {
        //Check whether there is chatroom with userId
        var users = [Number($scope.userId), userId];
-       var users_normal = users;
+       var users_normal = users.slice();
        var users_reverse = users.reverse();
        JianJianBaoAPISrv.getChatroomByUsers(users_normal, $scope.posterId)
        .then(function(existingChatRoom) {
