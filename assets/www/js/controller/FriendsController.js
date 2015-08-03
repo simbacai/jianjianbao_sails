@@ -10,56 +10,93 @@ app
     });  
 })
 
-.controller('FriendsUserCtrl', function($scope, JianJianBaoAPISrv,$stateParams){ 
+.controller('FriendsUserCtrl', function($scope, JianJianBaoAPISrv,$stateParams, $location){ 
     var userId = $stateParams.id;
 
     JianJianBaoAPISrv.getUser(userId)
     .then(function(user){
       $scope.displayUser = user;
     })
+
+    $scope.inviteChatting = function(userId) {
+       //Check whether there is chatroom with userId
+       var users = [$scope.userId, userId];
+       JianJianBaoAPISrv.getChatroomByUsers(users)
+       .then(function(existingChatRoom) {
+        if(existingChatRoom.length !== 0)
+        {
+          //Subscribe to the chatRoom
+          io.socket.get("/chatroom/" + existingChatRoom[0].id);
+          //Go to the chatting room
+          $location.path("/tab/friends/chatroom/" + existingChatRoom[0].id);
+          return;
+        } else {
+          return JianJianBaoAPISrv.postChatroom($scope.posterId, users);
+        }
+       })
+       .then(function(newChatRoom) {
+        //Subscribe to the chatRoom
+        io.socket.get("/chatroom/" + newChatRoom.id);
+        //Go to the chatting room
+        $location.path("/tab/friends/chatroom/" + newChatRoom.id);
+       })
+       .catch(function(err) {
+        console.log(err);
+       })
+
+    }
 })
 
-.controller('FriendsChatCtrl', function($scope, JianJianBaoAPISrv,$stateParams){ 
-    var userId = $stateParams.id;
+.controller('FriendsChatCtrl', function($scope, lodash, JianJianBaoAPISrv,$stateParams, $ionicScrollDelegate){ 
+    var roomId = $stateParams.id;
 
-    JianJianBaoAPISrv.getUser(userId)
-    .then(function(user){
-      $scope.friend = user;
+    JianJianBaoAPISrv.getChatroomById(roomId)
+    .then(function(chatRoom){
+      //Todo: lodash.drop does not work
+      lodash.drop(chatRoom.users, $scope.userId);
+      return chatRoom.users;
+    })
+    .then(function(guestUser) {
+      JianJianBaoAPISrv.getUser(guestUser[1])
+      .then(function(guest) {
+        $scope.friend = guest;
+        //monitor the chatting
+        io.socket.on('chatroom', function(msg) {
+          var d = new Date(msg.data.createdAt);
+          d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+          msg.data.createdAt = d;    
+          $scope.messages.push(msg.data)});
+      })
     })
 
     $scope.showTime = true;
 
-    var alternate,
-      isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
+    var isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
 
     $scope.sendMessage = function() {
-      alternate = !alternate;
 
-      var d = new Date();
-    d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+      var newChatRecord = {};
+      newChatRecord.chatRoom = roomId;
+      newChatRecord.content = $scope.data.message;
 
-      $scope.messages.push({
-        userId: alternate ? '12345' : '54321',
-        text: $scope.data.message,
-        time: d
-      });
+      JianJianBaoAPISrv.postChatRecord(newChatRecord);
 
       delete $scope.data.message;
       $ionicScrollDelegate.scrollBottom(true);
-
     };
 
 
     $scope.inputUp = function() {
-      if (isIOS) $scope.data.keyboardHeight = 216;
+      //Todo, keyboardHeight set according to different platform
+      if(isIOS) $scope.data.keyboardHeight = 216;
       $timeout(function() {
         $ionicScrollDelegate.scrollBottom(true);
       }, 300);
-
     };
 
     $scope.inputDown = function() {
-      if (isIOS) $scope.data.keyboardHeight = 0;
+      //Todo, keyboardHeight set according to different platform
+      if(isIOS) $scope.data.keyboardHeight = 0;
       $ionicScrollDelegate.resize();
     };
 
@@ -69,7 +106,7 @@ app
 
 
     $scope.data = {};
-    $scope.myId = '12345';
+    $scope.myId = $scope.userId;
     $scope.messages = [];
     
 });

@@ -138,7 +138,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: 'FriendsUserCtrl'      
     })
     .state('tab-friends-user-chat', {
-      url: '/tab/friends/user/:id/chat',
+      url: '/tab/friends/chatroom/:id',
       templateUrl: '/www/templates/chat.html',
       controller: 'FriendsChatCtrl'
     })

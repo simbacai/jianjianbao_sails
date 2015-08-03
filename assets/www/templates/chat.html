@@ -10,14 +10,14 @@
                  on-tap="showTime = !showTime">
 
       <div ng-repeat="message in messages"
-           ng-class="{other: message.userId != myId}"
+           ng-class="{other: message.createdBy != myId}"
            class="messages">
 
         <div class="message" ng-class="{'slide-right': showTime, '': !showTime}">
-          <spanchat>{{ message.text }}</spanchat>
+          <spanchat>{{ message.content }}</spanchat>
         </div>
 
-        <div class="time" ng-class="{'slide-right': showTime, '': !showTime}">{{message.time}}</div>
+        <div class="time" ng-class="{'slide-right': showTime, '': !showTime}">{{message.createdAt}}</div>
 
 
       </div>

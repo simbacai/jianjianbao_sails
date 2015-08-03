@@ -174,11 +174,52 @@ app
 
     this.postProposal = function(solution, posterId, nodeId) {
         
-        var newProposal = {}
+        var newProposal = {};
         newProposal.content = solution;  
         newProposal.poster = posterId;
         newProposal.node = nodeId;
 
         return resourceSrv.createResource("proposal", newProposal);
+    };
+
+    this.getChatroomByUsers = function(users) {
+      var query = "users=" + users;
+        
+      return resourceSrv.searchResource('chatroom', query)
+             .then(function(chatRoom) {
+              return chatRoom.data;
+             })
+             .catch(function (err) {
+              return null;
+             });
+    };
+
+    this.getChatroomById = function(id) {
+        
+      return resourceSrv.getResourceById('chatroom', id)
+             .then(function(chatRoom) {
+              return chatRoom.data;
+             })
+             .catch(function (err) {
+              return null;
+             });
+    };
+
+    this.postChatroom = function(poster, users) {
+      var newChatroom = {};
+      newChatroom.poster =  poster;
+      newChatroom.users = users;
+      
+      return resourceSrv.createResource('chatroom', newChatroom)
+            .then(function (chatRoom) {
+              return chatRoom.data;
+            });
+    };
+
+    this.postChatRecord = function(newChatRecord) {      
+      return resourceSrv.createResource('chatrecord', newChatRecord)
+            .then(function (chatRecord) {
+              return chatRecord.data;
+            });
     };
 });
