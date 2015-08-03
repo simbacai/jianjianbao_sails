@@ -183,7 +183,7 @@ app
     };
 
     this.getChatroomByUsers = function(users) {
-      var query = "users=" + users;
+      var query = "users=[" + users + "]";
         
       return resourceSrv.searchResource('chatroom', query)
              .then(function(chatRoom) {
