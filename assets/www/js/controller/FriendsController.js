@@ -64,6 +64,10 @@ app
 .controller('FriendsChatCtrl', function($scope, lodash, JianJianBaoAPISrv,$stateParams, $ionicScrollDelegate, $timeout){ 
     var roomId = $stateParams.id;
 
+    $scope.data = {};
+    $scope.myId = Number($scope.userId);
+    $scope.messages = [];
+
     JianJianBaoAPISrv.getChatroomById(roomId)
     .then(function(chatRoom){
       var index = chatRoom.users.indexOf($scope.myId);
@@ -90,8 +94,6 @@ app
         }  
       }
 
-      $scope.$apply();
-      
       return null;
     })
     .then(function() {
@@ -143,8 +145,6 @@ app
     };
 
 
-    $scope.data = {};
-    $scope.myId = Number($scope.userId);
-    $scope.messages = [];
+    
     
 });
