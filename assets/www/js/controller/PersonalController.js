@@ -1,7 +1,11 @@
  
 app
 
-.controller('PersonalCtrl', function($rootScope, $http, $location, $scope
-                                       , dateUtil, JianJianBaoAPISrv, $q){   
+.controller('PersonalCtrl', function($location, $scope, JianJianBaoAPISrv){  
+
+	JianJianBaoAPISrv.getUser($scope.userId)
+    .then(function(user){
+      $scope.private = user;
+    }) 
 
 });
