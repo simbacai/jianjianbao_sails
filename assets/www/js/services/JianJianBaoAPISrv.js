@@ -234,4 +234,22 @@ app
               return null;
              })
     }
+
+    this.getChatRoomsByPosterAndUser = function(posterId, userId) {
+      var query = "poster=" + posterId;
+      return resourceSrv.searchResource('chatroom', query)
+            .then(function (chatRooms){
+              var validRooms = chatRooms.data.map(function(chatRoom){
+                var index = chatRoom.users.indexOf(userId);
+                if(index >= 0) {
+                  chatRoom.users.splice(index, 1);
+                  return chatRoom;
+                }
+              });
+              return $q.all(validRooms);
+            })
+            .catch(function(err) {
+              console.log(err);
+            })
+    }
 });

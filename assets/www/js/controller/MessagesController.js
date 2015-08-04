@@ -1,51 +1,43 @@
 app
 
-.controller('MessagesCtrl', function($rootScope, $http, $location, $scope
-                                       , dateUtil, JianJianBaoAPISrv, $q){    
+.controller('MessagesCtrl', function($scope, JianJianBaoAPISrv, $q, $location){    
 
-    //For chat testing
-      $scope.showTime = true;
-      $scope.data = {};
-      $scope.myId = '12345';
-      $scope.messages = [];
+  $scope.chatrooms = [];
+  $scope.userId = Number($scope.userId);
 
-      var alternate,
-        isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
+  //Get the chatrooms
+  JianJianBaoAPISrv.getChatRoomsByPosterAndUser($scope.posterId, $scope.userId)
+  .then(function(chatRooms) {
+    var chatRoomsWithUser = chatRooms.map(function(chatRoom) {
+      if(chatRoom !== null && chatRoom !== undefined) {
+        return JianJianBaoAPISrv.getUser(chatRoom.users[0])
+        .then(function(user) {
+          chatRoom.targetpeople = user;
+          return chatRoom;
+        })
+        .catch(function(err){
+          console.log(err);
+        })    
+      }
+    });
 
-      $scope.sendMessage = function() {
-        alternate = !alternate;
-
-        var d = new Date();
-        d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
-
-        $scope.messages.push({
-          userId: alternate ? '12345' : '54321',
-          text: $scope.data.message,
-          time: d
-        });
-
-        delete $scope.data.message;
-        $ionicScrollDelegate.scrollBottom(true);
-
-      };
-
-
-      $scope.inputUp = function() {
-        if (isIOS) $scope.data.keyboardHeight = 216;
-        $timeout(function() {
-          $ionicScrollDelegate.scrollBottom(true);
-        }, 300);
-
-      };
-
-      $scope.inputDown = function() {
-        if (isIOS) $scope.data.keyboardHeight = 0;
-        $ionicScrollDelegate.resize();
-      };
-
-      $scope.closeKeyboard = function() {
-        // cordova.plugins.Keyboard.close();
-      };
-    //End of Chat testing  
-
+    return $q.all(chatRoomsWithUser);
+  })
+  .then(function(chatRoomsWithUser){
+    for(var i=0; i<chatRoomsWithUser.length; i++) {
+      if(chatRoomsWithUser[i] !== null && chatRoomsWithUser[i] !== undefined) {
+        $scope.chatrooms.push(chatRoomsWithUser[i]);
+      }
+    }
+  }) 
+  .catch(function(err){
+    console.log(err);
   });
+
+  $scope.joinRoom = function(roomId) {
+    io.socket.get("/chatroom/" + roomId);
+    //Go to the chatting room
+    $location.path("/tab/friends/chatroom/" + roomId);
+  };
+
+});
