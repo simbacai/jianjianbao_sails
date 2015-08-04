@@ -101,7 +101,10 @@ app
           d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
           msg.data.createdAt = d; 
           msg.data.createdBy = msg.data.createdBy;   
-          $scope.messages.push(msg.data)});
+          $scope.messages.push(msg.data);
+	  $scope.$apply();
+	});
+	  
     });
 
     $scope.showTime = true;
