@@ -66,7 +66,7 @@ app
 
     JianJianBaoAPISrv.getChatroomById(roomId)
     .then(function(chatRoom){
-      var index = chatRoom.users.indexOf(Number($scope.myId));
+      var index = chatRoom.users.indexOf($scope.myId);
       if(index >= 0) {
         chatRoom.users.splice(index, 1);
       }
@@ -85,10 +85,12 @@ app
             var d = new Date(chatRecords[i].createdAt);
             d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
             chatRecords[i].createdAt = d; 
-            chatRecords[i].createdBy = String(chatRecords[i].createdBy);
+            chatRecords[i].createdBy = chatRecords[i].createdBy;
             $scope.messages.push(chatRecords[i]);
         }  
       }
+
+      $scope.$apply();
       
       return null;
     })
@@ -98,7 +100,7 @@ app
           var d = new Date(msg.data.createdAt);
           d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
           msg.data.createdAt = d; 
-          msg.data.createdBy = String(msg.data.createdBy);   
+          msg.data.createdBy = msg.data.createdBy;   
           $scope.messages.push(msg.data)});
     });
 
@@ -139,7 +141,7 @@ app
 
 
     $scope.data = {};
-    $scope.myId = $scope.userId;
+    $scope.myId = Number($scope.userId);
     $scope.messages = [];
     
 });
