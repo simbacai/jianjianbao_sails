@@ -29,6 +29,7 @@ app
         $scope.chatrooms.push(chatRoomsWithUser[i]);
       }
     }
+    $scope.$apply();
   }) 
   .catch(function(err){
     console.log(err);
