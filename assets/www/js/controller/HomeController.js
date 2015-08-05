@@ -310,6 +310,7 @@ app
         .then(function(tips) {
           //Todo: commit satus does not refresh view
           $scope.poster.commited = true;
+          $scope.$apply();
           $location.path("/tab/home");
         });
     }

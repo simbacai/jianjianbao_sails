@@ -41,4 +41,6 @@ app
     $location.path("/tab/friends/chatroom/" + roomId);
   };
 
+
+
 });
