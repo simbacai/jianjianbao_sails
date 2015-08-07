@@ -35,7 +35,7 @@ app
   });
 
   $scope.joinRoom = function(roomId) {
-    io.socket.get("/chatroom/" + roomId);
+    io.socket.get("/chatroom/" + roomId + "/subscribe");
     //Go to the chatting room
     $location.path("/tab/friends/chatroom/" + roomId);
   };

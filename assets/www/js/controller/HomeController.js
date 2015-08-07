@@ -39,7 +39,7 @@ app
         //$scope.$apply();
       });
     });
-    io.socket.get("/poster/" + $scope.posterId);
+    io.socket.get("/poster/" + $scope.posterId + "/subscribe");
 
 
     $scope.initializeJssdk = function($scope) {
@@ -179,7 +179,7 @@ app
         if(existingChatRoom !== null && existingChatRoom.length !== 0)
         {
           //Subscribe to the chatRoom
-          io.socket.get("/chatroom/" + existingChatRoom[0].id);
+          io.socket.get("/chatroom/" + existingChatRoom[0].id + "/subscribe");
           //Go to the chatting room
           $location.path("/tab/friends/chatroom/" + existingChatRoom[0].id);
           return;
@@ -191,7 +191,7 @@ app
         if(existingChatRoomReverse !== null && existingChatRoomReverse.length !== 0)
         {
           //Subscribe to the chatRoom
-          io.socket.get("/chatroom/" + existingChatRoomReverse[0].id);
+          io.socket.get("/chatroom/" + existingChatRoomReverse[0].id + "/subscribe");
           //Go to the chatting room
           $location.path("/tab/friends/chatroom/" + existingChatRoomReverse[0].id);
           return;
@@ -201,7 +201,7 @@ app
        })
        .then(function(newChatRoom) {
         //Subscribe to the chatRoom
-        io.socket.get("/chatroom/" + newChatRoom.id);
+        io.socket.get("/chatroom/" + newChatRoom.id + "/subscribe");
         //Go to the chatting room
         $location.path("/tab/friends/chatroom/" + newChatRoom.id);
        })
@@ -235,7 +235,7 @@ app
     if(existingChatRoom !== null && existingChatRoom.length !== 0)
     {
       //Subscribe to the chatRoom
-      io.socket.get("/chatroom/" + existingChatRoom[0].id);
+      io.socket.get("/chatroom/" + existingChatRoom[0].id + "/subscribe");
       //Go to the chatting room
       $location.path("/tab/friends/chatroom/" + existingChatRoom[0].id);
       return;
@@ -247,7 +247,7 @@ app
     if(existingChatRoomReverse !== null && existingChatRoomReverse.length !== 0)
     {
       //Subscribe to the chatRoom
-      io.socket.get("/chatroom/" + existingChatRoomReverse[0].id);
+      io.socket.get("/chatroom/" + existingChatRoomReverse[0].id) + "/subscribe";
       //Go to the chatting room
       $location.path("/tab/friends/chatroom/" + existingChatRoomReverse[0].id);
       return;
@@ -257,7 +257,7 @@ app
     })
     .then(function(newChatRoom) {
     //Subscribe to the chatRoom
-    io.socket.get("/chatroom/" + newChatRoom.id);
+    io.socket.get("/chatroom/" + newChatRoom.id + "/subscribe");
     //Go to the chatting room
     $location.path("/tab/friends/chatroom/" + newChatRoom.id);
     })
