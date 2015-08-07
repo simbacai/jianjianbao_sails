@@ -7,6 +7,7 @@ app
     $http.get(url)
     .then(function (data){
       $scope.friends = data.data;
+      $scope.$apply();
     });  
 })
 

@@ -29,6 +29,7 @@ app
         $scope.chatrooms.push(chatRoomsWithUser[i]);
       }
     }
+    $scope.$apply();
   }) 
   .catch(function(err){
     console.log(err);
@@ -39,5 +40,7 @@ app
     //Go to the chatting room
     $location.path("/tab/friends/chatroom/" + roomId);
   };
+
+
 
 });

@@ -43,7 +43,11 @@ module.exports = {
       })
       .then(function (poster) {
         if(req.body.xml.result_code == "SUCCESS") {
-          return Poster.update({id: poster.id}, {status: "payed"});
+	  if(poster.status == "created") {
+	    return Poster.update({id: poster.id}, {status: "payed"});
+	  } else {
+	    return null;
+	  }
         } else {
           return null;
         }
