@@ -5286,7 +5286,7 @@ a.item-content {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 0;
-  margin-bottom: 0px; }
+  margin-bottom: 6px; }
 
 .list:last-child {
   margin-bottom: 0px; }
@@ -5315,7 +5315,7 @@ a.item-content {
  */
 .card, .list-inset {
   overflow: hidden;
-  margin: 3px 10px;
+  margin: 6px 10px;
   border-radius: 2px;
   background-color: #fff; }
 
