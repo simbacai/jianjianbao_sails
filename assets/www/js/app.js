@@ -55,6 +55,11 @@ app.directive('input', function($timeout) {
   }
 })
 
+app.config(['$ionicConfigProvider', function($ionicConfigProvider) {
+
+    $ionicConfigProvider.tabs.position('bottom'); // other values: top
+
+}]);
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
